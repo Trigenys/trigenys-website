@@ -12,3 +12,9 @@ python -m fontTools.subset <police>.woff2 --flavor=woff2 --output-file=<police>.
 
 Les polices variables sont ensuite restreintes à la plage de graisses utilisée (`fontTools.varLib.instancer`, `wght=400:700` pour Plex Sans, `wght=500:600` pour Source Serif 4 romain), un seul fichier par famille et style. Un caractère hors de ce jeu s'affiche avec la police de
 repli calibrée déclarée dans `index.tpl.html` ; étendre le jeu et régénérer avant d'ajouter une langue.
+
+## Axe optique (`opsz`) épinglé
+
+Source Serif 4 n'est utilisée que pour des titres (26 px et plus) : l'axe `opsz` est épinglé à 60 (dessin « display »)
+par `fontTools.varLib.instancer` (`opsz=60`), ce qui divise la taille des deux fichiers par ~2,5 (62 → 25 Ko, 46 → 17 Ko).
+Si la serif devait servir à du texte courant (< 20 px), rétablir une plage `opsz` ou un second fichier instancié à 20.
