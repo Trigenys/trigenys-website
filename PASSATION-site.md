@@ -87,3 +87,8 @@
 - Preuves Playwright (boîtes 1440×900 et 390×844) : clic → h1, nav, compteur « Scroll · 1 / 4 », tout le texte en anglais (seuls « Précis » restent, nom de produit), retour FR au second clic, choix conservé après rechargement, 0 erreur ; régression défilement/rail/parallax inchangée.
 - Limite : la variante « déroulé » (sans moteur) reste FR, bouton inerte. Traductions à relire par le fondateur.
 - Publié (canvas v23), copié dans `design/maquettes/`.
+
+## 2026-11-05 16:36 — V7 bilingue : approuvée par le fondateur
+- Retour fondateur sur la bascule FR/EN à drapeaux : « ok j'aime ». Le toggle et le mécanisme sont retenus pour la suite.
+- État : canvas v23, commit e12524b poussé, aucune PR ouverte, aucun verrou.
+- Reste à faire : relecture des traductions par le fondateur ; variante « déroulé » toujours FR ; éléments « à confirmer » inchangés (domaine Commerce Factory, WhatsApp / e-mail / ville, logos clients, témoignages, photo équipe). Prochaine étape : attendre la prochaine demande d'ajustement V7 ou la validation globale avant tout déploiement.
