@@ -36,3 +36,9 @@ Référence : `docs/site/benchmark-sites.md`. À utiliser comme grille de revue 
 
 ## 2026-11-05 — Accueil : V6 construite sur le benchmark
 Décision fondateur : nouvelle version plutôt que retouche de V5. Règle appliquée : seuls les faits vérifiables sont affichés, tout le reste est un emplacement marqué « à fournir ». Maquette : `design/maquettes/V6-Accueil.dc.html`.
+
+## 2026-11-05 — Accueil V7 : règles de publication et expérience de défilement
+- **Décision** : la page d'accueil ne présente que les produits dont le registre porte `publicationStatus: published` ; les projets non publiés ne sont ni nommés ni décrits (un seul panneau générique « d'autres outils sont en construction »).
+- **Décision** : les produits sont montrés avec leurs captures, logos et liens réels (pas de maquettes génériques) ; chaque lien affiche son stade réel (production / bêta).
+- **Décision** : l'identité du groupe est portée par le logo et son motif binaire, animés au défilement ; l'expérience de défilement (parallax, rail horizontal) fait partie de la proposition de valeur du site.
+- **Réserves** : domaine définitif de Commerce Factory, couleurs produits, coordonnées de contact et témoignages restent à confirmer ; V7 non validée.

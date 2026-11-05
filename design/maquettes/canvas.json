@@ -108,9 +108,34 @@
       "w": 390,
       "h": 12100,
       "title": "V6 · Benchmark (mobile 390)"
+    },
+    "V7-Accueil-Deroule.dc.html": {
+      "x": 0,
+      "y": 54000,
+      "w": 1440,
+      "h": 9900,
+      "title": "V7 · Déroulé statique (toutes les sections, rail produits empilé)",
+      "expand": "fill"
+    },
+    "V7-Accueil-Fenetre.dc.html": {
+      "x": 1520,
+      "y": 54000,
+      "w": 1440,
+      "h": 900,
+      "title": "V7 · Fenêtre 1440×900 — faire défiler : parallax, logo vivant, rail horizontal"
+    },
+    "V7-Accueil-Mobile.dc.html": {
+      "x": 3040,
+      "y": 54000,
+      "w": 390,
+      "h": 844,
+      "title": "V7 · Mobile 390×844 — faire défiler"
     }
   },
   "order": [
+    "V7-Accueil-Fenetre.dc.html",
+    "V7-Accueil-Deroule.dc.html",
+    "V7-Accueil-Mobile.dc.html",
     "V6-Accueil.dc.html",
     "V6-Accueil-Mobile.dc.html",
     "V5-Accueil.dc.html",
@@ -165,6 +190,13 @@
       "x": 0,
       "y": 42750,
       "text": "V6 — Issue du benchmark : promesse client, bande de preuves vérifiables, 3 phares + grille « voir tout », axe par métier, ingénierie à part, confiance locale, équipe, prix FCFA, CTA WhatsApp · emplacements marqués « à fournir » · à valider",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "t7": {
+      "x": 0,
+      "y": 53750,
+      "text": "V7 — Expérience de défilement : logo vivant (hélice binaire) dans 5 sections, parallax, rail horizontal des 3 produits publiés (captures, logos et liens réels), métiers, ingénierie, confiance · produits non publiés absents · à faire défiler dans les fenêtres · à valider",
       "kind": "title1",
       "maxW": 4480
     }

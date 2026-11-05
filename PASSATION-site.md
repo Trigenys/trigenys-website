@@ -49,3 +49,14 @@
 - Emplacements « à fournir » explicitement marqués : logos clients, témoignages nommés, adresse/numéro/hébergement/conformité, photo équipe, signataire, montants des abonnements.
 - Couleurs produits = proposition V5 reprise, toujours non validée. V5 et V6 coexistent sur le canvas, aucune supprimée.
 - Prochaine étape : retour fondateur sur V6 ; si validée, collecter les éléments « à fournir » puis passer en pages produit.
+
+## 2026-11-05 15:50 — Accueil V7 : expérience de défilement
+- Retour fondateur sur V6 : logo à faire « vivre » dans la page, vraies captures / logos / liens produits, ne pas parler des projets non publiés, plus de profondeur au scroll (parallax, scroll horizontal immersif).
+- V7 publiée sur le canvas (y=54000) en trois boards : `V7-Accueil-Deroule` (statique 1440×9900, toutes sections), `V7-Accueil-Fenetre` (iframe 1440×900 à faire défiler : parallax + rail horizontal), `V7-Accueil-Mobile` (iframe 390×844). Versées dans `design/maquettes/`.
+- Technique : CSS pur, animations pilotées par le défilement (`animation-timeline: view()`), rail produits sticky 420vh avec translation horizontale ; repli scroll-snap horizontal si non supporté ; mobile = panneaux empilés. Aucun JS.
+- Logo vivant : hélice de chiffres binaires générée (SVG, `gen7.py` en scratchpad) dans hero, séparateur, panneau « et la suite », CTA final, pied de page ; filigrane du logo inversé en section ingénierie.
+- Règle appliquée : seuls les produits `publicationStatus: published` apparaissent (Atelier Maître v1.18 prod, Commerce Factory bêta, Précis Translator bêta pilotes) ; les autres = un panneau « d'autres outils sont en construction » sans nom.
+- Assets réels : captures Atelier Maître (dashboard, atelier, mobile), icône AM ; logo + visuels Commerce Factory ; logo + visuel de partage Précis. Liens réels : atelier.trigenys.com, trigenys-commerce-factory.pages.dev (marqué « domaine définitif à confirmer »), precis-translator.trigenys.com, xeptionetwork.shop, insight.trigenys.com, github.com/Trigenys.
+- Vérifié en Playwright headless (le navigateur intégré n'exécute pas les animations de défilement quand le volet est masqué) : desktop 1440×900 hauteur 10 042 px, sticky actif, translation du rail −1134 → −4320 px, barre de progression animée ; mobile 390×844 hauteur 12 580 px ; aucun débordement horizontal ni image cassée.
+- Toujours à fournir / confirmer : couleurs produits (proposition), domaine Commerce Factory, numéro WhatsApp / e-mail / ville, logos clients et témoignages.
+- Prochaine étape : retour fondateur sur V7 (à ouvrir les boards « Fenêtre » et « Mobile » et faire défiler).

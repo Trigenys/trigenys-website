@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Trigenys Group — Accueil v7</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FCFAFB}
+.t{--bx:#7F2044;--pr:#55162F;--tq:#138F8D;--ro:#E7A2B6;--in:#251C2A;--cr:#FCFAFB;--mu:#5B4F60;--li:#ECE4E8;--wa:#25D366;--e:cubic-bezier(.16,1,.3,1);
+  background:var(--cr);color:var(--in);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip;position:relative}
+.t *{box-sizing:border-box}.t a{color:inherit;text-decoration:none}.t img{display:block}
+.w{max-width:1320px;margin:0 auto;padding:0 40px}
+.sf{font-family:'Source Serif 4',Georgia,serif;letter-spacing:-.03em}
+.mo{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:54px;padding:0 26px;border-radius:999px;font-weight:600;font-size:16px;transition:transform .5s var(--e),background .3s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}.btn .ar{transition:transform .5s var(--e)}.btn:hover .ar{transform:translateX(5px)}
+.t .b1{background:var(--bx);color:#fff}.t .b1:hover{background:var(--pr)}
+.t .b2{background:#fff;color:var(--in);box-shadow:inset 0 0 0 1.5px var(--in)}
+.t .bw{background:var(--in);color:#fff}
+.wic{width:22px;height:22px;border-radius:50%;background:var(--wa);display:grid;place-items:center;color:#fff;font-size:12px;font-weight:700;flex:none}
+/* univers produits : couleurs issues des logos réels (proposition) */
+.am{--c:#F0702D;--k:#2B1810;--f:#fff}.cf{--c:#0F4D3A;--k:#082B21;--f:#fff;--x:#A2284F}.pt{--c:#1C3F96;--k:#0E1F4F;--f:#fff}
+.sg{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;font-size:12px;font-weight:600;background:#F1EAEE;color:var(--in)}
+.sg i{width:7px;height:7px;border-radius:50%;background:var(--tq)}.sg.b i{background:#E0A100}
+.ph2{display:grid;place-items:center;text-align:center;border:1.5px dashed rgba(0,0,0,.22);border-radius:14px;color:var(--mu);font-size:13px;padding:14px;background:rgba(255,255,255,.4)}
+.ex{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+h2.sec{margin:0;font-size:60px;line-height:1.02;font-weight:500;max-width:820px}
+.kl{margin:0 0 18px;color:var(--bx)}
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+.sh p{margin:0;max-width:420px;color:var(--mu)}
+/* ===== logo vivant : hélice binaire ===== */
+.hx{display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;overflow:visible}
+.hx text{transform-box:fill-box;transform-origin:center;animation:hx 7s ease-in-out infinite;text-anchor:middle;dominant-baseline:central}
+@keyframes hx{0%{transform:translateY(0) scale(1);opacity:1}25%{transform:translateY(calc(var(--a) * -1)) scale(.82);opacity:.7}50%{transform:translateY(0) scale(.62);opacity:.35}75%{transform:translateY(var(--a)) scale(.82);opacity:.7}100%{transform:translateY(0) scale(1);opacity:1}}
+.bits{position:absolute;inset:0;pointer-events:none;overflow:hidden;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.3em;line-height:2.2;color:var(--bx);white-space:nowrap;user-select:none}
+.bits span{position:absolute;display:block}
+.mq{overflow:hidden;white-space:nowrap;font-family:'IBM Plex Mono',monospace;letter-spacing:.35em;font-size:12px;opacity:.5}
+.mq div{display:inline-block;animation:mq 60s linear infinite;padding-right:4em}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* ===== mouvement au défilement (CSS pur, progressif) ===== */
+.up{animation:up 1.1s var(--e) both}.u1{animation-delay:.1s}.u2{animation-delay:.22s}.u3{animation-delay:.34s}.u4{animation-delay:.46s}
+@keyframes up{from{opacity:0;transform:translateY(28px)}}
+@keyframes rv{from{opacity:0;transform:translateY(48px)}}
+@keyframes rvx{from{opacity:0;transform:translateX(-40px)}}
+@keyframes par{to{transform:translateY(var(--p,-80px))}}
+@keyframes tilt{from{transform:perspective(1400px) rotateX(14deg) translateY(60px);opacity:.6}to{transform:perspective(1400px) rotateX(0) translateY(0);opacity:1}}
+@keyframes slide{to{transform:translateX(calc(-100% + 100vw))}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@supports (animation-timeline: view()){
+  .rv{animation:rv 1s var(--e) both;animation-timeline:view();animation-range:entry 0% entry 55%}
+  .rvx{animation:rvx 1s var(--e) both;animation-timeline:view();animation-range:entry 0% entry 55%}
+  .d1{animation-range:entry 10% entry 65%}.d2{animation-range:entry 20% entry 75%}.d3{animation-range:entry 30% entry 85%}
+  .ly{animation:par linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  .tl{animation:tilt linear both;animation-timeline:view();animation-range:entry 0% entry 90%}
+  .ln2{animation:grow linear both;animation-timeline:view();animation-range:entry 0% contain 30%;transform-origin:left}
+  .rail{view-timeline-name:--rail;height:420vh}
+  .rail .stick{position:sticky;top:0;height:100vh;overflow:hidden}
+  .rail .track{animation:slide linear both;animation-timeline:--rail;animation-range:contain 0% contain 100%}
+  .rail .prg i{animation:grow linear both;animation-timeline:--rail;animation-range:contain 0% contain 100%;transform-origin:left}
+}
+@media (prefers-reduced-motion:reduce){.hx text,.mq div,.ly,.tl,.rv,.rvx,.up{animation:none!important;opacity:1;transform:none}}
+/* nav */
+.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(252,250,251,.78);border-bottom:1px solid rgba(37,28,42,.06)}
+.nav .w{display:flex;align-items:center;gap:36px;height:76px}
+.nav .lk{display:flex;gap:4px;font-size:15px;font-weight:500}
+.nav .lk a{padding:8px 14px;border-radius:999px;transition:background .3s}.nav .lk a:hover{background:#F1EAEE}
+.nav .rt{margin-left:auto;display:flex;align-items:center;gap:18px;font-size:14px}
+.nav .rt .btn{min-height:46px;padding:0 20px;font-size:15px}
+.menu{display:none;margin-left:auto;width:46px;height:46px;border-radius:50%;border:0;background:var(--in);align-items:center;justify-content:center}
+/* hero */
+.hero{position:relative;padding:72px 0 0;min-height:calc(100vh - 76px);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero .bits{opacity:.09}
+.hero h1{margin:0;font-size:80px;line-height:1;font-weight:500;position:relative}
+.hero h1 em{font-style:italic;color:var(--bx)}
+.hero p.ld{margin:28px 0 0;font-size:20px;color:var(--mu);max-width:560px;position:relative}
+.hero p.ld b{color:var(--in);font-weight:600}
+.cta{display:flex;gap:14px;align-items:center;margin-top:36px;flex-wrap:wrap;position:relative}
+.cta small{display:block;width:100%;font-size:14px;color:var(--mu)}
+.stage{position:relative;height:620px}
+.stage .hxh{position:absolute;left:-40px;top:-10px;width:120%;height:auto;opacity:.95}
+.shot{position:absolute;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 60px 120px -40px rgba(37,28,42,.5),0 0 0 1px var(--li)}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top left}
+.shot .cap{position:absolute;left:12px;bottom:10px;background:rgba(255,255,255,.92);padding:4px 9px;border-radius:6px}
+.s1{left:0;top:120px;width:560px;height:360px;--p:-90px}
+.s2{right:-30px;top:330px;width:300px;height:230px;--p:-170px}
+.s3{left:280px;top:40px;width:120px;height:240px;border-radius:22px;box-shadow:0 40px 80px -30px rgba(37,28,42,.6),0 0 0 6px #1D1622;--p:-40px}
+.s3 img{object-position:top center}
+.scr{position:relative;margin-top:40px;display:flex;align-items:center;gap:14px;color:var(--mu);font-size:13px}
+.scr i{width:24px;height:40px;border:1.5px solid var(--mu);border-radius:12px;position:relative}
+.scr i::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;background:var(--bx);animation:wheel 1.8s ease-in-out infinite}
+@keyframes wheel{50%{transform:translateY(12px);opacity:.3}}
+/* proof */
+.proof{margin-top:72px;border-top:1px solid var(--li);border-bottom:1px solid var(--li);padding:36px 0}
+.proof .g{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.proof b{display:block;font-size:40px;line-height:1;font-weight:500}
+.proof span{display:block;margin-top:8px;color:var(--mu);font-size:15px}
+.proof .lg{grid-column:1/-1;margin-top:28px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+.proof .lg .ph2{min-height:64px;padding:10px 20px}
+/* séparateur hélice */
+.div{position:relative;height:120px;display:grid;place-items:center;overflow:hidden}
+.div .hxd{width:1440px;max-width:none;opacity:.55}
+/* ===== rail horizontal ===== */
+.rail{position:relative;background:var(--in);color:#fff}
+.rail .stick{isolation:isolate}
+.rail .track{display:flex;width:max-content;height:100%}
+.pnl{width:100vw;height:100%;flex:none;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding:0 max(40px,calc((100vw - 1320px)/2 + 40px));position:relative;overflow:hidden;background:var(--k,var(--in))}
+.pnl .bits{opacity:.07;color:#fff}
+.pnl .tx{position:relative;max-width:520px}
+.pnl .lg{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.pnl .lg img{height:44px;width:auto}.pnl .lg .mk{width:44px;height:44px;border-radius:12px;overflow:hidden}
+.pnl .lg .mk img{width:100%;height:100%}
+.pnl .lg .wm{display:flex;flex-direction:column;line-height:1.05}.pnl .lg .wm b{font-size:20px;font-weight:600}.pnl .lg .wm small{font-size:12px;opacity:.7}
+.pnl .sg{background:rgba(255,255,255,.14);color:#fff}.pnl .sg i{background:var(--c)}
+.pnl h3{margin:18px 0 12px;font-size:62px;line-height:.98;font-weight:500}
+.pnl p{margin:0;font-size:19px;color:rgba(255,255,255,.78)}
+.pnl ul{margin:22px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:15px;color:rgba(255,255,255,.85)}
+.pnl ul li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--c);margin-right:10px;vertical-align:1px}
+.pnl .go{margin-top:30px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.pnl .go .btn{background:var(--c);color:var(--f)}.pnl .go .lk2{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.3)}
+.pnl .vis{position:relative;height:72vh;min-height:440px}
+.pnl .vis .shot{box-shadow:0 60px 120px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08)}
+.pnl .n{position:absolute;left:max(40px,calc((100vw - 1320px)/2 + 40px));bottom:34px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;opacity:.6}
+.pnl.am .vis .a1{left:0;top:6%;width:92%;height:70%;--p:-40px}
+.pnl.am .vis .a2{right:-10px;bottom:0;width:150px;height:300px;border-radius:24px;box-shadow:0 40px 80px -20px rgba(0,0,0,.8),0 0 0 6px #111;--p:-90px}
+.pnl.am .vis .a2 img{object-position:top center}
+.pnl.cf .vis .c1{left:0;top:8%;width:100%;height:62%;--p:-30px}
+.pnl.cf .vis .c2{right:-6px;bottom:0;width:230px;height:230px;border-radius:50%;background:#FCFAFB;--p:-100px;box-shadow:0 40px 80px -20px rgba(0,0,0,.7)}
+.pnl.cf .vis .c2 img{object-fit:contain;padding:14px}
+.pnl.pt .vis .p1{left:0;top:12%;width:100%;height:56%;--p:-40px}
+.pnl.pt .vis .p2{left:26px;bottom:2%;width:300px;height:170px;background:#fff;padding:18px;--p:-110px;display:flex;flex-direction:column;justify-content:space-between;color:#1D1622}
+.pnl.pt .vis .p2 b{font-size:14px}.pnl.pt .vis .p2 i{display:block;height:7px;border-radius:4px;background:#E9EDF8;margin-top:8px}
+.pnl.pt .vis .p2 .lg2{height:28px;width:auto;align-self:flex-start}
+.pnl.nx{background:var(--cr);color:var(--in);grid-template-columns:1fr}
+.pnl.nx .bits{color:var(--bx);opacity:.08}
+.pnl.nx .tx{max-width:760px;margin:0 auto;text-align:center}
+.pnl.nx h3{font-size:64px}.pnl.nx p{color:var(--mu)}
+.pnl.nx .hxn{margin:0 auto 30px;width:520px;height:auto}
+.pnl.nx .go{justify-content:center}.pnl.nx .go .btn{background:var(--bx);color:#fff}
+.pnl.nx .n{color:var(--mu);opacity:1}
+.rail .prg{position:absolute;left:0;right:0;top:0;height:3px;background:rgba(255,255,255,.12);z-index:3}
+.rail .prg i{display:block;height:100%;background:var(--ro);transform:scaleX(0)}
+.rail .hint{position:absolute;right:40px;bottom:34px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;opacity:.6;z-index:3}
+@supports not (animation-timeline: view()){
+  .rail .track{overflow-x:auto;scroll-snap-type:x mandatory;width:100%;height:100vh}
+  .pnl{scroll-snap-align:start}.rail .hint::after{content:" · glisser"}
+}
+/* métiers */
+.met{padding:130px 0 0;position:relative}
+.tabs{margin-top:48px;display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
+.tabs input{position:absolute;opacity:0;pointer-events:none}
+.tabs label{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;border-radius:16px;font-size:19px;font-weight:500;cursor:pointer;transition:background .3s,color .3s;border:1px solid transparent}
+.tabs label:hover{background:#F6F1F3}
+.tabs label small{font-size:13px;color:var(--mu);font-weight:500}
+.tabs .pane{display:none;border-radius:28px;padding:44px;background:var(--k,var(--in));color:#fff;min-height:440px;animation:up .8s var(--e) both;position:relative;overflow:hidden}
+.tabs .pane .bits{opacity:.07;color:#fff}
+.tabs .pane h3{margin:0 0 10px;font-size:40px;line-height:1.02;font-weight:500;position:relative}
+.tabs .pane p{margin:0;max-width:520px;font-size:18px;color:rgba(255,255,255,.8);position:relative}
+.tabs .pane .pl{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;position:relative}
+.tabs .pane .pl a{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.94);color:#1D1622;border-radius:14px;padding:14px 16px;transition:transform .4s var(--e)}
+.tabs .pane .pl a:hover{transform:translateX(4px)}
+.tabs .pane .pl .ic{width:38px;height:38px;border-radius:11px;overflow:hidden;background:#F1EAEE;display:grid;place-items:center;flex:none}
+.tabs .pane .pl .ic img{width:100%;height:100%;object-fit:cover}
+.tabs .pane .pl b{display:block;font-size:15px}.tabs .pane .pl span{font-size:12.5px;color:#5B4F60}
+#m1:checked~.lbl .l1,#m2:checked~.lbl .l2,#m3:checked~.lbl .l3,#m4:checked~.lbl .l4{background:var(--in);color:#fff}
+#m1:checked~.lbl .l1 small,#m2:checked~.lbl .l2 small,#m3:checked~.lbl .l3 small,#m4:checked~.lbl .l4 small{color:rgba(255,255,255,.7)}
+#m1:checked~.pn1,#m2:checked~.pn2,#m3:checked~.pn3,#m4:checked~.pn4{display:block}
+.tabs .lbl{display:flex;flex-direction:column;gap:6px}
+/* ingénierie */
+.eng{margin-top:130px;background:var(--in);color:#fff;padding:110px 0 120px;border-radius:48px 48px 0 0;position:relative;overflow:hidden}
+.eng .mq{position:absolute;left:0;right:0;top:36px;color:var(--ro);opacity:.35}
+.eng .mq.b{top:auto;bottom:36px}.eng .mq.b div{animation-direction:reverse}
+.eng .logo{position:absolute;right:-120px;top:50%;width:720px;opacity:.06;transform:translateY(-50%) rotate(-8deg);--p:-120px}
+.eng h2.sec{color:#fff}.eng .kl{color:var(--ro)}.eng .sh p{color:rgba(255,255,255,.7)}
+.steps{margin-top:60px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:rgba(255,255,255,.18)}
+.steps .ln2{position:absolute;left:0;right:0;top:0;height:1px;background:var(--ro)}
+.st{padding:30px 26px 0 0;border-right:1px solid rgba(255,255,255,.18);margin-right:26px}
+.st:last-child{border-right:0;margin-right:0}
+.st .n{color:var(--ro)}.st h4{margin:14px 0 8px;font-size:22px;font-weight:600}.st p{margin:0;color:rgba(255,255,255,.7);font-size:15px}
+.cases{margin-top:72px;display:grid;grid-template-columns:1.2fr .8fr;gap:22px;position:relative}
+.cs{border-radius:28px;padding:40px;min-height:360px;display:flex;flex-direction:column;background:#33263A}
+.cs .sg{background:rgba(255,255,255,.14);color:#fff}.cs .sg i{background:#1FB57A}
+.cs h3{margin:18px 0 10px;font-size:44px;line-height:1;font-weight:500}
+.cs p{margin:0;color:rgba(255,255,255,.75);max-width:520px}
+.cs .tg{margin-top:auto;padding-top:28px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.cs .tg span{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.1);font-size:13px}
+.cs .tg a{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:13px;border-bottom:1px solid rgba(255,255,255,.4)}
+.cs.you{background:var(--bx);justify-content:center;align-items:flex-start}
+.cs.you h3{font-size:38px}.cs.you p{color:rgba(255,255,255,.85)}
+.cs.you .btn{margin-top:28px;background:#fff;color:var(--bx)}
+/* trust */
+.trust{padding:120px 0 0;position:relative}
+.tg2{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tc{border-radius:24px;background:#fff;box-shadow:0 0 0 1px var(--li);padding:30px;min-height:250px;display:flex;flex-direction:column}
+.tc .mo{color:var(--bx)}.tc h4{margin:14px 0 8px;font-size:24px;font-weight:600;letter-spacing:-.02em}.tc p{margin:0;color:var(--mu);font-size:15.5px}
+.tc .ph2{margin-top:auto;min-height:72px}
+.who{margin-top:120px;display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.who .pic{aspect-ratio:4/5;border-radius:32px;background:linear-gradient(160deg,#E7A2B6,#7F2044 70%);position:relative;overflow:hidden}
+.who .pic .ph2{position:absolute;inset:24px;border-color:rgba(255,255,255,.6);color:#fff;background:rgba(0,0,0,.15)}
+.who .pic .bits{color:#fff;opacity:.18}
+.who h2.sec{font-size:54px}
+.who p{margin:22px 0 0;font-size:19px;color:var(--mu);max-width:560px}
+.who .sign{margin-top:30px;display:flex;align-items:center;gap:16px}
+.who .sign .ph2{min-height:0;padding:10px 16px;text-align:left}
+.price{margin-top:120px;border-radius:32px;background:#F6F1F3;padding:56px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start}
+.price h3{margin:0;font-size:32px;line-height:1.1;font-weight:500}
+.price .pc .mo{color:var(--bx)}.price .pc b{display:block;margin:12px 0 6px;font-size:26px;font-weight:500}.price .pc p{margin:0;color:var(--mu);font-size:15.5px}
+.price .cur{display:inline-flex;margin-top:18px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--li);font-size:12px;font-weight:600;overflow:hidden}
+.price .cur span{padding:6px 12px}.price .cur .on{background:var(--in);color:#fff}
+/* final */
+.fin{margin-top:130px;background:var(--bx);color:#fff;padding:120px 0 110px;position:relative;overflow:hidden}
+.fin .hxc{position:absolute;right:-80px;top:40px;width:900px;height:auto;opacity:.55;--p:-140px}
+.fin .bits{color:#fff;opacity:.08}
+.fin .w{position:relative}
+.fin h2{margin:0;font-size:84px;line-height:.98;font-weight:500;max-width:900px}
+.fin p{margin:24px 0 0;font-size:20px;color:rgba(255,255,255,.85);max-width:560px}
+.fin .cta .btn{background:#fff;color:var(--bx)}.fin .cta .b2{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6)}
+.fin .cta small{color:rgba(255,255,255,.75)}
+/* footer */
+.ft{padding:72px 0 0;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;font-size:15px}
+.ft a{display:block;padding:4px 0;color:var(--mu)}.ft a:hover{color:var(--in)}
+.ftb{position:relative;overflow:hidden;padding:30px 0 0}
+.ftb .hxf{width:1440px;max-width:none;opacity:.5;margin:0 auto}
+@media (max-width:900px){
+  .w{padding:0 20px}.nav .w{height:64px}.nav .lk,.nav .rt{display:none}.menu{display:flex}
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:40px;min-height:0}.hero h1{font-size:44px}.hero p.ld{font-size:17px}
+  .cta .btn{width:100%;justify-content:center}
+  .stage{height:420px}.stage .hxh{left:-10px;top:-6px;width:110%}
+  .s1{left:0;top:80px;width:100%;height:220px}.s2{right:-10px;top:230px;width:190px;height:150px}.s3{left:auto;right:16px;top:20px;width:84px;height:170px;border-radius:16px;box-shadow:0 30px 60px -20px rgba(37,28,42,.6),0 0 0 4px #1D1622}
+  .scr{display:none}
+  .proof{margin-top:40px}.proof .g{grid-template-columns:1fr 1fr;gap:22px}.proof b{font-size:30px}.proof .lg{grid-template-columns:1fr}
+  .div{height:70px}.div .hxd{width:1100px}
+  h2.sec{font-size:36px}.met,.trust{padding-top:72px}
+  /* rail : empilé verticalement sur mobile */
+  .rail{height:auto}.rail .stick{position:static;height:auto;overflow:visible}.rail .track{animation:none;width:100%;flex-direction:column;overflow:visible}
+  .pnl{width:100%;height:auto;min-height:100vh;grid-template-columns:1fr;align-content:center;gap:28px;padding:72px 20px 80px}
+  .pnl h3{font-size:40px}.pnl p{font-size:16px}.pnl ul{grid-template-columns:1fr;font-size:14px}
+  .pnl .vis{height:300px;min-height:0}.pnl .n{left:20px;bottom:22px}.rail .hint,.rail .prg{display:none}
+  .pnl.am .vis .a2{width:100px;height:200px}.pnl.cf .vis .c2{width:150px;height:150px}.pnl.pt .vis .p2{width:220px;height:130px;padding:12px}
+  .pnl.nx h3{font-size:38px}.pnl.nx .hxn{width:100%}
+  .tabs{grid-template-columns:1fr}.tabs .pane{padding:24px;min-height:0}.tabs .pane h3{font-size:28px}.tabs .pane .pl{grid-template-columns:1fr}.tabs label{font-size:16px;padding:14px 16px}
+  .eng{margin-top:72px;padding:64px 0;border-radius:28px 28px 0 0}.eng .logo{width:420px;right:-160px}.steps{grid-template-columns:1fr}.st{border-right:0;margin-right:0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.18)}.st:first-child{border-top:0}
+  .cases{grid-template-columns:1fr}.cs{padding:28px;min-height:0}.cs h3{font-size:32px}
+  .tg2{grid-template-columns:1fr}
+  .who{grid-template-columns:1fr;gap:28px;margin-top:72px}.who h2.sec{font-size:34px}.who p{font-size:17px}
+  .price{grid-template-columns:1fr;padding:28px;gap:24px;margin-top:72px}.price h3{font-size:26px}
+  .fin{margin-top:72px;padding:64px 0}.fin h2{font-size:42px}.fin p{font-size:17px}.fin .hxc{width:700px;right:-200px;top:-20px;opacity:.35}
+  .ft{grid-template-columns:1fr 1fr;gap:28px;padding-top:48px}.ft>div:first-child{grid-column:1/-1}.ftb .hxf{width:1000px}
+}
+</style>
+</helmet>
+<div class="t">
+
+<header class="nav">
+  <div class="w">
+    <a href="#"><img src="/_blob/9cb8472360e8e3fd892929d7358a03fa" alt="Trigenys Group" style="height:34px;width:auto"></a>
+    <div class="lk"><a href="#produits">Produits</a><a href="#metiers">Par métier</a><a href="#ingenierie">Ingénierie</a><a href="#confiance">Pourquoi nous</a><a href="https://insight.trigenys.com/">Insight</a></div>
+    <div class="rt"><span class="mo">FR / EN</span><a class="btn bw" href="#contact"><span class="wic">✓</span>Parler à un expert</a></div>
+    <button class="menu" aria-label="Menu"><span style="width:18px;height:2px;background:#fff;box-shadow:0 -6px #fff,0 6px #fff;display:block"></span></button>
+  </div>
+</header>
+
+<section class="w hero">
+  <div class="bits" aria-hidden="true">
+    <span class="ly" style="left:-2%;top:6%;--p:-60px">01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011</span>
+    <span class="ly" style="left:30%;top:22%;--p:-140px">01000111 01010010 01001111 01010101 01010000 · 01010100 01010010 01001001</span>
+    <span class="ly" style="left:-6%;top:58%;--p:-100px">01000011 01000001 01001101 01000101 01010010 01001111 01010101 01001110</span>
+    <span class="ly" style="left:42%;top:84%;--p:-200px">01010100 01010010 01001001 · 01000111 01010010 01001111 01010101 01010000</span>
+  </div>
+  <div>
+    <h1 class="sf up u1">Les logiciels qui font tourner les métiers <em>du Cameroun.</em></h1>
+    <p class="ld up u2">Trigenys édite <b>Atelier Maître</b>, <b>Commerce Factory</b> et <b>Précis Translator</b>, et construit sur mesure les systèmes de ses clients. Conçus ici, pour des garages, des boutiques et des bureaux d'ici.</p>
+    <div class="cta up u3">
+      <a class="btn b1" href="#contact"><span class="wic">✓</span>Parler à un expert <span class="ar">→</span></a>
+      <a class="btn b2" href="#produits">Découvrir nos produits</a>
+      <small>Réponse par WhatsApp ou par e-mail, sans engagement.</small>
+    </div>
+    <div class="scr up u4"><i></i>Faites défiler : trois produits, un par métier.</div>
+  </div>
+  <div class="stage up u4">
+    <svg class="hx hxh" viewBox="0 0 593 124" width="593" height="124" aria-hidden="true" style="--a:46px"><text x="16" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-0.00s">1</text><text x="33" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-0.58s">0</text><text x="50" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-1.17s">1</text><text x="67" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-1.75s">0</text><text x="84" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-2.33s">0</text><text x="101" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-2.92s">0</text><text x="118" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-3.50s">1</text><text x="135" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-4.08s">0</text><text x="152" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-4.67s">0</text><text x="169" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-5.25s">0</text><text x="186" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-5.83s">0</text><text x="203" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-6.42s">1</text><text x="220" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-7.00s">1</text><text x="237" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-7.58s">0</text><text x="254" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-8.17s">0</text><text x="271" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-8.75s">0</text><text x="288" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-9.33s">1</text><text x="305" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-9.92s">0</text><text x="322" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-10.50s">0</text><text x="339" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-11.08s">0</text><text x="356" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-11.67s">0</text><text x="373" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-12.25s">1</text><text x="390" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-12.83s">0</text><text x="407" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-13.42s">0</text><text x="424" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-14.00s">0</text><text x="441" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-14.58s">0</text><text x="458" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-15.17s">1</text><text x="475" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-15.75s">1</text><text x="492" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-16.33s">0</text><text x="509" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-16.92s">0</text><text x="526" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-17.50s">1</text><text x="543" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-18.08s">0</text><text x="560" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-18.67s">0</text><text x="577" y="62.0" fill="#7F2044" font-size="16" style="animation-delay:-19.25s">0</text><text x="16" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-3.50s">1</text><text x="33" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-4.08s">0</text><text x="50" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-4.67s">0</text><text x="67" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-5.25s">0</text><text x="84" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-5.83s">0</text><text x="101" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-6.42s">1</text><text x="118" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-7.00s">1</text><text x="135" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-7.58s">1</text><text x="152" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-8.17s">1</text><text x="169" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-8.75s">1</text><text x="186" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-9.33s">1</text><text x="203" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-9.92s">1</text><text x="220" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-10.50s">0</text><text x="237" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-11.08s">0</text><text x="254" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-11.67s">0</text><text x="271" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-12.25s">0</text><text x="288" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-12.83s">1</text><text x="305" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-13.42s">1</text><text x="322" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-14.00s">1</text><text x="339" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-14.58s">1</text><text x="356" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-15.17s">1</text><text x="373" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-15.75s">0</text><text x="390" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-16.33s">0</text><text x="407" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-16.92s">1</text><text x="424" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-17.50s">0</text><text x="441" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-18.08s">1</text><text x="458" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-18.67s">0</text><text x="475" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-19.25s">1</text><text x="492" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-19.83s">1</text><text x="509" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-20.42s">0</text><text x="526" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-21.00s">0</text><text x="543" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-21.58s">1</text><text x="560" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-22.17s">1</text><text x="577" y="62.0" fill="#138F8D" font-size="16" style="animation-delay:-22.75s">1</text></svg>
+    <a class="shot s1 ly tl" href="https://atelier.trigenys.com/"><img src="/_blob/c781a3c7cdb9dead380c3e5ee4a45665" alt="Atelier Maître, tableau de bord"><span class="cap ex">atelier.trigenys.com · capture réelle, données de démonstration</span></a>
+    <a class="shot s2 ly" href="https://atelier.trigenys.com/"><img src="/_blob/c043b31dc19fa837a895879e4077cd4b" alt="Atelier Maître, ordres de travail"></a>
+    <div class="shot s3 ly"><img src="/_blob/6e5d9049cec46e6bc087515b935c333c" alt="Atelier Maître sur mobile"></div>
+  </div>
+</section>
+
+<section class="w proof">
+  <div class="g">
+    <div class="rv"><b class="sf">3</b><span>produits publics, chacun affiché avec son stade réel</span></div>
+    <div class="rv d1"><b class="sf">v1.18</b><span>Atelier Maître en production, versions numérotées</span></div>
+    <div class="rv d2"><b class="sf">1</b><span>plateforme client en service : XEPTION, e-commerce et opérations</span></div>
+    <div class="rv d3"><b class="sf">CM</b><span>conçu, développé et maintenu au Cameroun</span></div>
+    <div class="lg rv"><span class="mo" style="color:var(--mu)">Ils travaillent avec nous</span><div class="ph2">Logos clients nommés, avec leur accord — à fournir. Aucun logo générique ne sera affiché.</div></div>
+  </div>
+</section>
+
+<div class="div" aria-hidden="true"><svg class="hx hxd" viewBox="0 0 1367 68" width="1367" height="68" aria-hidden="true" style="--a:22px"><text x="12" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-0.00s">1</text><text x="29" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-0.58s">1</text><text x="46" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-1.17s">0</text><text x="63" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-1.75s">0</text><text x="80" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-2.33s">1</text><text x="97" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-2.92s">1</text><text x="114" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-3.50s">0</text><text x="131" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-4.08s">0</text><text x="148" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-4.67s">1</text><text x="165" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-5.25s">1</text><text x="182" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-5.83s">1</text><text x="199" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-6.42s">1</text><text x="216" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-7.00s">1</text><text x="233" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-7.58s">0</text><text x="250" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-8.17s">1</text><text x="267" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-8.75s">1</text><text x="284" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-9.33s">0</text><text x="301" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-9.92s">0</text><text x="318" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-10.50s">1</text><text x="335" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-11.08s">0</text><text x="352" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-11.67s">0</text><text x="369" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-12.25s">1</text><text x="386" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-12.83s">0</text><text x="403" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-13.42s">0</text><text x="420" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-14.00s">1</text><text x="437" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-14.58s">1</text><text x="454" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-15.17s">1</text><text x="471" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-15.75s">0</text><text x="488" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-16.33s">0</text><text x="505" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-16.92s">1</text><text x="522" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-17.50s">1</text><text x="539" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-18.08s">1</text><text x="556" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-18.67s">0</text><text x="573" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-19.25s">1</text><text x="590" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-19.83s">1</text><text x="607" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-20.42s">1</text><text x="624" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-21.00s">1</text><text x="641" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-21.58s">1</text><text x="658" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-22.17s">0</text><text x="675" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-22.75s">0</text><text x="692" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-23.33s">0</text><text x="709" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-23.92s">0</text><text x="726" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-24.50s">0</text><text x="743" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-25.08s">0</text><text x="760" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-25.67s">0</text><text x="777" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-26.25s">0</text><text x="794" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-26.83s">1</text><text x="811" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-27.42s">0</text><text x="828" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-28.00s">1</text><text x="845" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-28.58s">1</text><text x="862" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-29.17s">0</text><text x="879" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-29.75s">0</text><text x="896" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-30.33s">1</text><text x="913" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-30.92s">1</text><text x="930" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-31.50s">1</text><text x="947" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-32.08s">0</text><text x="964" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-32.67s">0</text><text x="981" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-33.25s">1</text><text x="998" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-33.83s">1</text><text x="1015" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-34.42s">1</text><text x="1032" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-35.00s">1</text><text x="1049" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-35.58s">1</text><text x="1066" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-36.17s">0</text><text x="1083" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-36.75s">1</text><text x="1100" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-37.33s">1</text><text x="1117" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-37.92s">0</text><text x="1134" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-38.50s">0</text><text x="1151" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-39.08s">0</text><text x="1168" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-39.67s">0</text><text x="1185" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-40.25s">1</text><text x="1202" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-40.83s">0</text><text x="1219" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-41.42s">0</text><text x="1236" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-42.00s">1</text><text x="1253" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-42.58s">0</text><text x="1270" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-43.17s">0</text><text x="1287" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-43.75s">0</text><text x="1304" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-44.33s">0</text><text x="1321" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-44.92s">0</text><text x="1338" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-45.50s">1</text><text x="1355" y="34.0" fill="#7F2044" font-size="12" style="animation-delay:-46.08s">0</text><text x="12" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-3.50s">0</text><text x="29" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-4.08s">0</text><text x="46" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-4.67s">1</text><text x="63" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-5.25s">0</text><text x="80" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-5.83s">1</text><text x="97" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-6.42s">1</text><text x="114" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-7.00s">1</text><text x="131" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-7.58s">1</text><text x="148" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-8.17s">0</text><text x="165" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-8.75s">0</text><text x="182" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-9.33s">1</text><text x="199" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-9.92s">1</text><text x="216" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-10.50s">1</text><text x="233" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-11.08s">1</text><text x="250" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-11.67s">1</text><text x="267" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-12.25s">0</text><text x="284" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-12.83s">0</text><text x="301" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-13.42s">0</text><text x="318" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-14.00s">1</text><text x="335" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-14.58s">1</text><text x="352" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-15.17s">1</text><text x="369" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-15.75s">0</text><text x="386" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-16.33s">0</text><text x="403" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-16.92s">0</text><text x="420" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-17.50s">1</text><text x="437" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-18.08s">0</text><text x="454" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-18.67s">0</text><text x="471" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-19.25s">1</text><text x="488" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-19.83s">0</text><text x="505" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-20.42s">1</text><text x="522" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-21.00s">1</text><text x="539" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-21.58s">0</text><text x="556" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-22.17s">1</text><text x="573" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-22.75s">0</text><text x="590" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-23.33s">1</text><text x="607" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-23.92s">0</text><text x="624" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-24.50s">0</text><text x="641" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-25.08s">0</text><text x="658" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-25.67s">1</text><text x="675" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-26.25s">0</text><text x="692" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-26.83s">0</text><text x="709" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-27.42s">1</text><text x="726" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-28.00s">1</text><text x="743" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-28.58s">0</text><text x="760" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-29.17s">0</text><text x="777" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-29.75s">1</text><text x="794" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-30.33s">1</text><text x="811" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-30.92s">1</text><text x="828" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-31.50s">0</text><text x="845" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-32.08s">1</text><text x="862" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-32.67s">1</text><text x="879" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-33.25s">1</text><text x="896" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-33.83s">1</text><text x="913" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-34.42s">0</text><text x="930" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-35.00s">0</text><text x="947" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-35.58s">0</text><text x="964" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-36.17s">0</text><text x="981" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-36.75s">1</text><text x="998" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-37.33s">0</text><text x="1015" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-37.92s">1</text><text x="1032" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-38.50s">0</text><text x="1049" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-39.08s">1</text><text x="1066" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-39.67s">0</text><text x="1083" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-40.25s">1</text><text x="1100" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-40.83s">1</text><text x="1117" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-41.42s">0</text><text x="1134" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-42.00s">0</text><text x="1151" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-42.58s">1</text><text x="1168" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-43.17s">0</text><text x="1185" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-43.75s">1</text><text x="1202" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-44.33s">0</text><text x="1219" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-44.92s">1</text><text x="1236" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-45.50s">1</text><text x="1253" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-46.08s">0</text><text x="1270" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-46.67s">1</text><text x="1287" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-47.25s">1</text><text x="1304" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-47.83s">1</text><text x="1321" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-48.42s">0</text><text x="1338" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-49.00s">0</text><text x="1355" y="34.0" fill="#138F8D" font-size="12" style="animation-delay:-49.58s">0</text></svg></div>
+
+<section class="rail" id="produits">
+  <div class="stick">
+    <div class="prg"><i></i></div>
+    <div class="track">
+      <article class="pnl am">
+        <div class="bits" aria-hidden="true"><span style="left:4%;top:10%">01000001 01010100 01000101 01001100 01001001 01000101 01010010</span><span style="left:50%;top:88%">01001101 01000001 01001001 01010100 01010010 01000101</span></div>
+        <div class="tx">
+          <div class="lg"><span class="mk"><img src="/_blob/0bec717c0481dfc4fde4a4f311337f47" alt=""></span><span class="wm"><b>Atelier Maître</b><small>par Trigenys</small></span></div>
+          <span class="sg"><i></i>En production · v1.18.0</span>
+          <h3 class="sf">L'atelier automobile, de la réception à la facture.</h3>
+          <p>Réception du véhicule, ordres de travail, stock et pièces, devis, factures et caisse : tout le garage dans un seul outil, utilisé en atelier aujourd'hui.</p>
+          <ul><li>Ordres de travail et planning</li><li>Stock &amp; mouvements de pièces</li><li>Devis, factures, caisse</li><li>Journal d'audit et rapports</li></ul>
+          <div class="go"><a class="btn" href="https://atelier.trigenys.com/">Ouvrir Atelier Maître <span class="ar">→</span></a><a class="lk2" href="https://atelier.trigenys.com/">atelier.trigenys.com</a></div>
+        </div>
+        <div class="vis">
+          <div class="shot a1 ly"><img src="/_blob/c043b31dc19fa837a895879e4077cd4b" alt="Atelier Maître, liste des ordres de travail"><span class="cap ex">Capture réelle · données de démonstration</span></div>
+          <div class="shot a2 ly"><img src="/_blob/6e5d9049cec46e6bc087515b935c333c" alt="Atelier Maître sur mobile"></div>
+        </div>
+        <span class="n">01 / 04 · Garages &amp; ateliers</span>
+      </article>
+
+      <article class="pnl cf">
+        <div class="bits" aria-hidden="true"><span style="left:6%;top:12%">01000011 01001111 01001101 01001101 01000101 01010010 01000011 01000101</span><span style="left:44%;top:86%">01000110 01000001 01000011 01010100 01001111 01010010 01011001</span></div>
+        <div class="tx">
+          <div class="lg"><img src="/_blob/c008d8533ff08d2ffe7041fc19c21921" alt="Commerce Factory" style="height:52px;background:#FCFAFB;border-radius:12px;padding:6px 10px"></div>
+          <span class="sg b"><i></i>Bêta ouverte · gratuite pendant la bêta</span>
+          <h3 class="sf">Votre boutique en ligne, vos commandes sous contrôle.</h3>
+          <p>Créez votre boutique, partagez votre catalogue, suivez vos ventes, vos stocks et vos préparations au même endroit.</p>
+          <ul><li>Catalogue et thèmes de boutique</li><li>Commandes et préparations</li><li>Suivi des ventes et des stocks</li><li>Clients et relances</li></ul>
+          <div class="go"><a class="btn" href="https://trigenys-commerce-factory.pages.dev/">Rejoindre la bêta <span class="ar">→</span></a><a class="lk2" href="https://trigenys-commerce-factory.pages.dev/">adresse de bêta · domaine définitif à confirmer</a></div>
+        </div>
+        <div class="vis">
+          <div class="shot c1 ly"><img src="/_blob/efa917b83a1b16dff22402eb191a46c5" alt="Commerce Factory, vos commandes sous contrôle"><span class="cap ex">Visuel réel de l'application</span></div>
+          <div class="shot c2 ly"><img src="/_blob/5c4d92171378f4a0241f823c0bc483b1" alt="Exemple de produits d'une boutique"></div>
+        </div>
+        <span class="n">02 / 04 · Commerçants &amp; boutiques</span>
+      </article>
+
+      <article class="pnl pt">
+        <div class="bits" aria-hidden="true"><span style="left:8%;top:10%">01010000 01010010 01000101 01000011 01001001 01010011</span><span style="left:40%;top:88%">01010100 01010010 01000001 01000100 01010101 01000011 01010100 01001001 01001111 01001110</span></div>
+        <div class="tx">
+          <div class="lg"><img src="/_blob/5e0d338552fa0ba154620eebc04b339f" alt="" style="height:52px;background:#FCFAFB;border-radius:12px;padding:4px"><span class="wm"><b>Précis Translator</b><small>par Trigenys Group</small></span></div>
+          <span class="sg b"><i></i>Bêta · pilotes en cours</span>
+          <h3 class="sf">Traduisez vos documents. La mise en page compte aussi.</h3>
+          <p>PDF, Word, PowerPoint, Excel : traduits en conservant la mise en page d'origine. Vous récupérez le même document, dans l'autre langue.</p>
+          <ul><li>PDF · Word · PowerPoint · Excel</li><li>Mise en page conservée</li><li>Français ↔ anglais</li><li>Relecture avant livraison</li></ul>
+          <div class="go"><a class="btn" href="https://precis-translator.trigenys.com/">Essayer Précis <span class="ar">→</span></a><a class="lk2" href="https://precis-translator.trigenys.com/">precis-translator.trigenys.com</a></div>
+        </div>
+        <div class="vis">
+          <div class="shot p1 ly"><img src="/_blob/38e2db0eb567289d61a0abe278f35dd0" alt="Précis : traduisez vos documents"></div>
+          <div class="shot p2 ly"><img class="lg2" src="/_blob/5e0d338552fa0ba154620eebc04b339f" alt=""><div><b>rapport-annuel.docx → annual-report.docx</b><i></i><i style="width:80%"></i><i style="width:60%"></i></div></div>
+        </div>
+        <span class="n">03 / 04 · Entreprises, cabinets &amp; administrations</span>
+      </article>
+
+      <article class="pnl nx">
+        <div class="bits" aria-hidden="true"><span class="ly" style="left:2%;top:14%;--p:-60px">01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011</span><span class="ly" style="left:40%;top:80%;--p:-120px">01000111 01010010 01001111 01010101 01010000</span></div>
+        <div class="tx">
+          <svg class="hx hxn" viewBox="0 0 496 140" width="496" height="140" aria-hidden="true" style="--a:52px"><text x="18" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-0.00s">0</text><text x="38" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-0.58s">0</text><text x="58" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-1.17s">0</text><text x="78" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-1.75s">1</text><text x="98" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-2.33s">0</text><text x="118" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-2.92s">1</text><text x="138" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-3.50s">1</text><text x="158" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-4.08s">0</text><text x="178" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-4.67s">0</text><text x="198" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-5.25s">0</text><text x="218" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-5.83s">0</text><text x="238" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-6.42s">0</text><text x="258" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-7.00s">0</text><text x="278" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-7.58s">1</text><text x="298" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-8.17s">0</text><text x="318" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-8.75s">0</text><text x="338" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-9.33s">0</text><text x="358" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-9.92s">1</text><text x="378" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-10.50s">0</text><text x="398" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-11.08s">1</text><text x="418" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-11.67s">0</text><text x="438" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-12.25s">1</text><text x="458" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-12.83s">1</text><text x="478" y="70.0" fill="#7F2044" font-size="18" style="animation-delay:-13.42s">1</text><text x="18" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-3.50s">0</text><text x="38" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-4.08s">0</text><text x="58" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-4.67s">1</text><text x="78" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-5.25s">1</text><text x="98" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-5.83s">1</text><text x="118" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-6.42s">0</text><text x="138" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-7.00s">0</text><text x="158" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-7.58s">0</text><text x="178" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-8.17s">1</text><text x="198" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-8.75s">0</text><text x="218" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-9.33s">0</text><text x="238" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-9.92s">0</text><text x="258" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-10.50s">0</text><text x="278" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-11.08s">0</text><text x="298" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-11.67s">1</text><text x="318" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-12.25s">0</text><text x="338" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-12.83s">0</text><text x="358" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-13.42s">1</text><text x="378" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-14.00s">1</text><text x="398" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-14.58s">0</text><text x="418" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-15.17s">0</text><text x="438" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-15.75s">0</text><text x="458" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-16.33s">0</text><text x="478" y="70.0" fill="#138F8D" font-size="18" style="animation-delay:-16.92s">1</text></svg>
+          <p class="mo kl">Et la suite</p>
+          <h3 class="sf">D'autres outils sont en construction.</h3>
+          <p>Nous les annoncerons quand ils seront prêts à être essayés, pas avant. Chaque produit publié ici affiche son stade réel.</p>
+          <div class="go"><a class="btn" href="#contact">Être prévenu des sorties <span class="ar">→</span></a></div>
+        </div>
+        <span class="n">04 / 04</span>
+      </article>
+    </div>
+    <span class="hint">Défilement horizontal</span>
+  </div>
+</section>
+
+<section class="w met" id="metiers">
+  <div class="sh"><div class="rv"><p class="mo kl">Par métier</p><h2 class="sf sec">Dites-nous ce que vous faites. On vous dit quel outil.</h2></div><p class="rv d1">Un produit prêt quand il existe, un cadrage quand il n'existe pas encore.</p></div>
+  <div class="tabs rv d1">
+    <input type="radio" name="m" id="m1" checked><input type="radio" name="m" id="m2"><input type="radio" name="m" id="m3"><input type="radio" name="m" id="m4">
+    <div class="lbl">
+      <label for="m1" class="l1">Garages &amp; ateliers <small>Atelier Maître</small></label>
+      <label for="m2" class="l2">Commerçants &amp; boutiques <small>Commerce Factory</small></label>
+      <label for="m3" class="l3">Entreprises, cabinets &amp; administrations <small>Précis Translator</small></label>
+      <label for="m4" class="l4">Un autre métier <small>Ingénierie</small></label>
+    </div>
+    <div class="pane pn1 am"><div class="bits"><span style="left:10%;top:70%">01000001 01010100 01000101 01001100 01001001 01000101 01010010</span></div><h3 class="sf">Garages &amp; ateliers</h3><p>De la réception du véhicule à la facture, avec le stock de pièces et le journal de chaque intervention.</p>
+      <div class="pl"><a href="https://atelier.trigenys.com/"><span class="ic"><img src="/_blob/0bec717c0481dfc4fde4a4f311337f47" alt=""></span><span><b>Atelier Maître</b><span>Gestion d'atelier · en production · atelier.trigenys.com</span></span></a></div></div>
+    <div class="pane pn2 cf"><div class="bits"><span style="left:10%;top:70%">01000011 01001111 01001101 01001101 01000101 01010010 01000011 01000101</span></div><h3 class="sf">Commerçants &amp; boutiques</h3><p>Une boutique en ligne prête en bêta, et pour les plus grands, une plateforme complète construite sur mesure.</p>
+      <div class="pl"><a href="https://trigenys-commerce-factory.pages.dev/"><span class="ic"><img src="/_blob/c008d8533ff08d2ffe7041fc19c21921" alt="" style="object-fit:contain;padding:4px;background:#fff"></span><span><b>Commerce Factory</b><span>Boutique, commandes, stocks · bêta ouverte</span></span></a><a href="#ingenierie"><span class="ic" style="background:#251C2A;color:#fff;font-weight:700">X</span><span><b>Plateforme sur mesure</b><span>Comme pour XEPTION · ingénierie</span></span></a></div></div>
+    <div class="pane pn3 pt"><div class="bits"><span style="left:10%;top:70%">01010000 01010010 01000101 01000011 01001001 01010011</span></div><h3 class="sf">Entreprises, cabinets &amp; administrations</h3><p>Des documents traduits sans perdre leur forme, et des systèmes internes construits autour de vos processus.</p>
+      <div class="pl"><a href="https://precis-translator.trigenys.com/"><span class="ic"><img src="/_blob/5e0d338552fa0ba154620eebc04b339f" alt="" style="object-fit:contain;padding:4px;background:#fff"></span><span><b>Précis Translator</b><span>Traduction, mise en page conservée · bêta</span></span></a><a href="#ingenierie"><span class="ic" style="background:#251C2A;color:#fff;font-weight:700">⚙</span><span><b>Système interne sur mesure</b><span>Cadrage, construction, intégration</span></span></a></div></div>
+    <div class="pane pn4"><div class="bits"><span style="left:10%;top:70%">01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011</span></div><h3 class="sf">Un autre métier</h3><p>Pas encore de produit pour vous ? Un cadrage donne un périmètre, un prix et une architecture avant la première ligne de code.</p>
+      <div class="pl"><a href="#contact"><span class="ic" style="background:var(--bx);color:#fff;font-weight:700">→</span><span><b>Parler à un expert</b><span>WhatsApp ou e-mail, sans engagement</span></span></a></div></div>
+  </div>
+</section>
+
+<section class="eng" id="ingenierie">
+  <div class="mq" aria-hidden="true"><div>01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011 · DESIGNING THE SYSTEMS BEHIND DECISIONS · 01000111 01010010 01001111 01010101 01010000 · 01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011 · DESIGNING THE SYSTEMS BEHIND DECISIONS · 01000111 01010010 01001111 01010101 01010000 · </div></div>
+  <img class="logo ly" src="/_blob/bc607b87c6b4dbe4fe5cd7ddbabb885e" alt="" aria-hidden="true">
+  <div class="w">
+    <div class="sh"><div class="rv"><p class="mo kl">Ingénierie &amp; intégration</p><h2 class="sf sec">Ce que nous faisons pour nos produits, nous le faisons pour vous.</h2></div><p class="rv d1">Les mêmes équipes, la même exigence, livrée en versions tracées et réversibles.</p></div>
+    <div class="steps">
+      <i class="ln2"></i>
+      <div class="st rv"><span class="mo n">01</span><h4>Cadrage</h4><p>Le bon besoin et la bonne architecture avant la première ligne de code. Vous repartez avec un document, même sans suite.</p></div>
+      <div class="st rv d1"><span class="mo n">02</span><h4>Construction</h4><p>Applications web, mobiles et métiers, conçues autour de vos processus réels.</p></div>
+      <div class="st rv d2"><span class="mo n">03</span><h4>Intégration</h4><p>API, paiements mobiles, WhatsApp, Telegram, flux automatisés avec vos outils existants.</p></div>
+      <div class="st rv d3"><span class="mo n">04</span><h4>Maintenance</h4><p>Corrections et évolutions, versions numérotées, retour arrière possible.</p></div>
+    </div>
+    <div class="cases">
+      <article class="cs rvx"><span class="sg"><i></i>En production</span><h3 class="sf">XEPTION</h3><p>Catalogue, commandes, paiements locaux, stocks, ventes et service après-vente réunis dans une même plateforme e-commerce.</p>
+        <div class="tg"><span>E-commerce</span><span>Paiements locaux</span><span>Stocks</span><span>SAV</span><a href="https://www.xeptionetwork.shop/">xeptionetwork.shop →</a></div></article>
+      <article class="cs you rv d1"><h3 class="sf">Votre système, le prochain cas ?</h3><p>Nous ne publions que des cas réels, nommés avec l'accord du client.</p><a class="btn" href="#contact">Confier un projet <span class="ar">→</span></a></article>
+    </div>
+  </div>
+  <div class="mq b" aria-hidden="true"><div>01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011 · CONÇU, DÉVELOPPÉ ET MAINTENU AU CAMEROUN · 01000111 01010010 01001111 01010101 01010000 · 01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011 · CONÇU, DÉVELOPPÉ ET MAINTENU AU CAMEROUN · 01000111 01010010 01001111 01010101 01010000 · </div></div>
+</section>
+
+<section class="w trust" id="confiance">
+  <div class="sh"><div class="rv"><p class="mo kl">Pourquoi nous</p><h2 class="sf sec">Des preuves, pas des promesses.</h2></div><p class="rv d1">Tout ce qui est affiché ici est vérifiable. Ce qui ne l'est pas encore est marqué comme tel.</p></div>
+  <div class="tg2">
+    <div class="tc rv"><span class="mo">Stades réels</span><h4>Chaque produit dit où il en est</h4><p>Production, bêta, pilote : le stade affiché est celui du registre interne, mis à jour à chaque version. Les outils non publiés n'apparaissent pas.</p></div>
+    <div class="tc rv d1"><span class="mo">Témoignages</span><h4>Nom, fonction, ville</h4><p>Aucun avis anonyme, aucune note sans source.</p><div class="ph2">Témoignages clients nommés — à recueillir avant mise en ligne.</div></div>
+    <div class="tc rv d2"><span class="mo">Ancrage local</span><h4>Une adresse, un numéro, une équipe</h4><p>Support par WhatsApp et e-mail. Mentions légales et hébergement précisés sur chaque page produit.</p><div class="ph2">Adresse, numéro WhatsApp, hébergement et conformité (OHADA, Mobile Money, hors-ligne) — à confirmer avant affichage.</div></div>
+  </div>
+
+  <div class="who">
+    <div class="pic rvx"><div class="bits"><span class="ly" style="left:-10%;top:20%;--p:-60px">01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011</span><span class="ly" style="left:-30%;top:60%;--p:-120px">01000111 01010010 01001111 01010101 01010000 · 01000011 01001101</span></div><div class="ph2">Photo réelle de l'équipe ou du fondateur — à fournir</div></div>
+    <div class="rv d1">
+      <p class="mo kl">L'équipe</p>
+      <h2 class="sf sec">Pourquoi un éditeur multi-produits, au Cameroun ?</h2>
+      <p>Parce que les métiers d'ici ont des logiciels pensés ailleurs, ou pas de logiciel du tout. Un garage, une boutique, un cabinet : chacun mérite un outil qui parle sa langue, accepte ses moyens de paiement et tient quand la connexion tombe. Nous les construisons un par un, et nous les gardons en vie.</p>
+      <div class="sign"><div class="ph2">Nom et fonction du signataire — à confirmer</div></div>
+    </div>
+  </div>
+
+  <div class="price rv">
+    <div><p class="mo kl">Tarifs</p><h3 class="sf">Des prix affichés, en francs CFA.</h3><div class="cur"><span class="on">FCFA</span><span>EUR</span></div></div>
+    <div class="pc"><span class="mo">Logiciels</span><b>Abonnement mensuel</b><p>Le tarif de chaque produit est affiché sur sa page, sans devis à demander. Montants à publier au lancement de chaque offre.</p></div>
+    <div class="pc"><span class="mo">Ingénierie</span><b>Sur devis, après cadrage</b><p>Le cadrage donne un périmètre et un prix fermes. Pas de forfait opaque.</p></div>
+  </div>
+</section>
+
+<section class="fin" id="contact">
+  <svg class="hx hxc" viewBox="0 0 777 176" width="777" height="176" aria-hidden="true" style="--a:70px"><text x="18" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-0.00s">0</text><text x="37" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-0.58s">0</text><text x="56" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-1.17s">1</text><text x="75" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-1.75s">0</text><text x="94" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-2.33s">0</text><text x="113" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-2.92s">1</text><text x="132" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-3.50s">1</text><text x="151" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-4.08s">0</text><text x="170" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-4.67s">1</text><text x="189" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-5.25s">1</text><text x="208" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-5.83s">1</text><text x="227" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-6.42s">0</text><text x="246" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-7.00s">1</text><text x="265" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-7.58s">0</text><text x="284" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-8.17s">1</text><text x="303" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-8.75s">0</text><text x="322" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-9.33s">1</text><text x="341" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-9.92s">0</text><text x="360" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-10.50s">1</text><text x="379" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-11.08s">1</text><text x="398" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-11.67s">1</text><text x="417" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-12.25s">0</text><text x="436" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-12.83s">0</text><text x="455" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-13.42s">1</text><text x="474" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-14.00s">0</text><text x="493" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-14.58s">0</text><text x="512" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-15.17s">1</text><text x="531" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-15.75s">0</text><text x="550" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-16.33s">0</text><text x="569" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-16.92s">1</text><text x="588" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-17.50s">0</text><text x="607" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-18.08s">1</text><text x="626" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-18.67s">0</text><text x="645" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-19.25s">1</text><text x="664" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-19.83s">0</text><text x="683" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-20.42s">0</text><text x="702" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-21.00s">1</text><text x="721" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-21.58s">1</text><text x="740" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-22.17s">0</text><text x="759" y="88.0" fill="rgba(255,255,255,.9)" font-size="18" style="animation-delay:-22.75s">0</text><text x="18" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-3.50s">0</text><text x="37" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-4.08s">1</text><text x="56" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-4.67s">1</text><text x="75" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-5.25s">1</text><text x="94" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-5.83s">1</text><text x="113" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-6.42s">0</text><text x="132" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-7.00s">1</text><text x="151" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-7.58s">1</text><text x="170" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-8.17s">0</text><text x="189" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-8.75s">1</text><text x="208" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-9.33s">0</text><text x="227" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-9.92s">1</text><text x="246" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-10.50s">1</text><text x="265" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-11.08s">1</text><text x="284" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-11.67s">0</text><text x="303" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-12.25s">1</text><text x="322" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-12.83s">1</text><text x="341" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-13.42s">1</text><text x="360" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-14.00s">0</text><text x="379" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-14.58s">0</text><text x="398" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-15.17s">0</text><text x="417" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-15.75s">0</text><text x="436" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-16.33s">0</text><text x="455" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-16.92s">1</text><text x="474" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-17.50s">1</text><text x="493" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-18.08s">0</text><text x="512" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-18.67s">0</text><text x="531" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-19.25s">1</text><text x="550" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-19.83s">0</text><text x="569" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-20.42s">1</text><text x="588" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-21.00s">1</text><text x="607" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-21.58s">1</text><text x="626" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-22.17s">0</text><text x="645" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-22.75s">1</text><text x="664" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-23.33s">1</text><text x="683" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-23.92s">0</text><text x="702" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-24.50s">1</text><text x="721" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-25.08s">0</text><text x="740" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-25.67s">0</text><text x="759" y="88.0" fill="#E7A2B6" font-size="18" style="animation-delay:-26.25s">1</text></svg>
+  <div class="bits" aria-hidden="true"><span class="ly" style="left:4%;top:80%;--p:-80px">01010000 01000001 01010010 01001100 01000101 01011010 · 01001110 01001111 01010101 01010011</span></div>
+  <div class="w">
+    <h2 class="sf rv">Parlez-nous de votre métier.</h2>
+    <p class="rv d1">Un expert vous répond, vous oriente vers le bon produit ou vous propose un cadrage. Sans engagement.</p>
+    <div class="cta rv d2">
+      <a class="btn" href="#"><span class="wic">✓</span>Écrire sur WhatsApp <span class="ar">→</span></a>
+      <a class="btn b2" href="#">Formulaire de contact</a>
+      <small>WhatsApp [numéro] · [contact@…] · [ville], Cameroun — à confirmer</small>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="w ft">
+    <div><img src="/_blob/9cb8472360e8e3fd892929d7358a03fa" alt="Trigenys Group" style="height:34px;width:auto"><p style="margin:14px 0 0;color:var(--mu);max-width:300px">Designing the systems behind decisions.</p></div>
+    <div><p class="mo" style="margin:0 0 12px;color:var(--in)">Produits</p><a href="https://atelier.trigenys.com/">Atelier Maître</a><a href="https://trigenys-commerce-factory.pages.dev/">Commerce Factory</a><a href="https://precis-translator.trigenys.com/">Précis Translator</a></div>
+    <div><p class="mo" style="margin:0 0 12px;color:var(--in)">Par métier</p><a href="#metiers">Garages</a><a href="#metiers">Commerçants</a><a href="#metiers">Entreprises &amp; cabinets</a></div>
+    <div><p class="mo" style="margin:0 0 12px;color:var(--in)">Groupe</p><a href="#ingenierie">Ingénierie</a><a href="https://insight.trigenys.com/">Insight</a><a href="https://github.com/Trigenys">GitHub</a><a href="#">Mentions légales</a></div>
+  </div>
+  <div class="ftb" aria-hidden="true"><svg class="hx hxf" viewBox="0 0 1027 60" width="1027" height="60" aria-hidden="true" style="--a:18px"><text x="12" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-0.00s">0</text><text x="29" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-0.58s">1</text><text x="46" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-1.17s">0</text><text x="63" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-1.75s">0</text><text x="80" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-2.33s">1</text><text x="97" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-2.92s">0</text><text x="114" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-3.50s">0</text><text x="131" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-4.08s">0</text><text x="148" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-4.67s">1</text><text x="165" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-5.25s">0</text><text x="182" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-5.83s">1</text><text x="199" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-6.42s">0</text><text x="216" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-7.00s">1</text><text x="233" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-7.58s">1</text><text x="250" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-8.17s">1</text><text x="267" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-8.75s">0</text><text x="284" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-9.33s">0</text><text x="301" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-9.92s">0</text><text x="318" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-10.50s">0</text><text x="335" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-11.08s">0</text><text x="352" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-11.67s">1</text><text x="369" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-12.25s">0</text><text x="386" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-12.83s">0</text><text x="403" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-13.42s">0</text><text x="420" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-14.00s">1</text><text x="437" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-14.58s">1</text><text x="454" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-15.17s">0</text><text x="471" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-15.75s">1</text><text x="488" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-16.33s">1</text><text x="505" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-16.92s">0</text><text x="522" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-17.50s">1</text><text x="539" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-18.08s">1</text><text x="556" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-18.67s">0</text><text x="573" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-19.25s">1</text><text x="590" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-19.83s">0</text><text x="607" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-20.42s">0</text><text x="624" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-21.00s">0</text><text x="641" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-21.58s">0</text><text x="658" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-22.17s">1</text><text x="675" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-22.75s">0</text><text x="692" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-23.33s">1</text><text x="709" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-23.92s">0</text><text x="726" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-24.50s">1</text><text x="743" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-25.08s">1</text><text x="760" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-25.67s">1</text><text x="777" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-26.25s">1</text><text x="794" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-26.83s">0</text><text x="811" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-27.42s">0</text><text x="828" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-28.00s">1</text><text x="845" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-28.58s">0</text><text x="862" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-29.17s">0</text><text x="879" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-29.75s">1</text><text x="896" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-30.33s">1</text><text x="913" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-30.92s">0</text><text x="930" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-31.50s">0</text><text x="947" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-32.08s">0</text><text x="964" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-32.67s">0</text><text x="981" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-33.25s">1</text><text x="998" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-33.83s">1</text><text x="1015" y="30.0" fill="#7F2044" font-size="12" style="animation-delay:-34.42s">0</text><text x="12" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-3.50s">0</text><text x="29" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-4.08s">0</text><text x="46" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-4.67s">1</text><text x="63" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-5.25s">1</text><text x="80" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-5.83s">0</text><text x="97" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-6.42s">1</text><text x="114" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-7.00s">0</text><text x="131" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-7.58s">1</text><text x="148" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-8.17s">0</text><text x="165" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-8.75s">0</text><text x="182" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-9.33s">1</text><text x="199" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-9.92s">1</text><text x="216" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-10.50s">0</text><text x="233" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-11.08s">1</text><text x="250" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-11.67s">1</text><text x="267" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-12.25s">1</text><text x="284" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-12.83s">1</text><text x="301" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-13.42s">0</text><text x="318" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-14.00s">0</text><text x="335" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-14.58s">1</text><text x="352" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-15.17s">0</text><text x="369" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-15.75s">1</text><text x="386" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-16.33s">0</text><text x="403" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-16.92s">0</text><text x="420" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-17.50s">1</text><text x="437" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-18.08s">1</text><text x="454" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-18.67s">0</text><text x="471" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-19.25s">1</text><text x="488" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-19.83s">1</text><text x="505" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-20.42s">0</text><text x="522" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-21.00s">0</text><text x="539" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-21.58s">0</text><text x="556" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-22.17s">0</text><text x="573" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-22.75s">1</text><text x="590" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-23.33s">0</text><text x="607" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-23.92s">0</text><text x="624" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-24.50s">1</text><text x="641" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-25.08s">0</text><text x="658" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-25.67s">1</text><text x="675" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-26.25s">0</text><text x="692" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-26.83s">1</text><text x="709" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-27.42s">1</text><text x="726" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-28.00s">0</text><text x="743" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-28.58s">0</text><text x="760" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-29.17s">0</text><text x="777" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-29.75s">1</text><text x="794" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-30.33s">1</text><text x="811" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-30.92s">1</text><text x="828" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-31.50s">0</text><text x="845" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-32.08s">1</text><text x="862" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-32.67s">0</text><text x="879" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-33.25s">0</text><text x="896" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-33.83s">1</text><text x="913" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-34.42s">0</text><text x="930" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-35.00s">0</text><text x="947" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-35.58s">0</text><text x="964" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-36.17s">0</text><text x="981" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-36.75s">0</text><text x="998" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-37.33s">0</text><text x="1015" y="30.0" fill="#138F8D" font-size="12" style="animation-delay:-37.92s">0</text></svg></div>
+  <div class="w" style="padding:20px 40px 28px"><span class="mo" style="color:var(--mu)">© 2026 Trigenys Group</span></div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
