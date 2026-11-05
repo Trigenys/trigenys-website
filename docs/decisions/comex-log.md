@@ -18,3 +18,10 @@ Ajout seulement : chaque décision est une nouvelle entrée ; une révision réf
 - Proposé : site hybride Logiciels + Services ; DA groupe éditoriale (piste A) + bandes produits immersives (piste B) sous le DS V4 ; maturité affichée par produit.
 - Corrigé : grille tarifaire Commerce Factory retirée (bêta gratuite, aucun tarif fixé — source docs/pricing-transparency.md).
 - Dossier : docs/site/strategie-site-v1.md. Statut : **non validé**.
+
+## 2026-11-05 — Correction de positionnement : groupe éditeur à portefeuille
+- Contexte : retour du fondateur — le site laissait croire que Trigenys n'a et n'aura que 3 produits ; style V3 jugé « AI slop ».
+- Correction : les 3 produits (Atelier Maître, Commerce Factory, Précis Translator) sont une **première vague de lancement**, pas l'offre entière. Le site présente un **portefeuille par métiers** (source : `EagleFox31/project-registry`, `registry/projects.json`) avec le stade réel de chaque produit.
+- Direction visuelle V4 : éditoriale, sobre, capture produit réelle (données d'exemple), index du portefeuille ; suppression des auroras, bordures lumineuses, pastilles pulsantes, cartes glass.
+- À trancher par le fondateur : produits non publiés (stade idée/prototype) affichables publiquement ou non ; relation de marque AgenStudio / Trigenys sur le site.
+- Statut : maquette V4 **à valider**.

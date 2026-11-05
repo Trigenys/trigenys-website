@@ -16,3 +16,10 @@
 - V3 (design/maquettes/V3-Accueil*.dc.html, canevas versions 9–11) : hero sombre à halos animés lents, console produits auto-défilante (données d'exemple étiquetées), bandeau de repères vérifiables, cartes à bordure animée au survol, frise méthode. Respecte prefers-reduced-motion. V2 conservée pour comparaison.
 - Contenu inchangé (aucune fonctionnalité, statistique ni tarif ajouté ; seule donnée produit : Atelier Maître v1.18 en production).
 - Prochaine étape : retour fondateur sur la V3, puis pages produits au même niveau.
+
+## 2026-11-05 14:01 — Accueil V4 : groupe à portefeuille
+- Retour fondateur : V3 = « AI slop » ; positionnement faux (3 produits ≠ toute l'offre).
+- Fait : `design/maquettes/V4-Accueil.dc.html` (+ `-Mobile`), boards V4 sur le canvas (y=21000). Hero éditorial + capture Atelier Maître (données d'exemple), lancement 3 produits, index portefeuille 7 métiers avec stades issus du registry, services, réalisations (XEPTION, Atelier Maître), méthode RAIDER, contact.
+- Vérifié : 1440 → 6960 px, 390 → 10359 px, aucun débordement horizontal.
+- Ouvert : quels produits non publiés afficher ; place d'AgenStudio ; contacts réels (placeholders).
+- Suite : retour fondateur sur V4, puis pages produit.

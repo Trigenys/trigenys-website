@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Trigenys Group — Accueil v4</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FCFAFB}
+.t{--bx:#7F2044;--pr:#55162F;--tq:#138F8D;--tqt:#0E6E6C;--ro:#E7A2B6;--in:#251C2A;--cr:#FCFAFB;--pa:#F6F1F3;--mu:#5B4F60;--li:#E9E0E4;--e:cubic-bezier(.16,1,.3,1);
+  background:var(--cr);color:var(--in);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow:hidden}
+.t *{box-sizing:border-box}.t a{color:inherit;text-decoration:none}
+.w{max-width:1280px;margin:0 auto;padding:0 40px}
+.sf{font-family:'Source Serif 4',Georgia,serif;letter-spacing:-.025em}
+.mo{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.k{color:var(--mu)}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:600;font-size:16px;transition:background .3s,color .3s,transform .5s var(--e)}
+.btn .ar{display:inline-block;transition:transform .5s var(--e)}.btn:hover .ar{transform:translateX(5px)}
+.b1{background:var(--in);color:var(--cr)}.b1:hover{background:var(--bx)}
+.b2{box-shadow:inset 0 0 0 1px #CDBFC6;color:var(--in)}.b2:hover{box-shadow:inset 0 0 0 1px var(--in)}
+/* nav */
+.nav{display:flex;align-items:center;gap:40px;height:76px}
+.nav .lk{display:flex;gap:30px;font-size:15px;font-weight:500;color:#3E3443}
+.nav .lk a{position:relative}.nav .lk a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--e)}
+.nav .lk a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav .rt{margin-left:auto;display:flex;align-items:center;gap:22px;font-size:14px}
+.menu{display:none;margin-left:auto;width:44px;height:44px;border-radius:12px;border:1px solid var(--li);background:#fff;align-items:center;justify-content:center}
+/* hero */
+.hero{padding:88px 0 0;text-align:center}
+.hero h1{font-size:96px;line-height:.98;font-weight:500;margin:22px auto 0;max-width:1060px}
+.hero h1 i{font-weight:400;color:var(--bx)}
+.up{animation:up 1.2s var(--e) both}.u1{animation-delay:.08s}.u2{animation-delay:.18s}.u3{animation-delay:.28s}.u4{animation-delay:.45s}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.lead{max-width:720px;margin:28px auto 0;font-size:20px;line-height:1.55;color:var(--mu)}
+.ctas{display:flex;justify-content:center;gap:12px;margin-top:40px;flex-wrap:wrap}
+/* product shot */
+.stagewrap{position:relative;margin-top:76px;perspective:2400px}
+.shot{position:relative;max-width:1180px;margin:0 auto;border-radius:16px;background:#fff;box-shadow:0 1px 0 rgba(37,28,42,.04),0 0 0 1px rgba(37,28,42,.08),0 50px 100px -40px rgba(37,28,42,.35),0 30px 60px -50px rgba(127,32,68,.4);overflow:hidden;transform-origin:50% 0;animation:settle 1.8s .35s var(--e) both;text-align:left;font-size:13px}
+@keyframes settle{from{opacity:0;transform:rotateX(24deg) translateY(40px) scale(.94)}to{opacity:1;transform:none}}
+.chrome{display:flex;align-items:center;gap:7px;height:40px;padding:0 16px;border-bottom:1px solid #EFE8EB;background:#FBF8F9}
+.chrome i{width:10px;height:10px;border-radius:50%;background:#E4DADF}
+.chrome .url{margin:0 auto;padding:4px 14px;border-radius:7px;background:#F1EBEE;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7A6C75}
+.app{display:grid;grid-template-columns:212px 1fr;height:560px}
+.side{border-right:1px solid #EFE8EB;padding:18px 12px;background:#FCFAFB}
+.side .lg{display:flex;align-items:center;gap:9px;padding:4px 10px 18px;font-weight:600;font-size:14px}
+.side .lg b{width:24px;height:24px;border-radius:7px;background:var(--bx);color:#fff;display:grid;place-items:center;font-size:12px}
+.side a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:#5B4F60;font-weight:500}
+.side a.on{background:#F4E8ED;color:var(--bx)}
+.side a s{width:14px;height:14px;border-radius:4px;border:1.5px solid currentColor;opacity:.6}
+.main{padding:22px 26px;background:#fff}
+.mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.mh h4{margin:0;font-size:19px;font-family:'Source Serif 4',serif;font-weight:600;letter-spacing:-.01em}
+.mh .acts{display:flex;gap:8px}.mh .acts span{padding:7px 12px;border-radius:8px;border:1px solid #E9E0E4;font-weight:500;color:#4A3F4F}.mh .acts span.p{background:var(--in);color:#fff;border-color:var(--in)}
+.kp{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.kp div{border:1px solid #EFE8EB;border-radius:12px;padding:12px 14px;color:#7A6C75}
+.kp b{display:block;margin-top:4px;font-size:22px;font-family:'Source Serif 4',serif;font-weight:600;color:var(--in)}
+.kp .bar{height:4px;border-radius:2px;background:#F1EBEE;margin-top:10px;overflow:hidden}.kp .bar i{display:block;height:100%;background:var(--tq);transform-origin:left;animation:grow 1.6s 1.4s var(--e) both}
+@keyframes grow{from{transform:scaleX(0)}}
+.tbl{border:1px solid #EFE8EB;border-radius:12px;overflow:hidden}
+.tr{display:grid;grid-template-columns:90px 1.4fr 1.6fr 1fr 110px;gap:12px;align-items:center;padding:11px 16px;border-top:1px solid #F3EEF0}
+.tr.h{border-top:0;background:#FBF8F9;color:#8A7C85;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+.tr{animation:row .8s var(--e) both}.tr:nth-child(2){animation-delay:1.3s}.tr:nth-child(3){animation-delay:1.4s}.tr:nth-child(4){animation-delay:1.5s}.tr:nth-child(5){animation-delay:1.6s}.tr:nth-child(6){animation-delay:1.7s}
+@keyframes row{from{opacity:0;transform:translateY(6px)}}
+.tag{justify-self:start;padding:3px 9px;border-radius:6px;font-size:11.5px;font-weight:600}
+.g{background:#E3F2F1;color:#0A5654}.r{background:#F7E6EC;color:#7F2044}.n{background:#F1EBEE;color:#5B4F60}
+.ex{position:absolute;right:18px;bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#A89AA2}
+.fadeb{position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(transparent,var(--cr));pointer-events:none}
+/* launch */
+.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+.sh h2{margin:14px 0 0;font-size:56px;line-height:1.02;font-weight:500;max-width:760px}
+.sh p{margin:0;max-width:380px;color:var(--mu);font-size:16px}
+.launch{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px;border-top:1px solid var(--in)}
+.lc{position:relative;padding:32px 32px 36px 0;display:flex;flex-direction:column;min-height:340px}
+.lc+.lc{padding-left:32px;border-left:1px solid var(--li)}
+.lc .st{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
+.lc .st i{width:7px;height:7px;border-radius:50%;background:var(--tq)}.lc .st.b i{background:var(--ro);box-shadow:0 0 0 3px #F7E6EC}
+.lc h3{margin:28px 0 10px;font-size:36px;line-height:1.05;font-weight:500}
+.lc p{margin:0;color:var(--mu);font-size:16px}
+.lc .go{margin-top:auto;padding-top:28px;display:inline-flex;align-items:center;gap:10px;font-weight:600;color:var(--bx)}
+.lc .go .ar{transition:transform .5s var(--e)}.lc:hover .go .ar{transform:translateX(6px)}
+.lc::after{content:'';position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--bx);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--e)}
+.lc+.lc::after{left:0}.lc:hover::after{transform:scaleX(1)}
+/* portfolio index */
+.dk{background:var(--in);color:#EFE7EB}
+.dk .k{color:#A898A2}
+.idx{margin-top:64px;border-top:1px solid #3B2F41}
+.ir{position:relative;display:grid;grid-template-columns:72px 1.1fr 1.6fr 40px;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid #3B2F41;transition:padding .6s var(--e)}
+.ir .no{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#8E7F88}
+.ir h3{margin:0;font-family:'Source Serif 4',serif;font-weight:400;font-size:40px;letter-spacing:-.02em;line-height:1.05;transition:transform .6s var(--e),color .4s}
+.ir .ps{display:flex;flex-wrap:wrap;gap:8px 10px}
+.ir .p{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:#2F2535;font-size:14px;font-weight:500;color:#EFE7EB}
+.ir .p em{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#A898A2}
+.ir .p.l{background:#3C2232;box-shadow:inset 0 0 0 1px #6A2D49}.ir .p.l em{color:#F3C9D5}
+.ir .ds{grid-column:2/4;max-height:0;opacity:0;overflow:hidden;color:#B5A8AF;font-size:15.5px;transition:max-height .6s var(--e),opacity .5s,margin .6s var(--e)}
+.ir .pl{width:40px;height:40px;border-radius:50%;box-shadow:inset 0 0 0 1px #4A3D50;display:grid;place-items:center;color:#CFC2C9;transition:transform .6s var(--e),background .4s}
+.ir:hover h3{transform:translateX(10px);color:#fff}
+.ir:hover .ds{max-height:60px;opacity:1;margin-top:-6px}
+.ir:hover .pl{transform:rotate(45deg);background:var(--bx)}
+.ir::before{content:'';position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--ro);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--e)}
+.ir:hover::before{transform:scaleX(1)}
+.legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;font-size:13px;color:#A898A2}
+/* services */
+.sv{display:grid;grid-template-columns:5fr 7fr;gap:80px}
+.svl{border-top:1px solid var(--in)}
+.svr{display:grid;grid-template-columns:48px 1fr auto;gap:20px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--li)}
+.svr .no{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--bx)}
+.svr h3{margin:0;font-size:26px;font-weight:500;font-family:'Source Serif 4',serif;letter-spacing:-.015em}
+.svr p{margin:6px 0 0;color:var(--mu);font-size:16px}
+.svr .ar{color:var(--mu);transition:transform .5s var(--e),color .3s}.svr:hover .ar{transform:translateX(6px);color:var(--bx)}
+/* proof */
+.pf{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:56px}
+.pc{position:relative;border-radius:20px;overflow:hidden;background:var(--pa);padding:40px;min-height:380px;display:flex;flex-direction:column}
+.pc.d{background:var(--pr);color:var(--cr)}
+.pc h3{margin:18px 0 12px;font-size:40px;font-weight:500;line-height:1.05}
+.pc p{margin:0;max-width:460px;color:var(--mu)}.pc.d p{color:#E8D3DC}
+.pc .meta{margin-top:auto;padding-top:28px;display:flex;gap:8px;flex-wrap:wrap}
+.pc .meta span{padding:6px 12px;border-radius:999px;font-size:13px;background:#fff;color:var(--in)}.pc.d .meta span{background:rgba(252,250,251,.1);color:#F3E6EB}
+/* method */
+.mt{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;border-top:1px solid var(--in)}
+.mt div{padding:28px 28px 0 0}.mt div+div{padding-left:28px;border-left:1px solid var(--li)}
+.mt b{display:block;font-family:'Source Serif 4',serif;font-size:64px;font-weight:400;line-height:1;color:var(--bx);letter-spacing:-.03em}
+.mt h3{margin:22px 0 8px;font-size:19px}.mt p{margin:0;color:var(--mu);font-size:15.5px}
+/* cta */
+.cta{background:var(--bx);color:var(--cr)}
+.cta h2{margin:0;font-size:104px;line-height:.95;font-weight:400;letter-spacing:-.035em}
+.cta h2 i{color:var(--ro)}
+.rts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:64px;border-top:1px solid rgba(252,250,251,.3)}
+.rt{padding:28px 28px 8px 0;display:block}.rt+.rt{padding-left:28px;border-left:1px solid rgba(252,250,251,.2)}
+.rt strong{display:flex;justify-content:space-between;font-size:22px;font-weight:500;font-family:'Source Serif 4',serif}
+.rt strong .ar{transition:transform .5s var(--e)}.rt:hover strong .ar{transform:translate(4px,-4px)}
+.rt p{margin:8px 0 0;color:#F1D3DE;font-size:15.5px}
+@media (prefers-reduced-motion:reduce){.t *,.t *::before,.t *::after{animation:none!important;transition:none!important}}
+@media (max-width:900px){
+  .w{padding:0 20px}.nav{height:64px}.nav .lk,.nav .rt{display:none}.menu{display:inline-flex}
+  .hero{padding-top:48px;text-align:left}.hero h1{font-size:50px;line-height:1.02}.lead{font-size:17.5px;margin-left:0}.ctas{justify-content:flex-start}.btn{width:100%;justify-content:center}
+  .stagewrap{margin-top:48px;overflow:hidden;margin-right:-20px}.shot{width:760px;max-width:none;transform-origin:0 0}.app{height:440px}
+  .sh h2{font-size:38px}.launch,.mt,.rts,.pf,.sv{grid-template-columns:1fr;gap:0}
+  .lc,.lc+.lc{padding:28px 0;border-left:0;border-bottom:1px solid var(--li);min-height:0}.lc h3{font-size:30px;margin-top:18px}
+  .ir{grid-template-columns:44px 1fr 32px;gap:12px;padding:24px 0}.ir h3{font-size:28px}.ir .ps{grid-column:2/4}.ir .ds{grid-column:2/4;max-height:none;opacity:1;margin:0}.ir .pl{grid-row:1;grid-column:3;width:32px;height:32px}
+  .sv{gap:32px}.pf{gap:16px}.pc{padding:28px;min-height:0}.pc h3{font-size:32px}
+  .mt div,.mt div+div{padding:24px 0;border-left:0;border-bottom:1px solid var(--li)}.mt b{font-size:48px}
+  .cta h2{font-size:56px}.rt,.rt+.rt{padding:22px 0;border-left:0;border-bottom:1px solid rgba(252,250,251,.2)}
+  .sec{padding-top:72px!important;padding-bottom:72px!important}
+  .ft{grid-template-columns:1fr 1fr!important}.ft>div:first-child{grid-column:1/-1}
+}
+</style>
+</helmet>
+<div class="t">
+
+  <header style="position:relative;z-index:3;border-bottom:1px solid var(--li)">
+    <div class="w nav">
+      <a href="#" aria-label="Trigenys Group, accueil" style="line-height:0"><img src="/_blob/9cb8472360e8e3fd892929d7358a03fa" alt="Trigenys Group" style="height:36px;width:auto"></a>
+      <nav class="lk" aria-label="Navigation principale">
+        <a href="#portefeuille">Produits</a><a href="#services">Services</a><a href="#realisations">Réalisations</a><a href="#methode">Méthode</a><a href="https://insight.trigenys.com/">Insight</a>
+      </nav>
+      <div class="rt"><span class="mo" style="font-size:12px"><a href="#" aria-current="true">FR</a> <span class="k">/ <a href="#" lang="en">EN</a></span></span><a href="#contact" class="btn b1" style="min-height:42px;padding:0 20px;font-size:14.5px">Nous contacter</a></div>
+      <button class="menu" type="button" aria-label="Ouvrir le menu"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#251C2A" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="w">
+      <p class="mo k up">Trigenys Group · Éditeur de logiciels et société d'ingénierie</p>
+      <h1 class="sf up u1">Des logiciels métiers <i>conçus pour durer.</i></h1>
+      <p class="lead up u2">Nous éditons un portefeuille de produits — mobilité, commerce, documents, éducation, événementiel, sécurité — et nous concevons, intégrons et maintenons les applications de nos clients.</p>
+      <div class="ctas up u3"><a href="#portefeuille" class="btn b1">Explorer le portefeuille <span class="ar" aria-hidden="true">→</span></a><a href="#contact" class="btn b2">Confier un projet</a></div>
+    </div>
+    <div class="stagewrap w" aria-label="Aperçu d'Atelier Maître, données d'exemple" role="img">
+      <div class="shot" aria-hidden="true">
+        <div class="chrome"><i></i><i></i><i></i><span class="url">atelier.trigenys.com</span></div>
+        <div class="app">
+          <div class="side">
+            <div class="lg"><b>A</b>Atelier Maître</div>
+            <a>  <s></s>Tableau de bord</a><a><s></s>Réception</a><a class="on"><s></s>Ordres de travail</a><a><s></s>Planning</a><a><s></s>Stock de pièces</a><a><s></s>Devis &amp; factures</a><a><s></s>Caisse</a>
+          </div>
+          <div class="main">
+            <div class="mh"><h4>Ordres de travail</h4><div class="acts"><span>Filtrer</span><span class="p">+ Nouvel ordre</span></div></div>
+            <div class="kp">
+              <div>Ouverts<b>14</b><div class="bar"><i style="width:70%"></i></div></div>
+              <div>En attente de pièces<b>3</b><div class="bar"><i style="width:22%;background:#E7A2B6"></i></div></div>
+              <div>Prêts à livrer<b>5</b><div class="bar"><i style="width:40%"></i></div></div>
+              <div>Devis envoyés<b>6</b><div class="bar"><i style="width:48%;background:#7F2044"></i></div></div>
+            </div>
+            <div class="tbl">
+              <div class="tr h"><span>N°</span><span>Véhicule</span><span>Travaux</span><span>Technicien</span><span>Statut</span></div>
+              <div class="tr"><b>OT-0142</b><span>Toyota Hilux</span><span class="k">Vidange, plaquettes avant</span><span>Paul N.</span><span class="tag g">En cours</span></div>
+              <div class="tr"><b>OT-0143</b><span>Peugeot 308</span><span class="k">Diagnostic électronique</span><span>Aïcha M.</span><span class="tag r">Attente pièces</span></div>
+              <div class="tr"><b>OT-0144</b><span>Hyundai Tucson</span><span class="k">Carrosserie arrière</span><span>Serge T.</span><span class="tag n">Devis envoyé</span></div>
+              <div class="tr"><b>OT-0145</b><span>Suzuki Swift</span><span class="k">Climatisation</span><span>Paul N.</span><span class="tag g">Prêt à livrer</span></div>
+              <div class="tr"><b>OT-0146</b><span>Mitsubishi L200</span><span class="k">Embrayage</span><span>Aïcha M.</span><span class="tag g">En cours</span></div>
+            </div>
+          </div>
+        </div>
+        <span class="ex">Données d'exemple</span>
+      </div>
+      <div class="fadeb"></div>
+    </div>
+  </section>
+
+  <section id="lancement">
+    <div class="w sec" style="padding-top:72px;padding-bottom:120px">
+      <div class="sh">
+        <div><p class="mo" style="margin:0;color:var(--bx)">Lancement 2026</p><h2 class="sf">Trois produits ouvrent la marche.</h2></div>
+        <p>Les premiers disponibles à la démonstration, à la bêta ou en pilote. Le reste du portefeuille suit, chacun à son rythme.</p>
+      </div>
+      <div class="launch">
+        <a href="#" class="lc"><span class="st"><i></i>En production</span><h3 class="sf">Atelier Maître</h3><p>Gestion d'atelier automobile : réception, ordres de travail, stock, devis, factures et caisse.</p><span class="go">Demander une démonstration <span class="ar">→</span></span></a>
+        <a href="PisteA-CommerceFactory.dc.html" class="lc"><span class="st b"><i></i>Bêta ouverte</span><h3 class="sf">Commerce Factory</h3><p>Un catalogue en ligne à partager ; les demandes de commande arrivent sur WhatsApp.</p><span class="go">Rejoindre la bêta <span class="ar">→</span></span></a>
+        <a href="#" class="lc"><span class="st b"><i></i>Bêta · pilotes</span><h3 class="sf">Précis Translator</h3><p>PDF, Word, PowerPoint et Excel traduits en conservant la mise en page d'origine.</p><span class="go">Proposer un pilote <span class="ar">→</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="portefeuille" class="dk">
+    <div class="w sec" style="padding-top:128px;padding-bottom:128px">
+      <div class="sh">
+        <div><p class="mo" style="margin:0;color:var(--ro)">Le portefeuille</p><h2 class="sf" style="color:var(--cr)">Un groupe, plusieurs métiers.</h2></div>
+        <p class="k">Chaque produit affiche son stade réel. Ceux qui ne sont pas encore ouverts sont présentés sur demande.</p>
+      </div>
+      <div class="idx">
+        <div class="ir"><span class="no">01</span><h3>Mobilité &amp; atelier</h3><div class="ps"><span class="p l">Atelier Maître <em>Production</em></span><span class="p">Yaro OS <em>Production</em></span><span class="p">AgenAuto <em>Bêta</em></span></div><span class="pl" aria-hidden="true">+</span><p class="ds">Gestion d'atelier, maintenance et flotte ; comparateur de véhicules neufs des distributeurs camerounais.</p></div>
+        <div class="ir"><span class="no">02</span><h3>Commerce</h3><div class="ps"><span class="p l">Commerce Factory <em>Bêta</em></span></div><span class="pl" aria-hidden="true">+</span><p class="ds">Catalogue en ligne et commandes par WhatsApp pour boutiques et marques.</p></div>
+        <div class="ir"><span class="no">03</span><h3>Documents &amp; langues</h3><div class="ps"><span class="p l">Précis Translator <em>Bêta</em></span><span class="p">GED237 <em>MVP</em></span></div><span class="pl" aria-hidden="true">+</span><p class="ds">Traduction de documents mise en page conservée ; gestion électronique de documents et circuits de validation.</p></div>
+        <div class="ir"><span class="no">04</span><h3>Éducation &amp; formation</h3><div class="ps"><span class="p">Zamari <em>Bêta</em></span><span class="p">SchoolOS <em>En développement</em></span></div><span class="pl" aria-hidden="true">+</span><p class="ds">Gestion des centres de formation et de leurs paiements ; gestion scolaire pour les établissements camerounais.</p></div>
+        <div class="ir"><span class="no">05</span><h3>Événementiel</h3><div class="ps"><span class="p">Pherusa <em>En développement</em></span></div><span class="pl" aria-hidden="true">+</span><p class="ds">Organisation des événements, des équipes terrain, du check-in et des opérations multi-acteurs.</p></div>
+        <div class="ir"><span class="no">06</span><h3>Sécurité &amp; confiance</h3><div class="ps"><span class="p">Trigenys Aegis <em>En conception</em></span><span class="p">VeriChain <em>En conception</em></span></div><span class="pl" aria-hidden="true">+</span><p class="ds">Supervision de sécurité multi-tenant ; vérification de certificats numériques par émetteur de confiance.</p></div>
+        <div class="ir"><span class="no">07</span><h3>Pilotage &amp; productivité</h3><div class="ps"><span class="p">Apex Horus <em>MVP</em></span><span class="p">AgenStart <em>En développement</em></span></div><span class="pl" aria-hidden="true">+</span><p class="ds">Interface de pilotage stratégique pour dirigeants ; assistant de configuration de poste Windows.</p></div>
+      </div>
+      <div class="legend"><span>Production · en service chez des utilisateurs</span><span>Bêta / MVP · ouvert à des premiers utilisateurs</span><span>En développement · En conception · pas encore disponible</span></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="w sec" style="padding-top:128px;padding-bottom:120px">
+      <div class="sv">
+        <div>
+          <p class="mo" style="margin:0;color:var(--tqt)">Services professionnels</p>
+          <h2 class="sf" style="margin:14px 0 0;font-size:56px;line-height:1.02;font-weight:500">Ce que nous construisons pour nous, nous le construisons pour vous.</h2>
+          <p class="k" style="margin:22px 0 32px">Les mêmes équipes, le même standard d'ingénierie, appliqués à vos applications.</p>
+          <a href="#contact" class="btn b1">Décrire mon projet <span class="ar" aria-hidden="true">→</span></a>
+        </div>
+        <div class="svl">
+          <a href="#" class="svr"><span class="no">01</span><div><h3>Ingénierie logicielle</h3><p>Applications web, mobiles et métiers conçues autour de vos processus.</p></div><span class="ar">→</span></a>
+          <a href="#" class="svr"><span class="no">02</span><div><h3>Intégration &amp; automatisation</h3><p>API, paiements mobiles, notifications WhatsApp et Telegram, flux automatisés.</p></div><span class="ar">→</span></a>
+          <a href="#" class="svr"><span class="no">03</span><div><h3>Support &amp; maintenance</h3><p>Correction, évolution et suivi de vos applications, avec des versions tracées.</p></div><span class="ar">→</span></a>
+          <a href="#" class="svr"><span class="no">04</span><div><h3>Cadrage &amp; architecture</h3><p>Analyse du besoin et choix techniques avant la première ligne de code.</p></div><span class="ar">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realisations" style="background:var(--pa)">
+    <div class="w sec" style="padding-top:128px;padding-bottom:128px">
+      <div class="sh"><div><p class="mo" style="margin:0;color:var(--bx)">Réalisations</p><h2 class="sf">En service, pas en maquette.</h2></div></div>
+      <div class="pf">
+        <div class="pc d"><span class="mo" style="color:#F3C9D5">Client · e-commerce et opérations</span><h3 class="sf">XEPTION</h3><p>Catalogue, commandes, paiements locaux, stocks, ventes et service après-vente réunis dans une même plateforme.</p><div class="meta"><span>En production</span><span>Paiements locaux</span><span>SAV</span></div></div>
+        <div class="pc"><span class="mo" style="color:var(--bx)">Produit · automobile</span><h3 class="sf">Atelier Maître</h3><p>Ordres de travail, clients, véhicules, stocks, facturation et pilotage, publiés en versions successives.</p><div class="meta"><span>En production</span><span>v1.18</span><span>atelier.trigenys.com</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="methode">
+    <div class="w sec" style="padding-top:128px;padding-bottom:128px">
+      <div class="sh"><div><p class="mo" style="margin:0;color:var(--tqt)">Méthode · standard RAIDER</p><h2 class="sf">Un logiciel doit encore fonctionner dans trois ans.</h2></div><p>Notre standard d'ingénierie interne, appliqué à chaque produit et à chaque projet client.</p></div>
+      <div class="mt">
+        <div><b>01</b><h3>Démontrer avant d'engager</h3><p>Démo ou pilote sur votre cas réel.</p></div>
+        <div><b>02</b><h3>Livrer par versions</h3><p>Chaque évolution testée, numérotée, réversible.</p></div>
+        <div><b>03</b><h3>Documenter</h3><p>Architecture et décisions écrites, pour ne dépendre de personne.</p></div>
+        <div><b>04</b><h3>Dire les limites</h3><p>Maturité et périmètre annoncés sans exagération.</p></div>
+      </div>
+      <div style="margin-top:96px;padding-top:40px;border-top:1px solid var(--li);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start">
+        <p class="sf" style="margin:0;font-size:30px;line-height:1.2;font-weight:500">Conçu au Cameroun, pour des organisations d'ici et d'ailleurs.</p>
+        <p class="k" style="margin:0">WhatsApp comme canal de vente, paiements mobiles, FCFA, usage bilingue français–anglais. Nos analyses sont publiées dans <a href="https://insight.trigenys.com/" style="color:var(--bx);font-weight:600;border-bottom:1px solid currentColor">Trigenys Insight</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta">
+    <div class="w sec" style="padding-top:128px;padding-bottom:112px">
+      <h2 class="sf">Parlons de votre <i>prochain logiciel.</i></h2>
+      <div class="rts">
+        <a href="#" class="rt"><strong>Voir un produit <span class="ar">↗</span></strong><p>Démonstration, bêta ou pilote.</p></a>
+        <a href="#" class="rt"><strong>Confier un projet <span class="ar">↗</span></strong><p>Nous revenons avec un cadrage.</p></a>
+        <a href="#" class="rt"><strong>Support client <span class="ar">↗</span></strong><p>Vous utilisez déjà un de nos outils.</p></a>
+      </div>
+      <p class="mo" style="margin:48px 0 0;color:#F1D3DE">WhatsApp [numéro] · [contact@…] · [ville], Cameroun</p>
+    </div>
+  </section>
+
+  <footer style="background:var(--in);color:#B5A8AF">
+    <div class="w ft" style="padding-top:64px;padding-bottom:40px;display:grid;grid-template-columns:2fr repeat(3,1fr);gap:32px;font-size:15px">
+      <div><img src="/_blob/bc607b87c6b4dbe4fe5cd7ddbabb885e" alt="Trigenys Group" style="height:34px;width:auto"><p style="margin:14px 0 0;font-size:14px;max-width:280px">Designing the systems behind decisions.</p></div>
+      <div><p class="mo" style="margin:0 0 12px;color:#8E7F88">Produits</p><a href="#" style="display:block">Atelier Maître</a><a href="#" style="display:block">Commerce Factory</a><a href="#" style="display:block">Précis Translator</a><a href="#portefeuille" style="display:block;color:#EFE7EB">Tout le portefeuille</a></div>
+      <div><p class="mo" style="margin:0 0 12px;color:#8E7F88">Services</p><a href="#" style="display:block">Ingénierie</a><a href="#" style="display:block">Intégration</a><a href="#" style="display:block">Maintenance</a></div>
+      <div><p class="mo" style="margin:0 0 12px;color:#8E7F88">Groupe</p><a href="https://insight.trigenys.com/" style="display:block">Insight</a><a href="#" style="display:block">GitHub</a><a href="#" style="display:block">Mentions légales</a></div>
+    </div>
+    <div class="w" style="padding-bottom:28px"><span class="mo" style="color:#8E7F88">© 2026 Trigenys Group</span></div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6960}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

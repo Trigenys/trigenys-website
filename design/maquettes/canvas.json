@@ -63,9 +63,26 @@
       "w": 390,
       "h": 8650,
       "title": "V3 · Accueil immersif (mobile 390)"
+    },
+    "V4-Accueil.dc.html": {
+      "x": 0,
+      "y": 21000,
+      "w": 1440,
+      "h": 6960,
+      "title": "V4 · Accueil groupe — portefeuille (desktop)",
+      "expand": "fill"
+    },
+    "V4-Accueil-Mobile.dc.html": {
+      "x": 1520,
+      "y": 21000,
+      "w": 390,
+      "h": 10360,
+      "title": "V4 · Accueil groupe (mobile 390)"
     }
   },
   "order": [
+    "V4-Accueil.dc.html",
+    "V4-Accueil-Mobile.dc.html",
     "V3-Accueil.dc.html",
     "V3-Accueil-Mobile.dc.html",
     "V2-Accueil.dc.html",
@@ -93,6 +110,13 @@
       "x": 0,
       "y": 11650,
       "text": "V3 — Immersive : hero sombre animé, console produits, transitions fluides · à valider",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "t4": {
+      "x": 0,
+      "y": 20750,
+      "text": "V4 — Groupe éditeur : 3 produits de lancement + portefeuille par métiers (stades réels) · sobre, éditorial · à valider",
       "kind": "title1",
       "maxW": 4480
     }
