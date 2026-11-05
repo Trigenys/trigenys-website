@@ -1,20 +1,101 @@
 {
   "v": 3,
-  "createdOnFiles": {"v": 1, "at": "2026-11-05T12:00:00Z"},
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-11-05T12:00:00Z"
+  },
   "title": "Trigenys — Site vitrine",
-  "launch": {"view": "canvas"},
+  "launch": {
+    "view": "canvas"
+  },
   "pages": [],
   "boards": {
-    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 3300, "title": "Piste A · Éditorial — Accueil", "expand": "fill"},
-    "PisteB-Accueil.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 3300, "title": "Piste B · Systèmes — Accueil", "expand": "fill"},
-    "PisteA-CommerceFactory.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 3100, "title": "Piste A · Page produit — Commerce Factory", "expand": "fill"},
-    "V2-Accueil.dc.html": {"x": 0, "y": 3800, "w": 1440, "h": 4400, "title": "V2 · Accueil corporate (desktop)", "expand": "fill"},
-    "V2-Accueil-Mobile.dc.html": {"x": 1520, "y": 3800, "w": 390, "h": 7600, "title": "V2 · Accueil corporate (mobile 390)"}
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 3300,
+      "title": "Piste A · Éditorial — Accueil",
+      "expand": "fill"
+    },
+    "PisteB-Accueil.dc.html": {
+      "x": 1520,
+      "y": 0,
+      "w": 1440,
+      "h": 3300,
+      "title": "Piste B · Systèmes — Accueil",
+      "expand": "fill"
+    },
+    "PisteA-CommerceFactory.dc.html": {
+      "x": 3040,
+      "y": 0,
+      "w": 1440,
+      "h": 3100,
+      "title": "Piste A · Page produit — Commerce Factory",
+      "expand": "fill"
+    },
+    "V2-Accueil.dc.html": {
+      "x": 0,
+      "y": 3800,
+      "w": 1440,
+      "h": 4400,
+      "title": "V2 · Accueil corporate (desktop)",
+      "expand": "fill"
+    },
+    "V2-Accueil-Mobile.dc.html": {
+      "x": 1520,
+      "y": 3800,
+      "w": 390,
+      "h": 7600,
+      "title": "V2 · Accueil corporate (mobile 390)"
+    },
+    "V3-Accueil.dc.html": {
+      "x": 0,
+      "y": 11900,
+      "w": 1440,
+      "h": 4920,
+      "title": "V3 · Accueil immersif (desktop)",
+      "expand": "fill"
+    },
+    "V3-Accueil-Mobile.dc.html": {
+      "x": 1520,
+      "y": 11900,
+      "w": 390,
+      "h": 8650,
+      "title": "V3 · Accueil immersif (mobile 390)"
+    }
   },
-  "order": ["V2-Accueil.dc.html", "V2-Accueil-Mobile.dc.html", "Main.dc.html", "PisteB-Accueil.dc.html", "PisteA-CommerceFactory.dc.html"],
+  "order": [
+    "V3-Accueil.dc.html",
+    "V3-Accueil-Mobile.dc.html",
+    "V2-Accueil.dc.html",
+    "V2-Accueil-Mobile.dc.html",
+    "Main.dc.html",
+    "PisteB-Accueil.dc.html",
+    "PisteA-CommerceFactory.dc.html"
+  ],
   "notes": {
-    "t1": {"x": 0, "y": -300, "text": "Trigenys — site vitrine · option C (éditeur de logiciels) · Design System V4", "kind": "title1", "maxW": 4480},
-    "t2": {"x": 0, "y": 3550, "text": "V2 — Groupe éditorial (piste A) + bande produits immersive (piste B) · à valider", "kind": "title1", "maxW": 4480}
+    "t1": {
+      "x": 0,
+      "y": -300,
+      "text": "Trigenys — site vitrine · option C (éditeur de logiciels) · Design System V4",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "t2": {
+      "x": 0,
+      "y": 3550,
+      "text": "V2 — Groupe éditorial (piste A) + bande produits immersive (piste B) · à valider",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "t3": {
+      "x": 0,
+      "y": 11650,
+      "text": "V3 — Immersive : hero sombre animé, console produits, transitions fluides · à valider",
+      "kind": "title1",
+      "maxW": 4480
+    }
   },
   "designSystems": []
 }

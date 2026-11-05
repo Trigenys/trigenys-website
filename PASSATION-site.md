@@ -10,3 +10,9 @@
 - Corrige l'entrée précédente : « pas de dépôt site » n'est plus vrai.
 - Direction v1 toujours en attente de validation fondateur ; aucun code de production.
 - Prochaine étape : validation → fiches Atelier Maître et Précis, puis adoption AppFactory (board, impact CI).
+
+## 2026-11-05 13:53 — Accueil V3 immersive
+- Retour fondateur : V2 « trop légère » ; attendu moderne, dynamique, immersif, sans excès, inspirant confiance, fluide.
+- V3 (design/maquettes/V3-Accueil*.dc.html, canevas versions 9–11) : hero sombre à halos animés lents, console produits auto-défilante (données d'exemple étiquetées), bandeau de repères vérifiables, cartes à bordure animée au survol, frise méthode. Respecte prefers-reduced-motion. V2 conservée pour comparaison.
+- Contenu inchangé (aucune fonctionnalité, statistique ni tarif ajouté ; seule donnée produit : Atelier Maître v1.18 en production).
+- Prochaine étape : retour fondateur sur la V3, puis pages produits au même niveau.

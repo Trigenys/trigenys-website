@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Trigenys Group — Accueil v3</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#251C2A}
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+.t{--bx:#7F2044;--pr:#55162F;--tq:#138F8D;--tqt:#0E6E6C;--tql:#5FC4C1;--ro:#E7A2B6;--in:#251C2A;--cr:#FCFAFB;--mu:#4A3F4F;--li:#EADDE3;--dm:#CFC2C9;--ease:cubic-bezier(.22,.7,.2,1);
+  background:var(--cr);color:var(--in);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.6;overflow:hidden}
+.t *{box-sizing:border-box}
+.t a{color:inherit}
+.w{max-width:1200px;margin:0 auto;padding:0 24px}
+.serif{font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-.015em}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+h2.serif{font-size:44px;line-height:1.1;margin:0}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:13px 26px;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s}
+.btn .ar{transition:transform .35s var(--ease)}
+.btn:hover{transform:translateY(-2px)}.btn:hover .ar{transform:translateX(4px)}
+.b-ro{background:var(--ro);color:var(--in)!important;box-shadow:0 10px 30px -12px rgba(231,162,182,.7)}
+.b-gh{border:1.5px solid rgba(252,250,251,.28);color:var(--cr)!important;backdrop-filter:blur(6px)}
+.b-gh:hover{background:rgba(252,250,251,.08)}
+.b-bx{background:var(--bx);color:var(--cr)!important}
+.b-ol{border:1.5px solid var(--bx);color:var(--bx)!important}
+/* ---------- HERO ---------- */
+.hero{position:relative;background:var(--in);color:#F3ECEF;isolation:isolate}
+.aur{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;z-index:-1;will-change:transform}
+.a1{width:620px;height:620px;background:#7F2044;left:-160px;top:-160px;animation:drift1 22s ease-in-out infinite alternate}
+.a2{width:520px;height:520px;background:#138F8D;right:-120px;top:120px;opacity:.38;animation:drift2 26s ease-in-out infinite alternate}
+.a3{width:420px;height:420px;background:#55162F;left:40%;bottom:-220px;opacity:.6;animation:drift1 30s ease-in-out infinite alternate-reverse}
+@keyframes drift1{to{transform:translate(120px,80px) scale(1.12)}}
+@keyframes drift2{to{transform:translate(-140px,60px) scale(.9)}}
+.gridbg{position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(252,250,251,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(252,250,251,.05) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 80%)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;max-width:1200px;margin:0 auto}
+.navwrap{position:relative;z-index:5;border-bottom:1px solid rgba(252,250,251,.08);background:rgba(37,28,42,.35);backdrop-filter:blur(14px)}
+.links{display:flex;gap:28px;align-items:center;font-size:15px;font-weight:500}
+.links a.l{color:#E4D9DE;text-decoration:none;position:relative;padding:6px 0}
+.links a.l::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--ro);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.links a.l:hover::after{transform:scaleX(1)}
+.lang{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#A898A2}
+.menu{display:none;min-width:44px;min-height:44px;border:1px solid rgba(252,250,251,.2);border-radius:12px;background:transparent;align-items:center;justify-content:center}
+.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;max-width:1200px;margin:0 auto;padding:88px 24px 72px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 12px;border:1px solid rgba(95,196,193,.35);border-radius:999px;background:rgba(19,143,141,.1);color:#9FE0DD}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--tql);box-shadow:0 0 0 0 rgba(95,196,193,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(95,196,193,0)}100%{box-shadow:0 0 0 0 rgba(95,196,193,0)}}
+h1.serif{font-size:66px;line-height:1.03;margin:26px 0 0;color:var(--cr);font-weight:600}
+h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+h1 .ln>span{display:inline-block;animation:rise 1s var(--ease) both}
+h1 .ln:nth-child(2)>span{animation-delay:.12s}
+h1 em{font-style:italic;font-weight:500;color:var(--ro)}
+@keyframes rise{from{transform:translateY(105%);opacity:0}to{transform:none;opacity:1}}
+.fade{animation:fadeup .9s var(--ease) both}
+.d1{animation-delay:.3s}.d2{animation-delay:.42s}.d3{animation-delay:.55s}.d4{animation-delay:.7s}
+@keyframes fadeup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.lead{margin:26px 0 0;font-size:19px;color:#D8CCD2;max-width:540px}
+/* console */
+.console{position:relative;border-radius:24px;background:linear-gradient(160deg,rgba(252,250,251,.09),rgba(252,250,251,.03));border:1px solid rgba(252,250,251,.14);backdrop-filter:blur(18px);box-shadow:0 40px 80px -40px rgba(0,0,0,.7),inset 0 1px 0 rgba(252,250,251,.12);overflow:hidden;animation:fadeup 1.1s .35s var(--ease) both}
+.console::before{content:'';position:absolute;inset:-1px;border-radius:24px;padding:1px;background:conic-gradient(from var(--ang),transparent 0 70%,rgba(231,162,182,.7) 80%,rgba(95,196,193,.7) 90%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 8s linear infinite;pointer-events:none}
+@keyframes spin{to{--ang:360deg}}
+.cbar{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid rgba(252,250,251,.08)}
+.cbar i{width:10px;height:10px;border-radius:50%;background:rgba(252,250,251,.18)}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid rgba(252,250,251,.08)}
+.tab{position:relative;padding:14px 16px;font-size:14px;font-weight:600;color:#A898A2;animation:tabon 15s infinite both}
+.tab small{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:400;letter-spacing:.06em;color:#8E7F88}
+.tab .bar{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--ro);transform:scaleX(0);transform-origin:left;animation:barfill 15s linear infinite both}
+.tab:nth-child(2),.tab:nth-child(2) .bar{animation-delay:5s}
+.tab:nth-child(3),.tab:nth-child(3) .bar{animation-delay:10s}
+@keyframes tabon{0%,31%{color:#FCFAFB}33.4%,100%{color:#A898A2}}
+@keyframes barfill{0%{transform:scaleX(0)}33.3%{transform:scaleX(1);opacity:1}33.4%,100%{transform:scaleX(0);opacity:0}}
+.stage{position:relative;height:330px}
+.panel{position:absolute;inset:0;padding:22px;opacity:0;animation:cyc 15s infinite both}
+.panel:nth-child(2){animation-delay:5s}.panel:nth-child(3){animation-delay:10s}
+@keyframes cyc{0%{opacity:0;transform:translateY(10px)}3%,30%{opacity:1;transform:none}33.3%,100%{opacity:0;transform:translateY(-8px)}}
+.console:hover .panel,.console:hover .tab,.console:hover .bar{animation-play-state:paused}
+.ex{position:absolute;right:18px;bottom:14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#8E7F88}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(252,250,251,.05);border:1px solid rgba(252,250,251,.07);margin-bottom:8px;font-size:14px}
+.row b{color:var(--cr);font-weight:600}.row span.s{color:#B5A8AF}
+.st{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.st-g{background:#14403F;color:#9FE0DD}.st-r{background:#4A2236;color:#F3C9D5}.st-n{background:rgba(252,250,251,.08);color:#D8CCD2}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.kpis div{padding:10px 12px;border-radius:12px;background:rgba(252,250,251,.04);font-size:12px;color:#A898A2}
+.kpis b{display:block;font-size:15px;color:var(--cr)}
+.prodtile{display:flex;gap:14px;align-items:center;padding:12px;border-radius:14px;background:rgba(252,250,251,.05);border:1px solid rgba(252,250,251,.07)}
+.thumb{width:64px;height:64px;border-radius:12px;background:repeating-linear-gradient(135deg,#7F2044 0 8px,#E7A2B6 8px 14px,#138F8D 14px 20px,#55162F 20px 28px)}
+.bubble{margin:14px 0 0 auto;max-width:82%;padding:12px 14px;border-radius:16px 16px 4px 16px;background:#0F4E4D;color:#E2F6F5;font-size:14px;animation:pop 15s infinite both;animation-delay:5s}
+@keyframes pop{0%,8%{opacity:0;transform:translateY(8px) scale(.96)}12%,30%{opacity:1;transform:none}33.3%,100%{opacity:0}}
+.docs{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}
+.doc{border-radius:12px;background:#FCFAFB;padding:14px;height:180px}
+.doc .h{height:10px;width:60%;border-radius:4px;background:#7F2044;margin-bottom:10px}
+.doc .p{height:6px;border-radius:3px;background:#DCCFD5;margin-bottom:7px}
+.doc .tb{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:10px}.doc .tb i{height:14px;border-radius:3px;background:#EADDE3}
+.doc .lb{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#55162F;margin-bottom:8px}
+.swap{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(95,196,193,.15);color:var(--tql)}
+.chips{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+.chips span{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 9px;border-radius:8px;border:1px solid rgba(252,250,251,.14);color:#D8CCD2}
+/* marquee */
+.mq{border-top:1px solid rgba(252,250,251,.08);overflow:hidden;padding:20px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mq-in{display:flex;gap:44px;width:max-content;animation:mq 46s linear infinite}
+.mq-in span{display:inline-flex;align-items:center;gap:44px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#B5A8AF;white-space:nowrap}
+.mq-in span::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--tq)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* doors */
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.door{position:relative;display:block;padding:36px;border-radius:24px;background:#fff;border:1px solid var(--li);text-decoration:none;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s}
+.door::after{content:'';position:absolute;width:340px;height:340px;right:-120px;bottom:-160px;border-radius:50%;background:radial-gradient(circle,rgba(231,162,182,.45),transparent 65%);transition:transform .7s var(--ease);transform:scale(.6)}
+.door.tq::after{background:radial-gradient(circle,rgba(19,143,141,.3),transparent 65%)}
+.door:hover{transform:translateY(-4px);box-shadow:0 30px 60px -36px rgba(85,22,47,.45);border-color:#E1C9D3}
+.door:hover::after{transform:scale(1.15)}
+.door h3{font-size:30px;line-height:1.15;margin:0;color:var(--in)}
+.door .go{display:inline-flex;align-items:center;gap:10px;margin-top:22px;color:var(--bx);font-weight:600}
+.door .go b{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--bx);color:var(--cr);transition:transform .4s var(--ease)}
+.door:hover .go b{transform:translateX(6px) rotate(-45deg)}
+/* products */
+.dk{position:relative;background:var(--in);color:#F3ECEF;isolation:isolate}
+.dk .aur{opacity:.32}
+.prod{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:20px}
+.pc{position:relative;border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:14px;background:linear-gradient(180deg,#2E2335,#271E2D);border:1px solid #3D3043;transition:transform .5s var(--ease),border-color .5s}
+.pc::before{content:'';position:absolute;inset:-1px;border-radius:24px;padding:1px;background:conic-gradient(from var(--ang),transparent 0 60%,var(--ro) 78%,var(--tql) 92%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .5s;animation:spin 6s linear infinite;pointer-events:none}
+.pc:hover{transform:translateY(-6px)}.pc:hover::before{opacity:1}
+.pc.feat{background:linear-gradient(170deg,#3A2140 0%,#2A1F30 60%)}
+.pc h3{margin:0;font-size:30px;color:var(--cr)}
+.pc .who{margin:0;color:#A898A2;font-size:12px}
+.pc p.d{margin:0;color:#CFC2C9}
+.pc ul{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.pc li{font-size:13px;padding:5px 10px;border-radius:8px;background:rgba(252,250,251,.06);color:#D8CCD2}
+.pc a.more{margin-top:auto;color:var(--ro);font-weight:600;text-decoration:none;min-height:44px;display:inline-flex;align-items:center;gap:8px}
+.pc a.more span{transition:transform .35s var(--ease)}.pc a.more:hover span{transform:translateX(5px)}
+.pill{display:inline-block;align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:4px 11px;border-radius:999px;white-space:nowrap}
+.p-prod{background:#14403F;color:#9FE0DD}.p-beta{background:#4A2236;color:#F3C9D5}
+/* services */
+.svcs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc{position:relative;padding:28px 24px;border-radius:20px;background:#fff;border:1px solid var(--li);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.svc:hover{transform:translateY(-4px);box-shadow:0 24px 50px -34px rgba(85,22,47,.5)}
+.svc .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#E3F2F1;color:var(--tqt);margin-bottom:18px;transition:transform .45s var(--ease),background .45s}
+.svc:hover .ic{transform:rotate(-8deg) scale(1.06);background:var(--tq);color:#fff}
+.svc h3{margin:0 0 8px;font-size:19px}.svc p{margin:0;color:var(--mu);font-size:15.5px}
+/* method */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:52px}
+.steps::before{content:'';position:absolute;left:24px;right:24px;top:23px;height:2px;background:var(--li)}
+.steps::after{content:'';position:absolute;left:24px;top:23px;height:2px;width:calc(100% - 48px);background:linear-gradient(90deg,var(--bx),var(--ro),var(--tq));transform-origin:left;animation:line 6s var(--ease) infinite}
+@keyframes line{0%{transform:scaleX(0)}55%,85%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+.step{position:relative;z-index:1}
+.step .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--cr);border:2px solid var(--bx);color:var(--bx);font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;margin-bottom:18px}
+.step h3{margin:0 0 6px;font-size:19px}.step p{margin:0;color:var(--mu);font-size:15.5px}
+/* real */
+.real{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px}
+.rc{border-radius:22px;padding:28px;background:#fff;border:1px solid var(--li);transition:transform .45s var(--ease)}
+.rc:hover{transform:translateY(-4px)}
+.rc.big{background:linear-gradient(150deg,#7F2044,#55162F);color:var(--cr);border:0}
+.rc .tag{margin:0 0 10px;font-size:12px;color:var(--bx)}.rc.big .tag{color:#F3C9D5}
+.rc h3{margin:0 0 8px;font-size:22px}.rc p{margin:0;font-size:15.5px;color:var(--mu)}.rc.big p{color:#F3DCE4}
+.ph{margin-top:14px!important;font-size:13px!important;color:#8B7A85!important}.rc.big .ph{color:#E7A2B6!important}
+/* contact */
+.cta{position:relative;background:var(--bx);color:var(--cr);isolation:isolate;overflow:hidden}
+.cta .aur{opacity:.5}
+.routes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.route{display:block;padding:26px;border-radius:20px;background:rgba(37,28,42,.28);border:1px solid rgba(252,250,251,.14);text-decoration:none;color:var(--cr);backdrop-filter:blur(8px);transition:background .4s,transform .45s var(--ease)}
+.route:hover{background:rgba(37,28,42,.45);transform:translateY(-4px)}
+.route strong{font-size:20px}.route p{margin:6px 0 0;color:#F3C9D5;font-size:15.5px}
+@media (prefers-reduced-motion:reduce){
+  .t *,.t *::before,.t *::after{animation:none!important;transition:none!important}
+  .panel:first-child,.bubble{opacity:1}.tab:first-child{color:#FCFAFB}.tab:first-child .bar{transform:none}.steps::after{transform:none}
+}
+@media (max-width:900px){
+  .links{display:none}.menu{display:inline-flex}
+  .hgrid{grid-template-columns:1fr;gap:40px;padding:52px 20px 48px}
+  h1.serif{font-size:42px}h2.serif{font-size:32px}.lead{font-size:17.5px}
+  .doors,.prod,.svcs,.real,.routes{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:28px}.steps::before,.steps::after{left:23px;right:auto;top:24px;bottom:24px;width:2px;height:auto}
+  .steps::after{background:linear-gradient(180deg,var(--bx),var(--ro),var(--tq));transform-origin:top;animation:none}
+  .step{padding-left:68px}.step .n{position:absolute;left:0;top:0}
+  .w{padding:0 20px}.door,.pc,.rc{padding:24px}.door h3{font-size:26px}
+  .btn{width:100%}.stage{height:350px}.tab{padding:12px 10px;font-size:13px}.tab small{display:none}
+  .aur{filter:blur(60px)}.a1{width:380px;height:380px}.a2{width:320px;height:320px}
+  .sec{padding-top:64px!important;padding-bottom:64px!important}
+}
+</style>
+</helmet>
+<div class="t">
+
+  <section class="hero" aria-label="Présentation">
+    <div class="aur a1" aria-hidden="true"></div><div class="aur a2" aria-hidden="true"></div><div class="aur a3" aria-hidden="true"></div>
+    <div class="gridbg" aria-hidden="true"></div>
+    <header class="navwrap">
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#" aria-label="Trigenys Group, accueil" style="line-height:0"><img src="/_blob/bc607b87c6b4dbe4fe5cd7ddbabb885e" alt="Trigenys Group" style="height:38px;width:auto"></a>
+        <div class="links">
+          <a class="l" href="#logiciels">Logiciels</a>
+          <a class="l" href="#services">Services</a>
+          <a class="l" href="#realisations">Réalisations</a>
+          <a class="l" href="#methode">Méthode</a>
+          <a class="l" href="https://insight.trigenys.com/">Insight</a>
+          <span class="lang"><a href="#" aria-current="true" style="color:#FCFAFB;text-decoration:none">FR</a> · <a href="#" lang="en" style="text-decoration:none">EN</a></span>
+          <a href="#contact" class="btn b-ro" style="min-height:44px;padding:10px 20px">Nous contacter</a>
+        </div>
+        <button class="menu" type="button" aria-label="Ouvrir le menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FCFAFB" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </nav>
+    </header>
+
+    <div class="hgrid">
+      <div>
+        <span class="eyebrow mono fade" style="font-size:12px"><span class="dot" aria-hidden="true"></span>Éditeur de logiciels · Ingénierie · Cameroun</span>
+        <h1 class="serif"><span class="ln"><span>Nous construisons des logiciels métiers.</span></span><span class="ln"><span><em>Les nôtres, et les vôtres.</em></span></span></h1>
+        <p class="lead fade d2">Trigenys Group édite ses propres solutions SaaS et accompagne les organisations dans la conception, l'intégration et la maintenance de leurs applications.</p>
+        <div class="fade d3" style="margin-top:36px;display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#logiciels" class="btn b-ro">Découvrir nos logiciels <span class="ar" aria-hidden="true">→</span></a>
+          <a href="#contact" class="btn b-gh">Confier un projet</a>
+        </div>
+      </div>
+
+      <div class="console" role="img" aria-label="Aperçu animé des trois logiciels Trigenys, avec des données d'exemple">
+        <div class="cbar" aria-hidden="true"><i></i><i></i><i></i><span class="mono" style="margin-left:auto;font-size:11px;color:#8E7F88">trigenys · produits</span></div>
+        <div class="tabs" aria-hidden="true">
+          <div class="tab">Atelier Maître<small>En production</small><span class="bar"></span></div>
+          <div class="tab">Commerce Factory<small>Bêta ouverte</small><span class="bar"></span></div>
+          <div class="tab">Précis<small>Bêta · pilotes</small><span class="bar"></span></div>
+        </div>
+        <div class="stage" aria-hidden="true">
+          <div class="panel">
+            <div class="kpis"><div>Réception<b>Véhicule</b></div><div>Atelier<b>Ordres</b></div><div>Caisse<b>Factures</b></div></div>
+            <div class="row"><span><b>OT-0142</b> · <span class="s">Toyota Hilux · vidange, freins</span></span><span class="st st-g">En cours</span></div>
+            <div class="row"><span><b>OT-0143</b> · <span class="s">Peugeot 308 · diagnostic</span></span><span class="st st-r">Attente pièces</span></div>
+            <div class="row"><span><b>OT-0144</b> · <span class="s">Hyundai Tucson · carrosserie</span></span><span class="st st-n">Devis envoyé</span></div>
+            <span class="ex">Données d'exemple</span>
+          </div>
+          <div class="panel">
+            <div class="prodtile"><div class="thumb"></div><div style="flex:1"><b style="color:#FCFAFB">Sac en tissu wax</b><div style="font-size:13px;color:#B5A8AF">Catalogue · boutique partagée</div></div><span class="st st-n">18 500 FCFA</span></div>
+            <div class="bubble"><span class="mono" style="font-size:10.5px;color:#9FE0DD;display:block;margin-bottom:4px">WhatsApp · nouvelle demande</span>2 × Sac en tissu wax — livraison à Douala. Je confirme ?</div>
+            <span class="ex">Données d'exemple</span>
+          </div>
+          <div class="panel">
+            <div class="docs">
+              <div class="doc"><div class="lb">FR · rapport.docx</div><div class="h"></div><div class="p"></div><div class="p" style="width:85%"></div><div class="p" style="width:70%"></div><div class="tb"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+              <div class="swap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+              <div class="doc"><div class="lb">EN · report.docx</div><div class="h"></div><div class="p"></div><div class="p" style="width:85%"></div><div class="p" style="width:70%"></div><div class="tb"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            </div>
+            <div class="chips"><span>PDF</span><span>DOCX</span><span>PPTX</span><span>XLSX</span><span style="border-color:rgba(95,196,193,.4);color:#9FE0DD">Mise en page conservée</span></div>
+            <span class="ex">Données d'exemple</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mq" aria-label="Repères">
+      <div class="mq-in">
+        <span>Atelier Maître v1.18 en production</span><span>Paiements mobiles</span><span>Commandes WhatsApp</span><span>FCFA</span><span>Français · English</span><span>Versions tracées</span><span>Briques open source</span><span>Conçu au Cameroun</span>
+        <span aria-hidden="true">Atelier Maître v1.18 en production</span><span aria-hidden="true">Paiements mobiles</span><span aria-hidden="true">Commandes WhatsApp</span><span aria-hidden="true">FCFA</span><span aria-hidden="true">Français · English</span><span aria-hidden="true">Versions tracées</span><span aria-hidden="true">Briques open source</span><span aria-hidden="true">Conçu au Cameroun</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Deux façons de travailler avec nous" style="background:#F5EEF1">
+    <div class="w sec" style="padding-top:88px;padding-bottom:88px">
+      <div class="doors">
+        <a href="#logiciels" class="door">
+          <p class="mono" style="margin:0 0 14px;color:var(--bx)">01 · Logiciels</p>
+          <h3 class="serif">Vous cherchez un outil prêt à l'emploi.</h3>
+          <p style="margin:12px 0 0;color:var(--mu);max-width:440px">Voyez nos produits fonctionner sur une démonstration, puis démarrez rapidement.</p>
+          <span class="go">Voir les logiciels <b aria-hidden="true">→</b></span>
+        </a>
+        <a href="#services" class="door tq">
+          <p class="mono" style="margin:0 0 14px;color:var(--tqt)">02 · Services</p>
+          <h3 class="serif">Vous avez un besoin spécifique.</h3>
+          <p style="margin:12px 0 0;color:var(--mu);max-width:440px">Application sur mesure, intégration de systèmes, reprise et maintenance d'une application existante.</p>
+          <span class="go" style="color:var(--tqt)">Voir les services <b aria-hidden="true" style="background:var(--tq)">→</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="logiciels" class="dk">
+    <div class="aur a2" aria-hidden="true" style="top:-120px"></div><div class="aur a1" aria-hidden="true" style="left:auto;right:-240px;top:auto;bottom:-260px"></div>
+    <div class="w sec" style="padding-top:104px;padding-bottom:104px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <div><p class="mono" style="margin:0 0 14px;color:var(--tql)">Nos logiciels</p>
+        <h2 class="serif" style="color:var(--cr);max-width:640px">Trois produits, trois métiers. Chaque stade annoncé clairement.</h2></div>
+        <p style="margin:0;max-width:340px;color:#B5A8AF;font-size:15.5px">En production ou en bêta : nous disons où en est chaque outil, pour que vous sachiez à quoi vous engager.</p>
+      </div>
+      <div class="prod" style="margin-top:52px">
+        <article class="pc feat">
+          <span class="pill p-prod">En production</span>
+          <h3 class="serif">Atelier Maître</h3>
+          <p class="mono who">Garages &amp; centres auto</p>
+          <p class="d">Réception, ordres de travail, planning, stock de pièces, devis, factures et caisse dans un même outil.</p>
+          <ul><li>Réception</li><li>Ordres de travail</li><li>Stock</li><li>Facturation</li></ul>
+          <a class="more" href="#">Demander une démonstration <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="pc">
+          <span class="pill p-beta">Bêta ouverte</span>
+          <h3 class="serif">Commerce Factory</h3>
+          <p class="mono who">Boutiques &amp; marques</p>
+          <p class="d">Un catalogue en ligne à partager. Le client choisit, la demande de commande arrive sur votre WhatsApp.</p>
+          <a class="more" href="PisteA-CommerceFactory.dc.html">Rejoindre la bêta <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="pc">
+          <span class="pill p-beta">Bêta · pilotes</span>
+          <h3 class="serif">Précis Translator</h3>
+          <p class="mono who">Cabinets &amp; entreprises bilingues</p>
+          <p class="d">PDF, Word, PowerPoint et Excel traduits en conservant la mise en page d'origine.</p>
+          <a class="more" href="#">Proposer un pilote <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="w sec" style="padding-top:104px;padding-bottom:96px">
+      <p class="mono" style="margin:0 0 14px;color:var(--tqt)">Services professionnels</p>
+      <h2 class="serif" style="max-width:740px">L'expérience de nos produits, mise au service de vos applications.</h2>
+      <div class="svcs" style="margin-top:48px">
+        <div class="svc"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></div><h3>Ingénierie logicielle</h3><p>Applications web, mobiles et métiers conçues autour de vos processus.</p></div>
+        <div class="svc"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H14a4 4 0 014 4v5.5M15.5 18H10a4 4 0 01-4-4V8.5"/></svg></div><h3>Intégration &amp; automatisation</h3><p>API, paiements mobiles, notifications WhatsApp et Telegram, flux automatisés.</p></div>
+        <div class="svc"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Support &amp; maintenance</h3><p>Correction, évolution et suivi de vos applications, avec des versions tracées.</p></div>
+        <div class="svc"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-6 7 6v11"/><path d="M10 21v-6h4v6"/></svg></div><h3>Cadrage &amp; architecture</h3><p>Analyse du besoin et choix techniques avant d'écrire la première ligne.</p></div>
+      </div>
+      <a href="#contact" class="btn b-bx" style="margin-top:44px">Décrire mon projet <span class="ar" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section id="methode" style="background:#F5EEF1">
+    <div class="w sec" style="padding-top:104px;padding-bottom:104px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <div><p class="mono" style="margin:0 0 14px;color:var(--tqt)">Méthode · RAIDER</p>
+        <h2 class="serif" style="max-width:640px">Un logiciel doit encore fonctionner dans trois ans.</h2></div>
+        <p style="margin:0;max-width:360px;color:var(--mu);font-size:15.5px">Notre standard d'ingénierie interne s'applique à nos produits comme aux projets clients.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><h3>Démontrer avant d'engager</h3><p>Démo ou pilote sur votre cas réel.</p></div>
+        <div class="step"><div class="n">02</div><h3>Livrer par versions</h3><p>Chaque évolution est testée, numérotée et réversible.</p></div>
+        <div class="step"><div class="n">03</div><h3>Documenter</h3><p>Architecture et décisions écrites, pour ne dépendre de personne.</p></div>
+        <div class="step"><div class="n">04</div><h3>Dire les limites</h3><p>Maturité et périmètre annoncés sans exagération.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realisations">
+    <div class="w sec" style="padding-top:104px;padding-bottom:96px">
+      <p class="mono" style="margin:0 0 14px;color:var(--tqt)">Réalisations</p>
+      <h2 class="serif" style="max-width:720px">Des systèmes en service, pas des maquettes.</h2>
+      <div class="real" style="margin-top:44px">
+        <div class="rc big"><p class="mono tag">Automobile · production</p><h3 class="serif" style="font-size:28px">Atelier Maître</h3><p>Plateforme de gestion d'atelier en service, publiée en versions successives.</p><p class="ph">[Client et résultats à valider]</p></div>
+        <div class="rc"><p class="mono tag">E-commerce · intégration</p><h3>[Plateforme e-commerce]</h3><p>Boutique connectée au stock, aux commandes, aux paiements et au service après-vente.</p><p class="ph">[Nom publiable à confirmer]</p></div>
+        <div class="rc"><p class="mono tag">Open source</p><h3>Outils publiés</h3><p>Une partie de nos briques d'ingénierie et d'automatisation est publique sur GitHub.</p><a href="#" style="display:inline-flex;min-height:44px;align-items:center;font-weight:600;color:var(--bx);text-decoration:none">Voir sur GitHub →</a></div>
+      </div>
+      <div style="margin-top:56px;padding-top:40px;border-top:1px solid var(--li);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:center">
+        <h3 class="serif" style="margin:0;font-size:30px;line-height:1.2">Conçu au Cameroun, pour des organisations d'ici et d'ailleurs.</h3>
+        <p style="margin:0;color:var(--mu)">WhatsApp comme canal de vente, paiements mobiles, FCFA, usage bilingue français–anglais. Et notre publication <a href="https://insight.trigenys.com/" style="color:var(--bx);font-weight:600">Trigenys Insight</a> sur la tech vue d'Afrique.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta">
+    <div class="aur a3" aria-hidden="true" style="left:-120px;bottom:-260px"></div><div class="aur a2" aria-hidden="true" style="opacity:.3"></div>
+    <div class="w sec" style="padding-top:104px;padding-bottom:104px">
+      <p class="mono" style="margin:0 0 14px;color:#F3C9D5">Contact</p>
+      <h2 class="serif" style="color:var(--cr);max-width:720px">Par où commencer ?</h2>
+      <div class="routes">
+        <a href="#" class="route"><strong>Voir un logiciel</strong><p>Démonstration d'Atelier Maître, de Commerce Factory ou de Précis.</p></a>
+        <a href="#" class="route"><strong>Confier un projet</strong><p>Décrivez votre besoin, nous revenons avec un cadrage.</p></a>
+        <a href="#" class="route"><strong>Support client</strong><p>Vous utilisez déjà un de nos outils.</p></a>
+      </div>
+      <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#" class="btn" style="background:var(--cr);color:var(--bx)">WhatsApp · [Numéro] <span class="ar" aria-hidden="true">→</span></a>
+        <a href="#" class="btn b-gh">[contact@…]</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:var(--in);color:#CFC2C9">
+    <div class="w" style="padding-top:56px;padding-bottom:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;font-size:15px">
+      <div><img src="/_blob/bc607b87c6b4dbe4fe5cd7ddbabb885e" alt="Trigenys Group" style="height:34px;width:auto"><p style="margin:12px 0 0;font-size:14px">Designing the systems behind decisions.</p></div>
+      <div><p class="mono" style="margin:0 0 10px;color:#A898A2;font-size:12px">Logiciels</p><a href="#" style="color:#CFC2C9;display:block">Atelier Maître</a><a href="#" style="color:#CFC2C9;display:block">Commerce Factory</a><a href="#" style="color:#CFC2C9;display:block">Précis Translator</a></div>
+      <div><p class="mono" style="margin:0 0 10px;color:#A898A2;font-size:12px">Services</p><a href="#" style="color:#CFC2C9;display:block">Ingénierie</a><a href="#" style="color:#CFC2C9;display:block">Intégration</a><a href="#" style="color:#CFC2C9;display:block">Maintenance</a></div>
+      <div><p class="mono" style="margin:0 0 10px;color:#A898A2;font-size:12px">Groupe</p><a href="https://insight.trigenys.com/" style="color:#CFC2C9;display:block">Insight</a><a href="#" style="color:#CFC2C9;display:block">GitHub</a><a href="#" style="color:#CFC2C9;display:block">Mentions légales</a></div>
+    </div>
+    <div class="w" style="padding-bottom:28px"><span class="mono" style="font-size:12px;color:#A898A2">© 2026 Trigenys Group</span></div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4920}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
