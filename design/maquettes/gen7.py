@@ -26,6 +26,22 @@ rep = {
 }
 for k, v in rep.items():
     src = src.replace(k, v)
+def orbits(seed):
+    import math
+    rnd = random.Random(seed)
+    out = ['<svg class="orb" viewBox="0 0 760 760" aria-hidden="true"><defs>']
+    rings = [(340, 130, 54, 'a'), (300, 190, 40, 'b'), (230, 250, 30, 'c')]
+    for i, (rx, ry, d, nm) in enumerate(rings):
+        out.append(f'<path id="o{seed}{nm}" d="M{380-rx},380a{rx},{ry} 0 1,0 {2*rx},0a{rx},{ry} 0 1,0 -{2*rx},0"/>')
+    out.append('</defs>')
+    for i, (rx, ry, d, nm) in enumerate(rings):
+        per = math.pi * (3*(rx+ry) - math.sqrt((3*rx+ry)*(rx+3*ry)))
+        txt = ''.join(rnd.choice('01') for _ in range(int(per / 11)))
+        out.append(f'<g class="{"r" if i%2 else ""}" style="--d:{d}s"><text fill="#fff" font-size="11"><textPath href="#o{seed}{nm}">{txt}</textPath></text></g>')
+    out.append('</svg>')
+    return ''.join(out)
+for i in range(1, 5):
+    src = src.replace('@@ORB@@', orbits(i), 1)
 src = src.replace('@@FX@@', (ROOT / 'fx.js').read_text(encoding='utf-8'))
 
 # vh units -> container-aware variable (set by the engine; falls back to the viewport)

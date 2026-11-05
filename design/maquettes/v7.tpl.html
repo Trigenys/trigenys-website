@@ -172,6 +172,23 @@ h2.sec{margin:0;font-size:60px;line-height:1.02;font-weight:500;max-width:820px}
 }
 /* métiers */
 .met{padding:130px 0 0;position:relative}
+/* métiers : section épinglée, un métier par cran de défilement, orbites binaires */
+.orb{position:absolute;right:-120px;top:50%;width:760px;height:760px;margin-top:-380px;opacity:.13;pointer-events:none;font-family:'IBM Plex Mono',monospace;font-weight:500;letter-spacing:.35em}
+.orb g{transform-origin:380px 380px;animation:orb var(--d,48s) linear infinite}
+.orb g.r{animation-direction:reverse}
+@keyframes orb{to{transform:rotate(360deg)}}
+.met .stick{position:relative}
+.met .pct{display:none}
+.t.js:not(.m) .met{height:340vh;padding:0}
+.t.js:not(.m) .met .stick{position:sticky;top:0;height:100vh;box-sizing:border-box;padding-top:96px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.t.js:not(.m) .tabs{margin-top:36px;grid-template-rows:auto}
+.t.js:not(.m) .tabs .lbl{grid-area:1/1}
+.t.js:not(.m) .tabs .pane{display:block;grid-area:1/2;animation:none;opacity:0;transform:translateY(40px) scale(.97);transition:opacity .55s var(--e),transform .7s var(--e);pointer-events:none}
+.t.js:not(.m) #m1:checked~.pn1,.t.js:not(.m) #m2:checked~.pn2,.t.js:not(.m) #m3:checked~.pn3,.t.js:not(.m) #m4:checked~.pn4{opacity:1;transform:none;pointer-events:auto}
+.t.js:not(.m) .tabs label{position:relative;overflow:hidden}
+.t.js:not(.m) .tabs label::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:rgba(255,255,255,.55);transform:scaleX(var(--k,0));transform-origin:left}
+.t.js:not(.m) .met .pct{display:block;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--mu)}
+
 .tabs{margin-top:48px;display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
 .tabs input{position:absolute;opacity:0;pointer-events:none}
 .tabs label{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;border-radius:16px;font-size:19px;font-weight:500;cursor:pointer;transition:background .3s,color .3s;border:1px solid transparent}
@@ -395,6 +412,7 @@ h2.sec{margin:0;font-size:60px;line-height:1.02;font-weight:500;max-width:820px}
 </section>
 
 <section class="w met" id="metiers">
+ <div class="stick">
   <div class="sh"><div class="rv"><p class="mo kl">Par métier</p><h2 class="sf sec">Dites-nous ce que vous faites. On vous dit quel outil.</h2></div><p class="rv d1">Un produit prêt quand il existe, un cadrage quand il n'existe pas encore.</p></div>
   <div class="tabs rv d1">
     <input type="radio" name="m" id="m1" checked><input type="radio" name="m" id="m2"><input type="radio" name="m" id="m3"><input type="radio" name="m" id="m4">
@@ -403,16 +421,18 @@ h2.sec{margin:0;font-size:60px;line-height:1.02;font-weight:500;max-width:820px}
       <label for="m2" class="l2">Commerçants &amp; boutiques <small>Commerce Factory</small></label>
       <label for="m3" class="l3">Entreprises, cabinets &amp; administrations <small>Précis Translator</small></label>
       <label for="m4" class="l4">Un autre métier <small>Ingénierie</small></label>
+      <p class="pct">Faites défiler · <span>1</span> / 4</p>
     </div>
-    <div class="pane pn1 am"><div class="bits"><span style="left:10%;top:70%">01000001 01010100 01000101 01001100 01001001 01000101 01010010</span></div><h3 class="sf">Garages &amp; ateliers</h3><p>De la réception du véhicule à la facture, avec le stock de pièces et le journal de chaque intervention.</p>
+    <div class="pane pn1 am"><div class="bits"><span style="left:10%;top:70%">01000001 01010100 01000101 01001100 01001001 01000101 01010010</span></div>@@ORB@@<h3 class="sf">Garages &amp; ateliers</h3><p>De la réception du véhicule à la facture, avec le stock de pièces et le journal de chaque intervention.</p>
       <div class="pl"><a href="https://atelier.trigenys.com/"><span class="ic"><img src="/_blob/0bec717c0481dfc4fde4a4f311337f47" alt=""></span><span><b>Atelier Maître</b><span>Gestion d'atelier · en production · atelier.trigenys.com</span></span></a></div></div>
-    <div class="pane pn2 cf"><div class="bits"><span style="left:10%;top:70%">01000011 01001111 01001101 01001101 01000101 01010010 01000011 01000101</span></div><h3 class="sf">Commerçants &amp; boutiques</h3><p>Une boutique en ligne prête en bêta, et pour les plus grands, une plateforme complète construite sur mesure.</p>
+    <div class="pane pn2 cf"><div class="bits"><span style="left:10%;top:70%">01000011 01001111 01001101 01001101 01000101 01010010 01000011 01000101</span></div>@@ORB@@<h3 class="sf">Commerçants &amp; boutiques</h3><p>Une boutique en ligne prête en bêta, et pour les plus grands, une plateforme complète construite sur mesure.</p>
       <div class="pl"><a href="https://trigenys-commerce-factory.pages.dev/"><span class="ic"><img src="/_blob/c008d8533ff08d2ffe7041fc19c21921" alt="" style="object-fit:contain;padding:4px;background:#fff"></span><span><b>Commerce Factory</b><span>Boutique, commandes, stocks · bêta ouverte</span></span></a><a href="#ingenierie"><span class="ic" style="background:#251C2A;color:#fff;font-weight:700">X</span><span><b>Plateforme sur mesure</b><span>Comme pour XEPTION · ingénierie</span></span></a></div></div>
-    <div class="pane pn3 pt"><div class="bits"><span style="left:10%;top:70%">01010000 01010010 01000101 01000011 01001001 01010011</span></div><h3 class="sf">Entreprises, cabinets &amp; administrations</h3><p>Des documents traduits sans perdre leur forme, et des systèmes internes construits autour de vos processus.</p>
+    <div class="pane pn3 pt"><div class="bits"><span style="left:10%;top:70%">01010000 01010010 01000101 01000011 01001001 01010011</span></div>@@ORB@@<h3 class="sf">Entreprises, cabinets &amp; administrations</h3><p>Des documents traduits sans perdre leur forme, et des systèmes internes construits autour de vos processus.</p>
       <div class="pl"><a href="https://precis-translator.trigenys.com/"><span class="ic"><img src="/_blob/5e0d338552fa0ba154620eebc04b339f" alt="" style="object-fit:contain;padding:4px;background:#fff"></span><span><b>Précis Translator</b><span>Traduction, mise en page conservée · bêta</span></span></a><a href="#ingenierie"><span class="ic" style="background:#251C2A;color:#fff;font-weight:700">⚙</span><span><b>Système interne sur mesure</b><span>Cadrage, construction, intégration</span></span></a></div></div>
-    <div class="pane pn4"><div class="bits"><span style="left:10%;top:70%">01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011</span></div><h3 class="sf">Un autre métier</h3><p>Pas encore de produit pour vous ? Un cadrage donne un périmètre, un prix et une architecture avant la première ligne de code.</p>
+    <div class="pane pn4"><div class="bits"><span style="left:10%;top:70%">01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011</span></div>@@ORB@@<h3 class="sf">Un autre métier</h3><p>Pas encore de produit pour vous ? Un cadrage donne un périmètre, un prix et une architecture avant la première ligne de code.</p>
       <div class="pl"><a href="#contact"><span class="ic" style="background:var(--bx);color:#fff;font-weight:700">→</span><span><b>Parler à un expert</b><span>WhatsApp ou e-mail, sans engagement</span></span></a></div></div>
   </div>
+ </div>
 </section>
 
 <section class="eng" id="ingenierie">

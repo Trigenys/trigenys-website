@@ -172,6 +172,23 @@ h2.sec{margin:0;font-size:60px;line-height:1.02;font-weight:500;max-width:820px}
 }
 /* métiers */
 .met{padding:130px 0 0;position:relative}
+/* métiers : section épinglée, un métier par cran de défilement, orbites binaires */
+.orb{position:absolute;right:-120px;top:50%;width:760px;height:760px;margin-top:-380px;opacity:.13;pointer-events:none;font-family:'IBM Plex Mono',monospace;font-weight:500;letter-spacing:.35em}
+.orb g{transform-origin:380px 380px;animation:orb var(--d,48s) linear infinite}
+.orb g.r{animation-direction:reverse}
+@keyframes orb{to{transform:rotate(360deg)}}
+.met .stick{position:relative}
+.met .pct{display:none}
+.t.js:not(.m) .met{height:calc(var(--vh,100vh)*340/100);padding:0}
+.t.js:not(.m) .met .stick{position:sticky;top:0;height:calc(var(--vh,100vh)*100/100);box-sizing:border-box;padding-top:96px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.t.js:not(.m) .tabs{margin-top:36px;grid-template-rows:auto}
+.t.js:not(.m) .tabs .lbl{grid-area:1/1}
+.t.js:not(.m) .tabs .pane{display:block;grid-area:1/2;animation:none;opacity:0;transform:translateY(40px) scale(.97);transition:opacity .55s var(--e),transform .7s var(--e);pointer-events:none}
+.t.js:not(.m) #m1:checked~.pn1,.t.js:not(.m) #m2:checked~.pn2,.t.js:not(.m) #m3:checked~.pn3,.t.js:not(.m) #m4:checked~.pn4{opacity:1;transform:none;pointer-events:auto}
+.t.js:not(.m) .tabs label{position:relative;overflow:hidden}
+.t.js:not(.m) .tabs label::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:rgba(255,255,255,.55);transform:scaleX(var(--k,0));transform-origin:left}
+.t.js:not(.m) .met .pct{display:block;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--mu)}
+
 .tabs{margin-top:48px;display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
 .tabs input{position:absolute;opacity:0;pointer-events:none}
 .tabs label{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;border-radius:16px;font-size:19px;font-weight:500;cursor:pointer;transition:background .3s,color .3s;border:1px solid transparent}
@@ -397,6 +414,7 @@ h2.sec{margin:0;font-size:60px;line-height:1.02;font-weight:500;max-width:820px}
 </section>
 
 <section class="w met" id="metiers">
+ <div class="stick">
   <div class="sh"><div class="rv"><p class="mo kl">Par métier</p><h2 class="sf sec">Dites-nous ce que vous faites. On vous dit quel outil.</h2></div><p class="rv d1">Un produit prêt quand il existe, un cadrage quand il n'existe pas encore.</p></div>
   <div class="tabs rv d1">
     <input type="radio" name="m" id="m1" checked><input type="radio" name="m" id="m2"><input type="radio" name="m" id="m3"><input type="radio" name="m" id="m4">
@@ -405,16 +423,18 @@ h2.sec{margin:0;font-size:60px;line-height:1.02;font-weight:500;max-width:820px}
       <label for="m2" class="l2">Commerçants &amp; boutiques <small>Commerce Factory</small></label>
       <label for="m3" class="l3">Entreprises, cabinets &amp; administrations <small>Précis Translator</small></label>
       <label for="m4" class="l4">Un autre métier <small>Ingénierie</small></label>
+      <p class="pct">Faites défiler · <span>1</span> / 4</p>
     </div>
-    <div class="pane pn1 am"><div class="bits"><span style="left:10%;top:70%">01000001 01010100 01000101 01001100 01001001 01000101 01010010</span></div><h3 class="sf">Garages &amp; ateliers</h3><p>De la réception du véhicule à la facture, avec le stock de pièces et le journal de chaque intervention.</p>
+    <div class="pane pn1 am"><div class="bits"><span style="left:10%;top:70%">01000001 01010100 01000101 01001100 01001001 01000101 01010010</span></div><svg class="orb" viewBox="0 0 760 760" aria-hidden="true"><defs><path id="o1a" d="M40,380a340,130 0 1,0 680,0a340,130 0 1,0 -680,0"/><path id="o1b" d="M80,380a300,190 0 1,0 600,0a300,190 0 1,0 -600,0"/><path id="o1c" d="M150,380a230,250 0 1,0 460,0a230,250 0 1,0 -460,0"/></defs><g class="" style="--d:54s"><text fill="#fff" font-size="11"><textPath href="#o1a">001011110010110110010000101001101001101001011011110101101101001110101100000011111010010110111110110000010000101010011000101111110011110101010</textPath></text></g><g class="r" style="--d:40s"><text fill="#fff" font-size="11"><textPath href="#o1b">001000110100111010001001101100001001010010101110111000101101011100000000111111010100101010010100011101100100010000100100001111110010001111110</textPath></text></g><g class="" style="--d:30s"><text fill="#fff" font-size="11"><textPath href="#o1c">01101011100100101010101101011010000001010000111100100000110100001001100010111110110110100100011110001001100111011100010011110100100110011</textPath></text></g></svg><h3 class="sf">Garages &amp; ateliers</h3><p>De la réception du véhicule à la facture, avec le stock de pièces et le journal de chaque intervention.</p>
       <div class="pl"><a href="https://atelier.trigenys.com/"><span class="ic"><img src="/_blob/0bec717c0481dfc4fde4a4f311337f47" alt=""></span><span><b>Atelier Maître</b><span>Gestion d'atelier · en production · atelier.trigenys.com</span></span></a></div></div>
-    <div class="pane pn2 cf"><div class="bits"><span style="left:10%;top:70%">01000011 01001111 01001101 01001101 01000101 01010010 01000011 01000101</span></div><h3 class="sf">Commerçants &amp; boutiques</h3><p>Une boutique en ligne prête en bêta, et pour les plus grands, une plateforme complète construite sur mesure.</p>
+    <div class="pane pn2 cf"><div class="bits"><span style="left:10%;top:70%">01000011 01001111 01001101 01001101 01000101 01010010 01000011 01000101</span></div><svg class="orb" viewBox="0 0 760 760" aria-hidden="true"><defs><path id="o2a" d="M40,380a340,130 0 1,0 680,0a340,130 0 1,0 -680,0"/><path id="o2b" d="M80,380a300,190 0 1,0 600,0a300,190 0 1,0 -600,0"/><path id="o2c" d="M150,380a230,250 0 1,0 460,0a230,250 0 1,0 -460,0"/></defs><g class="" style="--d:54s"><text fill="#fff" font-size="11"><textPath href="#o2a">000101100011111001111100000010010111111011011111111101011111101101000001000100010011000000000110000100000101110110110100100101110111100010000</textPath></text></g><g class="r" style="--d:40s"><text fill="#fff" font-size="11"><textPath href="#o2b">010000101001111000110000000000001111001100100110011110100100101110001011001001110110100011000101111011111111001110001001000011011010010101001</textPath></text></g><g class="" style="--d:30s"><text fill="#fff" font-size="11"><textPath href="#o2c">01101101010111111110001101110001010010101001110100101011111001011000111100110101101101101111110010010010100011011011101111010110001010100</textPath></text></g></svg><h3 class="sf">Commerçants &amp; boutiques</h3><p>Une boutique en ligne prête en bêta, et pour les plus grands, une plateforme complète construite sur mesure.</p>
       <div class="pl"><a href="https://trigenys-commerce-factory.pages.dev/"><span class="ic"><img src="/_blob/c008d8533ff08d2ffe7041fc19c21921" alt="" style="object-fit:contain;padding:4px;background:#fff"></span><span><b>Commerce Factory</b><span>Boutique, commandes, stocks · bêta ouverte</span></span></a><a href="#ingenierie"><span class="ic" style="background:#251C2A;color:#fff;font-weight:700">X</span><span><b>Plateforme sur mesure</b><span>Comme pour XEPTION · ingénierie</span></span></a></div></div>
-    <div class="pane pn3 pt"><div class="bits"><span style="left:10%;top:70%">01010000 01010010 01000101 01000011 01001001 01010011</span></div><h3 class="sf">Entreprises, cabinets &amp; administrations</h3><p>Des documents traduits sans perdre leur forme, et des systèmes internes construits autour de vos processus.</p>
+    <div class="pane pn3 pt"><div class="bits"><span style="left:10%;top:70%">01010000 01010010 01000101 01000011 01001001 01010011</span></div><svg class="orb" viewBox="0 0 760 760" aria-hidden="true"><defs><path id="o3a" d="M40,380a340,130 0 1,0 680,0a340,130 0 1,0 -680,0"/><path id="o3b" d="M80,380a300,190 0 1,0 600,0a300,190 0 1,0 -600,0"/><path id="o3c" d="M150,380a230,250 0 1,0 460,0a230,250 0 1,0 -460,0"/></defs><g class="" style="--d:54s"><text fill="#fff" font-size="11"><textPath href="#o3a">001100110011100010000101111110100010111111101010100110011010100111000111001000001110011101111011011111011010011111100011111010111110001010101</textPath></text></g><g class="r" style="--d:40s"><text fill="#fff" font-size="11"><textPath href="#o3b">001101001011000010110101111111110100011001110010000010010010010010110100000010011010110110000000100110101111110110001000111010111111000101010</textPath></text></g><g class="" style="--d:30s"><text fill="#fff" font-size="11"><textPath href="#o3c">01110101010010010001001000111000000100000111111101010110100011100100101110101110010110110101010100001001000100101000011011100111110011010</textPath></text></g></svg><h3 class="sf">Entreprises, cabinets &amp; administrations</h3><p>Des documents traduits sans perdre leur forme, et des systèmes internes construits autour de vos processus.</p>
       <div class="pl"><a href="https://precis-translator.trigenys.com/"><span class="ic"><img src="/_blob/5e0d338552fa0ba154620eebc04b339f" alt="" style="object-fit:contain;padding:4px;background:#fff"></span><span><b>Précis Translator</b><span>Traduction, mise en page conservée · bêta</span></span></a><a href="#ingenierie"><span class="ic" style="background:#251C2A;color:#fff;font-weight:700">⚙</span><span><b>Système interne sur mesure</b><span>Cadrage, construction, intégration</span></span></a></div></div>
-    <div class="pane pn4"><div class="bits"><span style="left:10%;top:70%">01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011</span></div><h3 class="sf">Un autre métier</h3><p>Pas encore de produit pour vous ? Un cadrage donne un périmètre, un prix et une architecture avant la première ligne de code.</p>
+    <div class="pane pn4"><div class="bits"><span style="left:10%;top:70%">01010100 01010010 01001001 01000111 01000101 01001110 01011001 01010011</span></div><svg class="orb" viewBox="0 0 760 760" aria-hidden="true"><defs><path id="o4a" d="M40,380a340,130 0 1,0 680,0a340,130 0 1,0 -680,0"/><path id="o4b" d="M80,380a300,190 0 1,0 600,0a300,190 0 1,0 -600,0"/><path id="o4c" d="M150,380a230,250 0 1,0 460,0a230,250 0 1,0 -460,0"/></defs><g class="" style="--d:54s"><text fill="#fff" font-size="11"><textPath href="#o4a">010110000110011001001100111011000110101101111100110001111000101101110100010010110010110111010101101101010101110101000000001010011010011100110</textPath></text></g><g class="r" style="--d:40s"><text fill="#fff" font-size="11"><textPath href="#o4b">101000110001101010101101001111101111010010100111100000101100001110000110010011001101101100011110011100100011110001001100111000011111101110100</textPath></text></g><g class="" style="--d:30s"><text fill="#fff" font-size="11"><textPath href="#o4c">01101001011101000100010001011010110111111110101111000111011010000100011000000100101001001001001101001111101010101000000001011100011110011</textPath></text></g></svg><h3 class="sf">Un autre métier</h3><p>Pas encore de produit pour vous ? Un cadrage donne un périmètre, un prix et une architecture avant la première ligne de code.</p>
       <div class="pl"><a href="#contact"><span class="ic" style="background:var(--bx);color:#fff;font-weight:700">→</span><span><b>Parler à un expert</b><span>WhatsApp ou e-mail, sans engagement</span></span></a></div></div>
   </div>
+ </div>
 </section>
 
 <section class="eng" id="ingenierie">
@@ -504,6 +524,9 @@ function v7fx(root){
   var rail=q('.rail'),track=rail&&rail.querySelector('.track'),prg=rail&&rail.querySelector('.prg i'),hint=rail&&rail.querySelector('.hint');
   var hero=q('.hero'),h1=hero&&hero.querySelector('h1'),copy=h1&&h1.parentElement,stage=hero&&hero.querySelector('.stage');
   var lns=[].slice.call(root.querySelectorAll('.ln2'));
+  var met=q('.met'),radios=met?[].slice.call(met.querySelectorAll('input[name=m]')):[],labels=met?[].slice.call(met.querySelectorAll('.lbl label')):[],pct=met&&met.querySelector('.pct span');
+  function metTarget(i){var mr=met.getBoundingClientRect(),base=(sc?sc.scrollTop:scrollY)+(mr.top-v.top);return base+(i+.5)/radios.length*(mr.height-v.h)}
+  labels.forEach(function(l,i){l.addEventListener('click',function(ev){if(mobile)return;ev.preventDefault();var y=metTarget(i);if(sc)sc.scrollTo({top:y,behavior:'smooth'});else scrollTo({top:y,behavior:'smooth'})})});
   var lys=[].slice.call(root.querySelectorAll('.ly')).map(function(el){
     var amp=parseFloat(getComputedStyle(el).getPropertyValue('--p'))||-80;
     return{el:el,s:Math.abs(amp)/80,dir:amp<0?-1:1,inRail:!!(rail&&rail.contains(el)),pnl:el.closest('.pnl')};
@@ -531,6 +554,12 @@ function v7fx(root){
       track.style.transform='translate3d('+(-maxX*pr).toFixed(1)+'px,0,0)';
       if(prg)prg.style.transform='scaleX('+pr.toFixed(4)+')';
       if(hint)hint.style.opacity=pr>.06?0:1;
+    }
+    if(met&&radios.length&&!mobile){
+      var mr=met.getBoundingClientRect(),pm=clamp((v.top-mr.top)/(mr.height-vh)),n=radios.length,k=Math.min(n-1,Math.floor(pm*n));
+      if(!radios[k].checked)radios[k].checked=true;
+      if(pct)pct.textContent=k+1;
+      for(var m=0;m<labels.length;m++)labels[m].style.setProperty('--k',clamp(pm*n-m).toFixed(3));
     }
     for(var i=0;i<lys.length;i++){
       var L=lys[i],t;

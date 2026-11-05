@@ -74,3 +74,9 @@
 - Correctif : moteur `fx.js` injecté dans le script dc et lancé par `componentDidMount` ; il détecte le conteneur défilant parent (sinon la fenêtre), pose `--vh` (toutes les unités `vh` du CSS passent par `calc(var(--vh,100vh)*N/100)`), bascule `.m` (règles mobile dupliquées hors media query) sous 900 px de large. Boards Fenêtre/Mobile = `dc-import` de V7-Accueil dans un div `overflow:auto`, `is_interactive` (bouton Play puis défiler). Déroulé = même fichier sans `componentDidMount`.
 - Preuves Playwright (local, `preview/w7.html` = page dans des boîtes 1440×900 et 390×844) : classe js posée, `--vh` 900/844 px, rail translate3d jusqu'à −4960 px, barre 0→1, parallax calques, 27/27 et 26/27 apparitions, 0 erreur console, pas de débordement horizontal. Page entière 1440 et 390 : inchangée (10 402 / 12 496 px).
 - Sources dans `design/maquettes/` : `v7.tpl.html`, `fx.js`, `gen7.py` + sorties. À confirmer côté fondateur après rechargement du canvas (version 21).
+
+## 2026-11-05 16:24 — V7 : section « Par métier » épinglée, un métier par cran, orbites binaires
+- Demande fondateur : bloquer la vue de droite et passer de métier en métier au défilement avant de continuer ; ellipses de 0/1 derrière le panneau.
+- Fait (desktop, js) : `.met` haute de 340 vh, `.stick` collant 100 vh ; le moteur coche la radio `m1..m4` selon la progression (4 crans), compteur « Faites défiler · n / 4 », barre sous l'onglet actif ; clic sur un onglet = défilement vers son cran ; panneaux superposés en fondu. Mobile / sans js : onglets classiques inchangés. Orbites : 3 ellipses de 0/1 en `textPath` tournant lentement (`.orb`), dans chaque panneau, `gen7.py` → `orbits()`.
+- Preuves Playwright (boîte 1440×900) : radios 0→1→2→3 aux crans 0 / 30 / 55 / 80 %, panneau actif opacité 1 les autres 0, stick top constant pendant l'épinglage, 4 orbites, 0 erreur ; mobile : `.met` non épinglée.
+- Publié (canvas v22), copié dans `design/maquettes/`. À valider côté fondateur.
