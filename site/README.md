@@ -34,3 +34,4 @@ Node ≥ 20, aucune installation de paquet nécessaire.
 
 ## Hébergement
 Non déployé. Cible prévue : hébergement statique de `site/dist` (la bêta Commerce Factory est déjà sur Cloudflare Pages). Aucune mise en ligne tant que les éléments « à confirmer » (coordonnées, domaine Commerce Factory, logos clients, témoignages, photo) ne sont pas renseignés.
+
