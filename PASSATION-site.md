@@ -130,3 +130,11 @@
 - Correctif prêt dans la brique `EagleFox31/appfactory-project-automation` : branche locale `feat/visual-qa-fragment-cta`, commit 75eeb2b (contrat + runner + tests 11/11 + doc). Clone : `C:\Users\lawry\AppData\Local\Temp\claude\997c1f4e48e0ce77\ca149fcb-9fd7-443a-9153-43247e06545c\scratchpad\apa` ; patch : `…\scratchpad\visual-qa-fragment.patch`. Push/PR à faire par le fondateur (refusés à l'agent).
 - **Suite, après fusion** : (1) `.github/appfactory-visual-qa.json` → `"expectedCtaHref": "/#contact"` ; (2) réépingler les deux `uses:` de `ci.yml` sur le SHA fusionné ; (3) `gh workflow run ci.yml` puis `gh run watch` ; (4) fermer la PR sonde #1 sans fusion et supprimer `ci-probe`.
 - Leçons ajoutées : réindexation du workflow ; contrat visual-qa et sites une page.
+
+## 2026-11-05 18:50 — CI verte : LCP mobile ramené de 8,6 s à 2,26 s
+- Run 42078031269 (commit df57267) : `impact` ✓, `site-build` ✓, `visual-qa` ✓. Mobile : LCP 2 261 ms (budget 2 500), CLS 0,078 (budget 0,1), TBT 15 ms ; desktop LCP 979 ms. Budgets inchangés.
+- Commits e668c5d + df57267 : assets WebP à la taille d'affichage (1,1 Mo → 290 Ko, favicon dédié), première diapo en preload/fetchpriority, lazy ailleurs ; Google Fonts en preload+onload (repli noscript) ; décor animé en pause jusqu'au `load` et hors écran (`.go`/`.off` dans fx.js) ; hélices/orbites en monospace système ; `@font-face` de repli calibrées (Times ×102 %, Arial ×100,73 %).
+- Mêmes modifications dans `design/maquettes/` (fx.js, v7.tpl.html) ; **canvas non republié** (v26 montre encore l'ancien décor Plex Mono) : régénérer via gen7.py et republier si besoin.
+- PR sonde #1 fermée sans fusion, branche `ci-probe` supprimée. Leçon ajoutée (LCP mobile, trois causes).
+- Marges minces : LCP à 240 ms du budget, CLS à 0,02. Si la CI rechute : vérifier l'élément du CLS restant dans l'artefact Lighthouse (`gh run download <run>`), puis envisager l'auto-hébergement des polices (woff2 en `assets/`, supprime le détour fonts.googleapis) avant toute autre mesure.
+- Reste « à confirmer » par le fondateur inchangé (domaine Commerce Factory, couleurs produits, WhatsApp/e-mail/ville, logos clients, témoignages, photo équipe, relecture EN).

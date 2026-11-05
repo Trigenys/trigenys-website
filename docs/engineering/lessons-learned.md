@@ -35,3 +35,24 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
 - **Résolution** : adaptation de la brique (Adapt) : `expectedCtaHref` accepte `<chemin local>#<fragment>` borné, et le `href` rendu est normalisé contre la route (`#contact` sur `/` = `/#contact`). Tests + doc dans la brique ; commit local `75eeb2b` sur la branche `feat/visual-qa-fragment-cta` à pousser par le fondateur (push et PR refusés à l'agent sur ce dépôt).
 - **Prévention** : avant de brancher une brique partagée, exécuter sa validation de config en local (`node -e` sur `contract.mjs`) sur la config réelle du projet ; à ajouter au `npm run build` quand la brique exposera un point d'entrée stable.
 - **Leçon générale** : un contrat « sécuritaire » qui exclut un cas légitime fréquent (site une page) doit être élargi dans la brique, pas contourné dans le projet (pas de page `/contact` factice ni de sélecteur alternatif).
+
+## 2026-11-05 — Gate visual-qa : LCP mobile à 8,6 s (performance / site statique)
+- **Symptôme** : `route0:mobile:performance FAIL lcp=8641 ms` (budget 2 500 ms), desktop vert, CLS 0, TBT 0.
+- **Cause racine** (trois couches, mesurées avec Lighthouse local puis l'artefact Lighthouse de la CI) :
+  (1) ~1,1 Mo d'images PNG à 2–4× la taille d'affichage, toutes chargées d'emblée (≈ 5,5 s sur la 4G simulée) ;
+  (2) feuille Google Fonts bloquante (~1,1 s avant le premier rendu) ;
+  (3) 500 glyphes SVG décoratifs (hélices, orbites) en IBM Plex Mono : à l'arrivée de la police, re-layout massif
+  qui occupe le CPU (×4) au moment où le titre doit se peindre ; le swap du titre (serif de repli → Source Serif 4)
+  provoquait aussi un CLS de 0,09.
+- **Résolution** : WebP à la taille d'affichage (290 Ko au total), première diapo en `preload`/`fetchpriority`, le
+  reste en `loading="lazy"` ; feuille de polices en `preload as=style` + `onload` (repli `noscript`) ; décor animé en
+  pause jusqu'au `load` et hors écran ; police monospace système pour les SVG décoratifs ; `@font-face` de repli
+  calibrées (`size-adjust`, `ascent/descent-override` mesurés dans le navigateur) pour le titre et le corps.
+  Premier palier mesuré en CI : LCP 2 857 ms, CLS 0,092 ; second palier (run 42078031269, vert) : LCP 2 261 ms, CLS 0,078, TBT 15 ms ; desktop LCP 979 ms. Marge mince (≈ 240 ms) : surveiller.
+- **Prévention** : le build refuse déjà les images externes ; ajouter au `check.mjs` un plafond de poids par image
+  référencée et un contrôle « première image du hero avec `fetchpriority`/dimensions » si la régression se reproduit.
+  Mesurer sur l'artefact Lighthouse de la CI (`gh run download`), pas sur un poste chargé : les mesures locales
+  variaient du simple au double.
+- **Leçon générale** : les budgets ne se négocient pas ; on cherche l'élément LCP et ses phases (ici « render delay »)
+  avant de toucher aux assets au hasard. Une décoration SVG massive doit utiliser une police locale ou être montée
+  après le chargement.
