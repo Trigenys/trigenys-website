@@ -56,3 +56,20 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
 - **Leçon générale** : les budgets ne se négocient pas ; on cherche l'élément LCP et ses phases (ici « render delay »)
   avant de toucher aux assets au hasard. Une décoration SVG massive doit utiliser une police locale ou être montée
   après le chargement.
+
+## 2026-11-05 — Gate visual-qa : LCP mobile instable (2,2 s puis 4,7 s) sans changement du premier écran
+- **Symptôme** : run 42078031269 vert (LCP mobile 2 261 ms) puis run 42081020839 rouge (LCP 4 717 ms, CLS 0,046)
+  après un commit qui ne touchait que la section ingénierie, sous la ligne de flottaison.
+- **Cause racine** : l'élément LCP est le titre `h1`. La chaîne Google Fonts (feuille CSS, puis trois woff2 de 40 à
+  122 Ko) arrivait, selon le bruit du throttling simulé, avant ou après le premier rendu du titre : quand le swap de
+  police (`em` italique, décalage 0,045) se produit après, Lighthouse rattache toute la chaîne au graphe du LCP.
+  Mesure bistable, pas régression de code.
+- **Résolution** : polices auto-hébergées (16 sous-ensembles woff2 latin/latin-ext dans `site/src/assets/fonts/`,
+  900 Ko au repos, seuls les sous-ensembles utiles sont téléchargés grâce à `unicode-range`), trois faces du premier
+  écran en `<link rel="preload" as="font">`, `font-display:swap` et faces de repli calibrées conservées. Zéro
+  connexion tierce : plus de preconnect, plus de feuille externe, plus de `noscript`.
+- **Prévention** : `check.mjs` refuse désormais toute référence à `fonts.googleapis.com` / `fonts.gstatic.com`
+  (contrat « police externe interdite »). Lire l'artefact Lighthouse de la CI (`gh run download -n appfactory-visual-qa`)
+  et comparer deux runs avant de conclure à une régression.
+- **Leçon générale** : une ressource tierce sur le chemin de l'élément LCP rend la mesure non déterministe ; on ne
+  stabilise pas un budget en relançant la CI, on retire la dépendance du chemin critique.

@@ -146,3 +146,20 @@
 - Cas XEPTION : carte en deux colonnes (texte + capture réelle de xeptionetwork.shop du jour, `assets/xe-shop.webp` 70 Ko) et logo (`assets/xe-logo.webp`, depuis le favicon 192 px du dépôt `EagleFox31/xeption237` : le logo Cloudinary du site Xeption répond 401, il est cassé sur leur propre site). Logo repris dans l'onglet « Par métier ». Tags : Orange Money · MoMo, Troc, SAV.
 - Réécriture FR+EN : en-tête et 4 étapes d'ingénierie, carte « La prochaine capture d'écran est à vous », bloc « Vérifiez-nous » (3 cartes), paragraphe équipe. Faits utilisés : 18 versions d'Atelier Maître, Yaoundé/OM/MoMo/troc/SAV lus sur le site Xeption. Les cadres « à confirmer » (témoignages, adresse, signataire, photo) sont conservés.
 - Miroir dans `design/maquettes/v7.tpl.html` ; canvas toujours non republié. Build + check OK (14 assets, 138 chaînes), Playwright : images chargées, pas de débordement, bascule EN vérifiée.
+
+## 2026-11-05 19:16 — Polices auto-hébergées (correction LCP mobile), anomalies CI
+- CI lancée à la main après `1414f9c` (run 42081020839) : rouge, LCP mobile 4 717 ms (CLS 0,046, TBT 0, desktop 649 ms)
+  alors que le run précédent était vert à 2 261 ms sans changement du premier écran. Diagnostic : chaîne Google Fonts
+  sur le chemin de l'élément LCP (`h1`), mesure bistable. Leçon ajoutée à `docs/engineering/lessons-learned.md`.
+- Correctif : 16 sous-ensembles woff2 (latin, latin-ext) dans `site/src/assets/fonts/` (900 Ko ; nommage
+  `{ss4|plex|plexmono}-{r|i}{graisse}-{sous-ensemble}.woff2`), `@font-face` avec `unicode-range` et `font-display:swap`,
+  trois préchargements (Source Serif 4 500 droit et italique, IBM Plex Sans 400). Liens Google Fonts, preconnect et
+  `noscript` supprimés. Miroir `design/maquettes/v7.tpl.html`. `check.mjs` : nouveau contrat « police externe interdite ».
+  Build + check OK (17 assets, 138 chaînes) ; Playwright : 9 faces chargées, aucune ressource externe, aucun 4xx,
+  console vide, mobile et desktop.
+- Anomalie CI à faire vérifier par un admin de l'organisation Trigenys : les événements `push` et `pull_request` ne
+  déclenchent pas `ci.yml` (seuls les `workflow_dispatch` existent) ; GitHub ne crée aucune check suite github-actions
+  sur les pushes, mais une suite `cloudflare-workers-and-pages` en file d'attente : une application Cloudflare Pages
+  est connectée au dépôt (risque de déploiement automatique alors que des « à confirmer » restent). EagleFox31 n'est
+  pas admin de l'organisation ; l'e-mail des commits n'est lié à aucun compte GitHub. Lancer la CI : `gh workflow run ci.yml --ref main`.
+- Suite : commit + push, dispatch CI, lire l'artefact `appfactory-visual-qa` (LCP mobile < 2 500 attendu). Canvas non republié.

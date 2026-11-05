@@ -25,6 +25,7 @@ must((html.match(/class="lng/g) || []).length === 2, "deux boutons de langue att
 must((html.match(/<svg class="orb"/g) || []).length === 4, "4 orbites attendues");
 must((html.match(/<svg class="hx /g) || []).length === 5, "5 hélices attendues");
 must(!/<img[^>]+src="https?:/.test(html), "image externe interdite (visual-qa)");
+must(!/fonts\.(googleapis|gstatic)\.com/.test(html), "police externe interdite : auto-hébergement attendu");
 for (const [k, v] of Object.entries(i18n)) {
   must(typeof v === "string" && v.trim(), `traduction vide pour « ${k} »`);
   must(v !== k || /^[A-Z0-9 /·&]+$|^(Garages|SAV|WhatsApp)/.test(k), `traduction identique au français pour « ${k} »`);
