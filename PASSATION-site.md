@@ -102,3 +102,8 @@
 - Fait : `site/src` (template nettoyé du canevas, assets locaux, `fx.js`, `lang.js`, `i18n.json`), `scripts/build.mjs` (port Node de gen7, déterministe), `scripts/check.mjs` (contrats), `scripts/serve.mjs` ; CI `.github/workflows/ci.yml` : impact → `site-build` (+ preuve d'idempotence) et `visual-qa` réutilisable AppFactory @a6ad4b4b. CTA principal marqué `data-cta="primary"` (hero). Mémoire d'erreurs `docs/engineering/lessons-learned.md`.
 - Preuves locales : build ×2 identiques ; Playwright sur dist (1440×900, 390×844) : rail actif, bascule EN, 0 erreur console, 0 image externe, pas de débordement, CTA visible ; reduced-motion : page statique lisible.
 - Prochaine étape : vérifier le premier run CI sur GitHub (gates impact/visual-qa), puis décider hébergeur + domaine ; pas de déploiement avant les « à confirmer ».
+
+## 2026-11-05 17:15 — Blocage : GitHub Actions n'enregistre pas le workflow
+- Poussé sur main : 6def792 (site + CI), 529eebc (sonde) ; PR brouillon #1 (branche `ci-probe`) pour tester le déclenchement `pull_request`.
+- Constat API : 0 workflow enregistré, 0 run, aucun check Actions sur les commits ; l'API Events du dépôt ne montre plus aucun push depuis 12:53 UTC alors que les refs avancent et que d'autres dépôts de l'org ont des runs aujourd'hui. Actions activées au niveau dépôt (`enabled: true`). Une suite de checks `cloudflare-workers-and-pages` apparaît (queued, sans run ni déploiement) : l'app Cloudflare voit le dépôt, aucun déploiement public n'a eu lieu.
+- À faire par le propriétaire de l'org : ouvrir github.com/Trigenys/trigenys-website/actions (bandeau éventuel : politique org, facturation, verrou) ; une fois le workflow visible, `gh workflow run ci.yml` puis `gh run watch`. Fermer la PR #1 sans fusion après le test.
