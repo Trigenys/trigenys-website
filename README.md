@@ -17,3 +17,5 @@ Site corporate et commercial de Trigenys Group : logiciels (Atelier Maître, Com
 - Design System Trigenys V4 : logo, palette, Source Serif 4 / IBM Plex Sans / IBM Plex Mono.
 - Aucune fonctionnalité, maturité, statistique ni tarif non sourcé dans les dépôts produits.
 - Standard d'ingénierie RAIDER.
+
+> Dépôt **public** depuis le 2026-11-05 (décision fondateur : minutes GitHub Actions illimitées). Aucun secret ni donnée client ne doit y entrer ; les documents internes vont dans `project-registry`.
