@@ -73,3 +73,29 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
   et comparer deux runs avant de conclure à une régression.
 - **Leçon générale** : une ressource tierce sur le chemin de l'élément LCP rend la mesure non déterministe ; on ne
   stabilise pas un budget en relançant la CI, on retire la dépendance du chemin critique.
+
+## 2026-11-05 19:45 — Gate visual-qa : LCP mobile encore rouge après l'auto-hébergement des polices (4 895 → 5 110 → 2 635 → 2 115 ms)
+- **Contexte** : après le passage aux polices auto-hébergées, trois runs manuels de `ci.yml` restent rouges sur
+  `route0:mobile:performance` (budget LCP 2 500 ms) alors que le premier écran est inchangé et que Lighthouse local
+  n'est pas prédictif (machine lente : LCP observé après les images différées, l'inverse de la CI).
+- **Causes racines (trois, empilées)** :
+  1. le `h1` entrait en scène par une animation `opacity: 0 → 1` ; Chrome ne retient un élément animé depuis
+     l'opacité 0 comme candidat LCP qu'à la fin de l'animation (1,1 s) ;
+  2. Lighthouse `--throttling-method=simulate` (Lantern) calcule le LCP comme la moyenne d'un graphe optimiste et
+     d'un graphe pessimiste ; dans la CI le LCP observé (≈ 250 ms) arrive **après** `load`, donc le graphe pessimiste
+     compte **tous les octets chargés avant** : HTML non compressé (130 Ko), 16 fichiers de polices (900 Ko dont des
+     doublons : Google Fonts sert la même police variable pour chaque graisse), images des diapos cachées ;
+  3. les deux fichiers Source Serif 4 gardaient l'axe optique `opsz` (62 + 46 Ko) pour une police utilisée
+     uniquement en titres ≥ 26 px.
+- **Classification** : mesure mal comprise (modèle Lantern) + régression de poids introduite par un correctif précédent.
+- **Résolution** : `h1` animé par translation seule ; `serve.mjs` sert HTML/CSS/JS/SVG en brotli ou gzip (la CI
+  mesure les octets transférés comme en production) ; une police variable par famille, sous-ensemble latin, plage de
+  graisses instanciée, `opsz` épinglé à 60 (4 fichiers, 73 Ko) ; images des diapos et onglets cachés en `data-src`
+  réveillées par `car.js` (diapo suivante après `load`, onglet au clic) avec un pixel transparent en `src`
+  pour que le gate `media` (`complete && naturalWidth === 0`) ne les compte pas cassées ; favicon 128 → 64 px.
+- **Prévention vérifiable** : contrat `check.mjs` « police externe interdite » et couverture des `data-src` dans
+  la vérification des références d'assets ; `site/src/assets/fonts/README.md` décrit la chaîne de sous-ensemble et
+  les choix (`opsz`) pour éviter de ré-introduire des doublons.
+- **Leçon généralisée** : avec Lantern, le levier du LCP est le **poids total transféré avant le LCP observé**, pas
+  seulement la chaîne critique ; comparer les octets transférés (`network-requests` du JSON Lighthouse), vérifier que
+  le serveur de test compresse comme la production, et ne jamais animer l'élément LCP depuis `opacity: 0`.

@@ -163,3 +163,18 @@
   est connectée au dépôt (risque de déploiement automatique alors que des « à confirmer » restent). EagleFox31 n'est
   pas admin de l'organisation ; l'e-mail des commits n'est lié à aucun compte GitHub. Lancer la CI : `gh workflow run ci.yml --ref main`.
 - Suite : commit + push, dispatch CI, lire l'artefact `appfactory-visual-qa` (LCP mobile < 2 500 attendu). Canvas non republié.
+
+## 2026-11-05 19:45 — CI : LCP mobile ramené à 2 115 ms, gate media corrigé, Xeption illustré
+- Commits depuis `1414f9c` : `25191ea` (h1 sans animation d'opacité), `d2b88bc` (aperçu compressé, 4 polices
+  variables sous-ensemblées, images cachées différées), puis axe `opsz` épinglé + favicon 64 px, puis pixel
+  transparent en `src` des images différées (gate `media`). Détail et causes : `docs/engineering/lessons-learned.md`.
+- Runs manuels : 42082790972 (4 895 ms), 42083757004 (5 110), 42085624683 (2 635), 42086662603 (2 115 ms, CLS 0,
+  TBT 97, desktop 486 ms) : seul le gate `media` restait rouge (deux `<img data-src>` sans `src`) ; corrigé,
+  nouveau run lancé après cette entrée. Budgets inchangés.
+- Polices : `site/src/assets/fonts/` = 4 fichiers (73 Ko) ; Source Serif 4 est instanciée à `opsz=60` : ne pas
+  l'employer pour du texte courant sans ré-instancier (voir README du dossier).
+- Lighthouse local (machine lente) n'est pas prédictif du LCP CI ; lire l'artefact `appfactory-visual-qa`
+  (`gh run download <id> -n appfactory-visual-qa`). Ancien serveur d'aperçu sur 4173 (ancien serve.mjs) non tué ; 4174 à jour.
+- Restent : anomalies CI (push/PR sans déclenchement, app Cloudflare Pages connectée) à faire vérifier par un admin
+  de l'organisation ; « à confirmer » du contenu ; canvas non republié ; miroir `design/maquettes/v7.tpl.html` sans
+  les `data-src` (pas d'images de diapos dans la maquette).
