@@ -29,3 +29,15 @@
 - Fait : `design/maquettes/V5-Accueil.dc.html` (+ `-Mobile`), boards V5 sur le canvas (y=32000). Couleur propre à chaque produit (proposition, non validée), mur de produits animé, 3 produits de lancement en panneaux empilés (sticky), bento du portefeuille (13 produits, stades du registry), services, réalisations, CTA.
 - Vérifié : 1440 → 7873 px, 390 → 10157 px, aucun débordement ; contraste bouton corrigé.
 - Ouvert : couleurs produit à valider ; produits non publiés affichables ou non ; contacts réels.
+
+## 2026-11-05 15:08 — Benchmark des sites du domaine (en cours)
+- Demande fondateur : rechercher les sites des acteurs de notre domaine.
+- En cours : benchmark (multi-produits type Zoho/Odoo/37signals, SaaS B2B africains, concurrents directs atelier auto / commerce WhatsApp / traduction). Sortie prévue : `docs/site/benchmark-sites.md`.
+- État : V5 publiée sur le canvas et poussée (f9b0919), non validée. Aucun verrou.
+- Prochaine étape : verser le benchmark au dépôt, en tirer des correctifs pour l'accueil.
+
+## 2026-11-05 15:17 — Benchmark des sites du domaine (livré)
+- Rapport versé : `docs/site/benchmark-sites.md` (3 familles : multi-produits, B2B africains, concurrents directs ; synthèse a-e ; 10 recommandations priorisées pour l'accueil).
+- Points saillants : promesse client en une phrase, preuve chiffrée réelle au 2e écran, 3 phares + grille « voir tout », second axe « par métier », CTA WhatsApp primaire (rare chez les concurrents), prix en FCFA, bloc fondateur/équipe. Anti-exemples : placeholders en prod, métriques inexpliquées, isométrique/3D/dégradés, TLS cassé.
+- État : V5 (f9b0919) toujours non validée. Aucun verrou.
+- Prochaine étape : décider avec le fondateur si V5 est retouchée selon les recommandations 1-5 ou si une V6 part du benchmark. Toujours en attente : couleurs produits, produits non publiés visibles ou non, lien AgenStudio, contacts réels.

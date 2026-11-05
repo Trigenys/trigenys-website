@@ -30,3 +30,6 @@ Ajout seulement : chaque décision est une nouvelle entrée ; une révision réf
 - Choix du fondateur après rejet de V4 (trop plat, structure, textes) : chaque produit a son univers et sa couleur ; grille de produits très visuelle.
 - Couleurs produit : proposition de maquette, à valider avant toute charte produit.
 - Statut : maquette V5 **à valider**.
+
+## 2026-11-05 — Benchmark des sites comparables
+Référence : `docs/site/benchmark-sites.md`. À utiliser comme grille de revue de l'accueil (promesse, preuve, hiérarchie 3 phares + grille, axe métier, CTA WhatsApp, prix FCFA, humains).
