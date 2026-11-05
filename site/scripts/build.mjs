@@ -68,7 +68,7 @@ for (const [k, v] of Object.entries(rep)) html = html.split(k).join(v);
 for (let i = 1; i <= 4; i++) html = html.replace("@@ORB@@", orbits(i));
 
 const i18n = JSON.parse(await read("i18n.json"));
-const js = `var I18N=${JSON.stringify(i18n)};\n${await read("lang.js")}\n${await read("fx.js")}`;
+const js = `var I18N=${JSON.stringify(i18n)};\n${await read("lang.js")}\n${await read("car.js")}\n${await read("fx.js")}`;
 html = html.replace("@@FX@@", () => js);
 
 const left = html.match(/@@[A-Z_]+@@/g);

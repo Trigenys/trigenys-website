@@ -15,6 +15,8 @@ must(!html.includes("/_blob/"), "référence /_blob/ du canevas résiduelle");
 must(!html.includes("support.js") && !html.includes("<x-dc>") && !html.includes("<helmet>"), "balisage du canevas résiduel");
 must(html.includes("var I18N="), "dictionnaire I18N absent");
 must(html.includes("function v7fx(") && html.includes("function v7lang("), "moteur ou bascule de langue absents");
+must(html.includes("function v7car(") && html.includes("v7car(r)"), "carrousel du hero absent ou non initialisé");
+must((html.match(/class="sl[^"]*" data-name=/g) || []).length === 4 && html.includes('class="dots" role="tablist"'), "carrousel : quatre diapos et une barre de points attendues");
 must(html.includes('DOMContentLoaded", v7init'), "amorçage v7init absent");
 must(/<html lang="fr">/.test(html), "lang racine");
 must(/<meta name="viewport"/.test(html), "meta viewport");

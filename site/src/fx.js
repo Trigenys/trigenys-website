@@ -72,4 +72,4 @@ function v7fx(root){
   [].slice.call(root.querySelectorAll('img')).forEach(function(im){if(!im.complete)im.addEventListener('load',function(){measure();onScroll()})});
   measure();frame();setTimeout(function(){measure();frame()},300);
 }
-function v7init(){[].slice.call(document.querySelectorAll('.t')).forEach(function(r){v7langInit(r);v7fx(r)})}
+function v7init(){[].slice.call(document.querySelectorAll('.t')).forEach(function(r){v7langInit(r);v7car(r);v7fx(r)})}

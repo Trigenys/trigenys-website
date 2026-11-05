@@ -112,3 +112,9 @@
 - Fondateur : dépôt créé **privé** et quota Actions de l'org épuisé ce mois → aucun run possible. Leçon consignée dans `docs/engineering/lessons-learned.md`.
 - Décision en attente : passer le dépôt en public (expose `docs/site/strategie-site-v1.md`, `benchmark-sites.md`, `comex-log.md`, maquettes) ou attendre le reset mensuel ; alternative : sortir les docs internes vers `project-registry` avant publication. Aucun secret dans le dépôt (scan git grep vide).
 - Verrous : PR #1 (`ci-probe`) à fermer sans fusion après le premier run réussi.
+
+## 2026-11-05 17:38 — Dépôt public ; carrousel du hero
+- Dépôt passé en **public** sur décision fondateur (quota Actions privé épuisé) ; note ajoutée au README racine.
+- Hero : montage fixe remplacé par un carrousel à points (`site/src/car.js`, `.car/.sl/.dots`) : Atelier Maître → Commerce Factory → Précis Translator → « Le vôtre » (carte sombre + CTA vers #contact). Auto-défilement 5,2 s, pause au survol/focus/hors écran, flèches clavier, balayage tactile, aucun auto-défilement en reduced-motion. 6 chaînes i18n ajoutées (135). `check.mjs` exige 4 diapos + barre de points.
+- Preuves : build + contrôles OK ; Playwright desktop/mobile : 4 points, avance auto, clic point 4 affiche « Le vôtre » et son CTA, flèche →, 0 erreur ; régression pwdist inchangée (CTA visible, 0 débordement, bascule EN).
+- Non fait : le canevas Design (maquette V7) n'a pas le carrousel ; la référence est désormais `site/`. CI : workflow toujours non enregistré côté GitHub (flux d'événements en retard d'environ 2 h) ; PR sonde #1 ouverte.
