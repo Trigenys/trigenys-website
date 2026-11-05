@@ -22,3 +22,16 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
 - **Résolution** : décision fondateur sur la visibilité (public = minutes illimitées, mais docs internes exposées) ou attente du reset mensuel ; en attendant, les gates se jouent en local (`npm run build`, Playwright `pwdist.py`).
 - **Prévention** : avant de brancher une CI, vérifier visibilité du dépôt et quota (`gh api orgs/<org>/settings/billing/usage` par un admin) ; consigner la visibilité choisie dans le README du dépôt.
 - **Leçon générale** : « aucun run » sans erreur = d'abord regarder facturation et visibilité, pas le YAML.
+
+## 2026-11-05 — Workflow invisible tant que le fichier n'est pas retouché (infra)
+- **Symptôme** : dépôt passé public, pushs successifs, toujours 0 workflow enregistré pendant ~1 h.
+- **Cause racine** : GitHub n'indexe un workflow qu'au traitement d'un événement touchant `.github/workflows/` ; les événements émis pendant la période « privé sans minutes » ont été ignorés et les pushs suivants ne modifiaient pas le fichier.
+- **Résolution** : commit modifiant `ci.yml` (en-tête de commentaire) → workflow enregistré en moins d'une minute, premier run obtenu par `gh workflow run`.
+- **Leçon générale** : après un changement de visibilité ou de facturation, retoucher le fichier de workflow pour forcer la réindexation.
+
+## 2026-11-05 — Gate visual-qa : le contrat refusait un CTA vers une ancre de la même page (contrat de brique)
+- **Symptôme** : premier run CI, job `visual-qa` en échec immédiat : `routes[0].expectedCtaHref must be a safe local path` pour `#contact`.
+- **Cause racine** : `contract.mjs` de `appfactory-project-automation` interdit tout `#` dans `expectedCtaHref` et `run.mjs` compare l'attribut `href` brut ; un site une page ne pouvait jamais passer. Le contrôle local (`check.mjs`, Playwright) ne rejoue pas le contrat de la brique.
+- **Résolution** : adaptation de la brique (Adapt) : `expectedCtaHref` accepte `<chemin local>#<fragment>` borné, et le `href` rendu est normalisé contre la route (`#contact` sur `/` = `/#contact`). Tests + doc dans la brique ; commit local `75eeb2b` sur la branche `feat/visual-qa-fragment-cta` à pousser par le fondateur (push et PR refusés à l'agent sur ce dépôt).
+- **Prévention** : avant de brancher une brique partagée, exécuter sa validation de config en local (`node -e` sur `contract.mjs`) sur la config réelle du projet ; à ajouter au `npm run build` quand la brique exposera un point d'entrée stable.
+- **Leçon générale** : un contrat « sécuritaire » qui exclut un cas légitime fréquent (site une page) doit être élargi dans la brique, pas contourné dans le projet (pas de page `/contact` factice ni de sélecteur alternatif).

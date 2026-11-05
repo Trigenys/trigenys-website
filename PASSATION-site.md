@@ -124,3 +124,9 @@
 - Preuves : Playwright sur l'aperçu généré (desktop/mobile) : 4 points, avance auto après 5,6 s, clic point 4 → « Le vôtre » + CTA, flèche →, 0 erreur, pas de débordement ; reduced-motion sans auto-défilement ; régression conteneur (boards fenêtre/mobile) inchangée.
 - `design/maquettes/` mis à jour (sources du générateur + boards V7 + canvas.json).
 - CI : workflow toujours non enregistré côté GitHub ; PR sonde #1 ouverte.
+
+## 2026-11-05 18:02 — CI enregistrée, visual-qa à corriger dans la brique
+- Workflow enfin enregistré après retouche de `ci.yml` (commit abe37d4). Run 42069201342 : `impact` ✓, `site-build` ✓, `visual-qa` ✗ (contrat : `#contact` refusé comme `expectedCtaHref`).
+- Correctif prêt dans la brique `EagleFox31/appfactory-project-automation` : branche locale `feat/visual-qa-fragment-cta`, commit 75eeb2b (contrat + runner + tests 11/11 + doc). Clone : `C:\Users\lawry\AppData\Local\Temp\claude\997c1f4e48e0ce77\ca149fcb-9fd7-443a-9153-43247e06545c\scratchpad\apa` ; patch : `…\scratchpad\visual-qa-fragment.patch`. Push/PR à faire par le fondateur (refusés à l'agent).
+- **Suite, après fusion** : (1) `.github/appfactory-visual-qa.json` → `"expectedCtaHref": "/#contact"` ; (2) réépingler les deux `uses:` de `ci.yml` sur le SHA fusionné ; (3) `gh workflow run ci.yml` puis `gh run watch` ; (4) fermer la PR sonde #1 sans fusion et supprimer `ci-probe`.
+- Leçons ajoutées : réindexation du workflow ; contrat visual-qa et sites une page.
