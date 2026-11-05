@@ -122,14 +122,16 @@
       "y": 54000,
       "w": 1440,
       "h": 900,
-      "title": "V7 · Fenêtre 1440×900 — faire défiler : parallax, logo vivant, rail horizontal"
+      "title": "V7 · Fenêtre 1440×900 — Play puis faire défiler : parallax, logo vivant, rail horizontal",
+      "is_interactive": true
     },
     "V7-Accueil-Mobile.dc.html": {
       "x": 3040,
       "y": 54000,
       "w": 390,
       "h": 844,
-      "title": "V7 · Mobile 390×844 — faire défiler"
+      "title": "V7 · Mobile 390×844 — Play puis faire défiler",
+      "is_interactive": true
     }
   },
   "order": [

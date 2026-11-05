@@ -68,3 +68,9 @@
 
 ## 2026-11-05 16:20 — V7 : boards « Fenêtre » et « Mobile » affichaient « not found »
 - Cause : iframe en chemin relatif `V7-Accueil.dc.html` non résolu depuis le canvas. Correctif : le wrapper teste plusieurs chemins (`V7-Accueil.dc.html`, `project/…`, chemin absolu dérivé de `location`) et charge le premier qui répond avec un `<x-dc>`. Republié ; à confirmer côté fondateur après rechargement.
+
+## 2026-11-05 16:17 — V7 : moteur de défilement dans le runtime du canvas (boards Fenêtre/Mobile vides)
+- Cause des boards vides puis sans animation : dans le canvas, seul le code de la classe DCLogic s'exécute ; les `<script>` hors de cette classe (iframe loader, moteur parallax) sont ignorés, et un `<iframe src>` relatif ne se résout pas.
+- Correctif : moteur `fx.js` injecté dans le script dc et lancé par `componentDidMount` ; il détecte le conteneur défilant parent (sinon la fenêtre), pose `--vh` (toutes les unités `vh` du CSS passent par `calc(var(--vh,100vh)*N/100)`), bascule `.m` (règles mobile dupliquées hors media query) sous 900 px de large. Boards Fenêtre/Mobile = `dc-import` de V7-Accueil dans un div `overflow:auto`, `is_interactive` (bouton Play puis défiler). Déroulé = même fichier sans `componentDidMount`.
+- Preuves Playwright (local, `preview/w7.html` = page dans des boîtes 1440×900 et 390×844) : classe js posée, `--vh` 900/844 px, rail translate3d jusqu'à −4960 px, barre 0→1, parallax calques, 27/27 et 26/27 apparitions, 0 erreur console, pas de débordement horizontal. Page entière 1440 et 390 : inchangée (10 402 / 12 496 px).
+- Sources dans `design/maquettes/` : `v7.tpl.html`, `fx.js`, `gen7.py` + sorties. À confirmer côté fondateur après rechargement du canvas (version 21).
