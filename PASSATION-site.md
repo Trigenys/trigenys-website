@@ -178,3 +178,12 @@
 - Restent : anomalies CI (push/PR sans déclenchement, app Cloudflare Pages connectée) à faire vérifier par un admin
   de l'organisation ; « à confirmer » du contenu ; canvas non republié ; miroir `design/maquettes/v7.tpl.html` sans
   les `data-src` (pas d'images de diapos dans la maquette).
+
+## 2026-11-05 22:40 — Coordonnées de contact réelles intégrées
+- Fournies par le fondateur : WhatsApp +237 670 75 43 72 (`https://wa.me/237670754372`), business@trigenys.com,
+  Douala et Yaoundé. Pied de page (`#contact`) : bouton WhatsApp et « Écrire un e-mail » (mailto) réels, ligne de
+  coordonnées cliquable ; carte « Joignables là où vous êtes déjà » : texte mis à jour, placeholder réduit à
+  « Hébergement et conformité … à confirmer ». FR/EN vérifiés par Playwright (138 chaînes). Miroir maquette à jour.
+- Reste « à confirmer » : nom et fonction du signataire, domaine définitif de Commerce Factory, hébergement/conformité,
+  hébergeur + domaine du site ; anomalies CI/Cloudflare pour un admin de l'organisation.
+- CI lancée (run 42113018651) après le commit « Contact : … » ; vérifier son résultat si cette entrée est la dernière.
