@@ -87,7 +87,6 @@
 "Témoignages": "Testimonials",
 "Témoignages clients nommés — à recueillir avant mise en ligne.": "Named client testimonials — to be collected before going live.",
 "Ancrage local": "Local roots",
-"Adresse, numéro WhatsApp, hébergement et conformité (OHADA, Mobile Money, hors-ligne) — à confirmer avant affichage.": "Address, WhatsApp number, hosting and compliance (OHADA, Mobile Money, offline) — to be confirmed before display.",
 "Photo réelle de l'équipe ou du fondateur — à fournir": "Real photo of the team or founder — to be provided",
 "L'équipe": "The team",
 "Nom et fonction du signataire — à confirmer": "Signatory's name and role — to be confirmed",
@@ -101,8 +100,6 @@
 "Parlez-nous de votre métier.": "Tell us about your trade.",
 "Un expert vous répond, vous oriente vers le bon produit ou vous propose un cadrage. Sans engagement.": "An expert answers you, points you to the right product or offers a scoping study. No commitment.",
 "Écrire sur WhatsApp": "Write on WhatsApp",
-"Formulaire de contact": "Contact form",
-"WhatsApp [numéro] · [contact@…] · [ville], Cameroun — à confirmer": "WhatsApp [number] · [contact@…] · [city], Cameroon — to be confirmed",
 "Garages": "Garages",
 "Commerçants": "Merchants",
 "Entreprises & cabinets": "Companies & firms",
@@ -131,10 +128,13 @@
 "Un prénom, un métier, une ville": "A first name, a trade, a city",
 "Pas d'étoiles anonymes. Quand quelqu'un dit du bien d'un de nos outils ici, il le fait avec son nom, son métier et sa ville.": "No anonymous stars. When someone speaks well of one of our tools here, they do so with their name, their trade and their city.",
 "Joignables là où vous êtes déjà": "Reachable where you already are",
-"WhatsApp d'abord, e-mail ensuite, une adresse au Cameroun. Le lieu d'hébergement et les mentions légales sont écrits sur chaque page produit.": "WhatsApp first, e-mail second, an address in Cameroon. Hosting location and legal notices are written on every product page.",
 "Pourquoi fabriquer des logiciels ici plutôt que les importer ?": "Why build software here rather than import it?",
 "Parce qu'un logiciel importé ne sait pas qu'on paie en deux fois, que le client arrive sans rendez-vous, que la facture se fait en francs CFA et que la connexion n'est pas une promesse. Un garage, une boutique en ligne, un cabinet de traduction : à chaque fois le même geste. S'asseoir au comptoir, regarder travailler, puis coder. Et revenir le mois suivant, parce qu'un logiciel qu'on ne maintient plus est un logiciel qu'on a abandonné.": "Because imported software does not know that people pay in two instalments, that customers walk in without an appointment, that invoices are in CFA francs and that connectivity is not a promise. A garage, an online shop, a translation firm: each time the same move. Sit at the counter, watch people work, then code. And come back the next month, because software nobody maintains is software somebody abandoned.",
 "Troc": "Trade-in",
 "Capture réelle · novembre 2026": "Real screenshot · November 2026",
-"Page d'accueil de la boutique Xeption": "Xeption shop home page"
+"Page d'accueil de la boutique Xeption": "Xeption shop home page",
+"· Douala et Yaoundé, Cameroun": "· Douala and Yaoundé, Cameroon",
+"Écrire un e-mail": "Send an e-mail",
+"WhatsApp d'abord, e-mail ensuite, à Douala comme à Yaoundé. Le lieu d'hébergement et les mentions légales sont écrits sur chaque page produit.": "WhatsApp first, e-mail second, in Douala as in Yaoundé. Hosting location and legal notices are written on every product page.",
+"Hébergement et conformité (OHADA, Mobile Money, hors-ligne) — à confirmer avant affichage.": "Hosting and compliance (OHADA, Mobile Money, offline) — to be confirmed before display."
 }
