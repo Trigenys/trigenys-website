@@ -80,3 +80,10 @@
 - Fait (desktop, js) : `.met` haute de 340 vh, `.stick` collant 100 vh ; le moteur coche la radio `m1..m4` selon la progression (4 crans), compteur « Faites défiler · n / 4 », barre sous l'onglet actif ; clic sur un onglet = défilement vers son cran ; panneaux superposés en fondu. Mobile / sans js : onglets classiques inchangés. Orbites : 3 ellipses de 0/1 en `textPath` tournant lentement (`.orb`), dans chaque panneau, `gen7.py` → `orbits()`.
 - Preuves Playwright (boîte 1440×900) : radios 0→1→2→3 aux crans 0 / 30 / 55 / 80 %, panneau actif opacité 1 les autres 0, stick top constant pendant l'épinglage, 4 orbites, 0 erreur ; mobile : `.met` non épinglée.
 - Publié (canvas v22), copié dans `design/maquettes/`. À valider côté fondateur.
+
+## 2026-11-05 16:34 — V7 : bilingue FR / EN avec bascule à drapeaux
+- Demande fondateur : la page doit être bilingue, avec un toggle à drapeaux.
+- Fait : dictionnaire `i18n.json` (129 chaînes FR→EN, noms de produits et URLs non traduits), `lang.js` (`v7lang`/`v7langInit` : parcours des nœuds texte, original mémorisé sur le nœud, bascule sans rechargement, `lang` posé sur la racine et sur `<html>`, choix mémorisé en localStorage `tg-lang`). Bouton `.lng` : deux drapeaux SVG inline (tricolore, Union Jack) + FR / EN, drapeau actif en pilule sombre ; présent dans `.rt` (desktop) et à côté du burger (mobile, `.lng.lm`). `gen7.py` injecte `var I18N=…` + lang.js avant fx.js.
+- Preuves Playwright (boîtes 1440×900 et 390×844) : clic → h1, nav, compteur « Scroll · 1 / 4 », tout le texte en anglais (seuls « Précis » restent, nom de produit), retour FR au second clic, choix conservé après rechargement, 0 erreur ; régression défilement/rail/parallax inchangée.
+- Limite : la variante « déroulé » (sans moteur) reste FR, bouton inerte. Traductions à relire par le fondateur.
+- Publié (canvas v23), copié dans `design/maquettes/`.
