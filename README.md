@@ -2,7 +2,7 @@
 
 Site corporate et commercial de Trigenys Group : logiciels (Atelier Maître, Commerce Factory, Précis Translator), services professionnels, réalisations et méthode.
 
-**Statut : cadrage.** Aucun code de production ; la direction est en cours de validation.
+**Statut : maquette d'accueil V7 validée (2026-11-05).** Aucun code de production encore ; construction à démarrer.
 
 | Où | Quoi |
 |---|---|

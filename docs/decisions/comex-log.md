@@ -42,3 +42,8 @@ Décision fondateur : nouvelle version plutôt que retouche de V5. Règle appliq
 - **Décision** : les produits sont montrés avec leurs captures, logos et liens réels (pas de maquettes génériques) ; chaque lien affiche son stade réel (production / bêta).
 - **Décision** : l'identité du groupe est portée par le logo et son motif binaire, animés au défilement ; l'expérience de défilement (parallax, rail horizontal) fait partie de la proposition de valeur du site.
 - **Réserves** : domaine définitif de Commerce Factory, couleurs produits, coordonnées de contact et témoignages restent à confirmer ; V7 non validée.
+
+## 2026-11-05 — Accueil V7 validée par le fondateur
+- **Décision** : la maquette d'accueil V7 (`design/maquettes/V7-Accueil.dc.html`, canvas v23) est **validée** : logo vivant, rail horizontal des produits, section « Par métier » épinglée avec orbites binaires, bilingue FR / EN à bascule par drapeaux.
+- **Portée** : valide la structure, les textes FR et l'expérience ; les traductions EN restent à relire. Les éléments marqués « à fournir / à confirmer » (domaine Commerce Factory, coordonnées, logos clients, témoignages, photo équipe) ne sont pas levés.
+- **Conséquence** : fin de la phase maquette pour l'accueil ; la phase suivante (construction du site de production, puis pages produit) peut démarrer. Aucun déploiement public tant que les éléments « à confirmer » ne sont pas renseignés.

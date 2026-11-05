@@ -92,3 +92,7 @@
 - Retour fondateur sur la bascule FR/EN à drapeaux : « ok j'aime ». Le toggle et le mécanisme sont retenus pour la suite.
 - État : canvas v23, commit e12524b poussé, aucune PR ouverte, aucun verrou.
 - Reste à faire : relecture des traductions par le fondateur ; variante « déroulé » toujours FR ; éléments « à confirmer » inchangés (domaine Commerce Factory, WhatsApp / e-mail / ville, logos clients, témoignages, photo équipe). Prochaine étape : attendre la prochaine demande d'ajustement V7 ou la validation globale avant tout déploiement.
+
+## 2026-11-05 16:49 — Validation V7 consignée, suite à cadrer
+- Fondateur : « j'ai validé, on peut continuer ». Consigné dans `docs/decisions/comex-log.md` et statut README mis à jour.
+- Prochaine étape à trancher avec le fondateur : construire l'accueil de production (site statique depuis le template V7) ou maquetter d'abord la page produit Commerce Factory (action prévue au comex). Question posée.
