@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Trigenys Group — Accueil v2</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FCFAFB}
+.t{--bx:#7F2044;--pr:#55162F;--tq:#138F8D;--tqt:#0E6E6C;--ro:#E7A2B6;--in:#251C2A;--cr:#FCFAFB;--mu:#4A3F4F;--li:#EADDE3;
+  background:var(--cr);color:var(--in);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.6}
+.t *{box-sizing:border-box}
+.w{max-width:1200px;margin:0 auto;padding:0 24px}
+.serif{font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.01em}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;font-weight:600;text-decoration:none}
+.b1{background:var(--bx);color:var(--cr)}.b2{border:1.5px solid var(--bx);color:var(--bx)}
+.b3{background:var(--ro);color:var(--in)}.b4{border:1.5px solid #6B5A72;color:var(--cr)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;max-width:1200px;margin:0 auto}
+.links{display:flex;gap:26px;align-items:center;font-size:15px;font-weight:500}
+.links a{color:var(--in);text-decoration:none}
+.menu{display:none;min-width:44px;min-height:44px;border:1px solid var(--li);border-radius:10px;background:#fff;align-items:center;justify-content:center}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:#fff;border:1px solid var(--li);border-radius:20px;padding:28px}
+.pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.p-prod{background:#DDEFEE;color:#0A5654}.p-beta{background:#F5E1E8;color:#7F2044}
+.dk .pill.p-prod{background:#14403F;color:#9FE0DD}.dk .pill.p-beta{background:#4A2236;color:#F3C9D5}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding:80px 24px 88px}
+h1.serif{font-size:58px;line-height:1.06;margin:0;color:var(--bx)}
+h2.serif{font-size:40px;line-height:1.12;margin:0}
+.dk{background:var(--in);color:#F3ECEF}
+.prod{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pc{border:1px solid #3D3043;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;background:#2C2232}
+.pc a.more{color:var(--ro);font-weight:600;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.svc{border-top:3px solid var(--tq);padding-top:16px}
+.lang{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mu)}
+@media (max-width:900px){
+  .links{display:none}.menu{display:inline-flex}
+  .hero{grid-template-columns:1fr;gap:36px;padding:48px 20px 56px}
+  h1.serif{font-size:38px}h2.serif{font-size:30px}
+  .g2,.g3,.g4,.prod{grid-template-columns:1fr}
+  .w{padding:0 20px}.card{padding:22px}
+  .btn{width:100%}
+  .sec{padding-top:56px!important;padding-bottom:56px!important}
+}
+</style>
+</helmet>
+<div class="t">
+
+  <header style="border-bottom:1px solid var(--li);background:var(--cr)">
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#" aria-label="Trigenys Group, accueil" style="line-height:0"><img src="/_blob/9cb8472360e8e3fd892929d7358a03fa" alt="Trigenys Group" style="height:38px;width:auto"></a>
+      <div class="links">
+        <a href="#logiciels">Logiciels</a>
+        <a href="#services">Services</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#methode">Méthode</a>
+        <a href="https://insight.trigenys.com/">Insight</a>
+        <span class="lang"><a href="#" aria-current="true" style="color:var(--in)">FR</a> · <a href="#" lang="en" style="color:var(--mu)">EN</a></span>
+        <a href="#contact" class="btn b1" style="min-height:44px;padding:10px 18px;color:var(--cr)">Nous contacter</a>
+      </div>
+      <button class="menu" type="button" aria-label="Ouvrir le menu"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#251C2A" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </nav>
+  </header>
+
+  <section class="hero" style="max-width:1200px;margin:0 auto">
+    <div>
+      <p class="mono" style="margin:0 0 18px;color:var(--tqt)">Trigenys Group · Cameroun</p>
+      <h1 class="serif">Nous construisons des logiciels métiers. Les nôtres, et les vôtres.</h1>
+      <p style="margin:24px 0 0;font-size:19px;color:var(--mu);max-width:560px">Trigenys Group édite ses propres solutions SaaS et accompagne les organisations dans la conception, l'intégration et la maintenance de leurs applications.</p>
+      <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#logiciels" class="btn b1">Découvrir nos logiciels</a>
+        <a href="#contact" class="btn b2">Confier un projet</a>
+      </div>
+    </div>
+    <aside aria-label="Portefeuille Trigenys" class="card" style="padding:0;overflow:hidden;box-shadow:0 24px 48px -32px rgba(85,22,47,.4)">
+      <div style="padding:18px 24px;border-bottom:1px solid var(--li);display:flex;justify-content:space-between;align-items:center">
+        <span class="mono" style="color:var(--mu)">Nos logiciels</span><span class="mono" style="color:var(--tqt)">01010100</span>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0">
+        <li style="padding:18px 24px;border-bottom:1px solid var(--li);display:flex;justify-content:space-between;gap:12px;align-items:center"><div><strong>Atelier Maître</strong><div style="font-size:14px;color:var(--mu)">Gestion d'atelier automobile</div></div><span class="pill p-prod">En production</span></li>
+        <li style="padding:18px 24px;border-bottom:1px solid var(--li);display:flex;justify-content:space-between;gap:12px;align-items:center"><div><strong>Commerce Factory</strong><div style="font-size:14px;color:var(--mu)">Boutiques en ligne · commandes WhatsApp</div></div><span class="pill p-beta">Bêta</span></li>
+        <li style="padding:18px 24px;display:flex;justify-content:space-between;gap:12px;align-items:center"><div><strong>Précis Translator</strong><div style="font-size:14px;color:var(--mu)">Traduction de documents, mise en page conservée</div></div><span class="pill p-beta">Bêta</span></li>
+      </ul>
+      <div style="padding:16px 24px;background:#F5EEF1;font-size:14px;color:var(--mu)">Et des services : ingénierie, intégration, maintenance.</div>
+    </aside>
+  </section>
+
+  <section aria-label="Deux façons de travailler avec nous" style="background:#F5EEF1">
+    <div class="w sec" style="padding-top:72px;padding-bottom:72px">
+      <div class="grid g2">
+        <a href="#logiciels" class="card" style="text-decoration:none;color:inherit;display:block">
+          <p class="mono" style="margin:0 0 10px;color:var(--tqt)">Logiciels</p>
+          <h2 class="serif" style="font-size:28px">Vous cherchez un outil prêt à l'emploi.</h2>
+          <p style="margin:10px 0 18px;color:var(--mu)">Découvrez nos produits, voyez-les fonctionner sur une démonstration, démarrez rapidement.</p>
+          <span style="color:var(--bx);font-weight:600">Voir les logiciels →</span>
+        </a>
+        <a href="#services" class="card" style="text-decoration:none;color:inherit;display:block">
+          <p class="mono" style="margin:0 0 10px;color:var(--tqt)">Services</p>
+          <h2 class="serif" style="font-size:28px">Vous avez un besoin spécifique.</h2>
+          <p style="margin:10px 0 18px;color:var(--mu)">Application sur mesure, intégration de systèmes, reprise et maintenance d'une application existante.</p>
+          <span style="color:var(--bx);font-weight:600">Voir les services →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="logiciels" class="dk" style="position:relative;overflow:hidden">
+    <div aria-hidden="true" class="mono" style="position:absolute;right:-20px;top:30px;font-size:20px;letter-spacing:.5em;line-height:1.8;color:#138F8D;opacity:.18;white-space:pre">0 1 1 0 1 0 0 1
+ 1 0 0 1 1 1 0
+0 0 1 1 0 1 1 0
+ 1 1 0 1 0 0 1</div>
+    <div class="w sec" style="position:relative;padding-top:96px;padding-bottom:96px">
+      <p class="mono" style="margin:0 0 12px;color:#5FC4C1">Nos logiciels</p>
+      <h2 class="serif" style="color:var(--cr);max-width:680px">Trois produits, trois métiers. Chacun à son stade, annoncé clairement.</h2>
+      <div class="prod" style="margin-top:44px">
+        <article class="pc">
+          <span class="pill p-prod" style="align-self:flex-start">En production</span>
+          <h3 class="serif" style="margin:0;font-size:28px;color:var(--cr)">Atelier Maître</h3>
+          <p class="mono" style="margin:0;color:#A898A2;font-size:12px">Garages &amp; centres auto</p>
+          <p style="margin:0;color:#CFC2C9">Réception, ordres de travail, planning, stock de pièces, devis, factures et caisse dans un même outil.</p>
+          <a class="more" href="#">Demander une démonstration →</a>
+        </article>
+        <article class="pc">
+          <span class="pill p-beta" style="align-self:flex-start">Bêta ouverte</span>
+          <h3 class="serif" style="margin:0;font-size:28px;color:var(--cr)">Commerce Factory</h3>
+          <p class="mono" style="margin:0;color:#A898A2;font-size:12px">Boutiques &amp; marques</p>
+          <p style="margin:0;color:#CFC2C9">Un catalogue en ligne à partager. Le client choisit, la demande de commande arrive sur votre WhatsApp.</p>
+          <a class="more" href="PisteA-CommerceFactory.dc.html">Rejoindre la bêta →</a>
+        </article>
+        <article class="pc">
+          <span class="pill p-beta" style="align-self:flex-start">Bêta · pilotes</span>
+          <h3 class="serif" style="margin:0;font-size:28px;color:var(--cr)">Précis Translator</h3>
+          <p class="mono" style="margin:0;color:#A898A2;font-size:12px">Cabinets &amp; entreprises bilingues</p>
+          <p style="margin:0;color:#CFC2C9">PDF, Word, PowerPoint et Excel traduits en conservant la mise en page d'origine.</p>
+          <a class="more" href="#">Proposer un pilote →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="w sec" style="padding-top:96px;padding-bottom:88px">
+      <p class="mono" style="margin:0 0 12px;color:var(--tqt)">Services professionnels</p>
+      <h2 class="serif" style="max-width:720px">L'expérience de nos produits, mise au service de vos applications.</h2>
+      <div class="grid g4" style="margin-top:44px;gap:32px">
+        <div class="svc"><h3 style="margin:0 0 8px;font-size:19px">Ingénierie logicielle</h3><p style="margin:0;color:var(--mu);font-size:16px">Applications web, mobiles et métiers conçues autour de vos processus.</p></div>
+        <div class="svc"><h3 style="margin:0 0 8px;font-size:19px">Intégration &amp; automatisation</h3><p style="margin:0;color:var(--mu);font-size:16px">API, paiements mobiles, notifications WhatsApp et Telegram, flux automatisés.</p></div>
+        <div class="svc"><h3 style="margin:0 0 8px;font-size:19px">Support &amp; maintenance</h3><p style="margin:0;color:var(--mu);font-size:16px">Correction, évolution et suivi de vos applications, avec des versions tracées.</p></div>
+        <div class="svc"><h3 style="margin:0 0 8px;font-size:19px">Cadrage &amp; architecture</h3><p style="margin:0;color:var(--mu);font-size:16px">Analyse du besoin et choix techniques avant d'écrire la première ligne.</p></div>
+      </div>
+      <a href="#contact" class="btn b2" style="margin-top:40px">Décrire mon projet</a>
+    </div>
+  </section>
+
+  <section id="realisations" style="background:#F5EEF1">
+    <div class="w sec" style="padding-top:88px;padding-bottom:88px">
+      <p class="mono" style="margin:0 0 12px;color:var(--tqt)">Réalisations</p>
+      <h2 class="serif" style="max-width:720px">Des systèmes en service, pas des maquettes.</h2>
+      <div class="grid g3" style="margin-top:40px">
+        <div class="card"><p class="mono" style="margin:0 0 8px;color:var(--bx);font-size:12px">Automobile · production</p><h3 style="margin:0 0 8px;font-size:20px">Atelier Maître</h3><p style="margin:0;color:var(--mu);font-size:16px">Plateforme de gestion d'atelier en service, publiée en versions successives.</p><p style="margin:12px 0 0;font-size:14px;color:#6B5A72">[Client et résultats à valider]</p></div>
+        <div class="card"><p class="mono" style="margin:0 0 8px;color:var(--bx);font-size:12px">E-commerce · intégration</p><h3 style="margin:0 0 8px;font-size:20px">[Plateforme e-commerce]</h3><p style="margin:0;color:var(--mu);font-size:16px">Boutique connectée au stock, aux commandes, aux paiements et au service après-vente.</p><p style="margin:12px 0 0;font-size:14px;color:#6B5A72">[Nom publiable à confirmer]</p></div>
+        <div class="card"><p class="mono" style="margin:0 0 8px;color:var(--bx);font-size:12px">Open source</p><h3 style="margin:0 0 8px;font-size:20px">Outils publiés</h3><p style="margin:0;color:var(--mu);font-size:16px">Une partie de nos briques d'ingénierie et d'automatisation est publique sur GitHub.</p><a href="#" style="display:inline-flex;min-height:44px;align-items:center;font-weight:600">Voir sur GitHub →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="methode">
+    <div class="w sec" style="padding-top:96px;padding-bottom:88px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px">
+      <div>
+        <p class="mono" style="margin:0 0 12px;color:var(--tqt)">Méthode · RAIDER</p>
+        <h2 class="serif">Un logiciel doit encore fonctionner dans trois ans.</h2>
+        <p style="margin:18px 0 0;color:var(--mu)">Notre standard d'ingénierie interne s'applique à nos produits comme aux projets clients.</p>
+      </div>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;gap:18px">
+        <li style="display:flex;gap:16px"><span class="mono" style="color:var(--bx)">01</span><div><strong>Démontrer avant d'engager</strong><div style="color:var(--mu);font-size:16px">Démo ou pilote sur votre cas réel.</div></div></li>
+        <li style="display:flex;gap:16px"><span class="mono" style="color:var(--bx)">02</span><div><strong>Livrer par versions</strong><div style="color:var(--mu);font-size:16px">Chaque évolution est testée, numérotée et réversible.</div></div></li>
+        <li style="display:flex;gap:16px"><span class="mono" style="color:var(--bx)">03</span><div><strong>Documenter</strong><div style="color:var(--mu);font-size:16px">Architecture et décisions écrites, pour ne dépendre de personne.</div></div></li>
+        <li style="display:flex;gap:16px"><span class="mono" style="color:var(--bx)">04</span><div><strong>Dire les limites</strong><div style="color:var(--mu);font-size:16px">Maturité et périmètre annoncés sans exagération.</div></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-label="Ancrage" style="border-top:1px solid var(--li);border-bottom:1px solid var(--li)">
+    <div class="w sec" style="padding-top:64px;padding-bottom:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;align-items:center">
+      <h2 class="serif" style="font-size:30px">Conçu au Cameroun, pour des organisations d'ici et d'ailleurs.</h2>
+      <p style="margin:0;color:var(--mu)">Des outils qui tiennent compte des réalités locales : WhatsApp comme canal de vente, paiements mobiles, FCFA, usage bilingue français–anglais.</p>
+    </div>
+  </section>
+
+  <section aria-label="Trigenys Insight">
+    <div class="w sec" style="padding-top:72px;padding-bottom:72px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px">
+      <div style="max-width:640px"><p class="mono" style="margin:0 0 10px;color:var(--tqt)">Publication</p><h2 class="serif" style="font-size:30px">Trigenys Insight</h2><p style="margin:10px 0 0;color:var(--mu)">Notre publication éditoriale indépendante sur la technologie, la cybersécurité et le business, vus d'Afrique.</p></div>
+      <a href="https://insight.trigenys.com/" class="btn b2">Lire Insight</a>
+    </div>
+  </section>
+
+  <section id="contact" style="background:var(--bx);color:var(--cr)">
+    <div class="w sec" style="padding-top:88px;padding-bottom:88px">
+      <h2 class="serif" style="color:var(--cr);max-width:720px">Par où commencer ?</h2>
+      <div class="grid g3" style="margin-top:36px">
+        <a href="#" style="background:var(--pr);border-radius:18px;padding:24px;color:var(--cr);text-decoration:none;display:block"><strong style="font-size:19px">Voir un logiciel</strong><p style="margin:6px 0 0;color:#F3C9D5;font-size:16px">Démonstration d'Atelier Maître, de Commerce Factory ou de Précis.</p></a>
+        <a href="#" style="background:var(--pr);border-radius:18px;padding:24px;color:var(--cr);text-decoration:none;display:block"><strong style="font-size:19px">Confier un projet</strong><p style="margin:6px 0 0;color:#F3C9D5;font-size:16px">Décrivez votre besoin, nous revenons avec un cadrage.</p></a>
+        <a href="#" style="background:var(--pr);border-radius:18px;padding:24px;color:var(--cr);text-decoration:none;display:block"><strong style="font-size:19px">Support client</strong><p style="margin:6px 0 0;color:#F3C9D5;font-size:16px">Vous utilisez déjà un de nos outils.</p></a>
+      </div>
+      <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#" class="btn" style="background:var(--cr);color:var(--bx)">WhatsApp · [Numéro]</a>
+        <a href="#" class="btn" style="border:1.5px solid #F3C9D5;color:var(--cr)">[contact@…]</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:var(--in);color:#CFC2C9">
+    <div class="w" style="padding-top:48px;padding-bottom:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;font-size:15px">
+      <div><img src="/_blob/bc607b87c6b4dbe4fe5cd7ddbabb885e" alt="Trigenys Group" style="height:34px;width:auto"><p style="margin:12px 0 0;font-size:14px">Designing the systems behind decisions.</p></div>
+      <div><p class="mono" style="margin:0 0 10px;color:#A898A2;font-size:12px">Logiciels</p><a href="#" style="color:#CFC2C9;display:block">Atelier Maître</a><a href="#" style="color:#CFC2C9;display:block">Commerce Factory</a><a href="#" style="color:#CFC2C9;display:block">Précis Translator</a></div>
+      <div><p class="mono" style="margin:0 0 10px;color:#A898A2;font-size:12px">Services</p><a href="#" style="color:#CFC2C9;display:block">Ingénierie</a><a href="#" style="color:#CFC2C9;display:block">Intégration</a><a href="#" style="color:#CFC2C9;display:block">Maintenance</a></div>
+      <div><p class="mono" style="margin:0 0 10px;color:#A898A2;font-size:12px">Groupe</p><a href="https://insight.trigenys.com/" style="color:#CFC2C9;display:block">Insight</a><a href="#" style="color:#CFC2C9;display:block">GitHub</a><a href="#" style="color:#CFC2C9;display:block">Mentions légales</a></div>
+    </div>
+    <div class="w" style="padding-bottom:28px"><span class="mono" style="font-size:12px;color:#A898A2">© 2026 Trigenys Group</span></div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4400}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
