@@ -25,3 +25,8 @@ Ajout seulement : chaque décision est une nouvelle entrée ; une révision réf
 - Direction visuelle V4 : éditoriale, sobre, capture produit réelle (données d'exemple), index du portefeuille ; suppression des auroras, bordures lumineuses, pastilles pulsantes, cartes glass.
 - À trancher par le fondateur : produits non publiés (stade idée/prototype) affichables publiquement ou non ; relation de marque AgenStudio / Trigenys sur le site.
 - Statut : maquette V4 **à valider**.
+
+## 2026-11-05 — Site : direction « studio produit coloré » (V5)
+- Choix du fondateur après rejet de V4 (trop plat, structure, textes) : chaque produit a son univers et sa couleur ; grille de produits très visuelle.
+- Couleurs produit : proposition de maquette, à valider avant toute charte produit.
+- Statut : maquette V5 **à valider**.

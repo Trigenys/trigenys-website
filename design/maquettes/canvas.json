@@ -78,9 +78,26 @@
       "w": 390,
       "h": 10360,
       "title": "V4 · Accueil groupe (mobile 390)"
+    },
+    "V5-Accueil.dc.html": {
+      "x": 0,
+      "y": 32000,
+      "w": 1440,
+      "h": 7880,
+      "title": "V5 · Studio produits coloré (desktop)",
+      "expand": "fill"
+    },
+    "V5-Accueil-Mobile.dc.html": {
+      "x": 1520,
+      "y": 32000,
+      "w": 390,
+      "h": 10160,
+      "title": "V5 · Studio produits coloré (mobile 390)"
     }
   },
   "order": [
+    "V5-Accueil.dc.html",
+    "V5-Accueil-Mobile.dc.html",
     "V4-Accueil.dc.html",
     "V4-Accueil-Mobile.dc.html",
     "V3-Accueil.dc.html",
@@ -117,6 +134,13 @@
       "x": 0,
       "y": 20750,
       "text": "V4 — Groupe éditeur : 3 produits de lancement + portefeuille par métiers (stades réels) · sobre, éditorial · à valider",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "t5": {
+      "x": 0,
+      "y": 31750,
+      "text": "V5 — Studio produits : univers coloré par produit, mur de produits animé, lancement en panneaux empilés, bento du portefeuille · à valider",
       "kind": "title1",
       "maxW": 4480
     }

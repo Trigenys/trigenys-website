@@ -23,3 +23,9 @@
 - Vérifié : 1440 → 6960 px, 390 → 10359 px, aucun débordement horizontal.
 - Ouvert : quels produits non publiés afficher ; place d'AgenStudio ; contacts réels (placeholders).
 - Suite : retour fondateur sur V4, puis pages produit.
+
+## 2026-11-05 15:05 — Accueil V5 : studio produits coloré
+- Retour fondateur sur V4 : « j'aime pas » — trop plat, structure et textes à revoir ; direction choisie : **studio produit coloré**.
+- Fait : `design/maquettes/V5-Accueil.dc.html` (+ `-Mobile`), boards V5 sur le canvas (y=32000). Couleur propre à chaque produit (proposition, non validée), mur de produits animé, 3 produits de lancement en panneaux empilés (sticky), bento du portefeuille (13 produits, stades du registry), services, réalisations, CTA.
+- Vérifié : 1440 → 7873 px, 390 → 10157 px, aucun débordement ; contraste bouton corrigé.
+- Ouvert : couleurs produit à valider ; produits non publiés affichables ou non ; contacts réels.
