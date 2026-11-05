@@ -9,7 +9,9 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<!-- Feuille Google Fonts chargée sans bloquer le rendu (display=swap) ; repli sans JS. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap"></noscript>
 <style>
 html{scroll-behavior:smooth}
 body{margin:0;background:#FCFAFB}
@@ -79,6 +81,7 @@ h2.sec{margin:0;font-size:60px;line-height:1.02;font-weight:500;max-width:820px}
 .t.js .ln2{transform-origin:left;transform:scaleX(0)}
 .t.js .rail .prg i{transform-origin:left;transform:scaleX(0)}
 .t.js .hero .stage,.t.js .hero h1{will-change:transform}
+.t.js:not(.go) .hx text,.t.js:not(.go) .orb g,.t.js:not(.go) .mq div,.t.js .hx.off text,.t.js .orb.off g,.t.js .mq.off div{animation-play-state:paused}
 .t.js:not(.m) .rail{height:460vh}
 .t.js:not(.m) .rail .stick{position:sticky;top:0;height:100vh;overflow:hidden}
 .t.js:not(.m) .rail .track{overflow:visible;width:max-content;height:100%;scroll-snap-type:none;will-change:transform}

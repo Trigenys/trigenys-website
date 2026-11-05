@@ -9,6 +9,12 @@ function v7fx(root){
   while(e&&e!==document.body){var o=getComputedStyle(e).overflowY;if(/(auto|scroll)/.test(o)&&e.scrollHeight>e.clientHeight+1){sc=e;break}e=e.parentElement}
   function V(){if(sc){var r=sc.getBoundingClientRect();return{top:r.top,left:r.left,w:sc.clientWidth,h:sc.clientHeight}}return{top:0,left:0,w:innerWidth,h:innerHeight}}
   var q=function(s){return root.querySelector(s)};
+  /* Décor animé en continu (hélices, orbites, bandeaux) : en pause jusqu'au chargement complet
+     et hors écran, pour laisser le CPU au premier rendu (LCP mobile) et économiser la batterie. */
+  var deco=[].slice.call(root.querySelectorAll('.hx,.orb,.mq'));
+  if(deco.length&&window.IntersectionObserver){var dio=new IntersectionObserver(function(es){es.forEach(function(x){x.target.classList.toggle('off',!x.isIntersecting)})},{root:sc,rootMargin:'20% 0px'});deco.forEach(function(d){dio.observe(d)})}
+  function go(){setTimeout(function(){root.classList.add('go')},500)}
+  if(document.readyState==='complete')go();else addEventListener('load',go);
   var rail=q('.rail'),track=rail&&rail.querySelector('.track'),prg=rail&&rail.querySelector('.prg i'),hint=rail&&rail.querySelector('.hint');
   var hero=q('.hero'),h1=hero&&hero.querySelector('h1'),copy=h1&&h1.parentElement,stage=hero&&hero.querySelector('.stage');
   var lns=[].slice.call(root.querySelectorAll('.ln2'));
