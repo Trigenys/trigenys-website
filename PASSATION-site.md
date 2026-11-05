@@ -60,3 +60,8 @@
 - Vérifié en Playwright headless (le navigateur intégré n'exécute pas les animations de défilement quand le volet est masqué) : desktop 1440×900 hauteur 10 042 px, sticky actif, translation du rail −1134 → −4320 px, barre de progression animée ; mobile 390×844 hauteur 12 580 px ; aucun débordement horizontal ni image cassée.
 - Toujours à fournir / confirmer : couleurs produits (proposition), domaine Commerce Factory, numéro WhatsApp / e-mail / ville, logos clients et témoignages.
 - Prochaine étape : retour fondateur sur V7 (à ouvrir les boards « Fenêtre » et « Mobile » et faire défiler).
+
+## 2026-11-05 16:05 — V7 : moteur de profondeur JS
+- Retour fondateur : « ça commence à venir mais pas de scroll parallax ». Cause : parallax CSS trop faible (−30 à −110 px) et dépendant du support navigateur des animations pilotées par le défilement (absent → repli sans aucun mouvement).
+- Ajout d'un moteur JS léger (`<script id="fx">`, ~80 lignes, rAF + IntersectionObserver, transforms uniquement) qui prend le relais dès qu'il tourne (`html.js`) : hero (texte et scène à vitesses opposées, fondu), rail horizontal collant piloté en JS (plus de dépendance `animation-timeline`), parallax par couche sur toutes les captures et nappes binaires (amplitude ≈ ±0,38 vh × coefficient), parallax horizontal dans les panneaux du rail, filigrane logo ±256 px, lignes qui se tracent, apparitions échelonnées. `prefers-reduced-motion` respecté. Le CSS pur reste en repli sans JS ; la variante « déroulé » n'embarque pas le script.
+- Vérifié Playwright : desktop 10 402 px, mobile 12 580 px, aucun débordement ; translations mesurées (captures hero −192/−85 px, filigrane +256 → −256 px, rail −4320 px).
