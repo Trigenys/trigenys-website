@@ -47,3 +47,10 @@ Décision fondateur : nouvelle version plutôt que retouche de V5. Règle appliq
 - **Décision** : la maquette d'accueil V7 (`design/maquettes/V7-Accueil.dc.html`, canvas v23) est **validée** : logo vivant, rail horizontal des produits, section « Par métier » épinglée avec orbites binaires, bilingue FR / EN à bascule par drapeaux.
 - **Portée** : valide la structure, les textes FR et l'expérience ; les traductions EN restent à relire. Les éléments marqués « à fournir / à confirmer » (domaine Commerce Factory, coordonnées, logos clients, témoignages, photo équipe) ne sont pas levés.
 - **Conséquence** : fin de la phase maquette pour l'accueil ; la phase suivante (construction du site de production, puis pages produit) peut démarrer. Aucun déploiement public tant que les éléments « à confirmer » ne sont pas renseignés.
+
+## 2026-11-05 — Site de production : stack et chaîne de qualité
+- **Options (reuse-first)** : Adopt `Trigenys/appfactory-landing-template` (React 19 / Vite / Tailwind, piloté par `appfactory.json`) · Adopt OpenPage (export d'un `index.html` par blocs) · Build : site statique maison généré depuis le template V7.
+- **Choix** : **Build**, car l'expérience validée (moteur de défilement, logo vivant, section épinglée, bilingue) ne se décrit pas dans le manifeste du template React et OpenPage n'apporte qu'une copie de fichier. Zéro dépendance npm, build Node déterministe, dossier `site/`.
+- **Adopt** : CI depuis `EagleFox31/appfactory-project-automation` épinglé par SHA (`reusable-impact-analysis`, `reusable-visual-qa`) ; config `.github/appfactory-impact.json`, `.github/appfactory-visual-qa.json`.
+- **Non décidé** : hébergeur et domaine (trigenys.com ne répond pas aujourd'hui) ; déploiement conditionné aux éléments « à confirmer ».
+- **Révision** : si une 2ᵉ page (produit) est construite, factoriser le template (en-tête, pied, bascule) avant d'en écrire une 3ᵉ.

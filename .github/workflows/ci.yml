@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  impact:
+    uses: EagleFox31/appfactory-project-automation/.github/workflows/reusable-impact-analysis.yml@a6ad4b4b23dc6b004288a4b77c82ffae92b02b06
+    with:
+      appfactory_ref: a6ad4b4b23dc6b004288a4b77c82ffae92b02b06
+      config_path: .github/appfactory-impact.json
+      mode: ${{ github.event_name == 'workflow_dispatch' && 'all' || 'auto' }}
+
+  site-build:
+    needs: impact
+    if: ${{ contains(fromJSON(needs.impact.outputs.gates), 'site-build') }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm run build
+      - name: Build idempotent
+        run: |
+          cp dist/index.html /tmp/first.html
+          npm run build --silent
+          cmp dist/index.html /tmp/first.html
+
+  visual-qa:
+    needs: impact
+    if: ${{ contains(fromJSON(needs.impact.outputs.gates), 'visual-qa') }}
+    uses: EagleFox31/appfactory-project-automation/.github/workflows/reusable-visual-qa.yml@a6ad4b4b23dc6b004288a4b77c82ffae92b02b06
+    permissions:
+      contents: read
+    with:
+      appfactory_ref: a6ad4b4b23dc6b004288a4b77c82ffae92b02b06
+      config_path: .github/appfactory-visual-qa.json
+      checkout_ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      install_command: cd site && npm install --no-audit --no-fund
+      build_command: cd site && npm run build
+      start_command: cd site && npm run preview -- --host 127.0.0.1 --port 4173
+      server_url: http://127.0.0.1:4173/

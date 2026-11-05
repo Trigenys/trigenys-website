@@ -96,3 +96,9 @@
 ## 2026-11-05 16:49 — Validation V7 consignée, suite à cadrer
 - Fondateur : « j'ai validé, on peut continuer ». Consigné dans `docs/decisions/comex-log.md` et statut README mis à jour.
 - Prochaine étape à trancher avec le fondateur : construire l'accueil de production (site statique depuis le template V7) ou maquetter d'abord la page produit Commerce Factory (action prévue au comex). Question posée.
+
+## 2026-11-05 17:02 — Site de production : `site/` créé depuis le template V7
+- Décision fondateur : construire le site de production avant les pages produit (consigné au comex-log).
+- Fait : `site/src` (template nettoyé du canevas, assets locaux, `fx.js`, `lang.js`, `i18n.json`), `scripts/build.mjs` (port Node de gen7, déterministe), `scripts/check.mjs` (contrats), `scripts/serve.mjs` ; CI `.github/workflows/ci.yml` : impact → `site-build` (+ preuve d'idempotence) et `visual-qa` réutilisable AppFactory @a6ad4b4b. CTA principal marqué `data-cta="primary"` (hero). Mémoire d'erreurs `docs/engineering/lessons-learned.md`.
+- Preuves locales : build ×2 identiques ; Playwright sur dist (1440×900, 390×844) : rail actif, bascule EN, 0 erreur console, 0 image externe, pas de débordement, CTA visible ; reduced-motion : page statique lisible.
+- Prochaine étape : vérifier le premier run CI sur GitHub (gates impact/visual-qa), puis décider hébergeur + domaine ; pas de déploiement avant les « à confirmer ».

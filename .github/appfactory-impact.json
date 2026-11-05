@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "fallback": "all",
+  "ignorePaths": [
+    "README.md",
+    "PASSATION-site.md",
+    "docs/**",
+    "design/**"
+  ],
+  "surfaces": {
+    "frontend": {
+      "paths": [
+        "site/src/**",
+        "site/scripts/**",
+        "site/package.json",
+        "site/package-lock.json",
+        ".github/appfactory-visual-qa.json"
+      ],
+      "gates": [
+        "site-build",
+        "visual-qa"
+      ]
+    }
+  }
+}
