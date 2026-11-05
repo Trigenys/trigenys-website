@@ -93,9 +93,26 @@
       "w": 390,
       "h": 10160,
       "title": "V5 · Studio produits coloré (mobile 390)"
+    },
+    "V6-Accueil.dc.html": {
+      "x": 0,
+      "y": 43000,
+      "w": 1440,
+      "h": 7260,
+      "title": "V6 · Benchmark : promesse, preuves, 3 phares + grille, par métier (desktop)",
+      "expand": "fill"
+    },
+    "V6-Accueil-Mobile.dc.html": {
+      "x": 1520,
+      "y": 43000,
+      "w": 390,
+      "h": 12100,
+      "title": "V6 · Benchmark (mobile 390)"
     }
   },
   "order": [
+    "V6-Accueil.dc.html",
+    "V6-Accueil-Mobile.dc.html",
     "V5-Accueil.dc.html",
     "V5-Accueil-Mobile.dc.html",
     "V4-Accueil.dc.html",
@@ -141,6 +158,13 @@
       "x": 0,
       "y": 31750,
       "text": "V5 — Studio produits : univers coloré par produit, mur de produits animé, lancement en panneaux empilés, bento du portefeuille · à valider",
+      "kind": "title1",
+      "maxW": 4480
+    },
+    "t6": {
+      "x": 0,
+      "y": 42750,
+      "text": "V6 — Issue du benchmark : promesse client, bande de preuves vérifiables, 3 phares + grille « voir tout », axe par métier, ingénierie à part, confiance locale, équipe, prix FCFA, CTA WhatsApp · emplacements marqués « à fournir » · à valider",
       "kind": "title1",
       "maxW": 4480
     }

@@ -33,3 +33,6 @@ Ajout seulement : chaque décision est une nouvelle entrée ; une révision réf
 
 ## 2026-11-05 — Benchmark des sites comparables
 Référence : `docs/site/benchmark-sites.md`. À utiliser comme grille de revue de l'accueil (promesse, preuve, hiérarchie 3 phares + grille, axe métier, CTA WhatsApp, prix FCFA, humains).
+
+## 2026-11-05 — Accueil : V6 construite sur le benchmark
+Décision fondateur : nouvelle version plutôt que retouche de V5. Règle appliquée : seuls les faits vérifiables sont affichés, tout le reste est un emplacement marqué « à fournir ». Maquette : `design/maquettes/V6-Accueil.dc.html`.

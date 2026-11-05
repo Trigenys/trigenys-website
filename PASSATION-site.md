@@ -41,3 +41,11 @@
 - Points saillants : promesse client en une phrase, preuve chiffrée réelle au 2e écran, 3 phares + grille « voir tout », second axe « par métier », CTA WhatsApp primaire (rare chez les concurrents), prix en FCFA, bloc fondateur/équipe. Anti-exemples : placeholders en prod, métriques inexpliquées, isométrique/3D/dégradés, TLS cassé.
 - État : V5 (f9b0919) toujours non validée. Aucun verrou.
 - Prochaine étape : décider avec le fondateur si V5 est retouchée selon les recommandations 1-5 ou si une V6 part du benchmark. Toujours en attente : couleurs produits, produits non publiés visibles ou non, lien AgenStudio, contacts réels.
+
+## 2026-11-05 15:25 — Accueil V6 : issue du benchmark
+- Fondateur a choisi « Faire une V6 » plutôt que retoucher V5.
+- V6 publiée sur le canvas (boards y=43000, desktop 1440×7260, mobile 390×12100) et versée dans `design/maquettes/V6-Accueil*.dc.html`. Vérifiée localement : 7 225 px / 12 062 px, aucun débordement horizontal.
+- Structure : hero promesse client + CTA WhatsApp « Parler à un expert » ; bande de preuves limitée aux faits vérifiables du registre (13 logiciels, 2 prod + 4 bêta, XEPTION) ; 3 phares en cartes riches + grille des 10 autres + « Voir les 13 produits » ; onglets « Par métier » (6 cibles, CSS pur) ; ingénierie en 4 étapes + XEPTION ; confiance (stades, témoignages, ancrage) ; bloc équipe ; tarifs FCFA sans montant ; CTA final.
+- Emplacements « à fournir » explicitement marqués : logos clients, témoignages nommés, adresse/numéro/hébergement/conformité, photo équipe, signataire, montants des abonnements.
+- Couleurs produits = proposition V5 reprise, toujours non validée. V5 et V6 coexistent sur le canvas, aucune supprimée.
+- Prochaine étape : retour fondateur sur V6 ; si validée, collecter les éléments « à fournir » puis passer en pages produit.
