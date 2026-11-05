@@ -45,7 +45,7 @@ for i in range(1, 5):
 import json
 i18n = json.dumps(json.loads((ROOT / 'i18n.json').read_text(encoding='utf-8')), ensure_ascii=False)
 NL = chr(10)
-src = src.replace('@@FX@@', 'var I18N=' + i18n + ';' + NL + (ROOT / 'lang.js').read_text(encoding='utf-8') + NL + (ROOT / 'fx.js').read_text(encoding='utf-8'))
+src = src.replace('@@FX@@', 'var I18N=' + i18n + ';' + NL + (ROOT / 'lang.js').read_text(encoding='utf-8') + NL + (ROOT / 'car.js').read_text(encoding='utf-8') + NL + (ROOT / 'fx.js').read_text(encoding='utf-8'))
 
 # vh units -> container-aware variable (set by the engine; falls back to the viewport)
 head, sep, tail = src.partition('</helmet>')

@@ -118,3 +118,9 @@
 - Hero : montage fixe remplacé par un carrousel à points (`site/src/car.js`, `.car/.sl/.dots`) : Atelier Maître → Commerce Factory → Précis Translator → « Le vôtre » (carte sombre + CTA vers #contact). Auto-défilement 5,2 s, pause au survol/focus/hors écran, flèches clavier, balayage tactile, aucun auto-défilement en reduced-motion. 6 chaînes i18n ajoutées (135). `check.mjs` exige 4 diapos + barre de points.
 - Preuves : build + contrôles OK ; Playwright desktop/mobile : 4 points, avance auto, clic point 4 affiche « Le vôtre » et son CTA, flèche →, 0 erreur ; régression pwdist inchangée (CTA visible, 0 débordement, bascule EN).
 - Non fait : le canevas Design (maquette V7) n'a pas le carrousel ; la référence est désormais `site/`. CI : workflow toujours non enregistré côté GitHub (flux d'événements en retard d'environ 2 h) ; PR sonde #1 ouverte.
+
+## 2026-11-05 17:50 — Maquette V7 : carrousel du hero
+- Canevas Design (https://claude.ai/artifact/2p1BMQjNdoikZaX4d4RxcF, v26) aligné sur `site/` : même balisage `.car/.sl/.dots`, même CSS, `car.js` injecté par `gen7.py` (images en `/_blob/`, mappées par texte alternatif).
+- Preuves : Playwright sur l'aperçu généré (desktop/mobile) : 4 points, avance auto après 5,6 s, clic point 4 → « Le vôtre » + CTA, flèche →, 0 erreur, pas de débordement ; reduced-motion sans auto-défilement ; régression conteneur (boards fenêtre/mobile) inchangée.
+- `design/maquettes/` mis à jour (sources du générateur + boards V7 + canvas.json).
+- CI : workflow toujours non enregistré côté GitHub ; PR sonde #1 ouverte.
