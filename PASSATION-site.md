@@ -138,3 +138,11 @@
 - PR sonde #1 fermée sans fusion, branche `ci-probe` supprimée. Leçon ajoutée (LCP mobile, trois causes).
 - Marges minces : LCP à 240 ms du budget, CLS à 0,02. Si la CI rechute : vérifier l'élément du CLS restant dans l'artefact Lighthouse (`gh run download <run>`), puis envisager l'auto-hébergement des polices (woff2 en `assets/`, supprime le détour fonts.googleapis) avant toute autre mesure.
 - Reste « à confirmer » par le fondateur inchangé (domaine Commerce Factory, couleurs produits, WhatsApp/e-mail/ville, logos clients, témoignages, photo équipe, relecture EN).
+
+## 2026-11-05 18:54 — Retours fondateur : Xeption sans visuel, textes « nous » à réécrire
+- Demande : ajouter image + logo Xeption ; réécrire les sections qui parlent de Trigenys (trop génériques). En cours.
+
+## 2026-11-05 19:04 — Xeption illustrée, textes « nous » réécrits
+- Cas XEPTION : carte en deux colonnes (texte + capture réelle de xeptionetwork.shop du jour, `assets/xe-shop.webp` 70 Ko) et logo (`assets/xe-logo.webp`, depuis le favicon 192 px du dépôt `EagleFox31/xeption237` : le logo Cloudinary du site Xeption répond 401, il est cassé sur leur propre site). Logo repris dans l'onglet « Par métier ». Tags : Orange Money · MoMo, Troc, SAV.
+- Réécriture FR+EN : en-tête et 4 étapes d'ingénierie, carte « La prochaine capture d'écran est à vous », bloc « Vérifiez-nous » (3 cartes), paragraphe équipe. Faits utilisés : 18 versions d'Atelier Maître, Yaoundé/OM/MoMo/troc/SAV lus sur le site Xeption. Les cadres « à confirmer » (témoignages, adresse, signataire, photo) sont conservés.
+- Miroir dans `design/maquettes/v7.tpl.html` ; canvas toujours non republié. Build + check OK (14 assets, 138 chaînes), Playwright : images chargées, pas de débordement, bascule EN vérifiée.
