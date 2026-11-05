@@ -30,7 +30,7 @@ for (const [k, v] of Object.entries(i18n)) {
   must(typeof v === "string" && v.trim(), `traduction vide pour « ${k} »`);
   must(v !== k || /^[A-Z0-9 /·&]+$|^(Garages|SAV|WhatsApp)/.test(k), `traduction identique au français pour « ${k} »`);
 }
-const refs = [...html.matchAll(/(?:src|href)="(assets\/[^"]+)"/g)].map((m) => m[1]);
+const refs = [...html.matchAll(/(?:src|href|data-src)="(assets\/[^"]+)"/g)].map((m) => m[1]);
 for (const r of new Set(refs)) await access(path.join(dist, r)).catch(() => fails.push(`asset manquant : ${r}`));
 
 if (fails.length) { console.error("ÉCHEC\n- " + fails.join("\n- ")); process.exit(1); }
