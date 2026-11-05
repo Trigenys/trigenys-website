@@ -107,3 +107,8 @@
 - Poussé sur main : 6def792 (site + CI), 529eebc (sonde) ; PR brouillon #1 (branche `ci-probe`) pour tester le déclenchement `pull_request`.
 - Constat API : 0 workflow enregistré, 0 run, aucun check Actions sur les commits ; l'API Events du dépôt ne montre plus aucun push depuis 12:53 UTC alors que les refs avancent et que d'autres dépôts de l'org ont des runs aujourd'hui. Actions activées au niveau dépôt (`enabled: true`). Une suite de checks `cloudflare-workers-and-pages` apparaît (queued, sans run ni déploiement) : l'app Cloudflare voit le dépôt, aucun déploiement public n'a eu lieu.
 - À faire par le propriétaire de l'org : ouvrir github.com/Trigenys/trigenys-website/actions (bandeau éventuel : politique org, facturation, verrou) ; une fois le workflow visible, `gh workflow run ci.yml` puis `gh run watch`. Fermer la PR #1 sans fusion après le test.
+
+## 2026-11-05 17:27 — Cause du blocage CI identifiée
+- Fondateur : dépôt créé **privé** et quota Actions de l'org épuisé ce mois → aucun run possible. Leçon consignée dans `docs/engineering/lessons-learned.md`.
+- Décision en attente : passer le dépôt en public (expose `docs/site/strategie-site-v1.md`, `benchmark-sites.md`, `comex-log.md`, maquettes) ou attendre le reset mensuel ; alternative : sortir les docs internes vers `project-registry` avant publication. Aucun secret dans le dépôt (scan git grep vide).
+- Verrous : PR #1 (`ci-probe`) à fermer sans fusion après le premier run réussi.
