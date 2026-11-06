@@ -99,3 +99,17 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
 - **Leçon généralisée** : avec Lantern, le levier du LCP est le **poids total transféré avant le LCP observé**, pas
   seulement la chaîne critique ; comparer les octets transférés (`network-requests` du JSON Lighthouse), vérifier que
   le serveur de test compresse comme la production, et ne jamais animer l'élément LCP depuis `opacity: 0`.
+
+## 2026-11-06 10:20 — Gate visual-qa : TBT mobile à 211 ms (budget 200) sur un run, 157 ms sur l'autre, même commit
+- **Contexte** : commit `7c04234` (hébergement : `_headers`, canonical, Open Graph, rien dans le premier écran). Deux runs
+  simultanés sur le même SHA : le `workflow_dispatch` passe (LCP 2 121, TBT 157), le run `push` échoue (LCP 2 186,
+  TBT 211). Premier run déclenché par `push` observé sur ce dépôt : les deux ont tourné en parallèle.
+- **Cause racine** : TBT mesuré à ~160–210 ms sur un budget de 200 : la marge est inférieure au bruit CPU des runners
+  partagés. Aucun changement de JavaScript dans le commit.
+- **Classification** : gate instable par marge insuffisante (near miss), pas une régression du site.
+- **Résolution** : relance du job échoué sur le même SHA (résultat dans `PASSATION-site.md`) ; aucun budget assoupli.
+- **Prévention vérifiable** : avant d'ajouter du JavaScript au premier écran, mesurer le TBT local avec Lighthouse
+  mobile et exiger une marge d'au moins 25 % sous le budget ; piste de réduction à traiter en tâche dédiée : alléger le
+  travail synchrone à `DOMContentLoaded` (dictionnaire I18N inline de 138 chaînes, initialisation `v7fx`).
+- **Leçon généralisée** : un gate dont la valeur mesurée tient dans la bande de bruit de l'environnement de CI n'est pas
+  un gate, c'est une loterie ; soit on dégage une marge, soit on moyenne plusieurs passes, jamais on n'élargit le budget.
