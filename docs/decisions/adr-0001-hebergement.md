@@ -43,3 +43,13 @@ site tel qu'il sera servi. Contrats dans `scripts/check.mjs`.
   déploiements sont idempotents (même `dist` = même hash, aucun changement visible).
 - Le lieu d'hébergement (Cloudflare, données servies depuis le réseau mondial, aucune donnée client collectée par le site)
   pourra remplacer la mention « à confirmer » de la carte Hébergement et conformité.
+
+## Addendum 2026-11-06 — mécanisme de déploiement : brique AppFactory
+
+Le `deploy.yml` local n'exécute plus wrangler lui-même : il appelle le workflow réutilisable
+`reusable-pages-deploy.yml` de `EagleFox31/appfactory-project-automation` (PR #145), épinglé par SHA revu.
+Reuse-first : aucune brique Pages n'existait dans AppFactory (seul `broker/` utilise Workers Builds) → **Build** d'une
+brique générique (contrat de validation + `cloudflare/wrangler-action` épinglé en Adopt), consommée ici comme premier
+projet. Apports : mode `plan` sans secret, validation de `dist` avant lecture des secrets, branche de production
+découverte, un seul endroit à corriger pour tous les sites statiques Trigenys. L'épinglage pointe sur la tête de la PR
+tant qu'elle n'est pas fusionnée ; il sera remplacé par le SHA fusionné (changement de version explicite).

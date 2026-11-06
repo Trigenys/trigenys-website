@@ -216,3 +216,16 @@
   dégager : tâche dédiée, pas de budget assoupli). Les événements `push` déclenchent désormais la CI (nouveau).
 - Prochaine étape : décision humaine de publier (runbook `site/README.md`) ; sinon tâche « marge TBT » (alléger le
   travail à DOMContentLoaded) et les trois éléments « à confirmer ».
+
+## 2026-11-06 10:42 — Déploiement via la brique AppFactory (PR appfactory #145)
+- Redirection utilisateur : garder Cloudflare Pages, mais déployer avec un workflow réutilisable d'`appfactory-project-automation`
+  au lieu d'un `deploy.yml` local. Fait : PR https://github.com/EagleFox31/appfactory-project-automation/pull/145
+  (`reusable-pages-deploy.yml`, `scripts/pages-deploy/contract.mjs`, tests 5/5, doc, exemple, README). Le `npm test`
+  complet y a 15 échecs préexistants sous Windows, identiques sur `main` : la CI ubuntu fait foi.
+- Site : `.github/workflows/deploy.yml` appelle la brique (modes `plan` / `preview` / `production`), épinglée sur le SHA
+  de tête de la PR `c4f029add7441a0ca64ca56cc8c970ce06c29108` ; à remplacer par le SHA fusionné après merge. ADR : addendum ;
+  README : runbook mis à jour (`-f mode=…`).
+- Côté Cloudflare : rien de créé (`wrangler pages project create` exige un dossier en wrangler 4 ; le premier
+  `pages deploy` crée le projet). Aperçu `*.pages.dev` toujours en attente des secrets `CLOUDFLARE_API_TOKEN` /
+  `CLOUDFLARE_ACCOUNT_ID` sur le dépôt (admin) ; `mode=plan` est exécutable sans secret dès maintenant.
+- Prochaine étape : fusionner la PR #145 (relecture humaine), ré-épingler, `plan` puis `preview`, vérifier les en-têtes.
