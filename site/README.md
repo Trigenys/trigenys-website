@@ -34,7 +34,8 @@ Node ≥ 20, aucune installation de paquet nécessaire.
 
 ## Hébergement (décision : `docs/decisions/adr-0001-hebergement.md`)
 Cible : **Cloudflare Pages**, projet `trigenys-website`, canonical `https://www.trigenys.com/`. Non déployé tant que les
-éléments « à confirmer » (photo d'équipe, domaine Commerce Factory, mention hébergement/conformité) ne sont pas renseignés.
+éléments « à confirmer » (domaine Commerce Factory, mention hébergement/conformité) ne sont pas renseignés. Le bloc
+« L'équipe » reste volontairement sans photo ni noms (visuel généré, signature collective).
 - `src/_headers` : CSP, en-têtes de sécurité et cache, copié dans `dist/` par le build et appliqué par `npm run preview`.
 - `.github/workflows/appfactory-infrastructure.yml` + `.appfactory/pages.json` : le dépôt s'authentifie par OIDC GitHub
   auprès d'AppFactory (`Trigenys/appfactory`, `POST /infrastructure/pages`), qui crée/réconcilie le projet Pages

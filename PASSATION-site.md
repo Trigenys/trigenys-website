@@ -335,3 +335,10 @@
   d'auth identiques, replay convergé = `noop`. Critères d'acceptation et non-objectifs dans l'issue.
 - Chantier déploiement du site clos côté dépôt. Reste : éléments « à confirmer » (photo d'équipe, domaine Commerce
   Factory, mention hébergement/conformité) puis `customDomain: www.trigenys.com` + CNAME Spaceship ; marge TBT mobile.
+
+## 2026-11-06 16:22 — Bloc équipe : pas de photo, décision actée
+- Décision du fondateur : le bloc « L'équipe » reste sans photo ni noms (visuel généré « bits », signature collective
+  « — L'équipe Trigenys · Douala & Yaoundé »). Placeholder « Photo réelle de l'équipe — à fournir » retiré
+  (`site/src/index.tpl.html`, chaîne i18n supprimée, README hébergement mis à jour). Build + contrats OK (137 chaînes).
+- Reste « à confirmer » : domaine définitif Commerce Factory, mention hébergement/conformité (carte « Ancrage local »).
+  Ensuite `customDomain: www.trigenys.com` + CNAME Spaceship, PR main→production.
