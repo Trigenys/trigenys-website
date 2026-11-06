@@ -33,8 +33,9 @@ Node ≥ 20, aucune installation de paquet nécessaire.
 - `visual-qa` : workflow réutilisable AppFactory (captures 1440×900 et 390×844, axe, Lighthouse, reduced-motion, aucune image externe, CTA principal `a[data-cta='primary']`).
 
 ## Hébergement (décision : `docs/decisions/adr-0001-hebergement.md`)
-Cible : **Cloudflare Pages**, projet `trigenys-website`, canonical `https://www.trigenys.com/`. Non déployé tant que les
-éléments « à confirmer » (photo d'équipe, domaine Commerce Factory, mention hébergement/conformité) ne sont pas renseignés.
+Cible : **Cloudflare Pages**, projet `trigenys-website`, canonical `https://www.trigenys.com/` (domaine personnalisé
+déclaré dans `.appfactory/pages.json`). Le bloc « L'équipe » reste volontairement sans photo ni noms (visuel généré,
+signature collective) ; Commerce Factory garde son adresse de bêta tant que son domaine n'est pas arrêté.
 - `src/_headers` : CSP, en-têtes de sécurité et cache, copié dans `dist/` par le build et appliqué par `npm run preview`.
 - `.github/workflows/appfactory-infrastructure.yml` + `.appfactory/pages.json` : le dépôt s'authentifie par OIDC GitHub
   auprès d'AppFactory (`Trigenys/appfactory`, `POST /infrastructure/pages`), qui crée/réconcilie le projet Pages

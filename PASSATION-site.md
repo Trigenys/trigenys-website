@@ -302,3 +302,71 @@
   l'URL et les en-têtes ; AppFactory commitera `.appfactory/pages-infrastructure.json` sur `main` (faire `git pull`).
 - Reste : recadrage de la brique côté project-automation (doc, mode plan), proposition `dryRun` côté appfactory-api,
   éléments « à confirmer » avant domaine.
+
+## 2026-11-06 12:55 — Site en ligne sur trigenys-website.pages.dev via appfactory-api
+- Run `AppFactory Infrastructure` 42213237931 vert : `PROVISIONED`, projet `trigenys-website`, déploiement
+  58c0963c (branche `production`). AppFactory a commité le marqueur `.appfactory/pages-infrastructure.json` (f695d79,
+  récupéré par `git pull`). `https://trigenys-website.pages.dev/` répond 200 avec CSP et `X-Frame-Options: DENY`.
+- Branche `production` protégée (checks `site-build`, `visual-qa`, strict, admins inclus). Aucun secret Cloudflare
+  dans le dépôt ; aucun domaine custom (différé).
+- CI : fbc768c vert ; f695d79 (marqueur seul) échec `visual-qa` = erreur runtime Lighthouse (trace mobile), pas un
+  budget → relance du job en cours. Si l'échec persiste sur un commit sans impact frontend, consigner une leçon
+  (gate Lighthouse à rendre tolérant à l'erreur runtime, budgets inchangés).
+- Prochaines étapes : (1) PR de recadrage de `reusable-pages-deploy.yml` côté project-automation (doc « rejected »
+  fausse, brique = exception documentée) ; (2) issue/PR appfactory-api : `dryRun` pour `/infrastructure/pages` ;
+  (3) éléments « à confirmer » puis `customDomain` + CNAME Spaceship.
+
+## 2026-11-06 13:08 — PR de recadrage de la brique project-automation ouverte
+- `EagleFox31/appfactory-project-automation` PR #146 (branche `docs/pages-deploy-canonical-path`) : doc, README,
+  exemple et en-tête du workflow présentent `reusable-pages-deploy.yml` comme exception documentée à la voie canonique
+  (`Trigenys/appfactory`, `POST /infrastructure/pages`, OIDC) ; affirmation « Git integration rejected » retirée ;
+  test de garde ajouté (6/6 verts localement). Aucun changement de comportement du workflow. En attente de revue/fusion.
+- Site : inchangé depuis 12:55 (en ligne sur trigenys-website.pages.dev, CI verte).
+- Reste : issue/PR `dryRun` côté appfactory-api ; éléments « à confirmer » puis `customDomain` + CNAME Spaceship.
+
+## 2026-11-06 13:11 — PR #146 fusionnée (project-automation)
+- Squash sur `main` : `31b4c54ed2b72778920e413459a463a994df43fd`, branche supprimée. Documentation de la brique
+  alignée sur la voie canonique ; aucun impact sur le site (plus de consommateur de la brique ici).
+- Reste : issue/PR `dryRun` côté appfactory-api ; éléments « à confirmer » puis `customDomain` + CNAME Spaceship.
+
+## 2026-11-06 13:31 — Issue dryRun ouverte sur Trigenys/appfactory
+- `Trigenys/appfactory` issue #189 : champ optionnel `dryRun` pour les endpoints brownfield (d'abord
+  `/infrastructure/pages`) → `status: PLANNED` + diff (projet, domaine, marqueur, déploiement), zéro écriture, erreurs
+  d'auth identiques, replay convergé = `noop`. Critères d'acceptation et non-objectifs dans l'issue.
+- Chantier déploiement du site clos côté dépôt. Reste : éléments « à confirmer » (photo d'équipe, domaine Commerce
+  Factory, mention hébergement/conformité) puis `customDomain: www.trigenys.com` + CNAME Spaceship ; marge TBT mobile.
+
+## 2026-11-06 16:22 — Bloc équipe : pas de photo, décision actée
+- Décision du fondateur : le bloc « L'équipe » reste sans photo ni noms (visuel généré « bits », signature collective
+  « — L'équipe Trigenys · Douala & Yaoundé »). Placeholder « Photo réelle de l'équipe — à fournir » retiré
+  (`site/src/index.tpl.html`, chaîne i18n supprimée, README hébergement mis à jour). Build + contrats OK (137 chaînes).
+- Reste « à confirmer » : domaine définitif Commerce Factory, mention hébergement/conformité (carte « Ancrage local »).
+  Ensuite `customDomain: www.trigenys.com` + CNAME Spaceship, PR main→production.
+
+## 2026-11-06 16:34 — Partenaires : logos Xeption et Love Ink
+- Bloc « Ils travaillent avec nous » (section preuves) : placeholder « logos à fournir » remplacé par deux liens
+  icône + nom : XEPTION (`assets/xe-logo.webp`, déjà présent) → xeptionetwork.shop, Love Ink (`assets/li-logo.svg`,
+  favicon du dépôt `Trigenys/loveink`) → loveink.site. Style `.proof .lg .pa`. Chaîne i18n du placeholder supprimée.
+- Build + contrats OK (19 assets, 136 chaînes) ; vérifié dans le navigateur (images chargées, rendu desktop).
+- `.claude/launch.json` (ignoré par git) : config « site » = http.server 8766 sur `site/dist`.
+- Reste « à confirmer » : domaine Commerce Factory, mention hébergement/conformité ; puis customDomain + CNAME.
+
+## 2026-11-06 16:41 — Section preuves : rangée de chiffres retirée
+- Décision du fondateur : les quatre cellules « 3 produits publics / v1.18 / 1 plateforme client / CM » sont retirées
+  de la section `.proof` ; seule la ligne « Ils travaillent avec nous » (Xeption, Love Ink) reste. 4 chaînes i18n
+  supprimées (132 restantes), marge haute de `.proof .lg` ramenée à 0. Build + contrats OK, vérifié dans le navigateur.
+- Reste « à confirmer » : domaine Commerce Factory, mention hébergement/conformité ; puis customDomain + CNAME.
+
+## 2026-11-06 16:58 — Mise en ligne : contenu final, domaine déclaré, PR 2 prête à fusionner
+- Commit 756b9f6 (main) : derniers cadres « à confirmer » levés (témoignages, hébergement/conformité, mention domaine
+  Commerce Factory → « adresse de bêta »), carte « Ancrage local » précise « hébergé sur Cloudflare Pages, aucune
+  donnée client collectée », `customDomain: www.trigenys.com` dans `.appfactory/pages.json`. 130 chaînes, 19 assets.
+- Run appfactory-infrastructure 42246925236 : PROVISIONED, customDomain `www.trigenys.com` statut `initializing`,
+  DNS attendu `CNAME www.trigenys.com → trigenys-website.pages.dev` (managedByAppFactory=false → à poser chez
+  Spaceship). AppFactory a poussé 90454ca (marqueur réconcilié) sur main.
+- PR Trigenys/trigenys-website#2 main→production ouverte, CI verte sur 90454ca après relance de `visual-qa`
+  (TBT mobile 231 ms > 200 ms au premier passage ; flake connu, pas de régression). Fusion refusée par le
+  classifieur de permissions (« merge sans revue ») : à fusionner par le fondateur (bouton GitHub ou
+  `gh pr merge 2 --repo Trigenys/trigenys-website --merge`). La fusion déclenche le déploiement production.
+- Ensuite : CNAME chez Spaceship, attendre `customDomain.status = active`, vérifier https://www.trigenys.com ;
+  redirection apex `trigenys.com` → `https://www.trigenys.com` côté Spaceship. Tâche « marge TBT mobile » toujours ouverte.
