@@ -36,20 +36,22 @@ Node ≥ 20, aucune installation de paquet nécessaire.
 Cible : **Cloudflare Pages**, projet `trigenys-website`, canonical `https://www.trigenys.com/`. Non déployé tant que les
 éléments « à confirmer » (photo d'équipe, domaine Commerce Factory, mention hébergement/conformité) ne sont pas renseignés.
 - `src/_headers` : CSP, en-têtes de sécurité et cache, copié dans `dist/` par le build et appliqué par `npm run preview`.
-- `.github/workflows/deploy.yml` : appelle la brique réutilisable AppFactory `reusable-pages-deploy.yml`
-  (`EagleFox31/appfactory-project-automation`, épinglée par SHA revu). Modes : `plan` (build + contrats + validation de
-  `dist`, sans secret), `preview` (alias `*.pages.dev` de branche), `production` (branche de production du projet Pages).
-  Secrets requis hors `plan` : `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` (environnements GitHub `preview` / `production`).
+- `.github/workflows/appfactory-infrastructure.yml` + `.appfactory/pages.json` : le dépôt s'authentifie par OIDC GitHub
+  auprès d'AppFactory (`Trigenys/appfactory`, `POST /infrastructure/pages`), qui crée/réconcilie le projet Pages
+  **connecté Git** avec ses propres identifiants Cloudflare. Aucun secret Cloudflare dans ce dépôt.
+- Branches : `production` = branche de production Pages (publication humaine par PR `main → production`, CI verte
+  exigée) ; toute autre branche (dont `main`) donne un aperçu `<branche>.trigenys-website.pages.dev`.
+- Build Cloudflare : racine `site`, `npm run build` (contrats inclus), sortie `dist`, Node épinglé par `site/.node-version`.
+- Marqueur de propriété commité par AppFactory : `.appfactory/pages-infrastructure.json` (ne pas éditer à la main).
 
 ### Runbook de mise en ligne
-1. Créer le projet une fois : `npx wrangler pages project create trigenys-website --production-branch main`.
-2. Secrets GitHub (`Settings → Secrets → Actions`) : jeton API limité à « Cloudflare Pages : Edit » + identifiant du compte ;
-   créer les environnements `preview` et `production` (relecteur obligatoire sur `production`).
-3. Sans secret : `gh workflow run deploy.yml --ref main -f mode=plan` (doit être vert).
-   Aperçu : `gh workflow run deploy.yml --ref main -f mode=preview`, puis vérifier l'URL `preview-main.trigenys-website.pages.dev`
+1. Modifier le contrat `.appfactory/pages.json` si besoin, pousser sur `main` : le workflow réconcilie le projet
+   (relance manuelle : `gh workflow run appfactory-infrastructure.yml --ref main`).
+2. Aperçu : chaque push sur `main` est construit par Cloudflare → `main.trigenys-website.pages.dev`
    (en-têtes : `curl -sI <url> | grep -i content-security`).
-4. DNS chez Spaceship (phase 1, rien d'autre ne change) : `CNAME www → trigenys-website.pages.dev` ; redirection d'URL de
-   l'apex `trigenys.com` vers `https://www.trigenys.com` ; dans Cloudflare Pages → Custom domains, ajouter `www.trigenys.com`.
-5. Production : `gh workflow run deploy.yml --ref main -f mode=production`, puis contrôle Lighthouse sur l'URL publique.
-6. Phase 2 (optionnelle, apex natif) : exporter toute la zone Spaceship (MX Spacemail, SPF/DKIM/DMARC, `atelier`,
+3. Production : ouvrir une PR `main → production`, attendre la CI, fusionner ; Cloudflare construit `production`.
+4. Domaine (quand les éléments « à confirmer » sont renseignés) : ajouter `"customDomain": "www.trigenys.com"` au contrat,
+   pousser ; appliquer ensuite chez Spaceship le `CNAME www → trigenys-website.pages.dev` renvoyé par AppFactory, et
+   une redirection d'URL de l'apex `trigenys.com` vers `https://www.trigenys.com`. Rien d'autre ne change (MX Spacemail).
+5. Phase 2 (optionnelle, apex natif) : exporter toute la zone Spaceship (MX Spacemail, SPF/DKIM/DMARC, `atelier`,
    `precis-translator`, `seo`, `cleanroute`, `simsmodhealth`) avant toute bascule des NS ; plan → revue → apply.

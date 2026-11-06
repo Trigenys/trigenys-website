@@ -1,0 +1,8 @@
+{
+  "repository": "Trigenys/trigenys-website",
+  "projectName": "trigenys-website",
+  "productionBranch": "production",
+  "rootDirectory": "site",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}

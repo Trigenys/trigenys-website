@@ -291,3 +291,14 @@
   `deploy.yml` ; site → `appfactory-infrastructure.yml` + `.appfactory/pages.json` (projet `trigenys-website`,
   branche de production dédiée, build `cd site && npm run build`, sortie `site/dist`, sans `customDomain` tant que
   les points « à confirmer » restent ouverts) ; proposition d'extension appfactory-api : `dryRun`.
+
+## 2026-11-06 12:51 — Bascule validée : site → appfactory-api (OIDC), deploy.yml supprimé
+- Ajouté `.github/workflows/appfactory-infrastructure.yml` (OIDC audience `appfactory-api`, POST vers
+  `appfactory-api.lawrynnjennifer.workers.dev/infrastructure/pages`), `.appfactory/pages.json` (projet `trigenys-website`,
+  branche de production `production`, racine `site`, `npm run build`, sortie `dist`, sans domaine), `.node-version` (20)
+  à la racine et dans `site/`. Supprimé `deploy.yml` (brique project-automation). README « Hébergement » et ADR-0001 révisés.
+- Branche `production` créée depuis `main` et protégée (CI exigée) ; le push sur `main` déclenche le premier
+  provisionnement (déploie `production` sur `trigenys-website.pages.dev`, pas de domaine). Suivre le run, vérifier
+  l'URL et les en-têtes ; AppFactory commitera `.appfactory/pages-infrastructure.json` sur `main` (faire `git pull`).
+- Reste : recadrage de la brique côté project-automation (doc, mode plan), proposition `dryRun` côté appfactory-api,
+  éléments « à confirmer » avant domaine.

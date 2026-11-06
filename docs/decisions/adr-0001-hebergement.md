@@ -54,3 +54,16 @@ projet. Apports : mode `plan` sans secret, validation de `dist` avant lecture de
 découverte, un seul endroit à corriger pour tous les sites statiques Trigenys. L'épinglage pointe sur la tête de la PR
 tant qu'elle n'est pas fusionnée ; il sera remplacé par le SHA fusionné (changement de version explicite).
 PR #145 fusionnée (squash) le 2026-11-06 : `deploy.yml` épinglé sur `d86c14fcb365aa7a5d0246908a27523a2b31ab00`.
+
+## Addendum 2026-11-06 — révision : provisionnement par `Trigenys/appfactory` (appfactory-api)
+
+L'addendum précédent est remplacé. La brique `reusable-pages-deploy.yml` réintroduisait des identifiants Cloudflare par
+dépôt, contraire au principe AppFactory (issue appfactory-project-automation #45, PR appfactory #56/#59/#63/#94).
+Décision : le site consomme `POST /infrastructure/pages` d'`appfactory-api` depuis le workflow canonique
+`.github/workflows/appfactory-infrastructure.yml` (OIDC GitHub, audience `appfactory-api`), contrat `.appfactory/pages.json`.
+AppFactory crée un projet Pages **connecté Git** et garde seul les identifiants Cloudflare ; `deploy.yml` est supprimé.
+Publication humaine conservée par une branche `production` dédiée (PR depuis `main`, CI exigée) ; `main` et les autres
+branches ne produisent que des aperçus `*.pages.dev`. Domaine custom différé tant que les éléments « à confirmer »
+restent ouverts. Écarts assumés : pas de mode `plan` côté API (premier appel = provisionnement + déploiement de
+`production`), build exécuté par Cloudflare hors des gates Lighthouse (compensé par la protection de `production`),
+Node épinglé par `.node-version` faute de paramètre API. Extension proposée côté appfactory-api : `dryRun`.
