@@ -356,3 +356,17 @@
   de la section `.proof` ; seule la ligne « Ils travaillent avec nous » (Xeption, Love Ink) reste. 4 chaînes i18n
   supprimées (132 restantes), marge haute de `.proof .lg` ramenée à 0. Build + contrats OK, vérifié dans le navigateur.
 - Reste « à confirmer » : domaine Commerce Factory, mention hébergement/conformité ; puis customDomain + CNAME.
+
+## 2026-11-06 16:58 — Mise en ligne : contenu final, domaine déclaré, PR 2 prête à fusionner
+- Commit 756b9f6 (main) : derniers cadres « à confirmer » levés (témoignages, hébergement/conformité, mention domaine
+  Commerce Factory → « adresse de bêta »), carte « Ancrage local » précise « hébergé sur Cloudflare Pages, aucune
+  donnée client collectée », `customDomain: www.trigenys.com` dans `.appfactory/pages.json`. 130 chaînes, 19 assets.
+- Run appfactory-infrastructure 42246925236 : PROVISIONED, customDomain `www.trigenys.com` statut `initializing`,
+  DNS attendu `CNAME www.trigenys.com → trigenys-website.pages.dev` (managedByAppFactory=false → à poser chez
+  Spaceship). AppFactory a poussé 90454ca (marqueur réconcilié) sur main.
+- PR Trigenys/trigenys-website#2 main→production ouverte, CI verte sur 90454ca après relance de `visual-qa`
+  (TBT mobile 231 ms > 200 ms au premier passage ; flake connu, pas de régression). Fusion refusée par le
+  classifieur de permissions (« merge sans revue ») : à fusionner par le fondateur (bouton GitHub ou
+  `gh pr merge 2 --repo Trigenys/trigenys-website --merge`). La fusion déclenche le déploiement production.
+- Ensuite : CNAME chez Spaceship, attendre `customDomain.status = active`, vérifier https://www.trigenys.com ;
+  redirection apex `trigenys.com` → `https://www.trigenys.com` côté Spaceship. Tâche « marge TBT mobile » toujours ouverte.
