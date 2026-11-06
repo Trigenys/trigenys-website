@@ -370,3 +370,13 @@
   `gh pr merge 2 --repo Trigenys/trigenys-website --merge`). La fusion déclenche le déploiement production.
 - Ensuite : CNAME chez Spaceship, attendre `customDomain.status = active`, vérifier https://www.trigenys.com ;
   redirection apex `trigenys.com` → `https://www.trigenys.com` côté Spaceship. Tâche « marge TBT mobile » toujours ouverte.
+
+## 2026-11-06 17:15 — Site en production sur https://www.trigenys.com
+- PR #2 fusionnée par le fondateur (15:59 UTC) → déploiement production Pages ; `trigenys-website.pages.dev` sert le
+  contenu final (Love Ink, « adresse de bêta », mention hébergement).
+- Spaceship : `CNAME www → trigenys-website.pages.dev` posé par le fondateur (TTL 5 min), reste de la zone intact.
+  Certificat Cloudflare émis ~5 min après ; `https://www.trigenys.com/` → 200, CSP et `X-Frame-Options: DENY` présents,
+  canonical `https://www.trigenys.com/`. HTTP → 301 HTTPS.
+- Reste : redirection apex `trigenys.com` → `https://www.trigenys.com` côté Spaceship si absente ; domaine définitif
+  Commerce Factory (CTA en « adresse de bêta ») ; marge TBT mobile (flake visual-qa, relance verte à chaque fois :
+  si ça se reproduit, consigner une leçon et ajuster le gate sans toucher aux budgets).
