@@ -247,3 +247,12 @@
   à créer par un admin sur le dépôt (environnements `preview` / `production`), puis `gh workflow run deploy.yml --ref main -f mode=preview`
   (crée le projet `trigenys-website` au premier upload) et vérification `curl -sI <url> | grep -i content-security`.
 - Toujours « à confirmer » : photo d'équipe, domaine Commerce Factory, mention hébergement/conformité ; tâche « marge TBT ».
+
+## 2026-11-06 11:35 — Aperçu suspendu : question des identifiants Cloudflare
+- Aucun secret sur le dépôt ni environnement (vérifié) ; l'utilisateur n'en a pas créé et demande si appfactory ne les
+  fournit pas. Constat : le broker appfactory n'émet que des jetons GitHub (OIDC → user token), jamais d'identifiant
+  Cloudflare ; appfactory déploie son propre Worker via l'intégration Git Cloudflare (Workers Builds), sans jeton dans GitHub.
+- Options posées : (A) intégration Git Cloudflare Pages, zéro secret, même schéma que le broker, mais Cloudflare construit
+  et publie sur push (branche de production dédiée pour garder la décision humaine) ; (B) garder la brique + un secret
+  d'organisation Trigenys créé par un admin ; (C) étendre le broker pour émettre des jetons Cloudflare (hors périmètre).
+- En attente de la décision ; rien lancé en preview.
