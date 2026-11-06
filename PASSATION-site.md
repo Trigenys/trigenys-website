@@ -194,3 +194,18 @@
   l'équipe — à fournir ». Miroir maquette aligné, 138 chaînes, build OK, Playwright FR/EN OK.
 - Reste « à confirmer » : photo d'équipe, domaine définitif Commerce Factory, hébergement/conformité, hébergeur + domaine
   du site ; anomalies CI/Cloudflare pour un admin. CI lancée après cette entrée : vérifier le run le plus récent.
+
+## 2026-11-06 10:08 — Hébergement : décision et préparation (commit 7c04234)
+- ADR `docs/decisions/adr-0001-hebergement.md` : Cloudflare Pages (projet `trigenys-website`), upload direct depuis
+  `.github/workflows/deploy.yml` (manuel, preview/production, wrangler-action épinglé v4.1.3). Domaine en deux phases :
+  phase 1 `www.trigenys.com` en CNAME chez Spaceship + redirection de l'apex (DNS et Spacemail inchangés) ; phase 2
+  optionnelle : zone sur Cloudflare après export complet.
+- `site/src/_headers` (CSP default-src 'self', sécurité, cache) copié dans dist, appliqué par `serve.mjs` ; contrats
+  ajoutés dans `check.mjs` (CSP, cache polices, canonical/og:url absolus, og:image existante, pas de on*=). Canonical
+  `https://www.trigenys.com/`, `og.png` 1200×630 généré depuis le logo (l'ancien og:image pointait sur un fichier absent).
+- Preuves : build idempotent, Playwright : CSP servie, zéro erreur console, bascule EN OK. CI dispatchée (run 42192721027).
+- Rien n'est déployé ni créé côté Cloudflare. Pour publier : runbook dans `site/README.md` (projet Pages, secrets
+  `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID`, environnements GitHub, DNS Spaceship). Reste « à confirmer » : photo
+  d'équipe, domaine Commerce Factory, mention hébergement/conformité (la carte peut maintenant citer Cloudflare).
+- Note : identité git non configurée dans cette session (commit fait avec `-c user.name/user.email` = auteur des
+  commits précédents).
