@@ -6,5 +6,6 @@
   "productionBranch": "production",
   "rootDirectory": "site",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "customDomain": "www.trigenys.com"
 }
