@@ -113,3 +113,20 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
   travail synchrone à `DOMContentLoaded` (dictionnaire I18N inline de 138 chaînes, initialisation `v7fx`).
 - **Leçon généralisée** : un gate dont la valeur mesurée tient dans la bande de bruit de l'environnement de CI n'est pas
   un gate, c'est une loterie ; soit on dégage une marge, soit on moyenne plusieurs passes, jamais on n'élargit le budget.
+
+## 2026-11-06 11:50 — Brique de déploiement construite à rebours d'une décision appfactory existante
+- **Contexte** : pour héberger le site sur Cloudflare Pages, une brique réutilisable `reusable-pages-deploy.yml`
+  (GitHub Actions + `CLOUDFLARE_API_TOKEN`) a été conçue, fusionnée (appfactory PR #145) et branchée avant de relire
+  les décisions Cloudflare déjà prises dans appfactory.
+- **Cause racine** : la recherche reuse-first s'est limitée aux workflows existants (« pas de brique Pages ») sans lire
+  l'issue #45 ni `broker/README.md`, qui fixent la voie canonique : intégration Git Cloudflare (Workers Builds /
+  GitHub App), « sans réintroduire d'identifiants Cloudflare gérés à la main dans GitHub ». La brique réintroduit
+  exactement le schéma abandonné ; sa doc affirme même que l'intégration Git a été « rejetée », à l'inverse de la décision.
+- **Classification** : reuse-first incomplet (décisions non consultées), biais de confirmation vers « Build ».
+- **Résolution** : décision à reprendre avec l'utilisateur (intégration Git Pages pour le site ; brique à recadrer ou à
+  déprécier côté appfactory). Aucun secret n'a été créé.
+- **Prévention** : avant toute brique touchant un fournisseur, lister dans appfactory les issues/PR fermées et les
+  docs qui le nomment (`gh search issues --repo … <fournisseur>`, `grep -ril <fournisseur>`), et citer la décision
+  trouvée dans la note Adopt/Adapt/Learn/Build. Ajout proposé à la checklist RAIDER du registry.
+- **Leçon générale** : « aucun workflow existant » ne signifie pas « aucune décision existante » ; la mémoire d'un
+  dépôt vit aussi dans ses issues fermées.

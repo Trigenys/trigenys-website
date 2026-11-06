@@ -256,3 +256,15 @@
   et publie sur push (branche de production dédiée pour garder la décision humaine) ; (B) garder la brique + un secret
   d'organisation Trigenys créé par un admin ; (C) étendre le broker pour émettre des jetons Cloudflare (hors périmètre).
 - En attente de la décision ; rien lancé en preview.
+
+## 2026-11-06 11:50 — Analyse appfactory : la brique contredit la décision #45
+- Vérifié sur `main` d'appfactory (seule branche) : aucun identifiant Cloudflare, aucun échange OIDC→Cloudflare
+  (OIDC utilisé seulement pour GitHub via le broker et pour AWS via `configure-aws-credentials`). Issue #45 (fermée) :
+  voie canonique = intégration Git Cloudflare (Workers Builds + GitHub App), « sans réintroduire d'identifiants Cloudflare
+  gérés à la main dans GitHub », remplaçant un design GitHub Actions + `CLOUDFLARE_API_TOKEN`.
+- Conséquence : la brique `reusable-pages-deploy.yml` (fusionnée, épinglée dans `deploy.yml`) réintroduit ce design ;
+  leçon consignée dans `docs/engineering/lessons-learned.md`. Aucun secret créé, rien déployé.
+- Proposition : site → intégration Git Cloudflare Pages (projet connecté au dépôt, branche de production dédiée pour
+  garder la publication humaine, build `cd site && npm run build`, sortie `site/dist`, `_headers` conservé) ; côté
+  appfactory, PR de recadrage de la brique (mode `plan` conservé comme gate sans secret, upload documenté comme
+  exception, doc corrigée) ; ADR-0001 à réviser. En attente de la décision.
