@@ -323,3 +323,8 @@
   test de garde ajouté (6/6 verts localement). Aucun changement de comportement du workflow. En attente de revue/fusion.
 - Site : inchangé depuis 12:55 (en ligne sur trigenys-website.pages.dev, CI verte).
 - Reste : issue/PR `dryRun` côté appfactory-api ; éléments « à confirmer » puis `customDomain` + CNAME Spaceship.
+
+## 2026-11-06 13:11 — PR #146 fusionnée (project-automation)
+- Squash sur `main` : `31b4c54ed2b72778920e413459a463a994df43fd`, branche supprimée. Documentation de la brique
+  alignée sur la voie canonique ; aucun impact sur le site (plus de consommateur de la brique ici).
+- Reste : issue/PR `dryRun` côté appfactory-api ; éléments « à confirmer » puis `customDomain` + CNAME Spaceship.
