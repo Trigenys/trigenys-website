@@ -350,3 +350,9 @@
 - Build + contrats OK (19 assets, 136 chaînes) ; vérifié dans le navigateur (images chargées, rendu desktop).
 - `.claude/launch.json` (ignoré par git) : config « site » = http.server 8766 sur `site/dist`.
 - Reste « à confirmer » : domaine Commerce Factory, mention hébergement/conformité ; puis customDomain + CNAME.
+
+## 2026-11-06 16:41 — Section preuves : rangée de chiffres retirée
+- Décision du fondateur : les quatre cellules « 3 produits publics / v1.18 / 1 plateforme client / CM » sont retirées
+  de la section `.proof` ; seule la ligne « Ils travaillent avec nous » (Xeption, Love Ink) reste. 4 chaînes i18n
+  supprimées (132 restantes), marge haute de `.proof .lg` ramenée à 0. Build + contrats OK, vérifié dans le navigateur.
+- Reste « à confirmer » : domaine Commerce Factory, mention hébergement/conformité ; puis customDomain + CNAME.
