@@ -53,3 +53,4 @@ brique générique (contrat de validation + `cloudflare/wrangler-action` épingl
 projet. Apports : mode `plan` sans secret, validation de `dist` avant lecture des secrets, branche de production
 découverte, un seul endroit à corriger pour tous les sites statiques Trigenys. L'épinglage pointe sur la tête de la PR
 tant qu'elle n'est pas fusionnée ; il sera remplacé par le SHA fusionné (changement de version explicite).
+PR #145 fusionnée (squash) le 2026-11-06 : `deploy.yml` épinglé sur `d86c14fcb365aa7a5d0246908a27523a2b31ab00`.

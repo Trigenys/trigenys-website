@@ -7,7 +7,7 @@
 # Préalables (une fois, par un admin) : projet Pages existant, secrets CLOUDFLARE_API_TOKEN (jeton scoppé
 # « Cloudflare Pages : Edit ») et CLOUDFLARE_ACCOUNT_ID sur les environnements preview / production ;
 # variable facultative CF_PAGES_PROJECT (défaut : trigenys-website).
-# Épinglage : SHA revu de la brique (tête de la PR EagleFox31/appfactory-project-automation#145 ; à remplacer par le SHA fusionné).
+# Épinglage : SHA fusionné de la brique (EagleFox31/appfactory-project-automation, PR #145 squashée sur main).
 name: deploy
 
 on:
@@ -24,9 +24,9 @@ permissions:
 
 jobs:
   pages:
-    uses: EagleFox31/appfactory-project-automation/.github/workflows/reusable-pages-deploy.yml@c4f029add7441a0ca64ca56cc8c970ce06c29108
+    uses: EagleFox31/appfactory-project-automation/.github/workflows/reusable-pages-deploy.yml@d86c14fcb365aa7a5d0246908a27523a2b31ab00
     with:
-      appfactory_ref: c4f029add7441a0ca64ca56cc8c970ce06c29108
+      appfactory_ref: d86c14fcb365aa7a5d0246908a27523a2b31ab00
       mode: ${{ inputs.mode }}
       project_name: ${{ vars.CF_PAGES_PROJECT || 'trigenys-website' }}
       dist_dir: site/dist
