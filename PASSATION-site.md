@@ -380,3 +380,12 @@
 - Reste : redirection apex `trigenys.com` → `https://www.trigenys.com` côté Spaceship si absente ; domaine définitif
   Commerce Factory (CTA en « adresse de bêta ») ; marge TBT mobile (flake visual-qa, relance verte à chaque fois :
   si ça se reproduit, consigner une leçon et ajuster le gate sans toucher aux budgets).
+
+## 2026-11-06 17:21 — Vérification apex trigenys.com
+- Le fondateur annonce la redirection apex posée côté Spaceship. Vérifié sur le serveur autoritaire
+  (launch1.spaceship.net) : aucun A/AAAA/CNAME pour `trigenys.com`, http et https → pas de réponse (000).
+  La redirection n'est donc pas (encore) effective : soit propagation, soit l'entrée de forwarding n'a pas créé
+  d'enregistrement pour `@`. À revérifier : `nslookup trigenys.com launch1.spaceship.net` puis
+  `curl -I http://trigenys.com/` (attendu : 301 vers https://www.trigenys.com/).
+- `https://www.trigenys.com/` reste pleinement en ligne (200, CSP, canonical).
+- Scratchpad de session nettoyé (79 Mo → 1 Mo) à la demande d'une autre session ; dépôt intact.
