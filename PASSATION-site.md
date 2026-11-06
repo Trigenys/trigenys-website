@@ -187,3 +187,10 @@
 - Reste « à confirmer » : nom et fonction du signataire, domaine définitif de Commerce Factory, hébergement/conformité,
   hébergeur + domaine du site ; anomalies CI/Cloudflare pour un admin de l'organisation.
 - CI lancée (run 42113018651) après le commit « Contact : … » ; vérifier son résultat si cette entrée est la dernière.
+
+## 2026-11-06 09:36 — Signature collective, pas de fondateur nommé
+- Décision du fondateur (consignée dans `docs/decisions/comex-log.md`) : aucun nom ni fonction sur le site. Le mot de
+  l'équipe est signé « — L'équipe Trigenys · Douala & Yaoundé » (FR/EN) ; placeholder photo réduit à « Photo réelle de
+  l'équipe — à fournir ». Miroir maquette aligné, 138 chaînes, build OK, Playwright FR/EN OK.
+- Reste « à confirmer » : photo d'équipe, domaine définitif Commerce Factory, hébergement/conformité, hébergeur + domaine
+  du site ; anomalies CI/Cloudflare pour un admin. CI lancée après cette entrée : vérifier le run le plus récent.

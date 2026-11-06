@@ -54,3 +54,10 @@ Décision fondateur : nouvelle version plutôt que retouche de V5. Règle appliq
 - **Adopt** : CI depuis `EagleFox31/appfactory-project-automation` épinglé par SHA (`reusable-impact-analysis`, `reusable-visual-qa`) ; config `.github/appfactory-impact.json`, `.github/appfactory-visual-qa.json`.
 - **Non décidé** : hébergeur et domaine (trigenys.com ne répond pas aujourd'hui) ; déploiement conditionné aux éléments « à confirmer ».
 - **Révision** : si une 2ᵉ page (produit) est construite, factoriser le template (en-tête, pied, bascule) avant d'en écrire une 3ᵉ.
+
+## 2026-11-06 09:36 — Anonymat des fondateurs sur le site
+- **Décision** : aucun nom ni fonction de fondateur sur le site (contrainte professionnelle externe). Le mot de l'équipe
+  est signé collectivement « L'équipe Trigenys · Douala & Yaoundé » ; le visuel équipe reste à fournir (photo d'équipe,
+  pas de portrait individuel).
+- **Conséquence** : la preuve de crédibilité repose sur les produits en production, les cas clients nommés et les
+  coordonnées réelles, pas sur une personne.
