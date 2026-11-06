@@ -33,7 +33,7 @@
 "Suivi des ventes et des stocks": "Sales and stock tracking",
 "Clients et relances": "Customers and follow-ups",
 "Rejoindre la bêta": "Join the beta",
-"adresse de bêta · domaine définitif à confirmer": "beta address · final domain to be confirmed",
+"adresse de bêta": "beta address",
 "Visuel réel de l'application": "Real visual of the application",
 "02 / 04 · Commerçants & boutiques": "02 / 04 · Merchants & shops",
 "par Trigenys Group": "by Trigenys Group",
@@ -80,7 +80,6 @@
 "Confier un projet": "Entrust a project",
 "Stades réels": "Real stages",
 "Témoignages": "Testimonials",
-"Témoignages clients nommés — à recueillir avant mise en ligne.": "Named client testimonials — to be collected before going live.",
 "Ancrage local": "Local roots",
 "L'équipe": "The team",
 "Tarifs": "Pricing",
@@ -128,7 +127,6 @@
 "Page d'accueil de la boutique Xeption": "Xeption shop home page",
 "· Douala et Yaoundé, Cameroun": "· Douala and Yaoundé, Cameroon",
 "Écrire un e-mail": "Send an e-mail",
-"WhatsApp d'abord, e-mail ensuite, à Douala comme à Yaoundé. Le lieu d'hébergement et les mentions légales sont écrits sur chaque page produit.": "WhatsApp first, e-mail second, in Douala as in Yaoundé. Hosting location and legal notices are written on every product page.",
-"Hébergement et conformité (OHADA, Mobile Money, hors-ligne) — à confirmer avant affichage.": "Hosting and compliance (OHADA, Mobile Money, offline) — to be confirmed before display.",
+"WhatsApp d'abord, e-mail ensuite, à Douala comme à Yaoundé. Ce site est hébergé sur Cloudflare Pages et ne collecte aucune donnée client ; le lieu d'hébergement et les mentions légales sont écrits sur chaque page produit.": "WhatsApp first, e-mail second, in Douala as in Yaoundé. This site is hosted on Cloudflare Pages and collects no client data; hosting location and legal notices are written on every product page.",
 "— L'équipe Trigenys · Douala & Yaoundé": "— The Trigenys team · Douala & Yaoundé"
 }
