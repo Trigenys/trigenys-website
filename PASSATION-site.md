@@ -209,3 +209,10 @@
   d'équipe, domaine Commerce Factory, mention hébergement/conformité (la carte peut maintenant citer Cloudflare).
 - Note : identité git non configurée dans cette session (commit fait avec `-c user.name/user.email` = auteur des
   commits précédents).
+
+## 2026-11-06 10:23 — CI : TBT mobile instable, relance verte
+- Run push 42192721027 sur 7c04234 : échec visual-qa (TBT 211 ms / budget 200, LCP 2 186 OK) ; dispatch sur le même SHA
+  vert (TBT 157) ; relance du job échoué verte. Leçon consignée dans `docs/engineering/lessons-learned.md` (marge TBT à
+  dégager : tâche dédiée, pas de budget assoupli). Les événements `push` déclenchent désormais la CI (nouveau).
+- Prochaine étape : décision humaine de publier (runbook `site/README.md`) ; sinon tâche « marge TBT » (alléger le
+  travail à DOMContentLoaded) et les trois éléments « à confirmer ».
