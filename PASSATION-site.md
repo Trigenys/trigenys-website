@@ -315,3 +315,11 @@
 - Prochaines étapes : (1) PR de recadrage de `reusable-pages-deploy.yml` côté project-automation (doc « rejected »
   fausse, brique = exception documentée) ; (2) issue/PR appfactory-api : `dryRun` pour `/infrastructure/pages` ;
   (3) éléments « à confirmer » puis `customDomain` + CNAME Spaceship.
+
+## 2026-11-06 13:08 — PR de recadrage de la brique project-automation ouverte
+- `EagleFox31/appfactory-project-automation` PR #146 (branche `docs/pages-deploy-canonical-path`) : doc, README,
+  exemple et en-tête du workflow présentent `reusable-pages-deploy.yml` comme exception documentée à la voie canonique
+  (`Trigenys/appfactory`, `POST /infrastructure/pages`, OIDC) ; affirmation « Git integration rejected » retirée ;
+  test de garde ajouté (6/6 verts localement). Aucun changement de comportement du workflow. En attente de revue/fusion.
+- Site : inchangé depuis 12:55 (en ligne sur trigenys-website.pages.dev, CI verte).
+- Reste : issue/PR `dryRun` côté appfactory-api ; éléments « à confirmer » puis `customDomain` + CNAME Spaceship.
