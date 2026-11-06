@@ -302,3 +302,16 @@
   l'URL et les en-têtes ; AppFactory commitera `.appfactory/pages-infrastructure.json` sur `main` (faire `git pull`).
 - Reste : recadrage de la brique côté project-automation (doc, mode plan), proposition `dryRun` côté appfactory-api,
   éléments « à confirmer » avant domaine.
+
+## 2026-11-06 12:55 — Site en ligne sur trigenys-website.pages.dev via appfactory-api
+- Run `AppFactory Infrastructure` 42213237931 vert : `PROVISIONED`, projet `trigenys-website`, déploiement
+  58c0963c (branche `production`). AppFactory a commité le marqueur `.appfactory/pages-infrastructure.json` (f695d79,
+  récupéré par `git pull`). `https://trigenys-website.pages.dev/` répond 200 avec CSP et `X-Frame-Options: DENY`.
+- Branche `production` protégée (checks `site-build`, `visual-qa`, strict, admins inclus). Aucun secret Cloudflare
+  dans le dépôt ; aucun domaine custom (différé).
+- CI : fbc768c vert ; f695d79 (marqueur seul) échec `visual-qa` = erreur runtime Lighthouse (trace mobile), pas un
+  budget → relance du job en cours. Si l'échec persiste sur un commit sans impact frontend, consigner une leçon
+  (gate Lighthouse à rendre tolérant à l'erreur runtime, budgets inchangés).
+- Prochaines étapes : (1) PR de recadrage de `reusable-pages-deploy.yml` côté project-automation (doc « rejected »
+  fausse, brique = exception documentée) ; (2) issue/PR appfactory-api : `dryRun` pour `/infrastructure/pages` ;
+  (3) éléments « à confirmer » puis `customDomain` + CNAME Spaceship.
