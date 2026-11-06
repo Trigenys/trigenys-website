@@ -389,3 +389,13 @@
   `curl -I http://trigenys.com/` (attendu : 301 vers https://www.trigenys.com/).
 - `https://www.trigenys.com/` reste pleinement en ligne (200, CSP, canonical).
 - Scratchpad de session nettoyé (79 Mo → 1 Mo) à la demande d'une autre session ; dépôt intact.
+
+## 2026-11-06 17:28 — Redirection apex trigenys.com active
+- Le fondateur a créé chez Spaceship une « URL redirect » sur `trigenys.com` vers `https://www.trigenys.com`, type 301
+  (permanent). Spaceship publie un A `@ → 15.197.162.184` (serveur urlredirect + certificat FreeSSL) ; MX et CNAME
+  `www` intacts.
+- Vérifié : `http://trigenys.com/` → 301 et `https://trigenys.com/` → 301 vers `https://www.trigenys.com/`
+  (certificat prêt ~4 min après) ; `https://www.trigenys.com/` → 200.
+- Note poste Windows : dans PowerShell, `curl` est un alias d'Invoke-WebRequest → utiliser `curl.exe`. Un
+  « Could not resolve host » juste après un ajout DNS = cache négatif local, se résorbe seul.
+- Reste : domaine définitif Commerce Factory (CTA en « adresse de bêta ») ; marge TBT mobile si le flake revient.
