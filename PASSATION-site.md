@@ -229,3 +229,12 @@
   `pages deploy` crée le projet). Aperçu `*.pages.dev` toujours en attente des secrets `CLOUDFLARE_API_TOKEN` /
   `CLOUDFLARE_ACCOUNT_ID` sur le dépôt (admin) ; `mode=plan` est exécutable sans secret dès maintenant.
 - Prochaine étape : fusionner la PR #145 (relecture humaine), ré-épingler, `plan` puis `preview`, vérifier les en-têtes.
+
+## 2026-11-06 11:05 — Brique validée en mode plan, CI relancée verte
+- `gh workflow run deploy.yml -f mode=plan` sur 397edaa : run 42199225000 vert (build, contrats, validation de `dist`,
+  aucun secret lu, upload sauté). La brique appfactory est fonctionnelle depuis le site ; CI de la PR #145 verte.
+- CI push 42199187513 : visual-qa mobile TBT 234 ms (même instabilité connue, commit sans changement du site) ;
+  relance du job → vert. La tâche « marge TBT » reste à faire.
+- `gh secret list` vide : aucun secret Cloudflare sur le dépôt. Bloquants pour `preview` : admin crée
+  `CLOUDFLARE_API_TOKEN` (Pages : Edit) + `CLOUDFLARE_ACCOUNT_ID` (environnements `preview`/`production`), puis
+  `-f mode=preview` crée le projet au premier upload. Après merge de #145 : ré-épingler le SHA fusionné dans `deploy.yml`.
