@@ -328,3 +328,10 @@
 - Squash sur `main` : `31b4c54ed2b72778920e413459a463a994df43fd`, branche supprimée. Documentation de la brique
   alignée sur la voie canonique ; aucun impact sur le site (plus de consommateur de la brique ici).
 - Reste : issue/PR `dryRun` côté appfactory-api ; éléments « à confirmer » puis `customDomain` + CNAME Spaceship.
+
+## 2026-11-06 13:31 — Issue dryRun ouverte sur Trigenys/appfactory
+- `Trigenys/appfactory` issue #189 : champ optionnel `dryRun` pour les endpoints brownfield (d'abord
+  `/infrastructure/pages`) → `status: PLANNED` + diff (projet, domaine, marqueur, déploiement), zéro écriture, erreurs
+  d'auth identiques, replay convergé = `noop`. Critères d'acceptation et non-objectifs dans l'issue.
+- Chantier déploiement du site clos côté dépôt. Reste : éléments « à confirmer » (photo d'équipe, domaine Commerce
+  Factory, mention hébergement/conformité) puis `customDomain: www.trigenys.com` + CNAME Spaceship ; marge TBT mobile.
