@@ -7,6 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const html = await readFile(path.join(dist, "index.html"), "utf8");
 const i18n = JSON.parse(await readFile(path.join(root, "src", "i18n.json"), "utf8"));
+const headersFile = await readFile(path.join(dist, "_headers"), "utf8").catch(() => "");
 const fails = [];
 const must = (cond, msg) => { if (!cond) fails.push(msg); };
 
@@ -26,11 +27,17 @@ must((html.match(/<svg class="orb"/g) || []).length === 4, "4 orbites attendues"
 must((html.match(/<svg class="hx /g) || []).length === 5, "5 hélices attendues");
 must(!/<img[^>]+src="https?:/.test(html), "image externe interdite (visual-qa)");
 must(!/fonts\.(googleapis|gstatic)\.com/.test(html), "police externe interdite : auto-hébergement attendu");
+must(/<link rel="canonical" href="https:\/\/[^"]+\/">/.test(html) && /property="og:url"/.test(html), "canonical et og:url absolus attendus");
+must(/^\/\*\n(  [A-Za-z-]+: .+\n)*  Content-Security-Policy: default-src 'self'/m.test(headersFile), "_headers : CSP default-src 'self' attendue sur /*");
+must(/^\/assets\/fonts\/\*\n(  .+\n)*  Cache-Control: public, max-age=31536000, immutable/m.test(headersFile), "_headers : cache long attendu sur les polices");
+must(!/<script[^>]+src=|<link[^>]+rel="(?:stylesheet|preload|modulepreload)"[^>]+href="https?:/.test(html), "ressource externe interdite par la CSP (script ou lien)");
+must(!/\son[a-z]+="/.test(html), "gestionnaire inline on*= interdit par la CSP");
 for (const [k, v] of Object.entries(i18n)) {
   must(typeof v === "string" && v.trim(), `traduction vide pour « ${k} »`);
   must(v !== k || /^[A-Z0-9 /·&]+$|^(Garages|SAV|WhatsApp)/.test(k), `traduction identique au français pour « ${k} »`);
 }
 const refs = [...html.matchAll(/(?:src|href|data-src)="(assets\/[^"]+)"/g)].map((m) => m[1]);
+const og = html.match(/property="og:image" content="https:\/\/[^"]+\/(assets\/[^"]+)"/); must(og, "og:image absolue attendue"); if (og) refs.push(og[1]);
 for (const r of new Set(refs)) await access(path.join(dist, r)).catch(() => fails.push(`asset manquant : ${r}`));
 
 if (fails.length) { console.error("ÉCHEC\n- " + fails.join("\n- ")); process.exit(1); }

@@ -78,4 +78,5 @@ await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 await writeFile(path.join(dist, "index.html"), html);
 await cp(path.join(src, "assets"), path.join(dist, "assets"), { recursive: true });
+await cp(path.join(src, "_headers"), path.join(dist, "_headers")); // en-têtes HTTP de l'hébergeur (voir docs/decisions/adr-0001-hebergement.md)
 console.log(`dist/index.html : ${html.length} caractères, ${Object.keys(i18n).length} chaînes FR/EN`);
