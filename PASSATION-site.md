@@ -342,3 +342,11 @@
   (`site/src/index.tpl.html`, chaîne i18n supprimée, README hébergement mis à jour). Build + contrats OK (137 chaînes).
 - Reste « à confirmer » : domaine définitif Commerce Factory, mention hébergement/conformité (carte « Ancrage local »).
   Ensuite `customDomain: www.trigenys.com` + CNAME Spaceship, PR main→production.
+
+## 2026-11-06 16:34 — Partenaires : logos Xeption et Love Ink
+- Bloc « Ils travaillent avec nous » (section preuves) : placeholder « logos à fournir » remplacé par deux liens
+  icône + nom : XEPTION (`assets/xe-logo.webp`, déjà présent) → xeptionetwork.shop, Love Ink (`assets/li-logo.svg`,
+  favicon du dépôt `Trigenys/loveink`) → loveink.site. Style `.proof .lg .pa`. Chaîne i18n du placeholder supprimée.
+- Build + contrats OK (19 assets, 136 chaînes) ; vérifié dans le navigateur (images chargées, rendu desktop).
+- `.claude/launch.json` (ignoré par git) : config « site » = http.server 8766 sur `site/dist`.
+- Reste « à confirmer » : domaine Commerce Factory, mention hébergement/conformité ; puis customDomain + CNAME.
