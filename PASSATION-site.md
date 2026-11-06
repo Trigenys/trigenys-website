@@ -238,3 +238,12 @@
 - `gh secret list` vide : aucun secret Cloudflare sur le dépôt. Bloquants pour `preview` : admin crée
   `CLOUDFLARE_API_TOKEN` (Pages : Edit) + `CLOUDFLARE_ACCOUNT_ID` (environnements `preview`/`production`), puis
   `-f mode=preview` crée le projet au premier upload. Après merge de #145 : ré-épingler le SHA fusionné dans `deploy.yml`.
+
+## 2026-11-06 11:20 — PR #145 fusionnée, brique épinglée sur le SHA fusionné
+- appfactory-project-automation : PR #145 squashée sur main → `d86c14fcb365aa7a5d0246908a27523a2b31ab00`.
+  `deploy.yml` du site ré-épinglé dessus (commit fe4340d), note dans l'ADR. Run `mode=plan` 42200516797 vert ;
+  CI push 42200508426 verte du premier coup (visual-qa inclus).
+- Reste bloquant pour l'aperçu `*.pages.dev` : secrets `CLOUDFLARE_API_TOKEN` (Pages : Edit) et `CLOUDFLARE_ACCOUNT_ID`
+  à créer par un admin sur le dépôt (environnements `preview` / `production`), puis `gh workflow run deploy.yml --ref main -f mode=preview`
+  (crée le projet `trigenys-website` au premier upload) et vérification `curl -sI <url> | grep -i content-security`.
+- Toujours « à confirmer » : photo d'équipe, domaine Commerce Factory, mention hébergement/conformité ; tâche « marge TBT ».
