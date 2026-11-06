@@ -268,3 +268,26 @@
   garder la publication humaine, build `cd site && npm run build`, sortie `site/dist`, `_headers` conservé) ; côté
   appfactory, PR de recadrage de la brique (mode `plan` conservé comme gate sans secret, upload documenté comme
   exception, doc corrigée) ; ADR-0001 à réviser. En attente de la décision.
+
+## 2026-11-06 11:48 — Analyse `Trigenys/appfactory` (appfactory-api) : `POST /infrastructure/pages`
+- Correctif d'horodatage : l'entrée « 11:50 » ci-dessus a été écrite à 11:39 (heure réelle).
+- Le bon dépôt AppFactory pour Cloudflare est `Trigenys/appfactory` (Worker `appfactory-api`, HEAD ec5a717), pas
+  `appfactory-project-automation`. Lu : `src/index.ts`, `src/auth.ts`, `src/brownfield-pages.ts`, `src/cloudflare.ts`,
+  `src/deployment-idempotency.ts`, `docs/brownfield-pages.md`, PR #94 ; consommateur réel : `Trigenys/cleanroute`
+  (`.github/workflows/appfactory-infrastructure.yml` + `.appfactory/pages.json`, run vert du 2026-10-05, marqueur présent).
+- Existant : OIDC GitHub (audience `appfactory-api`), dépôt `Trigenys/*`, workflow exactement
+  `<repo>/.github/workflows/appfactory-infrastructure.yml@refs/heads/main`. L'API crée/réconcilie un projet Pages
+  **connecté Git** (source GitHub, `production_branch`, `build_config`, previews « all »), domaine custom optionnel
+  (réponse = consigne CNAME pour DNS externe → compatible Spaceship), marqueur `.appfactory/pages-infrastructure.json`
+  commité dans le dépôt appelant, puis réutilise ou déclenche un déploiement de production. Nom de projet imposé :
+  `<repo>` ou `<repo>-…` → `trigenys-website`. Identifiants Cloudflare uniquement côté AppFactory
+  (`CLOUDFLARE_PAGES_D1_TOKEN`). App GitHub `cloudflare-workers-and-pages` déjà installée sur l'org Trigenys.
+- Éligibilité du site : oui (org Trigenys, branche par défaut `main`, dépôt public sans importance). Rien à ajouter
+  côté secrets. `main` n'est pas protégée (le marqueur sera commité directement).
+- Écarts : (1) pas de mode `plan`/dry-run : le premier appel provisionne et déploie ; (2) Cloudflare construit hors de
+  nos gates CI (Lighthouse) → à compenser par une branche de production dédiée protégée ; (3) version Node non
+  exposée par l'API → `.node-version` dans le dépôt ; (4) previews publics sur toutes les branches (non réglable).
+- Chemin recommandé (en attente de validation, rien modifié, rien déployé) : brique project-automation à retirer de
+  `deploy.yml` ; site → `appfactory-infrastructure.yml` + `.appfactory/pages.json` (projet `trigenys-website`,
+  branche de production dédiée, build `cd site && npm run build`, sortie `site/dist`, sans `customDomain` tant que
+  les points « à confirmer » restent ouverts) ; proposition d'extension appfactory-api : `dryRun`.
