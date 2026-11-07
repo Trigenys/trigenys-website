@@ -1,0 +1,281 @@
+{
+  "$comment": "Source unique du référencement : identité du groupe (JSON-LD), métadonnées de l'accueil FR/EN et pages secondaires. Le build en dérive les pages, robots.txt, sitemap.xml et llms.txt ; aucun de ces fichiers n'est écrit à la main.",
+  "origin": "https://www.trigenys.com",
+  "name": "Trigenys Group",
+  "summary": "Trigenys Group édite des logiciels métier (Atelier Maître, Commerce Factory, Précis Translator) et construit sur mesure les systèmes de ses clients. Conçus, développés et maintenus au Cameroun, à Douala et Yaoundé.",
+  "contactLine": "Contact : business@trigenys.com · WhatsApp +237 670 75 43 72 · Douala et Yaoundé, Cameroun.",
+  "organization": {
+    "@type": "Organization",
+    "@id": "https://www.trigenys.com/#org",
+    "name": "Trigenys Group",
+    "alternateName": "Trigenys",
+    "url": "https://www.trigenys.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.trigenys.com/assets/logo-square.png",
+      "width": 512,
+      "height": 512
+    },
+    "image": "https://www.trigenys.com/assets/og.png",
+    "slogan": "Designing the systems behind decisions.",
+    "description": "Éditeur de logiciels métier et studio d'ingénierie : Atelier Maître (gestion d'atelier automobile), Commerce Factory (boutique en ligne), Précis Translator (traduction de documents avec mise en page conservée), et systèmes sur mesure. Conçus au Cameroun.",
+    "email": "business@trigenys.com",
+    "telephone": "+237670754372",
+    "address": [
+      {
+        "@type": "PostalAddress",
+        "addressLocality": "Douala",
+        "addressCountry": "CM"
+      },
+      {
+        "@type": "PostalAddress",
+        "addressLocality": "Yaoundé",
+        "addressCountry": "CM"
+      }
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "Cameroun"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "business@trigenys.com",
+        "telephone": "+237670754372",
+        "availableLanguage": [
+          "fr",
+          "en"
+        ]
+      }
+    ],
+    "sameAs": [
+      "https://github.com/Trigenys"
+    ]
+  },
+  "graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.trigenys.com/#website",
+      "url": "https://www.trigenys.com/",
+      "name": "Trigenys Group",
+      "inLanguage": [
+        "fr",
+        "en"
+      ],
+      "publisher": {
+        "@id": "https://www.trigenys.com/#org"
+      }
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://insight.trigenys.com/#blog",
+      "url": "https://insight.trigenys.com/",
+      "name": "Trigenys Insight",
+      "publisher": {
+        "@id": "https://www.trigenys.com/#org"
+      }
+    }
+  ],
+  "legal": {
+    "$comment": "Identité légale affichée dans /mentions-legales/. Valeur null = champ non affiché et signalé par le build : à compléter avec les documents officiels, jamais par estimation.",
+    "fields": [
+      {
+        "label": "Raison sociale",
+        "value": null
+      },
+      {
+        "label": "Forme juridique",
+        "value": null
+      },
+      {
+        "label": "Immatriculation (RCCM)",
+        "value": null
+      },
+      {
+        "label": "Numéro d'identifiant unique (NIU)",
+        "value": null
+      },
+      {
+        "label": "Directeur de la publication",
+        "value": null
+      }
+    ]
+  },
+  "home": {
+    "fr": {
+      "path": "/",
+      "title": "Trigenys Group — Logiciels et ingénierie, Cameroun",
+      "description": "Trigenys édite Atelier Maître, Commerce Factory et Précis Translator, et construit sur mesure les systèmes de ses clients. Conçus au Cameroun.",
+      "ogDescription": "Les logiciels qui font tourner les métiers du Cameroun.",
+      "ogLocale": "fr_FR",
+      "switchLabel": "English version"
+    },
+    "en": {
+      "path": "/en/",
+      "title": "Trigenys Group — Software and engineering, Cameroon",
+      "description": "Trigenys publishes Atelier Maître, Commerce Factory and Précis Translator, and builds custom systems for its clients. Designed in Cameroon.",
+      "ogDescription": "The software that runs Cameroon's trades.",
+      "ogLocale": "en_GB",
+      "switchLabel": "Version française"
+    }
+  },
+  "pages": [
+    {
+      "path": "/produits/atelier-maitre/",
+      "src": "pages/atelier-maitre.html",
+      "section": "Produits",
+      "sectionHref": "/#produits",
+      "llms": "Produits",
+      "title": "Atelier Maître — logiciel de gestion d'atelier automobile | Trigenys",
+      "h": "Atelier Maître",
+      "description": "Atelier Maître gère le garage de la réception du véhicule à la facture : ordres de travail, stock de pièces, devis, factures et caisse. En production, conçu au Cameroun.",
+      "image": "/assets/am-dashboard.webp",
+      "jsonld": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.trigenys.com/produits/atelier-maitre/#app",
+          "name": "Atelier Maître",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "Gestion d'atelier automobile",
+          "operatingSystem": "Web",
+          "url": "https://atelier.trigenys.com/",
+          "image": "https://www.trigenys.com/assets/am-dashboard.webp",
+          "description": "Gestion d'atelier automobile : réception du véhicule, ordres de travail et planning, stock et mouvements de pièces, devis, factures, caisse, journal d'audit et rapports.",
+          "featureList": [
+            "Ordres de travail et planning",
+            "Stock et mouvements de pièces",
+            "Devis, factures, caisse",
+            "Journal d'audit et rapports"
+          ],
+          "inLanguage": "fr",
+          "publisher": {
+            "@id": "https://www.trigenys.com/#org"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/produits/commerce-factory/",
+      "src": "pages/commerce-factory.html",
+      "section": "Produits",
+      "sectionHref": "/#produits",
+      "llms": "Produits",
+      "title": "Commerce Factory — boutique en ligne, commandes et stocks | Trigenys",
+      "h": "Commerce Factory",
+      "description": "Commerce Factory : créez votre boutique, partagez votre catalogue, suivez ventes, stocks et préparations au même endroit. Bêta ouverte, gratuite pendant la bêta.",
+      "image": "/assets/cf-04.webp",
+      "jsonld": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.trigenys.com/produits/commerce-factory/#app",
+          "name": "Commerce Factory",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "Boutique en ligne",
+          "operatingSystem": "Web",
+          "url": "https://trigenys-commerce-factory.pages.dev/",
+          "image": "https://www.trigenys.com/assets/cf-04.webp",
+          "description": "Boutique en ligne et gestion des commandes : catalogue et thèmes de boutique, commandes et préparations, suivi des ventes et des stocks, clients et relances.",
+          "featureList": [
+            "Catalogue et thèmes de boutique",
+            "Commandes et préparations",
+            "Suivi des ventes et des stocks",
+            "Clients et relances"
+          ],
+          "inLanguage": "fr",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "XAF",
+            "description": "Gratuit pendant la bêta ouverte"
+          },
+          "publisher": {
+            "@id": "https://www.trigenys.com/#org"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/produits/precis-translator/",
+      "src": "pages/precis-translator.html",
+      "section": "Produits",
+      "sectionHref": "/#produits",
+      "llms": "Produits",
+      "title": "Précis Translator — traduire un document sans perdre sa mise en page",
+      "h": "Précis Translator",
+      "description": "Précis Translator traduit vos PDF, Word, PowerPoint et Excel du français vers l'anglais et inversement, en conservant la mise en page d'origine. Bêta, pilotes en cours.",
+      "image": "/assets/pt-share.webp",
+      "jsonld": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.trigenys.com/produits/precis-translator/#app",
+          "name": "Précis Translator",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "Traduction de documents",
+          "operatingSystem": "Web",
+          "url": "https://precis-translator.trigenys.com/",
+          "image": "https://www.trigenys.com/assets/pt-share.webp",
+          "description": "Traduction de documents PDF, Word, PowerPoint et Excel entre le français et l'anglais, en conservant la mise en page d'origine, avec relecture avant livraison.",
+          "featureList": [
+            "PDF, Word, PowerPoint, Excel",
+            "Mise en page conservée",
+            "Français ↔ anglais",
+            "Relecture avant livraison"
+          ],
+          "inLanguage": "fr",
+          "publisher": {
+            "@id": "https://www.trigenys.com/#org"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/realisations/xeption/",
+      "src": "pages/xeption.html",
+      "section": "Réalisations",
+      "sectionHref": "/#ingenierie",
+      "llms": "Réalisations",
+      "title": "XEPTION — e-commerce avec Orange Money, MoMo, troc et SAV | Trigenys",
+      "h": "XEPTION",
+      "description": "Réalisation Trigenys : la plateforme en ligne de XEPTION, enseigne de smartphones et d'ordinateurs à Yaoundé. Catalogue, commandes, livraison, troc, SAV, paiement Orange Money et MoMo.",
+      "image": "/assets/xe-shop.webp",
+      "jsonld": [
+        {
+          "@type": "Article",
+          "@id": "https://www.trigenys.com/realisations/xeption/#article",
+          "headline": "XEPTION : vendre en ligne sans perdre ce qui fait la force du comptoir",
+          "image": "https://www.trigenys.com/assets/xe-shop.webp",
+          "datePublished": "2026-11-07",
+          "inLanguage": "fr",
+          "author": {
+            "@id": "https://www.trigenys.com/#org"
+          },
+          "publisher": {
+            "@id": "https://www.trigenys.com/#org"
+          },
+          "about": {
+            "@type": "Organization",
+            "name": "XEPTION",
+            "url": "https://www.xeptionetwork.shop/"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/mentions-legales/",
+      "src": "pages/mentions-legales.html",
+      "llms": "Informations",
+      "title": "Mentions légales | Trigenys Group",
+      "h": "Mentions légales",
+      "description": "Éditeur, hébergement, données personnelles et propriété intellectuelle du site www.trigenys.com."
+    },
+    {
+      "path": "/404.html",
+      "src": "pages/404.html",
+      "title": "Page introuvable | Trigenys Group",
+      "h": "Page introuvable",
+      "description": "Cette page n'existe pas ou a changé d'adresse. Retrouvez les produits et les réalisations de Trigenys Group.",
+      "noindex": true
+    }
+  ]
+}
