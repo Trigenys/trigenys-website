@@ -13,8 +13,8 @@ const opt = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] :
 const host = opt("--host", "127.0.0.1");
 const port = Number(opt("--port", "4173"));
 const types = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json",
-  ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp", ".svg": "image/svg+xml", ".ico": "image/x-icon", ".txt": "text/plain",
-  ".woff2": "font/woff2", ".woff": "font/woff", ".xml": "application/xml", ".webmanifest": "application/manifest+json" };
+  ".png": "image/png", ".jpg": "image/jpeg", ".webp": "image/webp", ".svg": "image/svg+xml", ".ico": "image/x-icon", ".txt": "text/plain; charset=utf-8",
+  ".woff2": "font/woff2", ".woff": "font/woff", ".xml": "application/xml; charset=utf-8", ".webmanifest": "application/manifest+json" };
 const compressible = new Set([".html", ".js", ".css", ".json", ".svg", ".txt", ".xml", ".webmanifest"]);
 
 // Lecture de dist/_headers (format Cloudflare Pages) : règles « /motif » suivies de lignes « En-tête: valeur » ;
@@ -47,10 +47,17 @@ createServer(async (req, res) => {
   try {
     let p = decodeURIComponent(new URL(req.url, "http://x").pathname);
     if (p.endsWith("/")) p += "index.html";
-    const file = path.join(dist, path.normalize(p));
+    let file = path.join(dist, path.normalize(p));
     if (!file.startsWith(dist)) { res.writeHead(403); return res.end(); }
-    const s = await stat(file).catch(() => null);
-    if (!s || !s.isFile()) { res.writeHead(404, { "content-type": "text/plain" }); return res.end("404"); }
+    let s = await stat(file).catch(() => null);
+    let status = 200;
+    // Comme Cloudflare Pages : un dossier sans « / » final est redirigé (308), une URL inconnue reçoit 404.html avec le statut 404.
+    if (s?.isDirectory()) { res.writeHead(308, { location: p + "/" }); return res.end(); }
+    if (!s || !s.isFile()) {
+      file = path.join(dist, "404.html"); p = "/404.html"; status = 404;
+      s = await stat(file).catch(() => null);
+      if (!s) { res.writeHead(404, { "content-type": "text/plain; charset=utf-8" }); return res.end("404"); }
+    }
     const ext = path.extname(file);
     const headers = { "content-type": types[ext] || "application/octet-stream", "cache-control": "no-cache", "vary": "accept-encoding", ...hostHeaders(p) };
     let body = await readFile(file);
@@ -60,7 +67,7 @@ createServer(async (req, res) => {
       else if (/\bgzip\b/.test(accept)) { body = gzipSync(body, { level: 6 }); headers["content-encoding"] = "gzip"; }
     }
     headers["content-length"] = body.length;
-    res.writeHead(200, headers);
+    res.writeHead(status, headers);
     res.end(body);
   } catch (e) { res.writeHead(500); res.end(String(e)); }
 }).listen(port, host, () => console.log(`http://${host}:${port}/`));

@@ -399,3 +399,16 @@
 - Note poste Windows : dans PowerShell, `curl` est un alias d'Invoke-WebRequest → utiliser `curl.exe`. Un
   « Could not resolve host » juste après un ajout DNS = cache négatif local, se résorbe seul.
 - Reste : domaine définitif Commerce Factory (CTA en « adresse de bêta ») ; marge TBT mobile si le flake revient.
+
+## 2026-11-07 04:38 — Fondations SEO (P0/P1), branche feat/seo-fondations
+- Demande de la session expert-seo-geo : P0 (robots, sitemap, llms.txt, 404 réelle, JSON-LD Organization/WebSite,
+  mentions légales) puis P1 (pages produits, réalisation XEPTION, /en/ + hreflang, test SEO en CI) ; P2 en issues.
+- Fait : `src/site.json` source unique ; `build.mjs` génère 8 pages, robots, sitemap, llms.txt ; /en/ statique traduite
+  au build (lang.js et dictionnaire client supprimés) ; `check.mjs` étendu à toutes les pages ; `http-check.mjs`
+  (`npm run check:http`) ajouté à la CI ; visual-qa sur /, /en/, /produits/atelier-maitre/.
+- Preuves locales : `npm run build` OK (contrats SEO), `check:http` OK (URL inconnue 404, robots text/plain, sitemap
+  XML, 7 URL en 200), contre-test sans 404.html en échec, build idempotent (`diff -r`), mesures 390/1024 px sans
+  débordement.
+- À fournir avant fusion : identité légale (`site.json > legal.fields`, aujourd'hui non publiée), URL LinkedIn,
+  chiffres de la réalisation XEPTION, domaine définitif Commerce Factory, relecture produit des textes.
+- Après déploiement : `npm run check:http -- --base https://www.trigenys.com`, Rich Results Test sur les URL produits.

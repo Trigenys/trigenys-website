@@ -1,18 +1,20 @@
 <!doctype html>
-<html lang="fr">
+<html lang="@@LANG@@">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Trigenys Group — Logiciels et ingénierie, Cameroun</title>
-<meta name="description" content="Trigenys édite Atelier Maître, Commerce Factory et Précis Translator, et construit sur mesure les systèmes de ses clients. Conçus au Cameroun.">
+<title>@@TITLE@@</title>
+<meta name="description" content="@@DESC@@">
 <meta property="og:title" content="Trigenys Group">
-<meta property="og:description" content="Les logiciels qui font tourner les métiers du Cameroun.">
+<meta property="og:description" content="@@OG_DESC@@">
+<meta property="og:locale" content="@@OG_LOCALE@@">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.trigenys.com/">
-<meta property="og:image" content="https://www.trigenys.com/assets/og.png">
+<meta property="og:url" content="@@CANONICAL@@">
+<meta property="og:image" content="@@ORIGIN@@/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<link rel="canonical" href="https://www.trigenys.com/">
+<link rel="canonical" href="@@CANONICAL@@">
+@@HEAD_SEO@@
 <link rel="icon" href="assets/favicon.png">
 <link rel="preload" as="image" href="assets/am-dashboard.webp" fetchpriority="high">
 <!-- Polices auto-hébergées (sous-ensembles latin) : pas de détour par Google Fonts, les faces du premier écran sont préchargées. -->
@@ -339,10 +341,10 @@ h2.sec{margin:0;font-size:60px;line-height:1.02;font-weight:500;max-width:820px}
 
 <header class="nav">
   <div class="w">
-    <a href="#"><img src="assets/logo.webp" alt="Trigenys Group" style="height:34px;width:auto"></a>
+    <a href="@@HOME@@"><img src="assets/logo.webp" alt="Trigenys Group" style="height:34px;width:auto"></a>
     <div class="lk"><a href="#produits">Produits</a><a href="#metiers">Par métier</a><a href="#ingenierie">Ingénierie</a><a href="#confiance">Pourquoi nous</a><a href="https://insight.trigenys.com/">Insight</a></div>
-    <div class="rt"><button class="lng" type="button" aria-label="Passer en anglais"><span class="fl f"><span class="fg"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#EF4135"/></svg></span>FR</span><span class="fl e"><span class="fg"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg></span>EN</span></button><a class="btn bw" href="#contact"><span class="wic">✓</span>Parler à un expert</a></div>
-    <button class="lng lm" type="button" aria-label="Passer en anglais"><span class="fl f"><span class="fg"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#EF4135"/></svg></span>FR</span><span class="fl e"><span class="fg"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg></span>EN</span></button><button class="menu" aria-label="Menu"><span style="width:18px;height:2px;background:#fff;box-shadow:0 -6px #fff,0 6px #fff;display:block"></span></button>
+    <div class="rt"><a class="lng" href="@@ALT_HREF@@" hreflang="@@ALT_LANG@@" data-lang="@@LANG@@" aria-label="@@ALT_LABEL@@"><span class="fl f"><span class="fg"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#EF4135"/></svg></span>FR</span><span class="fl e"><span class="fg"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg></span>EN</span></a><a class="btn bw" href="#contact"><span class="wic">✓</span>Parler à un expert</a></div>
+    <a class="lng lm" href="@@ALT_HREF@@" hreflang="@@ALT_LANG@@" data-lang="@@LANG@@" aria-label="@@ALT_LABEL@@"><span class="fl f"><span class="fg"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="10" height="20" fill="#0055A4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#EF4135"/></svg></span>FR</span><span class="fl e"><span class="fg"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg></span>EN</span></a><button class="menu" aria-label="Menu"><span style="width:18px;height:2px;background:#fff;box-shadow:0 -6px #fff,0 6px #fff;display:block"></span></button>
   </div>
 </header>
 
@@ -554,9 +556,9 @@ h2.sec{margin:0;font-size:60px;line-height:1.02;font-weight:500;max-width:820px}
 <footer>
   <div class="w ft">
     <div><img loading="lazy" decoding="async" src="assets/logo.webp" alt="Trigenys Group" style="height:34px;width:auto"><p style="margin:14px 0 0;color:var(--mu);max-width:300px">Designing the systems behind decisions.</p></div>
-    <div><p class="mo" style="margin:0 0 12px;color:var(--in)">Produits</p><a href="https://atelier.trigenys.com/">Atelier Maître</a><a href="https://trigenys-commerce-factory.pages.dev/">Commerce Factory</a><a href="https://precis-translator.trigenys.com/">Précis Translator</a></div>
+    <div><p class="mo" style="margin:0 0 12px;color:var(--in)">Produits</p><a href="/produits/atelier-maitre/">Atelier Maître</a><a href="/produits/commerce-factory/">Commerce Factory</a><a href="/produits/precis-translator/">Précis Translator</a></div>
     <div><p class="mo" style="margin:0 0 12px;color:var(--in)">Par métier</p><a href="#metiers">Garages</a><a href="#metiers">Commerçants</a><a href="#metiers">Entreprises &amp; cabinets</a></div>
-    <div><p class="mo" style="margin:0 0 12px;color:var(--in)">Groupe</p><a href="#ingenierie">Ingénierie</a><a href="https://insight.trigenys.com/">Insight</a><a href="https://github.com/Trigenys">GitHub</a><a href="#">Mentions légales</a></div>
+    <div><p class="mo" style="margin:0 0 12px;color:var(--in)">Groupe</p><a href="#ingenierie">Ingénierie</a><a href="/realisations/xeption/">Réalisations</a><a href="https://insight.trigenys.com/">Insight</a><a href="https://github.com/Trigenys">GitHub</a><a href="/mentions-legales/">Mentions légales</a></div>
   </div>
   <div class="ftb" aria-hidden="true">@@HX_FOOT@@</div>
   <div class="w" style="padding:20px 40px 28px"><span class="mo" style="color:var(--mu)">© 2026 Trigenys Group</span></div>

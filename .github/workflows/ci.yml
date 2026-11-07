@@ -35,9 +35,11 @@ jobs:
       - run: npm run build
       - name: Build idempotent
         run: |
-          cp dist/index.html /tmp/first.html
+          cp -r dist /tmp/first
           npm run build --silent
-          cmp dist/index.html /tmp/first.html
+          diff -r dist /tmp/first
+      - name: SEO HTTP (statuts et types servis)
+        run: npm run check:http
 
   visual-qa:
     needs: impact
