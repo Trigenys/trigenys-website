@@ -412,3 +412,7 @@
 - À fournir avant fusion : identité légale (`site.json > legal.fields`, aujourd'hui non publiée), URL LinkedIn,
   chiffres de la réalisation XEPTION, domaine définitif Commerce Factory, relecture produit des textes.
 - Après déploiement : `npm run check:http -- --base https://www.trigenys.com`, Rich Results Test sur les URL produits.
+
+## 2026-11-07 10:20 — Issues P2 du plan SEO
+- Créées (label enhancement) : #4 Google Business Profile, #5 LinkedIn + sameAs, #6 Wikidata, #7 annuaires tech
+  Cameroun, #8 relations presse. PR #3 inchangée, en attente des faits listés à l'entrée précédente.
