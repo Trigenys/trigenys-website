@@ -416,3 +416,12 @@
 ## 2026-11-07 10:20 — Issues P2 du plan SEO
 - Créées (label enhancement) : #4 Google Business Profile, #5 LinkedIn + sameAs, #6 Wikidata, #7 annuaires tech
   Cameroun, #8 relations presse. PR #3 inchangée, en attente des faits listés à l'entrée précédente.
+
+## 2026-11-09 08:47 — URL LinkedIn de l'entreprise (en cours)
+- État : PR #3 ouverte (non fusionnée, CI verte), issues P2 #4–#8, compte rendu envoyé à expert-seo-geo.
+- Recherche LinkedIn : `linkedin.com/company/trigenys` = 404 ; `linkedin.com/company/trigenys-group` = mur de connexion
+  (page probablement existante, non confirmée).
+- Blocage : la connexion Google ouvre un pop-up, bloqué par le navigateur intégré. Piste : Chrome de l'utilisateur
+  (avec son accord) ou URL collée par l'utilisateur.
+- Prochaine étape : URL confirmée → `site/src/site.json > organization.sameAs`, `npm run build`, commit sur
+  feat/seo-fondations, cocher la case LinkedIn de la PR #3 et fermer l'issue #5 si la page est à jour.
