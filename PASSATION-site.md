@@ -452,3 +452,12 @@
 - Preuves : build (8 pages, 7 URL sitemap), check, check:http OK ; aucun débordement à 390 et 1024 px, géométrie
   identique à « Pourquoi nous » ; section EN entièrement traduite.
 - Reste : liens croisés articles Insights ↔ pages produits (côté Insights) ; LinkedIn en attente ; fusion PR #3.
+
+## 2026-11-16 09:19 — Mise en ligne : PR #3 fusionnée, PR #9 bloquée (main en retard sur production)
+- Accord utilisateur « j'autorise » pour la mise en ligne. PR #3 fusionnée dans `main` (merge commit da34b1f).
+- PR #9 `main → production` ouverte, CI verte après relance (flake visual-qa, voir lessons-learned).
+- Blocage : la protection de `production` exige une branche à jour ; il manque à `main` le commit de fusion de la PR #2
+  (30010d8, aucun changement de fichier). `gh pr update-branch 9` refusé à cette session : à faire par l'utilisateur
+  (bouton « Update branch » sur la PR #9), puis attendre la CI et fusionner.
+- Ensuite : `npm run check:http -- --base https://www.trigenys.com` sur la prod, Search Console.
+- LinkedIn toujours en attente (URL ou accord pour Chrome).

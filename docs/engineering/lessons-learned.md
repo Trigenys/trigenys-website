@@ -153,3 +153,17 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
   chevauchement, aucun débordement à 390 px et 1024 px, 8 pages).
 - **Prévention** : `visual-qa` couvre désormais `/produits/atelier-maitre/` ; avant de réutiliser une classe de
   l'accueil, `grep` de ses règles dans le CSS généré.
+
+## 2026-11-16 09:19 — Gate visual-qa : contraste mesuré pendant l'animation d'entrée, TBT mobile à nouveau au-dessus du budget
+- **Contexte** : PR #9 (main → production, SHA da34b1f). Run push : `route0:desktop:accessibility` FAIL, color-contrast
+  sur `.scr` (2,06:1, avant-plan #b5afb7). Run PR : TBT mobile 274 / 228 ms (budget 200). Relance du job échoué : verte.
+- **Cause racine** : (1) `.scr` porte les classes `up u4` (fondu d'entrée retardé) ; axe a lu la couleur en cours
+  d'animation. Le contraste réel de `--mu` (#5B4F60) sur `--cr` (#FCFAFB) est d'environ 8:1. (2) TBT : bruit CPU des runners,
+  marge inférieure au bruit (déjà consigné le 2026-11-06).
+- **Classification** : test instable (mesure prise pendant une transition) + budget sans marge ; pas une régression du site.
+- **Résolution** : relance du job échoué, verte.
+- **Prévention vérifiable** : erreur répétée, contrôle plus fort requis. À faire : (a) dans visual-qa, attendre la fin des
+  animations (`document.getAnimations()` terminées) ou forcer `prefers-reduced-motion` avant axe ; (b) tâche « marge TBT
+  mobile » : réduire le JS du premier écran jusqu'à ~120 ms mesurés en CI.
+- **Leçon** : une gate d'accessibilité ou de performance qui lit un état transitoire produit des faux positifs ; mesurer un
+  état stable.
