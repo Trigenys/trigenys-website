@@ -478,3 +478,10 @@
 - Ces entrées de passation (commits 06aae66, 220de62 et celui-ci) sont sur `feat/seo-fondations`, pas encore dans `main`.
 - Prochaines étapes : Search Console (soumettre le sitemap), LinkedIn (URL ou accord Chrome), issues P2 #4 à #8,
   tâche « marge TBT mobile » et attente de fin d'animation dans visual-qa.
+
+## 2026-11-16 09:38 — Search Console : sitemap soumis
+- Propriété de domaine `sc-domain:trigenys.com` déjà vérifiée (couvre www, insight, precis-translator, agenstart).
+- `https://www.trigenys.com/sitemap.xml` soumis à la demande de l'utilisateur : lu le jour même, « Opération effectuée »,
+  7 URL envoyées.
+- Prochaines étapes : suivre l'indexation (rapport Pages, sous quelques jours), demander l'indexation de l'accueil et
+  des pages produits si elle tarde ; LinkedIn ; issues P2 #4 à #8.
