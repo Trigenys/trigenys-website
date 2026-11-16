@@ -494,3 +494,23 @@
   dialogue, il faut cliquer deux fois dans la barre avant de saisir.
 - Prochaines étapes : vérifier le rapport Pages dans quelques jours ; LinkedIn ; issues P2 #4 à #8 ;
   branche `docs/passation-search-console` sans PR vers main.
+
+## 2026-11-16 11:17 — Commerce Factory : sous-domaine commercefactory.trigenys.com
+- PR #11 (passation Search Console) fusionnée dans main (`77f5fa8`).
+- Commerce Factory = projet Cloudflare Pages `trigenys-commerce-factory` (bêta sur `trigenys-commerce-factory.pages.dev`).
+- DNS Spaceship : CNAME `commercefactory` -> `trigenys-commerce-factory.pages.dev` créé par l'utilisateur, résolu (1.1.1.1, 8.8.8.8).
+- BLOQUÉ : le domaine personnalisé n'est pas encore ajouté au projet Pages (HTTPS ne répond pas). Le navigateur intégré
+  n'est pas connecté à Cloudflare et l'appel API avec le jeton wrangler a été refusé. À faire par l'utilisateur ou après
+  connexion : Pages > trigenys-commerce-factory > Custom domains > `commercefactory.trigenys.com`.
+- Ensuite : sur la branche `feat/commercefactory-domain`, remplacer les 5 liens `trigenys-commerce-factory.pages.dev`
+  (`site/src/index.tpl.html` l. 377, 378, 429, 486 ; `site/src/pages/commerce-factory.html` l. 9) une fois HTTPS actif,
+  PR vers main puis main -> production ; vérifier les redirections d'authentification ou de paiement de l'application
+  (dépôt `Trigenys/trigenys-commerce-factory`).
+
+## 2026-11-16 11:22 — Commerce Factory : domaine actif
+- Domaine personnalisé `commercefactory.trigenys.com` ajouté au projet Pages `trigenys-commerce-factory` (option
+  « My DNS provider » : le DNS reste chez Spaceship, aucun transfert). HTTPS actif, page servie (200).
+- Branche `feat/commercefactory-domain` : 7 liens `.pages.dev` remplacés (index.tpl.html, pages/commerce-factory.html,
+  site.json) ; `npm run build` et `npm run check` verts. PR vers main ouverte, puis main -> production à faire sur accord.
+- Reste : vérifier dans `Trigenys/trigenys-commerce-factory` les URL absolues (auth, paiement, canonical) ;
+  l'adresse `.pages.dev` continue de fonctionner.
