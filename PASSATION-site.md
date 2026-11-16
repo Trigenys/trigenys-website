@@ -452,3 +452,65 @@
 - Preuves : build (8 pages, 7 URL sitemap), check, check:http OK ; aucun débordement à 390 et 1024 px, géométrie
   identique à « Pourquoi nous » ; section EN entièrement traduite.
 - Reste : liens croisés articles Insights ↔ pages produits (côté Insights) ; LinkedIn en attente ; fusion PR #3.
+
+## 2026-11-16 09:19 — Mise en ligne : PR #3 fusionnée, PR #9 bloquée (main en retard sur production)
+- Accord utilisateur « j'autorise » pour la mise en ligne. PR #3 fusionnée dans `main` (merge commit da34b1f).
+- PR #9 `main → production` ouverte, CI verte après relance (flake visual-qa, voir lessons-learned).
+- Blocage : la protection de `production` exige une branche à jour ; il manque à `main` le commit de fusion de la PR #2
+  (30010d8, aucun changement de fichier). `gh pr update-branch 9` refusé à cette session : à faire par l'utilisateur
+  (bouton « Update branch » sur la PR #9), puis attendre la CI et fusionner.
+- Ensuite : `npm run check:http -- --base https://www.trigenys.com` sur la prod, Search Console.
+- LinkedIn toujours en attente (URL ou accord pour Chrome).
+
+## 2026-11-16 09:25 — PR #9 : main mise à jour (accord utilisateur), CI verte, fusion bloquée par la protection
+- `gh pr update-branch 9` fait (head 652271c) ; impact, site-build, visual-qa, Cloudflare Pages verts.
+- Blocage : contexte requis `visual-qa` jamais publié (nom réel : `visual-qa / Browser, accessibility and Lighthouse
+  gates`) ; voir lessons-learned. Correctif proposé : contexts = [`site-build`, `visual-qa / Browser, accessibility and
+  Lighthouse gates`], strict et admins inchangés. Attente de l'accord explicite de l'utilisateur.
+- Ensuite : fusion PR #9, check:http sur https://www.trigenys.com, Search Console. LinkedIn toujours en attente.
+
+## 2026-11-16 09:29 — Site en production : SEO/GEO, signature produits, Trigenys Insights
+- Accord utilisateur (« Oui, corrige ») : protection `production`, contexts = [`site-build`, `visual-qa / Browser,
+  accessibility and Lighthouse gates`] (strict, admins, force-push et suppression inchangés).
+- PR #9 fusionnée (61aa7f4) ; déploiement Cloudflare en ~40 s.
+- Preuve : `check:http --base https://www.trigenys.com` OK (robots, sitemap, llms, vraie 404, 7 URL) ; section
+  #insights servie ; titres produits « by Trigenys Group ».
+- Ces entrées de passation (commits 06aae66, 220de62 et celui-ci) sont sur `feat/seo-fondations`, pas encore dans `main`.
+- Prochaines étapes : Search Console (soumettre le sitemap), LinkedIn (URL ou accord Chrome), issues P2 #4 à #8,
+  tâche « marge TBT mobile » et attente de fin d'animation dans visual-qa.
+
+## 2026-11-16 09:38 — Search Console : sitemap soumis
+- Propriété de domaine `sc-domain:trigenys.com` déjà vérifiée (couvre www, insight, precis-translator, agenstart).
+- `https://www.trigenys.com/sitemap.xml` soumis à la demande de l'utilisateur : lu le jour même, « Opération effectuée »,
+  7 URL envoyées.
+- Prochaines étapes : suivre l'indexation (rapport Pages, sous quelques jours), demander l'indexation de l'accueil et
+  des pages produits si elle tarde ; LinkedIn ; issues P2 #4 à #8.
+
+## 2026-11-16 09:48 — Search Console : indexation demandée
+- « Demander une indexation » accepté (« Indexation demandée ») pour 5 URL : l'accueil,
+  `/produits/atelier-maitre/`, `/produits/commerce-factory/`, `/produits/precis-translator/`,
+  `/realisations/xeption/`. Toutes étaient « Détectée, actuellement non indexée ».
+- Astuce : l'URL directe `/inspect?...&id=` renvoie 404 ; passer par la barre de recherche. Après fermeture du
+  dialogue, il faut cliquer deux fois dans la barre avant de saisir.
+- Prochaines étapes : vérifier le rapport Pages dans quelques jours ; LinkedIn ; issues P2 #4 à #8 ;
+  branche `docs/passation-search-console` sans PR vers main.
+
+## 2026-11-16 11:17 — Commerce Factory : sous-domaine commercefactory.trigenys.com
+- PR #11 (passation Search Console) fusionnée dans main (`77f5fa8`).
+- Commerce Factory = projet Cloudflare Pages `trigenys-commerce-factory` (bêta sur `trigenys-commerce-factory.pages.dev`).
+- DNS Spaceship : CNAME `commercefactory` -> `trigenys-commerce-factory.pages.dev` créé par l'utilisateur, résolu (1.1.1.1, 8.8.8.8).
+- BLOQUÉ : le domaine personnalisé n'est pas encore ajouté au projet Pages (HTTPS ne répond pas). Le navigateur intégré
+  n'est pas connecté à Cloudflare et l'appel API avec le jeton wrangler a été refusé. À faire par l'utilisateur ou après
+  connexion : Pages > trigenys-commerce-factory > Custom domains > `commercefactory.trigenys.com`.
+- Ensuite : sur la branche `feat/commercefactory-domain`, remplacer les 5 liens `trigenys-commerce-factory.pages.dev`
+  (`site/src/index.tpl.html` l. 377, 378, 429, 486 ; `site/src/pages/commerce-factory.html` l. 9) une fois HTTPS actif,
+  PR vers main puis main -> production ; vérifier les redirections d'authentification ou de paiement de l'application
+  (dépôt `Trigenys/trigenys-commerce-factory`).
+
+## 2026-11-16 11:22 — Commerce Factory : domaine actif
+- Domaine personnalisé `commercefactory.trigenys.com` ajouté au projet Pages `trigenys-commerce-factory` (option
+  « My DNS provider » : le DNS reste chez Spaceship, aucun transfert). HTTPS actif, page servie (200).
+- Branche `feat/commercefactory-domain` : 7 liens `.pages.dev` remplacés (index.tpl.html, pages/commerce-factory.html,
+  site.json) ; `npm run build` et `npm run check` verts. PR vers main ouverte, puis main -> production à faire sur accord.
+- Reste : vérifier dans `Trigenys/trigenys-commerce-factory` les URL absolues (auth, paiement, canonical) ;
+  l'adresse `.pages.dev` continue de fonctionner.
