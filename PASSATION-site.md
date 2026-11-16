@@ -506,3 +506,11 @@
   (`site/src/index.tpl.html` l. 377, 378, 429, 486 ; `site/src/pages/commerce-factory.html` l. 9) une fois HTTPS actif,
   PR vers main puis main -> production ; vérifier les redirections d'authentification ou de paiement de l'application
   (dépôt `Trigenys/trigenys-commerce-factory`).
+
+## 2026-11-16 11:22 — Commerce Factory : domaine actif
+- Domaine personnalisé `commercefactory.trigenys.com` ajouté au projet Pages `trigenys-commerce-factory` (option
+  « My DNS provider » : le DNS reste chez Spaceship, aucun transfert). HTTPS actif, page servie (200).
+- Branche `feat/commercefactory-domain` : 7 liens `.pages.dev` remplacés (index.tpl.html, pages/commerce-factory.html,
+  site.json) ; `npm run build` et `npm run check` verts. PR vers main ouverte, puis main -> production à faire sur accord.
+- Reste : vérifier dans `Trigenys/trigenys-commerce-factory` les URL absolues (auth, paiement, canonical) ;
+  l'adresse `.pages.dev` continue de fonctionner.
