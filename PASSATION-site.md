@@ -485,3 +485,12 @@
   7 URL envoyées.
 - Prochaines étapes : suivre l'indexation (rapport Pages, sous quelques jours), demander l'indexation de l'accueil et
   des pages produits si elle tarde ; LinkedIn ; issues P2 #4 à #8.
+
+## 2026-11-16 09:48 — Search Console : indexation demandée
+- « Demander une indexation » accepté (« Indexation demandée ») pour 5 URL : l'accueil,
+  `/produits/atelier-maitre/`, `/produits/commerce-factory/`, `/produits/precis-translator/`,
+  `/realisations/xeption/`. Toutes étaient « Détectée, actuellement non indexée ».
+- Astuce : l'URL directe `/inspect?...&id=` renvoie 404 ; passer par la barre de recherche. Après fermeture du
+  dialogue, il faut cliquer deux fois dans la barre avant de saisir.
+- Prochaines étapes : vérifier le rapport Pages dans quelques jours ; LinkedIn ; issues P2 #4 à #8 ;
+  branche `docs/passation-search-console` sans PR vers main.
