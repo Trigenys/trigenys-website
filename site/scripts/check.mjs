@@ -102,6 +102,7 @@ for (const pg of site.pages) {
   if (pg.path.startsWith("/produits/")) {
     const app = nodes(h).find((n) => n["@type"] === "SoftwareApplication");
     must(app && app.publisher?.["@id"] === `${O}/#org` && app.name && app.applicationCategory, `${pg.path} : SoftwareApplication (publisher #org) attendu`);
+    must(/<title>[^<]* by Trigenys Group[^<]*<\/title>/.test(h) && h.includes('<p class="by">by <a href="/">Trigenys Group</a></p>') && app?.alternateName?.endsWith(" by Trigenys Group"), `${pg.path} : signature « by Trigenys Group » attendue (title, page, JSON-LD)`);
     must(nodes(h).some((n) => n["@type"] === "FAQPage" && n.mainEntity?.length >= 3), `${pg.path} : FAQPage (3 questions ou plus) attendue`);
   }
   if (pg.sectionHref) {
