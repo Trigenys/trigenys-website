@@ -211,7 +211,7 @@ const llms = [
   `# ${site.name}`, "", `> ${site.summary}`, "", site.contactLine, "",
   ...[...groups].flatMap(([g, ps]) => [`## ${g}`, "", ...ps.map((p) => `- [${p.h}](${abs(p.path)}): ${p.description}`), ""]),
   "## Applications", "", ...apps.map((a) => `- [${a.h}](${a.url})`), "",
-  "## Liens", "", ...site.graph.filter((g) => g["@type"] === "Blog").map((g) => `- [${g.name}](${g.url}): blog du groupe`),
+  "## Liens", "", ...site.graph.filter((g) => g["@type"] === "Blog").map((g) => `- [${g.name}](${g.url}): ${g.description || "média du groupe"}`),
   ...site.organization.sameAs.map((u) => `- [${new URL(u).hostname}](${u})`), "",
 ].join("\n");
 

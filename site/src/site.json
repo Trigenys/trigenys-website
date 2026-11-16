@@ -71,7 +71,9 @@
       "@type": "Blog",
       "@id": "https://insight.trigenys.com/#blog",
       "url": "https://insight.trigenys.com/",
-      "name": "Trigenys Insight",
+      "name": "Trigenys Insights",
+      "description": "Média d'analyse de Trigenys Group : IA, finance, gaming, études, carrières et innovations africaines.",
+      "inLanguage": "fr",
       "publisher": {
         "@id": "https://www.trigenys.com/#org"
       }

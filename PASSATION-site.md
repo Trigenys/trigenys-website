@@ -443,3 +443,12 @@
   finance, études, carrières, innovations africaines). Notre site dit « Insight » (nav, pied de page, JSON-LD Blog).
 - Proposé à l'utilisateur : harmoniser le nom, section Insights sur l'accueil, liens croisés articles ↔ produits.
   En attente de sa réponse ; rien de modifié dans le code.
+
+## 2026-11-16 08:49 — Section Trigenys Insights (fait)
+- Accord utilisateur (« Oui, fais-le »). Nom harmonisé « Trigenys Insights » : JSON-LD Blog (nom, description,
+  inLanguage), pied de page, llms.txt (description issue de site.json).
+- Accueil : lien nav « Insights » (#insights) et section avant le contact (3 cartes + bouton vers
+  insight.trigenys.com), traduite en EN (12 entrées i18n.json, format ligne à ligne conservé).
+- Preuves : build (8 pages, 7 URL sitemap), check, check:http OK ; aucun débordement à 390 et 1024 px, géométrie
+  identique à « Pourquoi nous » ; section EN entièrement traduite.
+- Reste : liens croisés articles Insights ↔ pages produits (côté Insights) ; LinkedIn en attente ; fusion PR #3.
