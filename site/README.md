@@ -65,6 +65,9 @@ signature collective) ; Commerce Factory garde son adresse de bêta tant que son
 2. Aperçu : chaque push sur `main` est construit par Cloudflare → `main.trigenys-website.pages.dev`
    (en-têtes : `curl -sI <url> | grep -i content-security`).
 3. Production : ouvrir une PR `main → production`, attendre la CI, fusionner ; Cloudflare construit `production`.
+   Rien n'arrive sur `production` autrement que par cette PR (ni commit direct, ni autre branche source) : la
+   protection n'exige pas que la PR soit « à jour » (`strict: false`), puisque production ne contient que des
+   états de main et ses merge commits ; les checks requis tournent sur chaque PR. Pas de `gh pr update-branch`.
 4. Domaine (quand les éléments « à confirmer » sont renseignés) : ajouter `"customDomain": "www.trigenys.com"` au contrat,
    pousser ; appliquer ensuite chez Spaceship le `CNAME www → trigenys-website.pages.dev` renvoyé par AppFactory, et
    une redirection d'URL de l'apex `trigenys.com` vers `https://www.trigenys.com`. Rien d'autre ne change (MX Spacemail).

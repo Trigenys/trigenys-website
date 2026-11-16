@@ -523,3 +523,12 @@
 - Leçon ajoutée (`docs/engineering/lessons-learned.md`) : PR vers production toujours BEHIND, à corriger.
 - Reste : décider la resynchronisation production → main ; URL absolues de l'application dans
   `Trigenys/trigenys-commerce-factory` ; indexation Search Console ; LinkedIn ; issues P2 #4 à #8.
+
+## 2026-11-16 12:03 — Production : option « à jour obligatoire » désactivée
+- PR #14 (leçon + passation) fusionnée dans main (`04eeaa2`).
+- Protection `production` : `strict: false` sur accord ; checks requis et `enforce_admins` inchangés (vérifié par
+  `gh api`). Plus de PR main → production BEHIND ni de `update-branch`.
+- Runbook `site/README.md` et leçon complétés (branche `docs/production-sans-strict`).
+- Constat : `main` n'a aucune protection de branche.
+- Reste : flake Lighthouse `NO_NAVSTART` (workflow AppFactory) ; URL absolues de `Trigenys/trigenys-commerce-factory` ;
+  indexation Search Console ; LinkedIn ; issues P2 #4 à #8.
