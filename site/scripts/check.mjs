@@ -84,7 +84,9 @@ for (const [lang, f] of Object.entries(homes)) {
   must(h.includes("function v7car(") && h.includes("v7car(r)"), `${f} : carrousel du hero absent`);
   must((h.match(/class="sl[^"]*" data-name=/g) || []).length === 4 && h.includes('class="dots" role="tablist"'), `${f} : quatre diapos et une barre de points attendues`);
   must((h.match(/class="lng/g) || []).length === 2, `${f} : deux liens de langue attendus (desktop + mobile)`);
-  must((h.match(/<svg class="orb"/g) || []).length === 4, `${f} : 4 orbites attendues`);
+  const panes = (h.match(/class="pane pn/g) || []).length, orbs = (h.match(/<svg class="orb"/g) || []).length;
+  must(panes >= 4 && orbs === panes, `${f} : une orbite par onglet métier attendue (${orbs} orbites, ${panes} onglets)`);
+  must((h.match(/<input type="radio" name="m"/g) || []).length === panes && (h.match(/<label for="m\d/g) || []).length === panes, `${f} : un bouton radio et un libellé par onglet métier attendus`);
   must((h.match(/<svg class="hx /g) || []).length === 5, `${f} : 5 hélices attendues`);
   for (const [l, p] of [["fr", "/"], ["en", "/en/"], ["x-default", "/"]]) must(h.includes(`<link rel="alternate" hreflang="${l}" href="${O + p}">`), `${f} : hreflang ${l} attendu`);
   must(nodes(h).some((n) => n["@type"] === "WebSite"), `${f} : JSON-LD WebSite attendu`);

@@ -16,7 +16,7 @@ function v7fx(root){
   function go(){setTimeout(function(){root.classList.add('go')},500)}
   if(document.readyState==='complete')go();else addEventListener('load',go);
   var rail=q('.rail'),track=rail&&rail.querySelector('.track'),prg=rail&&rail.querySelector('.prg i'),hint=rail&&rail.querySelector('.hint');
-  var hero=q('.hero'),h1=hero&&hero.querySelector('h1'),copy=h1&&h1.parentElement,stage=hero&&hero.querySelector('.stage');
+  var hero=q('.hero'),h1=hero&&hero.querySelector('h1'),copy=h1&&h1.parentElement,stage=hero&&hero.querySelector('.stage'),scr=hero&&hero.querySelector('.scr');
   var lns=[].slice.call(root.querySelectorAll('.ln2'));
   var met=q('.met'),radios=met?[].slice.call(met.querySelectorAll('input[name=m]')):[],labels=met?[].slice.call(met.querySelectorAll('.lbl label')):[],pct=met&&met.querySelector('.pct span');
   function metTarget(i){var mr=met.getBoundingClientRect(),base=(sc?sc.scrollTop:scrollY)+(mr.top-v.top);return base+(i+.5)/radios.length*(mr.height-v.h)}
@@ -41,6 +41,7 @@ function v7fx(root){
     if(hero){
       var y=Math.max(0,v.top-hero.getBoundingClientRect().top);
       if(copy){copy.style.transform='translateY('+(y*.22).toFixed(1)+'px)';copy.style.opacity=clamp(1-y/(vh*.9))}
+      if(scr)scr.style.visibility=y>2?'hidden':''; // l'indication de défilement disparaît dès qu'on défile, sans pâlir
       if(stage){stage.style.transform='translateY('+(y*-.08).toFixed(1)+'px) scale('+(1-Math.min(y,vh)/vh*.04).toFixed(3)+')'}
     }
     if(rail&&track&&!mobile){
