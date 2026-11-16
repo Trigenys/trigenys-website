@@ -211,3 +211,18 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
   depuis main. Le volet flake `NO_NAVSTART` reste à traiter dans le workflow réutilisable AppFactory.
 - **Leçon** : « à jour obligatoire » n'apporte rien quand la branche cible ne reçoit qu'une seule source ; il ne fait
   qu'imposer une resynchronisation manuelle.
+
+## 2026-11-16 16:18 — Flake visual-qa « contraste .scr » : cause racine
+- **Contexte** : l'audit axe de visual-qa échouait par intermittence (« flake connu ») sur `.scr`, l'indication de
+  défilement du héros, avec un contraste variable (1,3 à 2). Sur la PR #17 (Yaro FleetOS), il a échoué trois fois
+  de suite.
+- **Cause racine** : `fx.js` estompe tout le bloc du héros au défilement (`copy.style.opacity`). `.scr`, en texte
+  atténué de 13 px, passe sous 4,5:1 dès les premiers pixels de défilement. Le résultat dépendait de la position de
+  défilement au moment de l'audit, pas d'un problème d'outillage.
+- **Classification** : défaut d'accessibilité réel, pris à tort pour un flake ; erreur répétée.
+- **Résolution** : `047fae4` masque `.scr` (`visibility:hidden`) dès que la page défile ; `65225cf` lui donne
+  l'animation d'entrée sans opacité (`upx`), comme le titre.
+- **Prévention vérifiable** : visual-qa (axe, desktop) sur `/` et `/en/` passe sans relance. Même PR : la
+  parallaxe mobile de `fx.js` faisait chevaucher le numéro du panneau Yaro (correctif `71afe2b`).
+- **Leçon** : un échec intermittent qui cite toujours le même élément est un défaut à reproduire, pas un flake à
+  relancer. Avant de relancer, chercher ce qui fait varier la mesure (animation, défilement, minuterie).
