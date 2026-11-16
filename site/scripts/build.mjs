@@ -120,7 +120,7 @@ const deco = {
   "@@HX_FOOT@@": helix(r, "hxf", 60, 17, 18, 12, "#7F2044", "#138F8D"),
 };
 tpl = fill(tpl, deco);
-for (let i = 1; i <= 4; i++) tpl = tpl.replace("@@ORB@@", orbits(i));
+{ let i = 0; tpl = tpl.replace(/@@ORB@@/g, () => orbits(++i)); } // une orbite par onglet métier, quel que soit leur nombre
 tpl = absAssets(tpl.replace("@@FX@@", () => js));
 
 const hreflang = ["fr", "en"].map((l) => `<link rel="alternate" hreflang="${l}" href="${abs(site.home[l].path)}">`)

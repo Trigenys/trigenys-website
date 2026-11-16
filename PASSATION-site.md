@@ -542,3 +542,23 @@
 - Reste : niveau 2 (PR obligatoire) quand le bot est exemptable ; visual-qa à stabiliser (attendre la fin des
   animations) ; flake `NO_NAVSTART` ; URL absolues de `Trigenys/trigenys-commerce-factory` ; Search Console ;
   LinkedIn ; issues P2 #4 à #8.
+
+## 2026-11-16 14:39 — Ajout de Yaro OS au catalogue (en cours)
+- PR #16 (protection de main) fusionnée (`2e453e6`). Session « expert-seo-geo » : URL canoniques des produits envoyées.
+- Décision utilisateur : ajouter Yaro OS (GMAO / flotte, en production, https://fleet.trigenys.com/, marque AgenStudio
+  dans le registre). Branche `feat/yaro-os`.
+- Emplacements : panneau dans le rail `#produits` (avant « D'autres outils », numérotation /05), lien dans le bandeau
+  `proof`, page `src/pages/yaro-os.html` + entrée `site.json` (pages + SoftwareApplication), pied de page, section métiers.
+- Contraintes : texte tiré de fleet.trigenys.com, aucun prix ni chiffre inventé. GED237 et Zamari : plus tard, dans
+  « D'autres outils » (sans lien).
+
+## 2026-11-16 14:51 — Yaro FleetOS au catalogue : PR ouverte
+- Corrige l'entrée précédente : slug `/produits/yaro-fleetos/` (nom produit « Yaro FleetOS »), page
+  `src/pages/yaro-fleetos.html` ; pas de lien dans le bandeau `proof`.
+- Fait : panneau rail 04/05, onglet métiers « Transport & logistique » (m5/pn5), pied de page, `site.json`
+  (page + SoftwareApplication, descriptions accueil), 21 clés `i18n.json`. `build.mjs`/`check.mjs` : orbites
+  = nombre d'onglets métiers (plus de « 4 » codé en dur).
+- Données client exclues (nom, logo T.A.Y, plaques, chiffres) : pas de captures, schéma HTML à la place.
+  Carrousel du hero inchangé (contrat 4 diapos).
+- Vérifié : build + check + check:http OK, build idempotent, Playwright desktop/mobile, 0 erreur console.
+- Suite : PR `feat/yaro-os` → main, fusion sur accord, puis PR main → production.
