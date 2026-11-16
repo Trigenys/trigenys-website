@@ -437,3 +437,9 @@
 - LinkedIn : `company/trigenys` 404, `company/trigenys-group` derrière le mur de connexion ; connexion Google
   impossible dans le navigateur intégré (pop-up) : attendre l'URL ou l'accord pour Chrome.
 - Prochaine étape : fusion de la PR #3 par l'utilisateur, puis check:http sur la prod et Search Console.
+
+## 2026-11-16 08:44 — Trigenys Insights sur le site (question ouverte)
+- Constat : le site live insight.trigenys.com s'appelle « Trigenys Insights » (pluriel), média d'analyses (IA, gaming,
+  finance, études, carrières, innovations africaines). Notre site dit « Insight » (nav, pied de page, JSON-LD Blog).
+- Proposé à l'utilisateur : harmoniser le nom, section Insights sur l'accueil, liens croisés articles ↔ produits.
+  En attente de sa réponse ; rien de modifié dans le code.
