@@ -181,3 +181,19 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
   `gh api .../branches/production/protection` (contexts) aux noms de `gh pr checks` d'une PR où les gates tournent.
 - **Leçon** : un check requis dont le nom ne correspond à aucun check publié ne protège rien quand il est ignoré et
   bloque tout quand il tourne ; un SKIPPED compte comme succès.
+
+## 2026-11-16 11:56 — Mise en ligne main → production : PR toujours BEHIND, flake Lighthouse NO_NAVSTART
+- **Contexte** : PR #9 puis PR #13 (main → production) bloquées « BEHIND » ; `gh pr update-branch` nécessaire à chaque
+  mise en ligne (accord explicite requis). Sur la PR #13, visual-qa a échoué deux fois sur
+  `route2:desktop:performance` avec `NO_NAVSTART` (trace Lighthouse non enregistrée), vert à la relance.
+- **Cause racine** : la protection `production` est stricte et chaque fusion vers production crée un merge commit
+  absent de main ; main n'est jamais resynchronisé avec production, donc la PR suivante est en retard par construction.
+  `NO_NAVSTART` est une erreur d'exécution de Lighthouse, pas un dépassement de budget.
+- **Classification** : erreur répétée (2e occurrence) de flux de mise en ligne ; instabilité d'outil de CI.
+- **Résolution** : `gh pr update-branch 13` sur accord, relance du job en échec (`gh run rerun --failed`).
+- **Prévention vérifiable** (à décider, contrôle plus fort exigé par la répétition) : soit ramener production dans main
+  juste après chaque mise en ligne (PR production → main), soit fusionner main → production en fast-forward ;
+  côté gate, relancer automatiquement une fois un audit Lighthouse en erreur d'exécution (distinct d'un échec de
+  budget) dans le workflow réutilisable AppFactory.
+- **Leçon** : avec une protection stricte, un flux à merge commits entre deux branches longues doit prévoir la
+  resynchronisation inverse, sinon chaque mise en ligne exige une mise à jour manuelle.

@@ -514,3 +514,12 @@
   site.json) ; `npm run build` et `npm run check` verts. PR vers main ouverte, puis main -> production à faire sur accord.
 - Reste : vérifier dans `Trigenys/trigenys-commerce-factory` les URL absolues (auth, paiement, canonical) ;
   l'adresse `.pages.dev` continue de fonctionner.
+
+## 2026-11-16 11:56 — Commerce Factory en production
+- PR #12 fusionnée dans main (`c8b88de`) ; PR #13 main → production mise à jour (accord), visual-qa relancé
+  (flake `NO_NAVSTART`), fusionnée (`f6ddf7e`).
+- Production vérifiée : accueil 5 liens et page produit 3 liens vers `https://commercefactory.trigenys.com/`, plus
+  aucun `.pages.dev` ; `check:http` OK.
+- Leçon ajoutée (`docs/engineering/lessons-learned.md`) : PR vers production toujours BEHIND, à corriger.
+- Reste : décider la resynchronisation production → main ; URL absolues de l'application dans
+  `Trigenys/trigenys-commerce-factory` ; indexation Search Console ; LinkedIn ; issues P2 #4 à #8.
