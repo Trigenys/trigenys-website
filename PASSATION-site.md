@@ -532,3 +532,13 @@
 - Constat : `main` n'a aucune protection de branche.
 - Reste : flake Lighthouse `NO_NAVSTART` (workflow AppFactory) ; URL absolues de `Trigenys/trigenys-commerce-factory` ;
   indexation Search Console ; LinkedIn ; issues P2 #4 à #8.
+
+## 2026-11-16 12:19 — main protégée (niveau 1)
+- PR #15 fusionnée (`2eb2b7c`).
+- Ruleset `main-integrite` (id 27367812, branche par défaut, actif, sans contournement) : suppression et force-push
+  interdits ; vérifié par `gh api .../rules/branches/main` → `deletion`, `non_fast_forward`.
+- Exception documentée dans `site/README.md` : pas encore le préréglage AppFactory `solo` (PR obligatoire), car le bot
+  AppFactory commite directement sur main sans exemption possible.
+- Reste : niveau 2 (PR obligatoire) quand le bot est exemptable ; visual-qa à stabiliser (attendre la fin des
+  animations) ; flake `NO_NAVSTART` ; URL absolues de `Trigenys/trigenys-commerce-factory` ; Search Console ;
+  LinkedIn ; issues P2 #4 à #8.
