@@ -452,3 +452,29 @@
 - Preuves : build (8 pages, 7 URL sitemap), check, check:http OK ; aucun débordement à 390 et 1024 px, géométrie
   identique à « Pourquoi nous » ; section EN entièrement traduite.
 - Reste : liens croisés articles Insights ↔ pages produits (côté Insights) ; LinkedIn en attente ; fusion PR #3.
+
+## 2026-11-16 09:19 — Mise en ligne : PR #3 fusionnée, PR #9 bloquée (main en retard sur production)
+- Accord utilisateur « j'autorise » pour la mise en ligne. PR #3 fusionnée dans `main` (merge commit da34b1f).
+- PR #9 `main → production` ouverte, CI verte après relance (flake visual-qa, voir lessons-learned).
+- Blocage : la protection de `production` exige une branche à jour ; il manque à `main` le commit de fusion de la PR #2
+  (30010d8, aucun changement de fichier). `gh pr update-branch 9` refusé à cette session : à faire par l'utilisateur
+  (bouton « Update branch » sur la PR #9), puis attendre la CI et fusionner.
+- Ensuite : `npm run check:http -- --base https://www.trigenys.com` sur la prod, Search Console.
+- LinkedIn toujours en attente (URL ou accord pour Chrome).
+
+## 2026-11-16 09:25 — PR #9 : main mise à jour (accord utilisateur), CI verte, fusion bloquée par la protection
+- `gh pr update-branch 9` fait (head 652271c) ; impact, site-build, visual-qa, Cloudflare Pages verts.
+- Blocage : contexte requis `visual-qa` jamais publié (nom réel : `visual-qa / Browser, accessibility and Lighthouse
+  gates`) ; voir lessons-learned. Correctif proposé : contexts = [`site-build`, `visual-qa / Browser, accessibility and
+  Lighthouse gates`], strict et admins inchangés. Attente de l'accord explicite de l'utilisateur.
+- Ensuite : fusion PR #9, check:http sur https://www.trigenys.com, Search Console. LinkedIn toujours en attente.
+
+## 2026-11-16 09:29 — Site en production : SEO/GEO, signature produits, Trigenys Insights
+- Accord utilisateur (« Oui, corrige ») : protection `production`, contexts = [`site-build`, `visual-qa / Browser,
+  accessibility and Lighthouse gates`] (strict, admins, force-push et suppression inchangés).
+- PR #9 fusionnée (61aa7f4) ; déploiement Cloudflare en ~40 s.
+- Preuve : `check:http --base https://www.trigenys.com` OK (robots, sitemap, llms, vraie 404, 7 URL) ; section
+  #insights servie ; titres produits « by Trigenys Group ».
+- Ces entrées de passation (commits 06aae66, 220de62 et celui-ci) sont sur `feat/seo-fondations`, pas encore dans `main`.
+- Prochaines étapes : Search Console (soumettre le sitemap), LinkedIn (URL ou accord Chrome), issues P2 #4 à #8,
+  tâche « marge TBT mobile » et attente de fin d'animation dans visual-qa.
