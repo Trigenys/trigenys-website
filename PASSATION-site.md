@@ -562,3 +562,21 @@
   Carrousel du hero inchangé (contrat 4 diapos).
 - Vérifié : build + check + check:http OK, build idempotent, Playwright desktop/mobile, 0 erreur console.
 - Suite : PR `feat/yaro-os` → main, fusion sur accord, puis PR main → production.
+
+## 2026-11-16 16:01 — PR #17 (Yaro FleetOS) : correctif CI, fusion en attente du vert
+- Accord utilisateur « Oui, fusionne » pour la PR #17 (main), donné après l'ouverture de la PR.
+- visual-qa a relevé un vrai défaut : sur mobile, la parallaxe (fx.js, transform inline) faisait passer la carte
+  ambre `.y2` sous `.pnl.yf > .n` (contraste 1,45). Correctif `71afe2b` : `transform:none!important` sur les
+  cartes Yaro empilées en mobile. Vérifié par Playwright (plus de chevauchement).
+- Restent uniquement les flakes connus (`.scr`, `NO_NAVSTART`) : run 43891167389 relancé (`--failed`).
+- Suite : vert → `gh pr merge 17 --merge`, puis mise en ligne par PR main → production (accord à demander).
+
+## 2026-11-16 16:22 — PR #17 fusionnée dans main (`70e019c`)
+- Corrige l'entrée précédente : il n'y avait pas que des flakes. visual-qa a révélé deux vrais défauts, corrigés dans
+  la PR : la parallaxe mobile sur le panneau Yaro (`71afe2b`) et l'indication `.scr`, qui pâlissait avec le héros
+  au défilement (`65225cf`, `047fae4`, leçon dans `docs/engineering/lessons-learned.md`). Le chapeau du héros
+  cite désormais les quatre produits (FR et EN).
+- CI finale toute au vert ; un échec de TBT mobile (267 ms pour 200) est passé à la relance (bruit).
+- Pas en ligne : la mise en ligne passe par une PR main → production, qui demande un accord explicite.
+- Reste ouvert : TBT mobile proche de la limite, flake `NO_NAVSTART`, GED237 et Zamari, niveau 2 de protection de
+  main, Search Console, LinkedIn, issues P2 #4 à #8.
