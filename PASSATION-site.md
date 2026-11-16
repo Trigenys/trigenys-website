@@ -425,3 +425,15 @@
   (avec son accord) ou URL collée par l'utilisateur.
 - Prochaine étape : URL confirmée → `site/src/site.json > organization.sameAs`, `npm run build`, commit sur
   feat/seo-fondations, cocher la case LinkedIn de la PR #3 et fermer l'issue #5 si la page est à jour.
+
+## 2026-11-16 08:41 — Signature « by Trigenys Group » et audit SEO/GEO
+- Commit 9a7a3d3 sur feat/seo-fondations (PR #3, toujours ouverte) : titles produits « X by Trigenys Group — … »,
+  ligne `.by` sous le H1, `alternateName` du SoftwareApplication, marque unifiée « Trigenys Group » ; contrat
+  ajouté dans check.mjs (contre-test en échec comme attendu). build, check et check:http OK.
+- Constat prod (check:http --base) : robots.txt, sitemap.xml et llms.txt servis en HTML, URL inconnue en 200
+  (soft 404), pas de JSON-LD : rien de la PR #3 n'est en ligne.
+- Visibilité : aucune occurrence de « Trigenys » dans les résultats de recherche ; concurrent local Kolonell
+  (Douala) publie des articles longue traîne « logiciel … Douala FCFA 2026 ».
+- LinkedIn : `company/trigenys` 404, `company/trigenys-group` derrière le mur de connexion ; connexion Google
+  impossible dans le navigateur intégré (pop-up) : attendre l'URL ou l'accord pour Chrome.
+- Prochaine étape : fusion de la PR #3 par l'utilisateur, puis check:http sur la prod et Search Console.
