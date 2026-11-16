@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Site corporate Trigenys Group : page d'accueil statique bilingue générée depuis src/.",
+  "description": "Site corporate Trigenys Group : site statique (accueil bilingue, pages produits, réalisation, mentions légales) généré depuis src/.",
   "engines": { "node": ">=20" },
   "scripts": {
     "build": "node scripts/build.mjs && node scripts/check.mjs",
     "check": "node scripts/check.mjs",
+    "check:http": "node scripts/http-check.mjs",
     "preview": "node scripts/serve.mjs",
     "typecheck": "node -e \"console.log('site statique : pas de TypeScript')\""
   }
