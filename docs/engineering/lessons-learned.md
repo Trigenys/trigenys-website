@@ -130,3 +130,26 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
   trouvée dans la note Adopt/Adapt/Learn/Build. Ajout proposé à la checklist RAIDER du registry.
 - **Leçon générale** : « aucun workflow existant » ne signifie pas « aucune décision existante » ; la mémoire d'un
   dépôt vit aussi dans ses issues fermées.
+
+## 2026-11-07 04:38 — Site en production sans page 404 : soft 404 sur toute URL
+- **Contexte** : audit SEO après la mise en ligne de www.trigenys.com. Toute URL inconnue répondait 200 avec
+  l'accueil ; pas de `robots.txt` ni de `sitemap.xml` non plus (ces chemins renvoyaient aussi l'accueil en HTML).
+- **Cause racine** : Cloudflare Pages bascule en mode SPA quand `dist/` ne contient pas de `404.html` à la racine.
+  Les contrôles du build ne vérifiaient que `dist/index.html` et aucun contrôle ne portait sur les réponses HTTP.
+- **Classification** : contrat d'hébergement implicite non testé (near miss SEO, pas d'incident utilisateur).
+- **Résolution** : `404.html` noindex généré, `robots.txt`, `sitemap.xml`, `llms.txt` dérivés de `src/site.json` ;
+  `serve.mjs` reproduit le 404 et le 308 de Pages.
+- **Prévention vérifiable** : `scripts/http-check.mjs` dans `site-build` (URL inconnue = 404 HTML noindex,
+  robots en text/plain, sitemap en XML, chaque URL du sitemap en 200) ; `check.mjs` contrôle toutes les pages de
+  `dist/` et la cohérence sitemap ↔ pages indexables. Contre-test fait : sans `404.html`, les deux contrôles échouent.
+- **Leçon généralisée** : un hébergeur a des comportements par défaut ; les tester par des requêtes HTTP réelles,
+  pas seulement par la présence de fichiers.
+
+## 2026-11-07 04:38 — Classe CSS de l'accueil réutilisée sur les pages secondaires (near miss)
+- **Contexte** : les pages produits reprennent la feuille de style de l'accueil. La classe `.shot` (capture) y est en
+  `position:absolute` ; la figure des pages produits recouvrait le H1 et le CTA.
+- **Cause racine** : réutilisation d'un nom de classe global sans vérifier ses règles existantes.
+- **Résolution** : `.pg .shot{position:static}` dans `page.tpl.html`, vérifié par mesure (H1 et figure sans
+  chevauchement, aucun débordement à 390 px et 1024 px, 8 pages).
+- **Prévention** : `visual-qa` couvre désormais `/produits/atelier-maitre/` ; avant de réutiliser une classe de
+  l'accueil, `grep` de ses règles dans le CSS généré.

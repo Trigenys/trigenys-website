@@ -5,6 +5,16 @@
       "path": "/",
       "primaryCtaSelector": "a[data-cta='primary']",
       "expectedCtaHref": "/#contact"
+    },
+    {
+      "path": "/en/",
+      "primaryCtaSelector": "a[data-cta='primary']",
+      "expectedCtaHref": "/en/#contact"
+    },
+    {
+      "path": "/produits/atelier-maitre/",
+      "primaryCtaSelector": "a[data-cta='primary']",
+      "expectedCtaHref": "/produits/atelier-maitre/#contact"
     }
   ],
   "viewports": [

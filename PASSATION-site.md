@@ -399,3 +399,56 @@
 - Note poste Windows : dans PowerShell, `curl` est un alias d'Invoke-WebRequest → utiliser `curl.exe`. Un
   « Could not resolve host » juste après un ajout DNS = cache négatif local, se résorbe seul.
 - Reste : domaine définitif Commerce Factory (CTA en « adresse de bêta ») ; marge TBT mobile si le flake revient.
+
+## 2026-11-07 04:38 — Fondations SEO (P0/P1), branche feat/seo-fondations
+- Demande de la session expert-seo-geo : P0 (robots, sitemap, llms.txt, 404 réelle, JSON-LD Organization/WebSite,
+  mentions légales) puis P1 (pages produits, réalisation XEPTION, /en/ + hreflang, test SEO en CI) ; P2 en issues.
+- Fait : `src/site.json` source unique ; `build.mjs` génère 8 pages, robots, sitemap, llms.txt ; /en/ statique traduite
+  au build (lang.js et dictionnaire client supprimés) ; `check.mjs` étendu à toutes les pages ; `http-check.mjs`
+  (`npm run check:http`) ajouté à la CI ; visual-qa sur /, /en/, /produits/atelier-maitre/.
+- Preuves locales : `npm run build` OK (contrats SEO), `check:http` OK (URL inconnue 404, robots text/plain, sitemap
+  XML, 7 URL en 200), contre-test sans 404.html en échec, build idempotent (`diff -r`), mesures 390/1024 px sans
+  débordement.
+- À fournir avant fusion : identité légale (`site.json > legal.fields`, aujourd'hui non publiée), URL LinkedIn,
+  chiffres de la réalisation XEPTION, domaine définitif Commerce Factory, relecture produit des textes.
+- Après déploiement : `npm run check:http -- --base https://www.trigenys.com`, Rich Results Test sur les URL produits.
+
+## 2026-11-07 10:20 — Issues P2 du plan SEO
+- Créées (label enhancement) : #4 Google Business Profile, #5 LinkedIn + sameAs, #6 Wikidata, #7 annuaires tech
+  Cameroun, #8 relations presse. PR #3 inchangée, en attente des faits listés à l'entrée précédente.
+
+## 2026-11-09 08:47 — URL LinkedIn de l'entreprise (en cours)
+- État : PR #3 ouverte (non fusionnée, CI verte), issues P2 #4–#8, compte rendu envoyé à expert-seo-geo.
+- Recherche LinkedIn : `linkedin.com/company/trigenys` = 404 ; `linkedin.com/company/trigenys-group` = mur de connexion
+  (page probablement existante, non confirmée).
+- Blocage : la connexion Google ouvre un pop-up, bloqué par le navigateur intégré. Piste : Chrome de l'utilisateur
+  (avec son accord) ou URL collée par l'utilisateur.
+- Prochaine étape : URL confirmée → `site/src/site.json > organization.sameAs`, `npm run build`, commit sur
+  feat/seo-fondations, cocher la case LinkedIn de la PR #3 et fermer l'issue #5 si la page est à jour.
+
+## 2026-11-16 08:41 — Signature « by Trigenys Group » et audit SEO/GEO
+- Commit 9a7a3d3 sur feat/seo-fondations (PR #3, toujours ouverte) : titles produits « X by Trigenys Group — … »,
+  ligne `.by` sous le H1, `alternateName` du SoftwareApplication, marque unifiée « Trigenys Group » ; contrat
+  ajouté dans check.mjs (contre-test en échec comme attendu). build, check et check:http OK.
+- Constat prod (check:http --base) : robots.txt, sitemap.xml et llms.txt servis en HTML, URL inconnue en 200
+  (soft 404), pas de JSON-LD : rien de la PR #3 n'est en ligne.
+- Visibilité : aucune occurrence de « Trigenys » dans les résultats de recherche ; concurrent local Kolonell
+  (Douala) publie des articles longue traîne « logiciel … Douala FCFA 2026 ».
+- LinkedIn : `company/trigenys` 404, `company/trigenys-group` derrière le mur de connexion ; connexion Google
+  impossible dans le navigateur intégré (pop-up) : attendre l'URL ou l'accord pour Chrome.
+- Prochaine étape : fusion de la PR #3 par l'utilisateur, puis check:http sur la prod et Search Console.
+
+## 2026-11-16 08:44 — Trigenys Insights sur le site (question ouverte)
+- Constat : le site live insight.trigenys.com s'appelle « Trigenys Insights » (pluriel), média d'analyses (IA, gaming,
+  finance, études, carrières, innovations africaines). Notre site dit « Insight » (nav, pied de page, JSON-LD Blog).
+- Proposé à l'utilisateur : harmoniser le nom, section Insights sur l'accueil, liens croisés articles ↔ produits.
+  En attente de sa réponse ; rien de modifié dans le code.
+
+## 2026-11-16 08:49 — Section Trigenys Insights (fait)
+- Accord utilisateur (« Oui, fais-le »). Nom harmonisé « Trigenys Insights » : JSON-LD Blog (nom, description,
+  inLanguage), pied de page, llms.txt (description issue de site.json).
+- Accueil : lien nav « Insights » (#insights) et section avant le contact (3 cartes + bouton vers
+  insight.trigenys.com), traduite en EN (12 entrées i18n.json, format ligne à ligne conservé).
+- Preuves : build (8 pages, 7 URL sitemap), check, check:http OK ; aucun débordement à 390 et 1024 px, géométrie
+  identique à « Pourquoi nous » ; section EN entièrement traduite.
+- Reste : liens croisés articles Insights ↔ pages produits (côté Insights) ; LinkedIn en attente ; fusion PR #3.

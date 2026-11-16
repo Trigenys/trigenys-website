@@ -1,36 +1,50 @@
 # Site Trigenys Group — code de production
 
-Page d'accueil statique bilingue (FR / EN), générée depuis `src/` par un build Node sans dépendance npm.
+Site statique généré depuis `src/` par un build Node sans dépendance npm : accueil FR (`/`) et EN (`/en/`),
+pages produits, réalisation XEPTION, mentions légales, page 404, `robots.txt`, `sitemap.xml` et `llms.txt`.
 
 ```text
-src/index.tpl.html  (structure, styles, placeholders @@HX_*@@ / @@ORB@@ / @@FX@@)
-src/i18n.json       (dictionnaire FR → EN, clé = texte français d'un nœud)
-src/lang.js         (bascule de langue, drapeaux, mémorisation du choix)
-src/fx.js           (moteur de défilement : parallax, rail horizontal, section métiers épinglée)
+src/site.json       (source unique SEO : origine, Organization #org, titres, descriptions, JSON-LD, pages, mentions légales)
+src/index.tpl.html  (accueil : structure, styles, placeholders @@…@@)
+src/page.tpl.html   (gabarit des pages secondaires : reprend en-tête, styles, contact et pied de page de l'accueil)
+src/pages/*.html    (contenu des pages secondaires ; FAQ en <details class="fq"> → FAQPage JSON-LD automatique)
+src/i18n.json       (dictionnaire FR → EN appliqué au build pour /en/, clé = texte français d'un nœud)
+src/car.js, fx.js   (carrousel du hero, moteur de défilement : parallax, rail, apparitions)
 src/assets/         (logos et captures réelles des produits)
-        ↓  node scripts/build.mjs   (déterministe : graine fixe)
-dist/index.html + dist/assets/
-        ↓  node scripts/check.mjs   (contrats du build)
+        ↓  node scripts/build.mjs   (déterministe : graine fixe, deux builds identiques)
+dist/  (index.html, en/, produits/…, realisations/…, mentions-legales/, 404.html, robots.txt, sitemap.xml, llms.txt)
+        ↓  node scripts/check.mjs       (contrats du build et SEO, sans réseau)
+        ↓  node scripts/http-check.mjs  (statuts et types servis : 404 réelle, text/plain, XML, URL du sitemap en 200)
 ```
 
 ## Commandes
 
 ```bash
-npm run build      # génère dist/ puis exécute les contrôles
-npm run preview    # sert dist/ sur http://127.0.0.1:4173/
+npm run build       # génère dist/ puis exécute les contrôles
+npm run check:http  # sert dist/ et vérifie les réponses HTTP ; --base https://www.trigenys.com pour la production
+npm run preview     # sert dist/ sur http://127.0.0.1:4173/ (404 et redirections comme Cloudflare Pages)
 ```
 
 Node ≥ 20, aucune installation de paquet nécessaire.
 
+## SEO
+- **404** : `dist/404.html` doit exister. Sans lui, Cloudflare Pages sert l'accueil en 200 pour toute URL (soft 404).
+- **Ajouter une page** : créer `src/pages/<nom>.html`, la déclarer dans `site.json > pages` (chemin, titre ≤ 70
+  caractères, description 50–200, JSON-LD) ; sitemap, llms.txt, fil d'Ariane et BreadcrumbList suivent seuls.
+- **Mentions légales** : renseigner `site.json > legal.fields` (valeurs `null` = non publiées, signalées au build).
+  Ne jamais inventer un identifiant légal.
+- **Version anglaise** : `/en/` est traduite au build depuis `i18n.json` ; un texte français du dictionnaire resté
+  dans `/en/` fait échouer `check.mjs`. Les pages secondaires sont en français uniquement.
+
 ## Règles de contenu
 - Seuls les produits `publicationStatus: published` du registre apparaissent ; stade réel affiché (production / bêta).
 - Aucune statistique, tarif ou témoignage non sourcé : les emplacements sont marqués « à fournir / à confirmer ».
-- Ajouter ou modifier un texte : éditer le template **et** la clé correspondante dans `i18n.json` (la clé est le texte français normalisé, espaces réduits).
+- Ajouter ou modifier un texte de l'accueil : éditer le template **et** la clé correspondante dans `i18n.json` (la clé est le texte français normalisé, espaces réduits).
 
 ## Qualité (CI, `.github/workflows/ci.yml`)
 - Analyse d'impact (`.github/appfactory-impact.json`) : les surfaces `site/**` déclenchent `site-build` et `visual-qa` ; docs et maquettes ne déclenchent rien.
-- `site-build` : build + contrôles + preuve d'idempotence (deux builds identiques).
-- `visual-qa` : workflow réutilisable AppFactory (captures 1440×900 et 390×844, axe, Lighthouse, reduced-motion, aucune image externe, CTA principal `a[data-cta='primary']`).
+- `site-build` : build + contrôles + preuve d'idempotence (`diff -r` de deux builds) + contrôle HTTP (`check:http`).
+- `visual-qa` : workflow réutilisable AppFactory (captures 1440×900 et 390×844, axe, Lighthouse, reduced-motion, aucune image externe, CTA principal `a[data-cta='primary']`) sur `/`, `/en/` et `/produits/atelier-maitre/`.
 
 ## Hébergement (décision : `docs/decisions/adr-0001-hebergement.md`)
 Cible : **Cloudflare Pages**, projet `trigenys-website`, canonical `https://www.trigenys.com/` (domaine personnalisé

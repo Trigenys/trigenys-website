@@ -97,6 +97,7 @@
 "Entreprises & cabinets": "Companies & firms",
 "Groupe": "Group",
 "Mentions légales": "Legal notice",
+"Réalisations": "Case studies",
 "CONÇU, DÉVELOPPÉ ET MAINTENU AU CAMEROUN": "DESIGNED, BUILT AND MAINTAINED IN CAMEROON",
 "Commerce Factory · bêta ouverte, visuel réel": "Commerce Factory · open beta, real visual",
 "precis-translator.trigenys.com · en production": "precis-translator.trigenys.com · in production",
@@ -128,5 +129,17 @@
 "· Douala et Yaoundé, Cameroun": "· Douala and Yaoundé, Cameroon",
 "Écrire un e-mail": "Send an e-mail",
 "WhatsApp d'abord, e-mail ensuite, à Douala comme à Yaoundé. Ce site est hébergé sur Cloudflare Pages et ne collecte aucune donnée client ; le lieu d'hébergement et les mentions légales sont écrits sur chaque page produit.": "WhatsApp first, e-mail second, in Douala as in Yaoundé. This site is hosted on Cloudflare Pages and collects no client data; hosting location and legal notices are written on every product page.",
-"— L'équipe Trigenys · Douala & Yaoundé": "— The Trigenys team · Douala & Yaoundé"
+"— L'équipe Trigenys · Douala & Yaoundé": "— The Trigenys team · Douala & Yaoundé",
+"Le média d'analyse du groupe.": "The group's analysis outlet.",
+"Trigenys Insights publie des actualités et des analyses sur l'IA, la finance, le gaming, les études, les carrières et les innovations africaines.": "Trigenys Insights publishes news and analysis on AI, finance, gaming, education, careers and African innovation.",
+"Six rubriques": "Six sections",
+"Une même exigence": "One standard",
+"IA, finance, gaming, études, carrières, innovations africaines : chaque rubrique suit la même méthode d'analyse.": "AI, finance, gaming, education, careers, African innovation: every section follows the same method of analysis.",
+"Méthode": "Method",
+"Des conclusions traçables": "Traceable conclusions",
+"Pas de classement sorti d'un chapeau : chaque conclusion peut être suivie jusqu'à ce qui la fonde.": "No rankings pulled out of a hat: every conclusion can be traced back to what supports it.",
+"Lettre": "Newsletter",
+"Une analyse utile, pas une avalanche": "Useful analysis, not an avalanche",
+"Une lettre d'information pour recevoir l'essentiel, sans saturer votre boîte e-mail.": "A newsletter that brings you what matters without flooding your inbox.",
+"Lire Trigenys Insights": "Read Trigenys Insights"
 }
