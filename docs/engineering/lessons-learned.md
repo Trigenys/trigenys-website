@@ -197,3 +197,17 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
   budget) dans le workflow réutilisable AppFactory.
 - **Leçon** : avec une protection stricte, un flux à merge commits entre deux branches longues doit prévoir la
   resynchronisation inverse, sinon chaque mise en ligne exige une mise à jour manuelle.
+
+## 2026-11-16 12:03 — Suite : prévention retenue pour les PR main → production BEHIND
+- **Contexte** : entrée 11:56 (erreur répétée, prévention à décider).
+- **Décision** : protection `production` passée à `strict: false` (sur accord explicite) ; checks requis inchangés
+  (`site-build`, `visual-qa / Browser, accessibility and Lighthouse gates`), `enforce_admins` conservé.
+- **Options écartées** : PR production → main après chaque mise en ligne (une PR de plus à chaque fois) ;
+  fast-forward `main:production` hors PR (sur un commit de main uniquement documentaire, les checks requis sont
+  SKIPPED sous le nom nu `visual-qa`, le push serait refusé).
+- **Prévention vérifiable** : `gh api repos/Trigenys/trigenys-website/branches/production/protection
+  -q .required_status_checks.strict` doit valoir `false` ; la PR main → production suivante doit être fusionnable
+  sans `update-branch`. Règle documentée dans `site/README.md` (runbook) : rien n'arrive sur production hors PR
+  depuis main. Le volet flake `NO_NAVSTART` reste à traiter dans le workflow réutilisable AppFactory.
+- **Leçon** : « à jour obligatoire » n'apporte rien quand la branche cible ne reçoit qu'une seule source ; il ne fait
+  qu'imposer une resynchronisation manuelle.
