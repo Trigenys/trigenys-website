@@ -461,3 +461,10 @@
   (bouton « Update branch » sur la PR #9), puis attendre la CI et fusionner.
 - Ensuite : `npm run check:http -- --base https://www.trigenys.com` sur la prod, Search Console.
 - LinkedIn toujours en attente (URL ou accord pour Chrome).
+
+## 2026-11-16 09:25 — PR #9 : main mise à jour (accord utilisateur), CI verte, fusion bloquée par la protection
+- `gh pr update-branch 9` fait (head 652271c) ; impact, site-build, visual-qa, Cloudflare Pages verts.
+- Blocage : contexte requis `visual-qa` jamais publié (nom réel : `visual-qa / Browser, accessibility and Lighthouse
+  gates`) ; voir lessons-learned. Correctif proposé : contexts = [`site-build`, `visual-qa / Browser, accessibility and
+  Lighthouse gates`], strict et admins inchangés. Attente de l'accord explicite de l'utilisateur.
+- Ensuite : fusion PR #9, check:http sur https://www.trigenys.com, Search Console. LinkedIn toujours en attente.

@@ -167,3 +167,17 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
   mobile » : réduire le JS du premier écran jusqu'à ~120 ms mesurés en CI.
 - **Leçon** : une gate d'accessibilité ou de performance qui lit un état transitoire produit des faux positifs ; mesurer un
   état stable.
+
+## 2026-11-16 09:25 — Protection de `production` : check requis `visual-qa` jamais publié quand la gate tourne
+- **Contexte** : PR #9 (main → production) bloquée (« base branch policy prohibits the merge ») alors que toute la CI est
+  verte.
+- **Cause racine** : la protection exige le contexte `visual-qa` (nom du job appelant). Ce job appelle un workflow
+  réutilisable : quand il tourne, GitHub publie `visual-qa / Browser, accessibility and Lighthouse gates` ; le contexte
+  nu `visual-qa` n'apparaît que lorsque le job est ignoré (SKIPPED). Conséquence : la PR #2 est passée avec la gate
+  visuelle ignorée (vérification contournée sans le vouloir), et toute PR où la gate tourne réellement est bloquée.
+- **Classification** : contrat de nommage CI ↔ protection de branche ; faille de gouvernance silencieuse.
+- **Résolution** : remplacer le contexte requis par le nom publié réel (`plan` lu, `apply` sur accord explicite).
+- **Prévention vérifiable** : après toute modification de protection ou de workflow réutilisable, comparer
+  `gh api .../branches/production/protection` (contexts) aux noms de `gh pr checks` d'une PR où les gates tournent.
+- **Leçon** : un check requis dont le nom ne correspond à aucun check publié ne protège rien quand il est ignoré et
+  bloque tout quand il tourne ; un SKIPPED compte comme succès.
