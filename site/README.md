@@ -56,6 +56,12 @@ signature collective) ; Commerce Factory garde son adresse de bêta tant que son
   **connecté Git** avec ses propres identifiants Cloudflare. Aucun secret Cloudflare dans ce dépôt.
 - Branches : `production` = branche de production Pages (publication humaine par PR `main → production`, CI verte
   exigée) ; toute autre branche (dont `main`) donne un aperçu `<branche>.trigenys-website.pages.dev`.
+- Protection de `main` : ruleset `main-integrite` (branche par défaut, sans contournement) qui interdit suppression et
+  force-push ; push directs et commits du bot AppFactory toujours possibles. Exception assumée à la gouvernance
+  AppFactory (préréglage `solo`) : celle-ci imposerait la PR à tous, y compris au bot qui commite
+  `.appfactory/pages-infrastructure.json`, sans exemption possible à ce jour. Passage à `solo` quand ce point est
+  levé, avec pour checks requis `impact / analyze` et `site-build` (pas `visual-qa`, publié sous un autre nom
+  quand il est ignoré). Vérification : `gh api repos/Trigenys/trigenys-website/rules/branches/main -q '[.[].type]'`.
 - Build Cloudflare : racine `site`, `npm run build` (contrats inclus), sortie `dist`, Node épinglé par `site/.node-version`.
 - Marqueur de propriété commité par AppFactory : `.appfactory/pages-infrastructure.json` (ne pas éditer à la main).
 
