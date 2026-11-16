@@ -478,3 +478,19 @@
 - Ces entrées de passation (commits 06aae66, 220de62 et celui-ci) sont sur `feat/seo-fondations`, pas encore dans `main`.
 - Prochaines étapes : Search Console (soumettre le sitemap), LinkedIn (URL ou accord Chrome), issues P2 #4 à #8,
   tâche « marge TBT mobile » et attente de fin d'animation dans visual-qa.
+
+## 2026-11-16 09:38 — Search Console : sitemap soumis
+- Propriété de domaine `sc-domain:trigenys.com` déjà vérifiée (couvre www, insight, precis-translator, agenstart).
+- `https://www.trigenys.com/sitemap.xml` soumis à la demande de l'utilisateur : lu le jour même, « Opération effectuée »,
+  7 URL envoyées.
+- Prochaines étapes : suivre l'indexation (rapport Pages, sous quelques jours), demander l'indexation de l'accueil et
+  des pages produits si elle tarde ; LinkedIn ; issues P2 #4 à #8.
+
+## 2026-11-16 09:48 — Search Console : indexation demandée
+- « Demander une indexation » accepté (« Indexation demandée ») pour 5 URL : l'accueil,
+  `/produits/atelier-maitre/`, `/produits/commerce-factory/`, `/produits/precis-translator/`,
+  `/realisations/xeption/`. Toutes étaient « Détectée, actuellement non indexée ».
+- Astuce : l'URL directe `/inspect?...&id=` renvoie 404 ; passer par la barre de recherche. Après fermeture du
+  dialogue, il faut cliquer deux fois dans la barre avant de saisir.
+- Prochaines étapes : vérifier le rapport Pages dans quelques jours ; LinkedIn ; issues P2 #4 à #8 ;
+  branche `docs/passation-search-console` sans PR vers main.
