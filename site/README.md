@@ -56,6 +56,12 @@ signature collective) ; Commerce Factory garde son adresse de bêta tant que son
   **connecté Git** avec ses propres identifiants Cloudflare. Aucun secret Cloudflare dans ce dépôt.
 - Branches : `production` = branche de production Pages (publication humaine par PR `main → production`, CI verte
   exigée) ; toute autre branche (dont `main`) donne un aperçu `<branche>.trigenys-website.pages.dev`.
+- Protection de `main` : ruleset `main-integrite` (branche par défaut, sans contournement) qui interdit suppression et
+  force-push ; push directs et commits du bot AppFactory toujours possibles. Exception assumée à la gouvernance
+  AppFactory (préréglage `solo`) : celle-ci imposerait la PR à tous, y compris au bot qui commite
+  `.appfactory/pages-infrastructure.json`, sans exemption possible à ce jour. Passage à `solo` quand ce point est
+  levé, avec pour checks requis `impact / analyze` et `site-build` (pas `visual-qa`, publié sous un autre nom
+  quand il est ignoré). Vérification : `gh api repos/Trigenys/trigenys-website/rules/branches/main -q '[.[].type]'`.
 - Build Cloudflare : racine `site`, `npm run build` (contrats inclus), sortie `dist`, Node épinglé par `site/.node-version`.
 - Marqueur de propriété commité par AppFactory : `.appfactory/pages-infrastructure.json` (ne pas éditer à la main).
 
@@ -65,6 +71,9 @@ signature collective) ; Commerce Factory garde son adresse de bêta tant que son
 2. Aperçu : chaque push sur `main` est construit par Cloudflare → `main.trigenys-website.pages.dev`
    (en-têtes : `curl -sI <url> | grep -i content-security`).
 3. Production : ouvrir une PR `main → production`, attendre la CI, fusionner ; Cloudflare construit `production`.
+   Rien n'arrive sur `production` autrement que par cette PR (ni commit direct, ni autre branche source) : la
+   protection n'exige pas que la PR soit « à jour » (`strict: false`), puisque production ne contient que des
+   états de main et ses merge commits ; les checks requis tournent sur chaque PR. Pas de `gh pr update-branch`.
 4. Domaine (quand les éléments « à confirmer » sont renseignés) : ajouter `"customDomain": "www.trigenys.com"` au contrat,
    pousser ; appliquer ensuite chez Spaceship le `CNAME www → trigenys-website.pages.dev` renvoyé par AppFactory, et
    une redirection d'URL de l'apex `trigenys.com` vers `https://www.trigenys.com`. Rien d'autre ne change (MX Spacemail).

@@ -181,3 +181,48 @@ Mémoire des erreurs et quasi-incidents (standard RAIDER, « failure memory »).
   `gh api .../branches/production/protection` (contexts) aux noms de `gh pr checks` d'une PR où les gates tournent.
 - **Leçon** : un check requis dont le nom ne correspond à aucun check publié ne protège rien quand il est ignoré et
   bloque tout quand il tourne ; un SKIPPED compte comme succès.
+
+## 2026-11-16 11:56 — Mise en ligne main → production : PR toujours BEHIND, flake Lighthouse NO_NAVSTART
+- **Contexte** : PR #9 puis PR #13 (main → production) bloquées « BEHIND » ; `gh pr update-branch` nécessaire à chaque
+  mise en ligne (accord explicite requis). Sur la PR #13, visual-qa a échoué deux fois sur
+  `route2:desktop:performance` avec `NO_NAVSTART` (trace Lighthouse non enregistrée), vert à la relance.
+- **Cause racine** : la protection `production` est stricte et chaque fusion vers production crée un merge commit
+  absent de main ; main n'est jamais resynchronisé avec production, donc la PR suivante est en retard par construction.
+  `NO_NAVSTART` est une erreur d'exécution de Lighthouse, pas un dépassement de budget.
+- **Classification** : erreur répétée (2e occurrence) de flux de mise en ligne ; instabilité d'outil de CI.
+- **Résolution** : `gh pr update-branch 13` sur accord, relance du job en échec (`gh run rerun --failed`).
+- **Prévention vérifiable** (à décider, contrôle plus fort exigé par la répétition) : soit ramener production dans main
+  juste après chaque mise en ligne (PR production → main), soit fusionner main → production en fast-forward ;
+  côté gate, relancer automatiquement une fois un audit Lighthouse en erreur d'exécution (distinct d'un échec de
+  budget) dans le workflow réutilisable AppFactory.
+- **Leçon** : avec une protection stricte, un flux à merge commits entre deux branches longues doit prévoir la
+  resynchronisation inverse, sinon chaque mise en ligne exige une mise à jour manuelle.
+
+## 2026-11-16 12:03 — Suite : prévention retenue pour les PR main → production BEHIND
+- **Contexte** : entrée 11:56 (erreur répétée, prévention à décider).
+- **Décision** : protection `production` passée à `strict: false` (sur accord explicite) ; checks requis inchangés
+  (`site-build`, `visual-qa / Browser, accessibility and Lighthouse gates`), `enforce_admins` conservé.
+- **Options écartées** : PR production → main après chaque mise en ligne (une PR de plus à chaque fois) ;
+  fast-forward `main:production` hors PR (sur un commit de main uniquement documentaire, les checks requis sont
+  SKIPPED sous le nom nu `visual-qa`, le push serait refusé).
+- **Prévention vérifiable** : `gh api repos/Trigenys/trigenys-website/branches/production/protection
+  -q .required_status_checks.strict` doit valoir `false` ; la PR main → production suivante doit être fusionnable
+  sans `update-branch`. Règle documentée dans `site/README.md` (runbook) : rien n'arrive sur production hors PR
+  depuis main. Le volet flake `NO_NAVSTART` reste à traiter dans le workflow réutilisable AppFactory.
+- **Leçon** : « à jour obligatoire » n'apporte rien quand la branche cible ne reçoit qu'une seule source ; il ne fait
+  qu'imposer une resynchronisation manuelle.
+
+## 2026-11-16 16:18 — Flake visual-qa « contraste .scr » : cause racine
+- **Contexte** : l'audit axe de visual-qa échouait par intermittence (« flake connu ») sur `.scr`, l'indication de
+  défilement du héros, avec un contraste variable (1,3 à 2). Sur la PR #17 (Yaro FleetOS), il a échoué trois fois
+  de suite.
+- **Cause racine** : `fx.js` estompe tout le bloc du héros au défilement (`copy.style.opacity`). `.scr`, en texte
+  atténué de 13 px, passe sous 4,5:1 dès les premiers pixels de défilement. Le résultat dépendait de la position de
+  défilement au moment de l'audit, pas d'un problème d'outillage.
+- **Classification** : défaut d'accessibilité réel, pris à tort pour un flake ; erreur répétée.
+- **Résolution** : `047fae4` masque `.scr` (`visibility:hidden`) dès que la page défile ; `65225cf` lui donne
+  l'animation d'entrée sans opacité (`upx`), comme le titre.
+- **Prévention vérifiable** : visual-qa (axe, desktop) sur `/` et `/en/` passe sans relance. Même PR : la
+  parallaxe mobile de `fx.js` faisait chevaucher le numéro du panneau Yaro (correctif `71afe2b`).
+- **Leçon** : un échec intermittent qui cite toujours le même élément est un défaut à reproduire, pas un flake à
+  relancer. Avant de relancer, chercher ce qui fait varier la mesure (animation, défilement, minuterie).

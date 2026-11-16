@@ -514,3 +514,69 @@
   site.json) ; `npm run build` et `npm run check` verts. PR vers main ouverte, puis main -> production à faire sur accord.
 - Reste : vérifier dans `Trigenys/trigenys-commerce-factory` les URL absolues (auth, paiement, canonical) ;
   l'adresse `.pages.dev` continue de fonctionner.
+
+## 2026-11-16 11:56 — Commerce Factory en production
+- PR #12 fusionnée dans main (`c8b88de`) ; PR #13 main → production mise à jour (accord), visual-qa relancé
+  (flake `NO_NAVSTART`), fusionnée (`f6ddf7e`).
+- Production vérifiée : accueil 5 liens et page produit 3 liens vers `https://commercefactory.trigenys.com/`, plus
+  aucun `.pages.dev` ; `check:http` OK.
+- Leçon ajoutée (`docs/engineering/lessons-learned.md`) : PR vers production toujours BEHIND, à corriger.
+- Reste : décider la resynchronisation production → main ; URL absolues de l'application dans
+  `Trigenys/trigenys-commerce-factory` ; indexation Search Console ; LinkedIn ; issues P2 #4 à #8.
+
+## 2026-11-16 12:03 — Production : option « à jour obligatoire » désactivée
+- PR #14 (leçon + passation) fusionnée dans main (`04eeaa2`).
+- Protection `production` : `strict: false` sur accord ; checks requis et `enforce_admins` inchangés (vérifié par
+  `gh api`). Plus de PR main → production BEHIND ni de `update-branch`.
+- Runbook `site/README.md` et leçon complétés (branche `docs/production-sans-strict`).
+- Constat : `main` n'a aucune protection de branche.
+- Reste : flake Lighthouse `NO_NAVSTART` (workflow AppFactory) ; URL absolues de `Trigenys/trigenys-commerce-factory` ;
+  indexation Search Console ; LinkedIn ; issues P2 #4 à #8.
+
+## 2026-11-16 12:19 — main protégée (niveau 1)
+- PR #15 fusionnée (`2eb2b7c`).
+- Ruleset `main-integrite` (id 27367812, branche par défaut, actif, sans contournement) : suppression et force-push
+  interdits ; vérifié par `gh api .../rules/branches/main` → `deletion`, `non_fast_forward`.
+- Exception documentée dans `site/README.md` : pas encore le préréglage AppFactory `solo` (PR obligatoire), car le bot
+  AppFactory commite directement sur main sans exemption possible.
+- Reste : niveau 2 (PR obligatoire) quand le bot est exemptable ; visual-qa à stabiliser (attendre la fin des
+  animations) ; flake `NO_NAVSTART` ; URL absolues de `Trigenys/trigenys-commerce-factory` ; Search Console ;
+  LinkedIn ; issues P2 #4 à #8.
+
+## 2026-11-16 14:39 — Ajout de Yaro OS au catalogue (en cours)
+- PR #16 (protection de main) fusionnée (`2e453e6`). Session « expert-seo-geo » : URL canoniques des produits envoyées.
+- Décision utilisateur : ajouter Yaro OS (GMAO / flotte, en production, https://fleet.trigenys.com/, marque AgenStudio
+  dans le registre). Branche `feat/yaro-os`.
+- Emplacements : panneau dans le rail `#produits` (avant « D'autres outils », numérotation /05), lien dans le bandeau
+  `proof`, page `src/pages/yaro-os.html` + entrée `site.json` (pages + SoftwareApplication), pied de page, section métiers.
+- Contraintes : texte tiré de fleet.trigenys.com, aucun prix ni chiffre inventé. GED237 et Zamari : plus tard, dans
+  « D'autres outils » (sans lien).
+
+## 2026-11-16 14:51 — Yaro FleetOS au catalogue : PR ouverte
+- Corrige l'entrée précédente : slug `/produits/yaro-fleetos/` (nom produit « Yaro FleetOS »), page
+  `src/pages/yaro-fleetos.html` ; pas de lien dans le bandeau `proof`.
+- Fait : panneau rail 04/05, onglet métiers « Transport & logistique » (m5/pn5), pied de page, `site.json`
+  (page + SoftwareApplication, descriptions accueil), 21 clés `i18n.json`. `build.mjs`/`check.mjs` : orbites
+  = nombre d'onglets métiers (plus de « 4 » codé en dur).
+- Données client exclues (nom, logo T.A.Y, plaques, chiffres) : pas de captures, schéma HTML à la place.
+  Carrousel du hero inchangé (contrat 4 diapos).
+- Vérifié : build + check + check:http OK, build idempotent, Playwright desktop/mobile, 0 erreur console.
+- Suite : PR `feat/yaro-os` → main, fusion sur accord, puis PR main → production.
+
+## 2026-11-16 16:01 — PR #17 (Yaro FleetOS) : correctif CI, fusion en attente du vert
+- Accord utilisateur « Oui, fusionne » pour la PR #17 (main), donné après l'ouverture de la PR.
+- visual-qa a relevé un vrai défaut : sur mobile, la parallaxe (fx.js, transform inline) faisait passer la carte
+  ambre `.y2` sous `.pnl.yf > .n` (contraste 1,45). Correctif `71afe2b` : `transform:none!important` sur les
+  cartes Yaro empilées en mobile. Vérifié par Playwright (plus de chevauchement).
+- Restent uniquement les flakes connus (`.scr`, `NO_NAVSTART`) : run 43891167389 relancé (`--failed`).
+- Suite : vert → `gh pr merge 17 --merge`, puis mise en ligne par PR main → production (accord à demander).
+
+## 2026-11-16 16:22 — PR #17 fusionnée dans main (`70e019c`)
+- Corrige l'entrée précédente : il n'y avait pas que des flakes. visual-qa a révélé deux vrais défauts, corrigés dans
+  la PR : la parallaxe mobile sur le panneau Yaro (`71afe2b`) et l'indication `.scr`, qui pâlissait avec le héros
+  au défilement (`65225cf`, `047fae4`, leçon dans `docs/engineering/lessons-learned.md`). Le chapeau du héros
+  cite désormais les quatre produits (FR et EN).
+- CI finale toute au vert ; un échec de TBT mobile (267 ms pour 200) est passé à la relance (bruit).
+- Pas en ligne : la mise en ligne passe par une PR main → production, qui demande un accord explicite.
+- Reste ouvert : TBT mobile proche de la limite, flake `NO_NAVSTART`, GED237 et Zamari, niveau 2 de protection de
+  main, Search Console, LinkedIn, issues P2 #4 à #8.

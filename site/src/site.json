@@ -2,7 +2,7 @@
   "$comment": "Source unique du référencement : identité du groupe (JSON-LD), métadonnées de l'accueil FR/EN et pages secondaires. Le build en dérive les pages, robots.txt, sitemap.xml et llms.txt ; aucun de ces fichiers n'est écrit à la main.",
   "origin": "https://www.trigenys.com",
   "name": "Trigenys Group",
-  "summary": "Trigenys Group édite des logiciels métier (Atelier Maître, Commerce Factory, Précis Translator) et construit sur mesure les systèmes de ses clients. Conçus, développés et maintenus au Cameroun, à Douala et Yaoundé.",
+  "summary": "Trigenys Group édite des logiciels métier (Atelier Maître, Commerce Factory, Précis Translator, Yaro FleetOS) et construit sur mesure les systèmes de ses clients. Conçus, développés et maintenus au Cameroun, à Douala et Yaoundé.",
   "contactLine": "Contact : business@trigenys.com · WhatsApp +237 670 75 43 72 · Douala et Yaoundé, Cameroun.",
   "organization": {
     "@type": "Organization",
@@ -18,7 +18,7 @@
     },
     "image": "https://www.trigenys.com/assets/og.png",
     "slogan": "Designing the systems behind decisions.",
-    "description": "Éditeur de logiciels métier et studio d'ingénierie : Atelier Maître (gestion d'atelier automobile), Commerce Factory (boutique en ligne), Précis Translator (traduction de documents avec mise en page conservée), et systèmes sur mesure. Conçus au Cameroun.",
+    "description": "Éditeur de logiciels métier et studio d'ingénierie : Atelier Maître (gestion d'atelier automobile), Commerce Factory (boutique en ligne), Précis Translator (traduction de documents avec mise en page conservée), Yaro FleetOS (gestion de flotte et GMAO pour transporteurs), et systèmes sur mesure. Conçus au Cameroun.",
     "email": "business@trigenys.com",
     "telephone": "+237670754372",
     "address": [
@@ -108,7 +108,7 @@
     "fr": {
       "path": "/",
       "title": "Trigenys Group — Logiciels et ingénierie, Cameroun",
-      "description": "Trigenys édite Atelier Maître, Commerce Factory et Précis Translator, et construit sur mesure les systèmes de ses clients. Conçus au Cameroun.",
+      "description": "Trigenys édite Atelier Maître, Commerce Factory, Précis Translator et Yaro FleetOS, et construit sur mesure les systèmes de ses clients. Conçus au Cameroun.",
       "ogDescription": "Les logiciels qui font tourner les métiers du Cameroun.",
       "ogLocale": "fr_FR",
       "switchLabel": "English version"
@@ -116,7 +116,7 @@
     "en": {
       "path": "/en/",
       "title": "Trigenys Group — Software and engineering, Cameroon",
-      "description": "Trigenys publishes Atelier Maître, Commerce Factory and Précis Translator, and builds custom systems for its clients. Designed in Cameroon.",
+      "description": "Trigenys publishes Atelier Maître, Commerce Factory, Précis Translator and Yaro FleetOS, and builds custom systems for its clients. Designed in Cameroon.",
       "ogDescription": "The software that runs Cameroon's trades.",
       "ogLocale": "en_GB",
       "switchLabel": "Version française"
@@ -226,6 +226,39 @@
             "Mise en page conservée",
             "Français ↔ anglais",
             "Relecture avant livraison"
+          ],
+          "inLanguage": "fr",
+          "publisher": {
+            "@id": "https://www.trigenys.com/#org"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/produits/yaro-fleetos/",
+      "src": "pages/yaro-fleetos.html",
+      "section": "Produits",
+      "sectionHref": "/#produits",
+      "llms": "Produits",
+      "title": "Yaro FleetOS by Trigenys Group — gestion de flotte et GMAO",
+      "h": "Yaro FleetOS",
+      "description": "Yaro FleetOS gère la flotte et l'atelier d'un transporteur routier : parc, maintenance, magasin, pneus, achats, carburant et facturation. En production.",
+      "jsonld": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.trigenys.com/produits/yaro-fleetos/#app",
+          "name": "Yaro FleetOS",
+          "alternateName": "Yaro FleetOS by Trigenys Group",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "Gestion de flotte et GMAO",
+          "operatingSystem": "Web",
+          "url": "https://fleet.trigenys.com/",
+          "description": "Gestion de flotte et GMAO pour transporteurs routiers : parc et pneumatiques, atelier et ordres de travail, magasin et achats, carburant, missions et facturation client, dans un seul système.",
+          "featureList": [
+            "Parc véhicules et pneumatiques",
+            "Atelier et ordres de travail",
+            "Magasin, achats, fournisseurs",
+            "Missions, carburant, facturation"
           ],
           "inLanguage": "fr",
           "publisher": {
